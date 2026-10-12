@@ -1,0 +1,26 @@
+# Dependencies
+tools/node_modules/
+__pycache__/
+*.pyc
+
+# Build output: regenerate with `cd tools && npm run build`.
+# publish/.htaccess and the docs in publish/ are source and stay tracked.
+publish/heartwood-site.html
+publish/heartwood-site.html.br
+publish/heartwood-site.html.gz
+publish/css/
+publish/js/
+publish/assets/
+tools/build-manifest.json
+tools/compression-report.json
+
+# Upload packages: regenerate with `python tools/package-upload.py --name <folder>`.
+publish/upload-ready*/
+tools/upload-package-manifest.json
+
+# Editor and OS clutter
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store

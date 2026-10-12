@@ -1,0 +1,4055 @@
+{
+  "desktop": {
+    "baseline": {
+      "top": {
+        "start": {
+          "metrics": {
+            "Timestamp": 591502.474669,
+            "AudioHandlers": 0,
+            "AudioWorkletProcessors": 0,
+            "Documents": 3,
+            "Frames": 3,
+            "JSEventListeners": 2750,
+            "LayoutObjects": 16301,
+            "MediaKeySessions": 0,
+            "MediaKeys": 0,
+            "Nodes": 17013,
+            "Resources": 24,
+            "ContextLifecycleStateObservers": 24,
+            "V8PerContextDatas": 15,
+            "WorkerGlobalScopes": 0,
+            "UACSSResources": 0,
+            "RTCPeerConnections": 0,
+            "ResourceFetchers": 3,
+            "AdSubframes": 0,
+            "DetachedScriptStates": 0,
+            "ArrayBufferContents": 0,
+            "LayoutCount": 20,
+            "RecalcStyleCount": 234,
+            "LayoutDuration": 0.047959,
+            "RecalcStyleDuration": 0.106107,
+            "DevToolsCommandDuration": 0.06175,
+            "ScriptDuration": 0.023283,
+            "V8CompileDuration": 0.001741,
+            "TaskDuration": 0.382821,
+            "TaskOtherDuration": 0.141981,
+            "ThreadTime": 0.378259,
+            "ProcessTime": 43.947064,
+            "JSHeapUsedSize": 12674924,
+            "JSHeapTotalSize": 15884288,
+            "FirstMeaningfulPaint": 0,
+            "DomContentLoaded": 591502.352225,
+            "NavigationStart": 591501.92893
+          }
+        },
+        "end": {
+          "metrics": {
+            "Timestamp": 591505.534003,
+            "AudioHandlers": 0,
+            "AudioWorkletProcessors": 0,
+            "Documents": 3,
+            "Frames": 3,
+            "JSEventListeners": 2750,
+            "LayoutObjects": 16301,
+            "MediaKeySessions": 0,
+            "MediaKeys": 0,
+            "Nodes": 17013,
+            "Resources": 24,
+            "ContextLifecycleStateObservers": 24,
+            "V8PerContextDatas": 15,
+            "WorkerGlobalScopes": 0,
+            "UACSSResources": 0,
+            "RTCPeerConnections": 0,
+            "ResourceFetchers": 3,
+            "AdSubframes": 0,
+            "DetachedScriptStates": 0,
+            "ArrayBufferContents": 0,
+            "LayoutCount": 20,
+            "RecalcStyleCount": 300,
+            "LayoutDuration": 0.047959,
+            "RecalcStyleDuration": 0.211257,
+            "DevToolsCommandDuration": 0.061926,
+            "ScriptDuration": 0.02385,
+            "V8CompileDuration": 0.001741,
+            "TaskDuration": 0.95663,
+            "TaskOtherDuration": 0.609897,
+            "ThreadTime": 0.936305,
+            "ProcessTime": 44.872444,
+            "JSHeapUsedSize": 10089868,
+            "JSHeapTotalSize": 16670720,
+            "FirstMeaningfulPaint": 591502.891573,
+            "DomContentLoaded": 591502.352225,
+            "NavigationStart": 591501.92893
+          },
+          "page": {
+            "url": "http://127.0.0.1:8002/heartwood-site.html",
+            "visibility": "visible",
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "fonts": "loaded",
+            "elements": 4355,
+            "runningAnimations": 126,
+            "animations": [
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--cardinal"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--jay"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--goldfinch"
+              },
+              {
+                "name": "bird-bound",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--goldfinch"
+              },
+              {
+                "name": "bird-bound",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--west"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--centipede bug--east"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--east"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--centipede bug--west"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "bee-0",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-1",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-2",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-3",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-4",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-5",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-6",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-7",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-8",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "beside-west",
+                "target": "DIV",
+                "classes": "bug bug--beside bug--beetle bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "beside-east",
+                "target": "DIV",
+                "classes": "bug bug--beside bug--centipede bug--east"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "beside-west",
+                "target": "DIV",
+                "classes": "bug bug--beside bug--pillbug bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--west"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--centipede bug--west"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--west"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--east"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face"
+              }
+            ],
+            "navigation": [
+              {
+                "duration": 447.89999997615814,
+                "domContentLoaded": 423.39999997615814,
+                "load": 447.89999997615814,
+                "encodedBodySize": 979410,
+                "transferSize": 979710
+              }
+            ],
+            "paint": [
+              {
+                "name": "first-paint",
+                "startTime": 964
+              },
+              {
+                "name": "first-contentful-paint",
+                "startTime": 964
+              }
+            ],
+            "resources": [
+              {
+                "name": "https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400..700&display=swap",
+                "duration": 114.20000004768372,
+                "encodedBodySize": 499,
+                "transferSize": 799
+              },
+              {
+                "name": "http://127.0.0.1:8002/css/heartwood-site.css",
+                "duration": 17.700000047683716,
+                "encodedBodySize": 72768,
+                "transferSize": 73068
+              },
+              {
+                "name": "http://127.0.0.1:8002/js/heartwood-site.js",
+                "duration": 24.200000047683716,
+                "encodedBodySize": 57077,
+                "transferSize": 57377
+              },
+              {
+                "name": "http://127.0.0.1:8002/favicon.ico",
+                "duration": 2,
+                "encodedBodySize": 330,
+                "transferSize": 630
+              }
+            ],
+            "aboutGap": 32
+          }
+        },
+        "rate": {
+          "seconds": 3.0593339999904856,
+          "taskMsPerSecond": 187.56010295109473,
+          "layoutMsPerSecond": 0,
+          "styleMsPerSecond": 34.37022567667571,
+          "scriptMsPerSecond": 0.18533445514669578,
+          "animations": 126,
+          "visibility": "visible"
+        }
+      },
+      "about": {
+        "start": {
+          "metrics": {
+            "Timestamp": 591505.895733,
+            "AudioHandlers": 0,
+            "AudioWorkletProcessors": 0,
+            "Documents": 3,
+            "Frames": 3,
+            "JSEventListeners": 2750,
+            "LayoutObjects": 16301,
+            "MediaKeySessions": 0,
+            "MediaKeys": 0,
+            "Nodes": 17013,
+            "Resources": 24,
+            "ContextLifecycleStateObservers": 24,
+            "V8PerContextDatas": 15,
+            "WorkerGlobalScopes": 0,
+            "UACSSResources": 0,
+            "RTCPeerConnections": 0,
+            "ResourceFetchers": 3,
+            "AdSubframes": 0,
+            "DetachedScriptStates": 0,
+            "ArrayBufferContents": 0,
+            "LayoutCount": 20,
+            "RecalcStyleCount": 337,
+            "LayoutDuration": 0.047959,
+            "RecalcStyleDuration": 0.252065,
+            "DevToolsCommandDuration": 0.11563,
+            "ScriptDuration": 0.027408,
+            "V8CompileDuration": 0.001751,
+            "TaskDuration": 1.224988,
+            "TaskOtherDuration": 0.780175,
+            "ThreadTime": 1.200072,
+            "ProcessTime": 45.284829,
+            "JSHeapUsedSize": 7599932,
+            "JSHeapTotalSize": 21913600,
+            "FirstMeaningfulPaint": 591502.891573,
+            "DomContentLoaded": 591502.352225,
+            "NavigationStart": 591501.92893
+          }
+        },
+        "end": {
+          "metrics": {
+            "Timestamp": 591508.914026,
+            "AudioHandlers": 0,
+            "AudioWorkletProcessors": 0,
+            "Documents": 3,
+            "Frames": 3,
+            "JSEventListeners": 2750,
+            "LayoutObjects": 16299,
+            "MediaKeySessions": 0,
+            "MediaKeys": 0,
+            "Nodes": 17006,
+            "Resources": 22,
+            "ContextLifecycleStateObservers": 24,
+            "V8PerContextDatas": 15,
+            "WorkerGlobalScopes": 0,
+            "UACSSResources": 0,
+            "RTCPeerConnections": 0,
+            "ResourceFetchers": 3,
+            "AdSubframes": 0,
+            "DetachedScriptStates": 0,
+            "ArrayBufferContents": 0,
+            "LayoutCount": 21,
+            "RecalcStyleCount": 504,
+            "LayoutDuration": 0.049866,
+            "RecalcStyleDuration": 0.361339,
+            "DevToolsCommandDuration": 0.115788,
+            "ScriptDuration": 0.03937,
+            "V8CompileDuration": 0.001751,
+            "TaskDuration": 2.090611,
+            "TaskOtherDuration": 1.522497,
+            "ThreadTime": 2.06474,
+            "ProcessTime": 46.570764,
+            "JSHeapUsedSize": 7776628,
+            "JSHeapTotalSize": 21913600,
+            "FirstMeaningfulPaint": 591502.891573,
+            "DomContentLoaded": 591502.352225,
+            "NavigationStart": 591501.92893
+          },
+          "page": {
+            "url": "http://127.0.0.1:8002/heartwood-site.html#about",
+            "visibility": "visible",
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "fonts": "loaded",
+            "elements": 4355,
+            "runningAnimations": 126,
+            "animations": [
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--cardinal"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--jay"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--goldfinch"
+              },
+              {
+                "name": "bird-bound",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--goldfinch"
+              },
+              {
+                "name": "bird-bound",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--west"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--centipede bug--east"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--east"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--centipede bug--west"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "bee-0",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-1",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-2",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-3",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-4",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-5",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-6",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-7",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-8",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "beside-west",
+                "target": "DIV",
+                "classes": "bug bug--beside bug--beetle bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "beside-east",
+                "target": "DIV",
+                "classes": "bug bug--beside bug--centipede bug--east"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "beside-west",
+                "target": "DIV",
+                "classes": "bug bug--beside bug--pillbug bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--west"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--centipede bug--west"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--west"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--east"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face"
+              }
+            ],
+            "navigation": [
+              {
+                "duration": 447.89999997615814,
+                "domContentLoaded": 423.39999997615814,
+                "load": 447.89999997615814,
+                "encodedBodySize": 979410,
+                "transferSize": 979710
+              }
+            ],
+            "paint": [
+              {
+                "name": "first-paint",
+                "startTime": 964
+              },
+              {
+                "name": "first-contentful-paint",
+                "startTime": 964
+              }
+            ],
+            "resources": [
+              {
+                "name": "https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400..700&display=swap",
+                "duration": 114.20000004768372,
+                "encodedBodySize": 499,
+                "transferSize": 799
+              },
+              {
+                "name": "http://127.0.0.1:8002/css/heartwood-site.css",
+                "duration": 17.700000047683716,
+                "encodedBodySize": 72768,
+                "transferSize": 73068
+              },
+              {
+                "name": "http://127.0.0.1:8002/js/heartwood-site.js",
+                "duration": 24.200000047683716,
+                "encodedBodySize": 57077,
+                "transferSize": 57377
+              },
+              {
+                "name": "http://127.0.0.1:8002/favicon.ico",
+                "duration": 2,
+                "encodedBodySize": 330,
+                "transferSize": 630
+              }
+            ],
+            "aboutGap": 32
+          }
+        },
+        "rate": {
+          "seconds": 3.018292999942787,
+          "taskMsPerSecond": 286.79223654443365,
+          "layoutMsPerSecond": 0.6318140750537297,
+          "styleMsPerSecond": 36.20390730855864,
+          "scriptMsPerSecond": 3.963167260510079,
+          "animations": 126,
+          "visibility": "visible"
+        }
+      },
+      "network": {
+        "start": {
+          "metrics": {
+            "Timestamp": 591509.330061,
+            "AudioHandlers": 0,
+            "AudioWorkletProcessors": 0,
+            "Documents": 3,
+            "Frames": 3,
+            "JSEventListeners": 2750,
+            "LayoutObjects": 16299,
+            "MediaKeySessions": 0,
+            "MediaKeys": 0,
+            "Nodes": 17006,
+            "Resources": 22,
+            "ContextLifecycleStateObservers": 24,
+            "V8PerContextDatas": 15,
+            "WorkerGlobalScopes": 0,
+            "UACSSResources": 0,
+            "RTCPeerConnections": 0,
+            "ResourceFetchers": 3,
+            "AdSubframes": 0,
+            "DetachedScriptStates": 0,
+            "ArrayBufferContents": 0,
+            "LayoutCount": 21,
+            "RecalcStyleCount": 552,
+            "LayoutDuration": 0.049866,
+            "RecalcStyleDuration": 0.410652,
+            "DevToolsCommandDuration": 0.168109,
+            "ScriptDuration": 0.044007,
+            "V8CompileDuration": 0.001761,
+            "TaskDuration": 2.424955,
+            "TaskOtherDuration": 1.75056,
+            "ThreadTime": 2.393827,
+            "ProcessTime": 46.985666,
+            "JSHeapUsedSize": 13166680,
+            "JSHeapTotalSize": 27418624,
+            "FirstMeaningfulPaint": 591502.891573,
+            "DomContentLoaded": 591502.352225,
+            "NavigationStart": 591501.92893
+          }
+        },
+        "end": {
+          "metrics": {
+            "Timestamp": 591512.346569,
+            "AudioHandlers": 0,
+            "AudioWorkletProcessors": 0,
+            "Documents": 3,
+            "Frames": 3,
+            "JSEventListeners": 2750,
+            "LayoutObjects": 16299,
+            "MediaKeySessions": 0,
+            "MediaKeys": 0,
+            "Nodes": 17006,
+            "Resources": 22,
+            "ContextLifecycleStateObservers": 24,
+            "V8PerContextDatas": 15,
+            "WorkerGlobalScopes": 0,
+            "UACSSResources": 0,
+            "RTCPeerConnections": 0,
+            "ResourceFetchers": 3,
+            "AdSubframes": 0,
+            "DetachedScriptStates": 0,
+            "ArrayBufferContents": 0,
+            "LayoutCount": 22,
+            "RecalcStyleCount": 756,
+            "LayoutDuration": 0.050149,
+            "RecalcStyleDuration": 0.50398,
+            "DevToolsCommandDuration": 0.168273,
+            "ScriptDuration": 0.054274,
+            "V8CompileDuration": 0.001761,
+            "TaskDuration": 3.248387,
+            "TaskOtherDuration": 2.46995,
+            "ThreadTime": 3.156437,
+            "ProcessTime": 48.120696,
+            "JSHeapUsedSize": 13319728,
+            "JSHeapTotalSize": 27680768,
+            "FirstMeaningfulPaint": 591502.891573,
+            "DomContentLoaded": 591502.352225,
+            "NavigationStart": 591501.92893
+          },
+          "page": {
+            "url": "http://127.0.0.1:8002/heartwood-site.html#network",
+            "visibility": "visible",
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "fonts": "loaded",
+            "elements": 4355,
+            "runningAnimations": 126,
+            "animations": [
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--cardinal"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--jay"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--goldfinch"
+              },
+              {
+                "name": "bird-bound",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--goldfinch"
+              },
+              {
+                "name": "bird-bound",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--west"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--centipede bug--east"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--east"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--centipede bug--west"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "bee-0",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-1",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-2",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-3",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-4",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-5",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-6",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-7",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-8",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "beside-west",
+                "target": "DIV",
+                "classes": "bug bug--beside bug--beetle bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "beside-east",
+                "target": "DIV",
+                "classes": "bug bug--beside bug--centipede bug--east"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "beside-west",
+                "target": "DIV",
+                "classes": "bug bug--beside bug--pillbug bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--west"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--centipede bug--west"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--west"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--east"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face"
+              }
+            ],
+            "navigation": [
+              {
+                "duration": 447.89999997615814,
+                "domContentLoaded": 423.39999997615814,
+                "load": 447.89999997615814,
+                "encodedBodySize": 979410,
+                "transferSize": 979710
+              }
+            ],
+            "paint": [
+              {
+                "name": "first-paint",
+                "startTime": 964
+              },
+              {
+                "name": "first-contentful-paint",
+                "startTime": 964
+              }
+            ],
+            "resources": [
+              {
+                "name": "https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400..700&display=swap",
+                "duration": 114.20000004768372,
+                "encodedBodySize": 499,
+                "transferSize": 799
+              },
+              {
+                "name": "http://127.0.0.1:8002/css/heartwood-site.css",
+                "duration": 17.700000047683716,
+                "encodedBodySize": 72768,
+                "transferSize": 73068
+              },
+              {
+                "name": "http://127.0.0.1:8002/js/heartwood-site.js",
+                "duration": 24.200000047683716,
+                "encodedBodySize": 57077,
+                "transferSize": 57377
+              },
+              {
+                "name": "http://127.0.0.1:8002/favicon.ico",
+                "duration": 2,
+                "encodedBodySize": 330,
+                "transferSize": 630
+              },
+              {
+                "name": "https://heartwood.org/heartbeat/Fall-2026.jpg",
+                "duration": 306.2000000476837,
+                "encodedBodySize": 0,
+                "transferSize": 0
+              }
+            ],
+            "aboutGap": 32
+          }
+        },
+        "rate": {
+          "seconds": 3.0165080000879243,
+          "taskMsPerSecond": 272.97524156276023,
+          "layoutMsPerSecond": 0.09381708916129171,
+          "styleMsPerSecond": 30.939085855989664,
+          "scriptMsPerSecond": 3.403604432575927,
+          "animations": 126,
+          "visibility": "visible"
+        }
+      }
+    },
+    "optimized": {
+      "top": {
+        "start": {
+          "metrics": {
+            "Timestamp": 591512.742724,
+            "AudioHandlers": 0,
+            "AudioWorkletProcessors": 0,
+            "Documents": 5,
+            "Frames": 5,
+            "JSEventListeners": 3671,
+            "LayoutObjects": 21740,
+            "MediaKeySessions": 0,
+            "MediaKeys": 0,
+            "Nodes": 22690,
+            "Resources": 30,
+            "ContextLifecycleStateObservers": 33,
+            "V8PerContextDatas": 20,
+            "WorkerGlobalScopes": 0,
+            "UACSSResources": 0,
+            "RTCPeerConnections": 0,
+            "ResourceFetchers": 5,
+            "AdSubframes": 0,
+            "DetachedScriptStates": 0,
+            "ArrayBufferContents": 0,
+            "LayoutCount": 6,
+            "RecalcStyleCount": 13,
+            "LayoutDuration": 0.027768,
+            "RecalcStyleDuration": 0.086884,
+            "DevToolsCommandDuration": 0.059028,
+            "ScriptDuration": 0.019004,
+            "V8CompileDuration": 0.000826,
+            "TaskDuration": 0.329173,
+            "TaskOtherDuration": 0.135663,
+            "ThreadTime": 0.321154,
+            "ProcessTime": 48.510396,
+            "JSHeapUsedSize": 13471044,
+            "JSHeapTotalSize": 29515776,
+            "FirstMeaningfulPaint": 0,
+            "DomContentLoaded": 591512.631243,
+            "NavigationStart": 591512.380487
+          }
+        },
+        "end": {
+          "metrics": {
+            "Timestamp": 591515.768167,
+            "AudioHandlers": 0,
+            "AudioWorkletProcessors": 0,
+            "Documents": 5,
+            "Frames": 5,
+            "JSEventListeners": 3671,
+            "LayoutObjects": 21740,
+            "MediaKeySessions": 0,
+            "MediaKeys": 0,
+            "Nodes": 22690,
+            "Resources": 30,
+            "ContextLifecycleStateObservers": 33,
+            "V8PerContextDatas": 20,
+            "WorkerGlobalScopes": 0,
+            "UACSSResources": 0,
+            "RTCPeerConnections": 0,
+            "ResourceFetchers": 5,
+            "AdSubframes": 0,
+            "DetachedScriptStates": 0,
+            "ArrayBufferContents": 0,
+            "LayoutCount": 6,
+            "RecalcStyleCount": 34,
+            "LayoutDuration": 0.027768,
+            "RecalcStyleDuration": 0.111957,
+            "DevToolsCommandDuration": 0.059223,
+            "ScriptDuration": 0.019618,
+            "V8CompileDuration": 0.000826,
+            "TaskDuration": 0.517556,
+            "TaskOtherDuration": 0.298164,
+            "ThreadTime": 0.494601,
+            "ProcessTime": 48.866796,
+            "JSHeapUsedSize": 13618456,
+            "JSHeapTotalSize": 29515776,
+            "FirstMeaningfulPaint": 591513.16917,
+            "DomContentLoaded": 591512.631243,
+            "NavigationStart": 591512.380487
+          },
+          "page": {
+            "url": "http://127.0.0.1:8001/heartwood-site.html",
+            "visibility": "visible",
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "fonts": "loaded",
+            "elements": 4354,
+            "runningAnimations": 122,
+            "animations": [
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--cardinal"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--jay"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--goldfinch"
+              },
+              {
+                "name": "bird-bound",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--goldfinch"
+              },
+              {
+                "name": "bird-bound",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--west"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--centipede bug--east"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--east"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--centipede bug--west"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "bee-0",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-1",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-2",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-3",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-4",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-5",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-6",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-7",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-8",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "beside-west",
+                "target": "DIV",
+                "classes": "bug bug--beside bug--beetle bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "beside-east",
+                "target": "DIV",
+                "classes": "bug bug--beside bug--centipede bug--east"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "beside-west",
+                "target": "DIV",
+                "classes": "bug bug--beside bug--pillbug bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--west"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--centipede bug--west"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              }
+            ],
+            "navigation": [
+              {
+                "duration": 277.2000000476837,
+                "domContentLoaded": 250.80000007152557,
+                "load": 277.2000000476837,
+                "encodedBodySize": 158979,
+                "transferSize": 159279
+              }
+            ],
+            "paint": [
+              {
+                "name": "first-paint",
+                "startTime": 792
+              },
+              {
+                "name": "first-contentful-paint",
+                "startTime": 792
+              }
+            ],
+            "resources": [
+              {
+                "name": "http://127.0.0.1:8001/assets/fonts/instrument-sans-latin.2ee17598a98d.woff2",
+                "duration": 12,
+                "encodedBodySize": 30092,
+                "transferSize": 30392
+              },
+              {
+                "name": "http://127.0.0.1:8001/css/heartwood-site.787d5dc09fdb.css",
+                "duration": 11.600000023841858,
+                "encodedBodySize": 10187,
+                "transferSize": 10487
+              },
+              {
+                "name": "http://127.0.0.1:8001/assets/fonts/young-serif-latin.6ba68b9927ad.woff2",
+                "duration": 12.399999976158142,
+                "encodedBodySize": 26992,
+                "transferSize": 27292
+              },
+              {
+                "name": "http://127.0.0.1:8001/js/heartwood-site.246de01217fe.js",
+                "duration": 2.899999976158142,
+                "encodedBodySize": 12550,
+                "transferSize": 12850
+              }
+            ],
+            "aboutGap": 32
+          }
+        },
+        "rate": {
+          "seconds": 3.0254430000204593,
+          "taskMsPerSecond": 62.26625323918715,
+          "layoutMsPerSecond": 0,
+          "styleMsPerSecond": 8.287381385083256,
+          "scriptMsPerSecond": 0.2029454859985291,
+          "animations": 122,
+          "visibility": "visible"
+        }
+      },
+      "about": {
+        "start": {
+          "metrics": {
+            "Timestamp": 591516.247669,
+            "AudioHandlers": 0,
+            "AudioWorkletProcessors": 0,
+            "Documents": 5,
+            "Frames": 5,
+            "JSEventListeners": 3668,
+            "LayoutObjects": 21740,
+            "MediaKeySessions": 0,
+            "MediaKeys": 0,
+            "Nodes": 22690,
+            "Resources": 30,
+            "ContextLifecycleStateObservers": 33,
+            "V8PerContextDatas": 20,
+            "WorkerGlobalScopes": 0,
+            "UACSSResources": 0,
+            "RTCPeerConnections": 0,
+            "ResourceFetchers": 5,
+            "AdSubframes": 0,
+            "DetachedScriptStates": 0,
+            "ArrayBufferContents": 0,
+            "LayoutCount": 6,
+            "RecalcStyleCount": 72,
+            "LayoutDuration": 0.027768,
+            "RecalcStyleDuration": 0.151131,
+            "DevToolsCommandDuration": 0.142012,
+            "ScriptDuration": 0.023299,
+            "V8CompileDuration": 0.000839,
+            "TaskDuration": 0.804415,
+            "TaskOtherDuration": 0.459366,
+            "ThreadTime": 0.776282,
+            "ProcessTime": 49.357735,
+            "JSHeapUsedSize": 14102156,
+            "JSHeapTotalSize": 32399360,
+            "FirstMeaningfulPaint": 591513.16917,
+            "DomContentLoaded": 591512.631243,
+            "NavigationStart": 591512.380487
+          }
+        },
+        "end": {
+          "metrics": {
+            "Timestamp": 591519.268709,
+            "AudioHandlers": 0,
+            "AudioWorkletProcessors": 0,
+            "Documents": 4,
+            "Frames": 4,
+            "JSEventListeners": 3666,
+            "LayoutObjects": 21730,
+            "MediaKeySessions": 0,
+            "MediaKeys": 0,
+            "Nodes": 22633,
+            "Resources": 29,
+            "ContextLifecycleStateObservers": 32,
+            "V8PerContextDatas": 20,
+            "WorkerGlobalScopes": 0,
+            "UACSSResources": 0,
+            "RTCPeerConnections": 0,
+            "ResourceFetchers": 4,
+            "AdSubframes": 0,
+            "DetachedScriptStates": 0,
+            "ArrayBufferContents": 0,
+            "LayoutCount": 7,
+            "RecalcStyleCount": 229,
+            "LayoutDuration": 0.029639,
+            "RecalcStyleDuration": 0.24958,
+            "DevToolsCommandDuration": 0.142148,
+            "ScriptDuration": 0.033447,
+            "V8CompileDuration": 0.000839,
+            "TaskDuration": 1.688628,
+            "TaskOtherDuration": 1.232975,
+            "ThreadTime": 1.665559,
+            "ProcessTime": 50.669697,
+            "JSHeapUsedSize": 14270920,
+            "JSHeapTotalSize": 32399360,
+            "FirstMeaningfulPaint": 591513.16917,
+            "DomContentLoaded": 591512.631243,
+            "NavigationStart": 591512.380487
+          },
+          "page": {
+            "url": "http://127.0.0.1:8001/heartwood-site.html#about",
+            "visibility": "visible",
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "fonts": "loaded",
+            "elements": 4354,
+            "runningAnimations": 126,
+            "animations": [
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--cardinal"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--jay"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--goldfinch"
+              },
+              {
+                "name": "bird-bound",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--goldfinch"
+              },
+              {
+                "name": "bird-bound",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--far"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "fly",
+                "target": "DIV",
+                "classes": "bird bird--speck"
+              },
+              {
+                "name": "bird-bob",
+                "target": "SPAN",
+                "classes": "bird__bob"
+              },
+              {
+                "name": "flap",
+                "target": "B",
+                "classes": "bird__wing bird__wing--both"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--west"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--centipede bug--east"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--east"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--centipede bug--west"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "bee-0",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-1",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-2",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-3",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-4",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-5",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-6",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-7",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "bee-8",
+                "target": "DIV",
+                "classes": "bee"
+              },
+              {
+                "name": "bee-bob",
+                "target": "SPAN",
+                "classes": "bee__bob"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing"
+              },
+              {
+                "name": "bee-wing",
+                "target": "I",
+                "classes": "bee__wing bee__wing--b"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "beside-west",
+                "target": "DIV",
+                "classes": "bug bug--beside bug--beetle bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "beside-east",
+                "target": "DIV",
+                "classes": "bug bug--beside bug--centipede bug--east"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "beside-west",
+                "target": "DIV",
+                "classes": "bug bug--beside bug--pillbug bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--west"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--west"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--beetle bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--pillbug bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--centipede bug--west"
+              },
+              {
+                "name": "weave",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--ant bug--east"
+              },
+              {
+                "name": "scurry",
+                "target": "B",
+                "classes": "bug__legs"
+              },
+              {
+                "name": "walk-west",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--west"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face bug__face--left"
+              },
+              {
+                "name": "walk-east",
+                "target": "DIV",
+                "classes": "bug bug--worm bug--east"
+              },
+              {
+                "name": "inch",
+                "target": "SPAN",
+                "classes": "bug__face"
+              }
+            ],
+            "navigation": [
+              {
+                "duration": 277.2000000476837,
+                "domContentLoaded": 250.80000007152557,
+                "load": 277.2000000476837,
+                "encodedBodySize": 158979,
+                "transferSize": 159279
+              }
+            ],
+            "paint": [
+              {
+                "name": "first-paint",
+                "startTime": 792
+              },
+              {
+                "name": "first-contentful-paint",
+                "startTime": 792
+              }
+            ],
+            "resources": [
+              {
+                "name": "http://127.0.0.1:8001/assets/fonts/instrument-sans-latin.2ee17598a98d.woff2",
+                "duration": 12,
+                "encodedBodySize": 30092,
+                "transferSize": 30392
+              },
+              {
+                "name": "http://127.0.0.1:8001/css/heartwood-site.787d5dc09fdb.css",
+                "duration": 11.600000023841858,
+                "encodedBodySize": 10187,
+                "transferSize": 10487
+              },
+              {
+                "name": "http://127.0.0.1:8001/assets/fonts/young-serif-latin.6ba68b9927ad.woff2",
+                "duration": 12.399999976158142,
+                "encodedBodySize": 26992,
+                "transferSize": 27292
+              },
+              {
+                "name": "http://127.0.0.1:8001/js/heartwood-site.246de01217fe.js",
+                "duration": 2.899999976158142,
+                "encodedBodySize": 12550,
+                "transferSize": 12850
+              }
+            ],
+            "aboutGap": 32
+          }
+        },
+        "rate": {
+          "seconds": 3.0210400000214577,
+          "taskMsPerSecond": 292.68496941242745,
+          "layoutMsPerSecond": 0.619323146991337,
+          "styleMsPerSecond": 32.58778433893651,
+          "scriptMsPerSecond": 3.3591081216825724,
+          "animations": 126,
+          "visibility": "visible"
+        }
+      },
+      "network": {
+        "start": {
+          "metrics": {
+            "Timestamp": 591519.685178,
+            "AudioHandlers": 0,
+            "AudioWorkletProcessors": 0,
+            "Documents": 4,
+            "Frames": 4,
+            "JSEventListeners": 3666,
+            "LayoutObjects": 21730,
+            "MediaKeySessions": 0,
+            "MediaKeys": 0,
+            "Nodes": 22633,
+            "Resources": 29,
+            "ContextLifecycleStateObservers": 32,
+            "V8PerContextDatas": 20,
+            "WorkerGlobalScopes": 0,
+            "UACSSResources": 0,
+            "RTCPeerConnections": 0,
+            "ResourceFetchers": 4,
+            "AdSubframes": 0,
+            "DetachedScriptStates": 0,
+            "ArrayBufferContents": 0,
+            "LayoutCount": 7,
+            "RecalcStyleCount": 278,
+            "LayoutDuration": 0.029639,
+            "RecalcStyleDuration": 0.296576,
+            "DevToolsCommandDuration": 0.19197,
+            "ScriptDuration": 0.037739,
+            "V8CompileDuration": 0.000851,
+            "TaskDuration": 2.039653,
+            "TaskOtherDuration": 1.482878,
+            "ThreadTime": 2.014309,
+            "ProcessTime": 51.099093,
+            "JSHeapUsedSize": 25628668,
+            "JSHeapTotalSize": 35807232,
+            "FirstMeaningfulPaint": 591513.16917,
+            "DomContentLoaded": 591512.631243,
+            "NavigationStart": 591512.380487
+          }
+        },
+        "end": {
+          "metrics": {
+            "Timestamp": 591522.705884,
+            "AudioHandlers": 0,
+            "AudioWorkletProcessors": 0,
+            "Documents": 4,
+            "Frames": 4,
+            "JSEventListeners": 3666,
+            "LayoutObjects": 21730,
+            "MediaKeySessions": 0,
+            "MediaKeys": 0,
+            "Nodes": 22633,
+            "Resources": 29,
+            "ContextLifecycleStateObservers": 32,
+            "V8PerContextDatas": 20,
+            "WorkerGlobalScopes": 0,
+            "UACSSResources": 0,
+            "RTCPeerConnections": 0,
+            "ResourceFetchers": 4,
+            "AdSubframes": 0,
+            "DetachedScriptStates": 0,
+            "ArrayBufferContents": 0,
+            "LayoutCount": 8,
+            "RecalcStyleCount": 481,
+            "LayoutDuration": 0.029997,
+            "RecalcStyleDuration": 0.329541,
+            "DevToolsCommandDuration": 0.192152,
+            "ScriptDuration": 0.04616,
+            "V8CompileDuration": 0.000851,
+            "TaskDuration": 2.750608,
+            "TaskOtherDuration": 2.151907,
+            "ThreadTime": 2.700139,
+            "ProcessTime": 52.016161,
+            "JSHeapUsedSize": 25789388,
+            "JSHeapTotalSize": 36069376,
+            "FirstMeaningfulPaint": 591513.16917,
+            "DomContentLoaded": 591512.631243,
+            "NavigationStart": 591512.380487
+          },
+          "page": {
+            "url": "http://127.0.0.1:8001/heartwood-site.html#network",
+            "visibility": "visible",
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "fonts": "loaded",
+            "elements": 4354,
+            "runningAnimations": 0,
+            "animations": [],
+            "navigation": [
+              {
+                "duration": 277.2000000476837,
+                "domContentLoaded": 250.80000007152557,
+                "load": 277.2000000476837,
+                "encodedBodySize": 158979,
+                "transferSize": 159279
+              }
+            ],
+            "paint": [
+              {
+                "name": "first-paint",
+                "startTime": 792
+              },
+              {
+                "name": "first-contentful-paint",
+                "startTime": 792
+              }
+            ],
+            "resources": [
+              {
+                "name": "http://127.0.0.1:8001/assets/fonts/instrument-sans-latin.2ee17598a98d.woff2",
+                "duration": 12,
+                "encodedBodySize": 30092,
+                "transferSize": 30392
+              },
+              {
+                "name": "http://127.0.0.1:8001/css/heartwood-site.787d5dc09fdb.css",
+                "duration": 11.600000023841858,
+                "encodedBodySize": 10187,
+                "transferSize": 10487
+              },
+              {
+                "name": "http://127.0.0.1:8001/assets/fonts/young-serif-latin.6ba68b9927ad.woff2",
+                "duration": 12.399999976158142,
+                "encodedBodySize": 26992,
+                "transferSize": 27292
+              },
+              {
+                "name": "http://127.0.0.1:8001/js/heartwood-site.246de01217fe.js",
+                "duration": 2.899999976158142,
+                "encodedBodySize": 12550,
+                "transferSize": 12850
+              },
+              {
+                "name": "https://heartwood.org/heartbeat/Fall-2026.jpg",
+                "duration": 108,
+                "encodedBodySize": 0,
+                "transferSize": 0
+              }
+            ],
+            "aboutGap": 32
+          }
+        },
+        "rate": {
+          "seconds": 3.020706000039354,
+          "taskMsPerSecond": 235.360541539209,
+          "layoutMsPerSecond": 0.11851534045197931,
+          "styleMsPerSecond": 10.91301172625555,
+          "scriptMsPerSecond": 2.7877588881176414,
+          "animations": 0,
+          "visibility": "visible"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "before_raw_core_bytes": 1109255,
+  "after_brotli_core_bytes": 181716,
+  "after_gzip_core_bytes": 247322,
+  "brotli_vs_original_uncompressed_savings_percent": 83.61819419340007,
+  "gzip_vs_original_uncompressed_savings_percent": 77.70377415472547,
+  "limits": "Core HTML/CSS/JS only. Fonts/remote images excluded. Requires compressed delivery; ordinary http.server serves identity. Original host compression state not assumed.",
+  "delivery_tests": {
+    "passed": 8,
+    "failed": 0
+  },
+  "repeat_build": {
+    "byte_identical_files": 15
+  },
+  "per_asset": {
+    "heartwood-site.html": {
+      "raw": 969687,
+      "gzip": 220491,
+      "brotli": 158979
+    },
+    "css/heartwood-site.787d5dc09fdb.css": {
+      "raw": 51910,
+      "gzip": 11978,
+      "brotli": 10187
+    },
+    "js/heartwood-site.246de01217fe.js": {
+      "raw": 41397,
+      "gzip": 14853,
+      "brotli": 12550
+    }
+  }
+}

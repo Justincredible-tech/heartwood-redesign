@@ -1,0 +1,383 @@
+{
+  "status": "PASS",
+  "scope": "Independent read-only upload package audit; no upload, browser repetition or production changes",
+  "checks": [
+    {
+      "check": "Exact sixteen-file allowlist",
+      "status": "PASS",
+      "detail": {
+        "files": [
+          ".htaccess",
+          "assets/fonts/instrument-sans-latin-ext.c4fcfea41f2c.woff2",
+          "assets/fonts/instrument-sans-latin.2ee17598a98d.woff2",
+          "assets/fonts/instrumentsans-OFL.txt",
+          "assets/fonts/young-serif-latin-ext.9e6eb8e5e38f.woff2",
+          "assets/fonts/young-serif-latin.6ba68b9927ad.woff2",
+          "assets/fonts/youngserif-OFL.txt",
+          "css/heartwood-site.b665ff3c09c0.css",
+          "css/heartwood-site.b665ff3c09c0.css.br",
+          "css/heartwood-site.b665ff3c09c0.css.gz",
+          "index.html",
+          "index.html.br",
+          "index.html.gz",
+          "js/heartwood-site.246de01217fe.js",
+          "js/heartwood-site.246de01217fe.js.br",
+          "js/heartwood-site.246de01217fe.js.gz"
+        ],
+        "missing": [],
+        "unexpected": []
+      }
+    },
+    {
+      "check": "Copies and manifest hashes exact",
+      "status": "PASS",
+      "detail": [
+        {
+          "path": "index.html",
+          "bytes": 805886,
+          "sha256": "aa4da04cbfb3dbcef51240cc0f6c722100d3ec05d4cbf2e449e55e4e15cf72ad",
+          "copyExact": true,
+          "manifestExact": true
+        },
+        {
+          "path": "index.html.gz",
+          "bytes": 197100,
+          "sha256": "c961352f1731eab0e296690d0140a0ccd0cc7207f56ddc3df3fd776377f0e553",
+          "copyExact": true,
+          "manifestExact": true
+        },
+        {
+          "path": "index.html.br",
+          "bytes": 141201,
+          "sha256": "355c3b33d72ef009a105b536e3a7f430b59d483f62031074f35189ee7c46e78b",
+          "copyExact": true,
+          "manifestExact": true
+        },
+        {
+          "path": "css/heartwood-site.b665ff3c09c0.css",
+          "bytes": 44815,
+          "sha256": "b665ff3c09c04400472c21d9462ebd8f135cf1a16fd2340de73347ee46ec0a27",
+          "copyExact": true,
+          "manifestExact": true
+        },
+        {
+          "path": "css/heartwood-site.b665ff3c09c0.css.gz",
+          "bytes": 11117,
+          "sha256": "63fe10771e5066a8f66614dd780505b4f7dc4078b605a23bc16cd5662035dca1",
+          "copyExact": true,
+          "manifestExact": true
+        },
+        {
+          "path": "css/heartwood-site.b665ff3c09c0.css.br",
+          "bytes": 9723,
+          "sha256": "068d580ffc40ab7043dea78ca8f8805e0a6916dbded44d5a925561e0530b1823",
+          "copyExact": true,
+          "manifestExact": true
+        },
+        {
+          "path": "js/heartwood-site.246de01217fe.js",
+          "bytes": 41397,
+          "sha256": "246de01217fec93125de544f87e3b96cd39cdfda0db1cbca0cd70dd3cecfc823",
+          "copyExact": true,
+          "manifestExact": true
+        },
+        {
+          "path": "js/heartwood-site.246de01217fe.js.gz",
+          "bytes": 14853,
+          "sha256": "823e528c693a8b188d6882ce7bdc5382f45f06fd710069bc43500a36649d55f8",
+          "copyExact": true,
+          "manifestExact": true
+        },
+        {
+          "path": "js/heartwood-site.246de01217fe.js.br",
+          "bytes": 12550,
+          "sha256": "e2daa3de535023c882477eac57e0a805337670c6d5ecdfd6039342fdad010cad",
+          "copyExact": true,
+          "manifestExact": true
+        },
+        {
+          "path": "assets/fonts/instrument-sans-latin-ext.c4fcfea41f2c.woff2",
+          "bytes": 11144,
+          "sha256": "c4fcfea41f2c1cfeea9211fa43679845454a1d0e0d7e95e069c7e73c4ae302d2",
+          "copyExact": true,
+          "manifestExact": true
+        },
+        {
+          "path": "assets/fonts/instrument-sans-latin.2ee17598a98d.woff2",
+          "bytes": 30092,
+          "sha256": "2ee17598a98d8a59e4df8152d015bec9ab8e4d5672cc0ab42bef806b568e3971",
+          "copyExact": true,
+          "manifestExact": true
+        },
+        {
+          "path": "assets/fonts/instrumentsans-OFL.txt",
+          "bytes": 4403,
+          "sha256": "9e27a72ed30eb49a08678f6a5d6ed98ec7ba5368f541637ee0683ec9134ef966",
+          "copyExact": true,
+          "manifestExact": true
+        },
+        {
+          "path": "assets/fonts/young-serif-latin-ext.9e6eb8e5e38f.woff2",
+          "bytes": 17268,
+          "sha256": "9e6eb8e5e38f9dcbab1ea58e2f30a4d6dfdb5b3bb602bfbff9305bca1d4060f6",
+          "copyExact": true,
+          "manifestExact": true
+        },
+        {
+          "path": "assets/fonts/young-serif-latin.6ba68b9927ad.woff2",
+          "bytes": 26992,
+          "sha256": "6ba68b9927ad2a640d32cbea050ffc2b5d0ae6cbaa785afe470da9d6bf0ef39f",
+          "copyExact": true,
+          "manifestExact": true
+        },
+        {
+          "path": "assets/fonts/youngserif-OFL.txt",
+          "bytes": 4398,
+          "sha256": "737d8d343b674c6894f373de71a044b6782c130f2aebf180933d63ddf7a3dc19",
+          "copyExact": true,
+          "manifestExact": true
+        },
+        {
+          "path": ".htaccess",
+          "bytes": 1608,
+          "sha256": "36c1a0f3354e752d7bfb09d390a9a3afc89609b7d7b4e26c9abcc4a8846da75d",
+          "copyExact": true,
+          "manifestExact": true
+        }
+      ]
+    },
+    {
+      "check": "Total size",
+      "status": "PASS",
+      "detail": {
+        "bytes": 1374547,
+        "expected": 1374547
+      }
+    },
+    {
+      "check": "Six compression roundtrips",
+      "status": "PASS",
+      "detail": [
+        {
+          "path": "index.html.gz",
+          "bytes": 197100,
+          "exactDecoded": true
+        },
+        {
+          "path": "index.html.br",
+          "bytes": 141201,
+          "exactDecoded": true
+        },
+        {
+          "path": "css/heartwood-site.b665ff3c09c0.css.gz",
+          "bytes": 11117,
+          "exactDecoded": true
+        },
+        {
+          "path": "css/heartwood-site.b665ff3c09c0.css.br",
+          "bytes": 9723,
+          "exactDecoded": true
+        },
+        {
+          "path": "js/heartwood-site.246de01217fe.js.gz",
+          "bytes": 14853,
+          "exactDecoded": true
+        },
+        {
+          "path": "js/heartwood-site.246de01217fe.js.br",
+          "bytes": 12550,
+          "exactDecoded": true
+        }
+      ]
+    },
+    {
+      "check": "Local HTML and CSS asset closure",
+      "status": "PASS",
+      "detail": {
+        "localReferences": [
+          {
+            "url": "assets/fonts/instrument-sans-latin.2ee17598a98d.woff2",
+            "exists": true,
+            "source": "index.html"
+          },
+          {
+            "url": "assets/fonts/young-serif-latin.6ba68b9927ad.woff2",
+            "exists": true,
+            "source": "index.html"
+          },
+          {
+            "url": "css/heartwood-site.b665ff3c09c0.css",
+            "exists": true,
+            "source": "index.html"
+          },
+          {
+            "url": "js/heartwood-site.246de01217fe.js",
+            "exists": true,
+            "source": "index.html"
+          },
+          {
+            "url": "../assets/fonts/instrument-sans-latin-ext.c4fcfea41f2c.woff2",
+            "exists": true,
+            "source": "css/heartwood-site.b665ff3c09c0.css"
+          },
+          {
+            "url": "../assets/fonts/instrument-sans-latin.2ee17598a98d.woff2",
+            "exists": true,
+            "source": "css/heartwood-site.b665ff3c09c0.css"
+          },
+          {
+            "url": "../assets/fonts/young-serif-latin-ext.9e6eb8e5e38f.woff2",
+            "exists": true,
+            "source": "css/heartwood-site.b665ff3c09c0.css"
+          },
+          {
+            "url": "../assets/fonts/young-serif-latin.6ba68b9927ad.woff2",
+            "exists": true,
+            "source": "css/heartwood-site.b665ff3c09c0.css"
+          }
+        ],
+        "baseTags": []
+      }
+    },
+    {
+      "check": "Inline SVG references resolve",
+      "status": "PASS",
+      "detail": [
+        {
+          "id": "hw-logo",
+          "exists": true
+        },
+        {
+          "id": "leaf-o",
+          "exists": true
+        },
+        {
+          "id": "hw-mark",
+          "exists": true
+        },
+        {
+          "id": "leaf-o",
+          "exists": true
+        },
+        {
+          "id": "hw-mark",
+          "exists": true
+        },
+        {
+          "id": "hw-mark",
+          "exists": true
+        },
+        {
+          "id": "hw-mark",
+          "exists": true
+        },
+        {
+          "id": "leaf-o",
+          "exists": true
+        },
+        {
+          "id": "hw-mark",
+          "exists": true
+        },
+        {
+          "id": "hw-mark",
+          "exists": true
+        },
+        {
+          "id": "hw-mark",
+          "exists": true
+        },
+        {
+          "id": "hw-logo",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "check": "No old HTML entry literal dependency",
+      "status": "PASS",
+      "detail": {
+        "filesContainingOldEntry": [],
+        "note": "HTML byte-exact rename, relative links and JS location.pathname preserved."
+      }
+    },
+    {
+      "check": "No developer metadata files",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "Apache config and licenses copied",
+      "status": "PASS",
+      "detail": {
+        "apacheActualHost": "NOT RUN",
+        "licenseFiles": [
+          "assets/fonts/instrumentsans-OFL.txt",
+          "assets/fonts/youngserif-OFL.txt"
+        ]
+      }
+    }
+  ],
+  "remoteReferences": [
+    {
+      "tag": "a",
+      "attr": "href",
+      "url": "https://heartwood.org/support/donate/index.html"
+    },
+    {
+      "tag": "a",
+      "attr": "href",
+      "url": "https://heartwood.org/support/individual/index.html"
+    },
+    {
+      "tag": "a",
+      "attr": "href",
+      "url": "https://heartwood.org/about/index.html"
+    },
+    {
+      "tag": "a",
+      "attr": "href",
+      "url": "https://heartwood.org/about/council/index.html"
+    },
+    {
+      "tag": "a",
+      "attr": "href",
+      "url": "https://heartwood.org/safer-spaces/index.html"
+    },
+    {
+      "tag": "a",
+      "attr": "href",
+      "url": "https://heartwood.org/blog/index.html"
+    },
+    {
+      "tag": "a",
+      "attr": "href",
+      "url": "mailto:info@heartwood.org"
+    },
+    {
+      "tag": "a",
+      "attr": "href",
+      "url": "https://www.facebook.com/HeartwoodNetwork"
+    },
+    {
+      "tag": "a",
+      "attr": "href",
+      "url": "https://www.youtube.com/@HeartwoodPodcast"
+    },
+    {
+      "tag": "a",
+      "attr": "href",
+      "url": "https://rss.com/podcasts/heartwood/"
+    },
+    {
+      "tag": "a",
+      "attr": "href",
+      "url": "https://heartwood.org/heartbeat/"
+    }
+  ],
+  "limits": [
+    "Apache host directory index, rewrite modules, compression/cache headers on real host NOT RUN",
+    "Remote content/images availability NOT RUN; URLs unchanged by byte-exact copy",
+    "Root ordinary HTTP package-only test not independently repeated"
+  ]
+}

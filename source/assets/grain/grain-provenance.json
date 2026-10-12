@@ -1,0 +1,35 @@
+{
+  "recipe_sha256": "c3eee1a1e626366f80c4c9cddfcfe660982a9a6c6adcd8a54571acb873198076",
+  "tile_css_px": 256,
+  "tiles": {
+    "1": {
+      "file": "grain-fine-256@1x.d0895319f81a.webp",
+      "bytes": 26738
+    },
+    "1.25": {
+      "file": "grain-fine-256@1.25x.e7cbc2cbd60a.webp",
+      "bytes": 53866
+    },
+    "1.5": {
+      "file": "grain-fine-256@1.5x.88b4415989c3.webp",
+      "bytes": 66930
+    },
+    "1.75": {
+      "file": "grain-fine-256@1.75x.b7e88431ccc8.webp",
+      "bytes": 88410
+    },
+    "2": {
+      "file": "grain-fine-256@2x.6026629a84ac.webp",
+      "bytes": 79276
+    },
+    "2.5": {
+      "file": "grain-fine-256@2.5x.2f3dd2cf8fed.webp",
+      "bytes": 143512
+    },
+    "3": {
+      "file": "grain-fine-256@3x.6d75acf8cb49.webp",
+      "bytes": 155136
+    }
+  },
+  "renderer": "Chrome via Playwright, transparent background, lossless WebP verified by decode"
+}

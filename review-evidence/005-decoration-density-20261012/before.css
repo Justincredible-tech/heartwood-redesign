@@ -1,0 +1,1216 @@
+
+/* ==========================================================================
+   Cut-paper tree over a soil cross-section. No images, SVG or canvas: every
+   shape is an element cut out with a CSS clip-path, every shadow is a CSS
+   drop-shadow and the paper grain is layered CSS gradients.
+
+   The artwork is one full-bleed sheet with the proportions of the reference
+   picture (1508 x 1047). Every outline is a percentage polygon, so the whole
+   scene scales with the width of the page and needs no script to draw.
+
+   Where the shapes come from: the trunk, limbs and roots, the mycelium, the
+   soil layer edges, the stones, the clouds and the meadow were outlined from
+   the reference picture and written out as polygons; each leaf's position,
+   angle, size and tone was measured from it too. The generated markup is
+   marked in the body. Colours and shadows are the tokens below.
+
+   Under the artwork the soil carries on down through deeper strata (see
+   .deep), which also stretch to fill a window taller than the page.
+
+   Critters are drawn in critter boxes: a few paper plies each, facing
+   right, turned with --rot; their colour is the three --critter tokens. To move one, change its left/top; to remove one,
+   delete its <div class="critter">.
+
+   Stacking, back to front: sky, clouds, meadow, soil layers, stones,
+   mycelium, leaves, wood. The wood is layered paper: branch roots as
+   separate strands at the back, then one main sheet running from the limb
+   tips through the trunk into the main roots (so there is no seam at the
+   foot of the trunk), then the lighter sheets and shadow creases on top.
+
+   Editing a leaf (see the <button class="leaf"> list in the markup):
+     --x, --y   where the leaf's base attaches, in % of the sheet
+     --r        which way the tip points, in degrees (0 = up, 90 = right)
+     --s        leaf length, in % of the sheet's width
+     t1..t6     tone, t1 to t5 deep to light green, t6 gold
+     later in the list = closer to the viewer
+   <span class="leaf fill"> leaves are the shaded ones underneath; they only
+   fill the crown and cannot be picked.
+   ========================================================================== */
+:root {
+  color-scheme: light;
+
+  /* the artwork's width (see .sheet) and how far it is nudged to centre the tree */
+  --sheet-w: max(100vw, min(125svh, 250vw));
+  --shift: max(calc(var(--sheet-w) * -.0093), calc((100vw - var(--sheet-w)) / 2));
+
+  /* one design pixel of the 1508-wide artwork, at the sheet's current size */
+  --u: calc(100cqw / 1508);
+
+  /* sky */
+  --sky-left: #c9dcef;
+  --sky-right: #b6cde3;
+  --cloud: #f6f6f4;
+
+  /* wood and fungus */
+  /* the tree is cut from three browns: dark back sheet, mid sheet, light front sheet */
+  --bark-dark: #6a4e33;
+  --bark-mid: #7f6143;
+  --bark-light: #9e7c57;
+  --bark-back: color-mix(in srgb, var(--bark-dark) 55%, var(--bark-mid));
+  --critter: #eadfc4;                /* every critter and fossil is cut from this paper... */
+  --critter-light: #f5eeda;          /* ...with a lighter ply on top */
+  --critter-shade: #d6c7a3;          /* ...and a darker one underneath, for legs */
+  --mycelium: #f2ead4;
+  --below: #553d26;                  /* page colour under the sheet */
+
+  /* overlay and dialog */
+  --scrim: rgb(12 18 14 / .74);
+  --card: #fbfcf8;
+  --ink: #1e2a21;
+  --ink-soft: #55655a;
+  --focus: #1b3fa8;
+
+  --font: "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* construction-paper grain: flecks at mismatched spacings, a few fibres,
+     and broad soft mottling. It is translucent, so it sits over any colour. */
+  --grain:
+    radial-gradient(circle at 30% 20%, rgb(255 255 255 / .07) 0 .5px, transparent 1.1px) 0 0 / 5px 7px,
+    radial-gradient(circle at 80% 70%, rgb(0 0 0 / .06) 0 .5px, transparent 1.1px) 2px 3px / 7px 5px,
+    radial-gradient(circle at 55% 45%, rgb(255 255 255 / .05) 0 .6px, transparent 1.2px) 1px 4px / 11px 13px,
+    radial-gradient(circle at 20% 80%, rgb(0 0 0 / .04) 0 .6px, transparent 1.3px) 5px 1px / 17px 11px,
+    repeating-linear-gradient(63deg, rgb(255 255 255 / .035) 0 1px, transparent 1px 6px),
+    repeating-linear-gradient(-19deg, rgb(0 0 0 / .03) 0 1px, transparent 1px 9px),
+    repeating-linear-gradient(101deg, rgb(255 255 255 / .025) 0 1px, transparent 1px 13px),
+    repeating-linear-gradient(-71deg, rgb(0 0 0 / .02) 0 1px, transparent 1px 17px),
+    radial-gradient(ellipse at 50% 50%, rgb(255 255 255 / .07), transparent 62%) 0 0 / 190px 140px,
+    radial-gradient(ellipse at 50% 50%, rgb(0 0 0 / .06), transparent 62%) 60px 90px / 263px 211px,
+    radial-gradient(ellipse at 50% 50%, rgb(255 255 255 / .04), transparent 60%) 30px 20px / 71px 97px;
+
+  /* leaf outline: a pointed lens, base at the bottom centre and tip at the top */
+  --leaf-shape: polygon(50% 100%,37.4% 95%,28.4% 90%,20.8% 85%,14.4% 80%,9.3% 75%,5.3% 70%,2.4% 65%,0.6% 60%,0% 55%,0.4% 50%,1.9% 45%,4.3% 40%,7.6% 35%,11.7% 30%,16.5% 25%,22.1% 20%,28.2% 15%,34.8% 10%,41.9% 5%,50% 0%,58.1% 5%,65.2% 10%,71.8% 15%,77.9% 20%,83.5% 25%,88.3% 30%,92.4% 35%,95.7% 40%,98.1% 45%,99.6% 50%,100% 55%,99.4% 60%,97.6% 65%,94.7% 70%,90.7% 75%,85.6% 80%,79.2% 85%,71.6% 90%,62.6% 95%);
+  --leaf-ar: .5;                     /* width / length */
+}
+
+/* leaf tones */
+.t1 { --a: #3f6b3f; }
+.t2 { --a: #56894f; }
+.t3 { --a: #72a35f; }
+.t4 { --a: #9bb45c; }
+.t5 { --a: #b9d482; }
+.t6 { --a: #ecd24a; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body {
+  margin: 0;
+  background: var(--grain), var(--below);
+  color: var(--ink);
+  font-family: var(--font);
+  line-height: 1.5;
+}
+body.is-lifted { overflow: hidden; }
+
+/* ------------------------------------------------------------------ sheet */
+/* Full width, edge to edge. On a wide screen the artwork is exactly the window's width. On a narrow
+   or upright screen it is made wider than the window (--sheet-w) so the tree stays the focal point:
+   the crown nearly fills the width, and only meadow and soil are cropped at the sides. --shift
+   nudges the artwork so the tree, which stands a little right of centre, sits in the middle. */
+.frame { display: flex; flex-direction: column; overflow: hidden; min-height: 100svh; }
+.sheet {
+  flex: none;
+  align-self: center;
+  position: relative;
+  left: var(--shift);
+  width: max(100%, min(125svh, 250vw));
+}
+.stage {
+  position: relative;
+  flex: none;
+  aspect-ratio: 1508 / 1047;
+  overflow: hidden;
+  container-type: inline-size;       /* 100cqw = the sheet's width */
+  background: var(--grain), linear-gradient(90deg, var(--sky-left), var(--sky-right));
+}
+.scene, .tree { position: absolute; inset: 0; }
+.scene { pointer-events: none; }
+
+/* a sheet of cut paper: every <i> inside is one piece, cut with clip-path.
+   The shadow is on the sheet, so it follows the cut edges. */
+.cut { position: absolute; inset: 0; pointer-events: none; }
+.cut > i { position: absolute; background: var(--grain), var(--c); }
+
+.clouds   { --c: var(--cloud);    filter: drop-shadow(calc(2 * var(--u)) calc(4 * var(--u)) calc(3 * var(--u)) rgb(50 80 120 / .34)); }
+.soil > i { background: var(--grain), linear-gradient(90deg, var(--c) 12%, var(--c2) 88%); }
+.soil     {                       filter: drop-shadow(0 calc(3 * var(--u)) calc(3 * var(--u)) rgb(20 10 0 / .42)); }
+.hills    {                       filter: drop-shadow(0 calc(-1 * var(--u)) calc(1.5 * var(--u)) rgb(20 40 15 / .22)); }
+.band     {                       filter: drop-shadow(calc(.6 * var(--u)) calc(1.1 * var(--u)) calc(.8 * var(--u)) rgb(20 40 15 / .32)); }
+.stones   {                       filter: drop-shadow(calc(1.2 * var(--u)) calc(2 * var(--u)) calc(1.2 * var(--u)) rgb(15 8 0 / .5)); }
+.mycelium { --c: var(--mycelium); filter: drop-shadow(calc(1.4 * var(--u)) calc(2.4 * var(--u)) calc(1.4 * var(--u)) rgb(25 12 0 / .5)); }
+/* Branch roots: every one is its own strand of paper, tucked under the root it grows from.
+   Each strand casts a shadow, and the root above casts one onto it, so every fork reads as layered paper. */
+.strand      { filter: drop-shadow(calc(.8 * var(--u)) calc(1.5 * var(--u)) calc(1.1 * var(--u)) rgb(22 10 0 / .62)); }
+.bark-dark   { --c: var(--bark-dark); }
+.bark-mid    { --c: var(--bark-mid); }
+.bark-light  { --c: var(--bark-light); }
+/* Main sheet: trunk, limbs and the main roots in one piece (the back sheet, which shows on the right of the
+   trunk), then the centre sheet and the light front sheet laid over it. Each sheet throws a short shadow on
+   the one below; with the light coming from the upper left, that shadow is the dark line between the strips. */
+.wood        { --c: var(--bark-back);  filter: drop-shadow(0 0 calc(.5 * var(--u)) rgb(30 15 0 / .45)) drop-shadow(calc(1.6 * var(--u)) calc(2.8 * var(--u)) calc(2.2 * var(--u)) rgb(20 8 0 / .55)); }
+.wood--mid   { --c: var(--bark-mid);   filter: drop-shadow(calc(1.2 * var(--u)) calc(1.4 * var(--u)) calc(1.2 * var(--u)) rgb(24 11 0 / .7)); }
+.wood--light { --c: var(--bark-light); filter: drop-shadow(calc(1.1 * var(--u)) calc(1.6 * var(--u)) calc(1.3 * var(--u)) rgb(28 13 0 / .6)); }
+/* shadow lines where two sheets of the same tone overlap */
+.crease { --c: rgb(38 20 6 / .6); filter: blur(calc(.35 * var(--u))); }
+.crease > i { background: var(--c); }
+
+/* Critters. Each is a small stack of paper plies (<b>), all cut from the same cream paper in three close
+   tones; every ply casts a short shadow on the one below, and that is all the detail they have.
+   They are drawn facing right and turned with --rot; the shadow is turned back so it still falls
+   down and to the right on screen. */
+.critter {
+  --cos: cos(var(--rot, 0deg));
+  --sin: sin(var(--rot, 0deg));
+  --sx: calc((.9 * var(--cos) + 1.6 * var(--sin)) * var(--u));
+  --sy: calc((1.6 * var(--cos) - .9 * var(--sin)) * var(--u));
+  position: absolute;
+  pointer-events: none;
+  transform: rotate(var(--rot, 0deg));
+  animation: fidget var(--dur, 5s) ease-in-out var(--delay, 0s) infinite alternate;
+}
+.ply { position: absolute; inset: 0; filter: drop-shadow(var(--sx) var(--sy) calc(.9 * var(--u)) rgb(20 10 0 / .5)); }
+.ply > i { position: absolute; background: var(--grain), var(--c); }
+/* motion, all of it slight: the whole critter shifts a hair, its legs paddle, the worms flex */
+.ply--legs { animation: paddle 2.2s ease-in-out var(--delay, 0s) infinite alternate; }
+.worm { animation-name: wriggle; animation-duration: 3.4s; }
+@keyframes fidget {
+  from { transform: rotate(calc(var(--rot, 0deg) - 1.4deg)) translateX(calc(-.9 * var(--u))); }
+  to   { transform: rotate(calc(var(--rot, 0deg) + 1.4deg)) translateX(calc(.9 * var(--u))); }
+}
+@keyframes paddle { from { transform: skewX(-2.5deg); } to { transform: skewX(2.5deg); } }
+@keyframes wriggle {
+  from { transform: rotate(var(--rot, 0deg)) skewY(-3deg) scaleX(1.025); }
+  to   { transform: rotate(var(--rot, 0deg)) skewY(3deg) scaleX(.97); }
+}
+/* fossils are pressed into the rock: they keep still and sit flatter */
+.fossil { animation: none; opacity: .7; }
+.fossil .ply { animation: none; filter: drop-shadow(calc(.5 * var(--sx)) calc(.5 * var(--sy)) calc(.4 * var(--u)) rgb(0 0 0 / .45)); }
+
+/* ---------------------------------------------------------- deeper strata */
+/* Under the artwork the soil profile carries on down: red clay, weathered rock, then shale bedrock.
+   The strata are as wide as the window (not the artwork), so every critter in them is on screen at
+   any size, but they are drawn at the artwork's scale and their colour runs on from the soil above.
+   When the window is taller than the page they stretch to fill it. */
+.deep {
+  --u: calc(var(--sheet-w) / 1508);
+  position: relative;
+  flex: 1 0 auto;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+.stratum { position: relative; flex: var(--h) 0 calc(var(--h) * var(--u)); }      /* spare height is shared out between the strata */
+.paper { inset: 0; }
+.tear  { left: 0; width: 100%; height: calc(36 * var(--u)); bottom: calc(-18 * var(--u)); }   /* the torn lower edge, lapping over the stratum below */
+.deep .soil > i { background: var(--grain), linear-gradient(90deg, var(--c) 12%, var(--c2) 88%) calc(50% + var(--shift)) 0 / var(--sheet-w) 100% no-repeat; }
+.deep .stratum--bedrock .paper {     /* bedding planes in the shale */
+  background:
+    repeating-linear-gradient(177.4deg, transparent 0 calc(46 * var(--u)), rgb(0 0 0 / .2) calc(46 * var(--u)) calc(47.6 * var(--u)), rgb(255 255 255 / .05) calc(47.6 * var(--u)) calc(48.6 * var(--u)), transparent calc(48.6 * var(--u)) calc(81 * var(--u))),
+    var(--grain), linear-gradient(90deg, var(--c) 12%, var(--c2) 88%) calc(50% + var(--shift)) 0 / var(--sheet-w) 100% no-repeat;
+}
+/* a narrow window shows the same strata in less width, so it carries fewer stones */
+@media (max-width: 900px) { .deep .stones > i:nth-child(2n) { display: none; } }
+@media (max-width: 560px) { .deep .stones > i:nth-child(3n) { display: none; } }
+
+/* ----------------------------------------------------------------- leaves */
+.tree { z-index: 3; pointer-events: none; }
+.leaf {
+  --angle: calc(var(--r) * 1deg);
+  --lift: 1;                         /* shadow distance multiplier */
+  /* the cast shadow should fall down and to the right on screen whichever way
+     the leaf is turned, so the offset is rotated back by the leaf's angle */
+  --cos: cos(var(--angle));
+  --sin: sin(var(--angle));
+  --sx: calc((1.2 * var(--cos) + 2.4 * var(--sin)) * var(--lift) * var(--u));
+  --sy: calc((2.4 * var(--cos) - 1.2 * var(--sin)) * var(--lift) * var(--u));
+
+  position: absolute;
+  left: calc(var(--x) * 1%);
+  top: calc(var(--y) * 1%);
+  width: calc(var(--s) * var(--leaf-ar) * 1%);
+  aspect-ratio: var(--leaf-ar);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  transform-origin: 50% 100%;
+  transform: translate(-50%, -100%) rotate(var(--angle));
+  filter: drop-shadow(var(--sx) var(--sy) calc(1.7 * var(--lift) * var(--u)) rgb(18 34 14 / .42));
+  transition: transform .28s cubic-bezier(.3, 1.4, .5, 1), filter .28s ease;
+  animation: leaf-out .7s cubic-bezier(.2, .9, .3, 1.25) backwards;
+  animation-delay: calc(.1s + var(--d, 1) * .8s);
+  pointer-events: none;              /* only the cut-out shape takes clicks */
+  -webkit-tap-highlight-color: transparent;
+}
+button.leaf { cursor: pointer; }
+.leaf.is-away { visibility: hidden; }
+
+.leaf__face {
+  position: absolute;
+  inset: 0;
+  display: block;
+  clip-path: var(--leaf-shape);
+}
+button.leaf .leaf__face { pointer-events: auto; }
+.leaf__top { background: var(--grain), var(--a); }
+.leaf__under {                       /* paler, with raised veins; seen when a picked leaf turns over */
+  --uv: color-mix(in srgb, var(--a) 22%, #fbf8e6);
+  background:
+    linear-gradient(90deg, transparent 48.7%, var(--uv) 48.7% 51.3%, transparent 51.3%),
+    repeating-linear-gradient(38deg, transparent 0 7.6%, var(--uv) 7.6% 8.5%) left / 50% 100% no-repeat,
+    repeating-linear-gradient(142deg, transparent 0 7.6%, var(--uv) 7.6% 8.5%) right / 50% 100% no-repeat,
+    var(--grain),
+    color-mix(in srgb, var(--a) 48%, #f1eed6);
+}
+
+@media (hover: hover) {
+  button.leaf:hover {
+    --lift: 1.9;
+    z-index: 5;
+    transform: translate(-50%, -100%) rotate(calc(var(--angle) + 3deg)) scale(1.14);
+  }
+}
+.leaf:focus { outline: none; }
+.leaf:focus-visible {
+  --ring: calc(1.3 * var(--u));
+  z-index: 6;
+  transform: translate(-50%, -100%) rotate(var(--angle)) scale(1.14);
+  filter:
+    drop-shadow(var(--ring) 0 0 var(--card)) drop-shadow(calc(-1 * var(--ring)) 0 0 var(--card))
+    drop-shadow(0 var(--ring) 0 var(--card)) drop-shadow(0 calc(-1 * var(--ring)) 0 var(--card))
+    drop-shadow(var(--ring) 0 0 var(--focus)) drop-shadow(calc(-1 * var(--ring)) 0 0 var(--focus))
+    drop-shadow(0 var(--ring) 0 var(--focus)) drop-shadow(0 calc(-1 * var(--ring)) 0 var(--focus));
+}
+
+@keyframes leaf-out {
+  from { transform: translate(-50%, -100%) rotate(calc(var(--angle) - 28deg)) scale(0); }
+}
+
+/* --------------------------------------------------- overlay, lift, dialog */
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--scrim);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .45s ease, visibility 0s .45s;
+  overscroll-behavior: contain;
+}
+.is-lifted .scrim { opacity: 1; visibility: visible; transition-delay: 0s; }
+
+.lift {                              /* the picked leaf travels in this layer */
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  pointer-events: none;
+  overflow: hidden;
+}
+.flyer, .flyer__y, .flyer__turn { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+.flyer__spin { position: absolute; }
+.flyer .leaf__face { pointer-events: none; }
+.flyer .leaf__under { opacity: 0; }
+
+.sheet-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  pointer-events: none;
+}
+.dialog {
+  --crown: 0px;                      /* height of the leaf sitting on the top edge */
+  position: relative;
+  width: min(100%, 32rem);
+  max-height: calc(100% - var(--crown) / 2);
+  margin-top: calc(var(--crown) / 2);
+  padding: calc(var(--crown) / 2 + 1rem) clamp(1.25rem, 5vw, 2.5rem) 2rem;
+  overflow: auto;
+  background: var(--card);
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / .25), 0 18px 50px rgb(0 0 0 / .35);
+  text-align: center;
+  pointer-events: auto;
+}
+.dialog h2 {
+  margin: 0 0 .5rem;
+  font-size: 1.75rem;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  text-wrap: balance;
+}
+.dialog p { margin: 0 auto 1.5rem; max-width: 36ch; color: var(--ink-soft); }
+.dialog__close {
+  font: inherit;
+  font-weight: 600;
+  padding: .625rem 1.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--card);
+  cursor: pointer;
+}
+.dialog__close:hover { background: #33453a; }
+.dialog__close:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .leaf { animation: none; transition: none; }
+  .scrim { transition: none; }
+  .critter, .ply--legs { animation: none; }
+}
+
+/* ==========================================================================
+   SITE LAYER. Everything from here down turns the scene into a page.
+   The artwork above is untouched; these rules only add to it.
+
+   How the content maps onto the picture:
+     sky        header, headline and the canopy key
+     leaves     every leaf is one piece of content (see SITE in the script)
+                  gold          ways to help
+                  bright green  our work, gatherings, news, about
+                  deeper greens the member groups
+     trunk      "our story"
+     strata     the page sections, one per soil layer, top to bottom:
+                  subsoil roots / about, clay our work, sand gatherings,
+                  gravel news, shale the network, bedrock support + footer
+   ========================================================================== */
+:root {
+  --display: "Young Serif", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font: "Instrument Sans", "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --logo: #20241f;                   /* approved logo charcoal; symbols inherit theme colour */
+  --paper: #fbf8ee;
+  --paper-2: #f3eedd;
+  --gold: #ecd24a;
+  --gold-deep: #d9bd2f;
+  --leaf-deep: #3f6b3f;
+  --leaf-mid: #56894f;
+  --leaf-bright: #b9d482;
+  --cream: #f2ead4;                  /* text on the dark strata; the mycelium's colour */
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --measure: 72rem;
+  --top-h: 5rem;
+  /* the paper shadow, for things laid on the page rather than in the artwork */
+  --lay: drop-shadow(0 0 .5px rgb(30 15 0 / .35)) drop-shadow(1.5px 3px 3px rgb(20 10 0 / .3));
+  --lay-up: drop-shadow(0 0 .5px rgb(30 15 0 / .35)) drop-shadow(3px 7px 7px rgb(20 10 0 / .32));
+}
+html { scroll-behavior: smooth; scroll-padding-top: var(--top-h); -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; letter-spacing: -.01em; line-height: 1.08; margin: 0; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.skip {
+  position: absolute; left: .75rem; top: -4rem; z-index: 200;
+  padding: .6rem 1rem; background: var(--ink); color: var(--paper); border-radius: 4px; font-weight: 600;
+}
+.skip:focus { top: .75rem; }
+
+/* a small cut-paper leaf, for marks and bullets */
+.leafmark {
+  display: inline-block; flex: none;
+  width: .62em; aspect-ratio: var(--leaf-ar);
+  background: var(--a, var(--leaf-mid));
+  clip-path: var(--leaf-shape);
+  transform: rotate(38deg);
+}
+
+/* ------------------------------------------------------------- buttons */
+/* paper tags: square-cut, a hair of lift, and they tip a little when picked up */
+.btn {
+  display: inline-flex; align-items: center; gap: .5em;
+  padding: .7em 1.15em;
+  font: inherit; font-weight: 650; font-size: .95rem; line-height: 1.2;
+  text-decoration: none; white-space: nowrap;
+  color: var(--ink);
+  background: var(--grain), var(--paper);
+  border: 0; border-radius: 3px;
+  filter: var(--lay);
+  cursor: pointer;
+  transition: transform .2s cubic-bezier(.3, 1.4, .5, 1), filter .2s ease;
+}
+.btn:hover { transform: translateY(-2px) rotate(-1deg); filter: var(--lay-up); }
+.btn:active { transform: translateY(0); filter: var(--lay); }
+.btn--gold { background: var(--grain), var(--gold); }
+.btn--ink { background: var(--grain), var(--ink); color: var(--paper); }
+.btn--quiet { color: inherit; background: none; filter: none; padding-inline: .2em; text-decoration: underline; text-underline-offset: .25em; text-decoration-thickness: 1.5px; }
+.btn--quiet:hover { transform: none; filter: none; text-decoration-thickness: 2.5px; }
+/* the mark on a button: a leaf in outline, lying on its side, tip leading */
+.ico { flex: none; width: 1.55em; height: .84em; overflow: visible; transition: transform .25s cubic-bezier(.3, 1.4, .5, 1); }
+.btn:hover .ico { transform: translateX(3px) rotate(-10deg); }
+
+/* -------------------------------------------------------------- header */
+.top {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  min-height: var(--top-h);
+  padding: .5rem var(--gutter);
+  background: var(--grain), linear-gradient(90deg, var(--sky-left), var(--sky-right));
+  transition: box-shadow .25s ease;
+}
+.top::after {                         /* the paper strip the header becomes once the page has scrolled */
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: var(--grain), var(--paper);
+  opacity: 0; transition: opacity .25s ease;
+}
+.top.is-stuck { box-shadow: 0 1px 0 rgb(30 15 0 / .12), 0 6px 14px rgb(20 10 0 / .18); }
+.top.is-stuck::after { opacity: 1; }
+.brand {
+  display: inline-flex; align-items: flex-end; gap: .45rem;
+  font-size: 1.5rem; color: var(--logo);
+  text-decoration: none;
+}
+.brand__logo { display: block; height: 4rem; aspect-ratio: 2706 / 905; }
+@media (max-width: 360px) {
+  .top .brand__logo { height: 3.5rem; }   /* leave room for the menu beside the taller final wordmark */
+}
+/* the leaf is the size of the leaves on the cards, and sits level with the middle of the lettering (the lower part of the logo) */
+.brand .leafmark { width: 1.16rem; margin-bottom: -.42rem; --a: var(--leaf-deep); filter: drop-shadow(1px 1.5px 1px rgb(18 34 14 / .4)); }
+.nav { display: flex; align-items: center; gap: clamp(.25rem, 1.4vw, 1.4rem); }
+.nav a:not(.btn) {
+  padding: .5rem .35rem;
+  font-weight: 600; font-size: .95rem; text-decoration: none;
+  background: linear-gradient(var(--leaf-deep) 0 0) 50% calc(100% - .3rem) / 0 2px no-repeat;
+  transition: background-size .2s ease;
+}
+.nav a:not(.btn):hover, .nav a[aria-current="true"] { background-size: calc(100% - .7rem) 2px; }
+.top__menu { display: none; }
+
+@media (max-width: 860px) {
+  .top__menu { display: inline-flex; }
+  .nav {
+    position: absolute; left: 0; right: 0; top: 100%;
+    flex-direction: column; align-items: stretch; gap: 0;
+    padding: .5rem var(--gutter) 1.25rem;
+    background: var(--grain), var(--paper);
+    box-shadow: 0 14px 22px rgb(20 10 0 / .28);
+    visibility: hidden; opacity: 0; transform: translateY(-8px);
+    transition: opacity .2s ease, transform .2s ease, visibility 0s .2s;
+  }
+  .top.is-open .nav { visibility: visible; opacity: 1; transform: none; transition-delay: 0s; }
+  .top.is-open::after { opacity: 1; }
+  .nav a:not(.btn) { padding: .85rem 0; font-size: 1.1rem; border-bottom: 1px solid rgb(30 42 33 / .12); background: none; }
+  .nav .btn { margin-top: 1rem; justify-content: center; }
+}
+
+/* ---------------------------------------------------------------- hero */
+/* Narrow or upright windows: the headline and the key sit in a band of sky above the artwork.
+   Wide windows (where the artwork is exactly the window's width): they are laid over the artwork's
+   own sky, headline to the left of the crown and the key to the right, measured in vw so they
+   stay registered to the picture as it scales. 69.43vw is the artwork's height. */
+.frame { position: relative; }
+.hero {
+  position: relative; z-index: 5;
+  width: 100%;
+  padding: 1.25rem var(--gutter) .5rem;
+  background: var(--grain), linear-gradient(90deg, var(--sky-left), var(--sky-right));
+}
+.horizon {
+  display: flex; align-items: center; gap: .6em;
+  font-size: .9rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+}
+.hero h1 { font-size: clamp(2rem, 7.9vw, 3.2rem); max-width: 14ch; }
+.hero__cta { display: flex; flex-wrap: wrap; gap: .75rem 1rem; align-items: center; margin-top: 1.35rem; }
+
+.key { margin-top: 1.5rem; }
+.key__title { font-family: var(--display); font-weight: 400; font-size: 1.05rem; margin-bottom: .55rem; }
+.key__chips { display: flex; flex-wrap: wrap; gap: .45rem; }
+.chip {
+  display: inline-flex; align-items: center; gap: .7em;
+  padding: .5em .85em .5em .7em;
+  font: inherit; font-size: .98rem; font-weight: 650; line-height: 1.2; white-space: nowrap;
+  color: var(--ink);
+  background: var(--grain), var(--paper);
+  border: 0; border-radius: 3px;
+  filter: drop-shadow(0 0 .5px rgb(30 15 0 / .35)) drop-shadow(1px 2px 1.5px rgb(20 10 0 / .25));
+  cursor: pointer;
+  transition: transform .18s cubic-bezier(.3, 1.4, .5, 1);
+}
+.chip:hover { transform: translateY(-1.5px) rotate(-1.2deg); }
+.chip[aria-pressed="true"] { background: var(--grain), var(--ink); color: var(--paper); }
+.chip .leafmark { width: .9em; margin-block: -.5em; }   /* twice the leaf it was; the chip is sized up around it */
+.chip small { font-size: .92em; font-weight: 500; opacity: .62; }
+
+@media (min-aspect-ratio: 5/4) and (min-width: 1100px) {
+  .hero { position: absolute; inset: 0 0 auto 0; height: 0; padding: 0; background: none; }
+  .hero__lead { position: absolute; left: 3.4vw; top: 10.6vw; width: 27vw; }
+  .hero h1 { font-size: 2.28vw; max-width: none; }
+  .hero__cta { margin-top: 1.3vw; }
+  .hero .btn { font-size: max(.82rem, .92vw); }
+  .key { position: absolute; left: 75vw; top: 10.7vw; width: 23.4vw; margin: 0; }
+  .key__chips { display: grid; grid-template-columns: 1fr 1fr; gap: .55vw .6vw; }
+  .key__chips .chip:last-child { grid-column: 1 / -1; justify-self: start; }     /* the longest label gets a row to itself */
+  .key__title { font-size: max(.95rem, 1.2vw); }
+  .chip { font-size: max(.7rem, .96vw); }
+  /* the two low clouds would sit behind the words, so they are taken off the sheet */
+  .clouds > i:nth-child(1), .clouds > i:nth-child(2) { display: none; }
+}
+
+/* ------------------------------------------------------- leaves as links */
+/* filtering: the leaves of one kind stay, the rest of the crown goes pale and cannot be picked */
+.leaf { transition: transform .28s cubic-bezier(.3, 1.4, .5, 1), filter .28s ease, opacity .28s ease; }
+.tree.is-filtered .leaf:not(.is-lit) { opacity: .24; filter: saturate(.3); }
+.tree.is-filtered button.leaf:not(.is-lit) .leaf__face { pointer-events: none; }
+.tree.is-filtered .leaf.is-lit { --lift: 1.5; z-index: 4; }
+button.leaf.is-plain { cursor: default; }
+button.leaf.is-plain .leaf__face { pointer-events: none; }
+.leaf.is-found { animation: found 1.1s ease-in-out 2; z-index: 6; }
+@keyframes found { 50% { transform: translate(-50%, -100%) rotate(calc(var(--angle) + 6deg)) scale(1.5); } }
+
+.trunk {                              /* the trunk is a way in too: it opens "our story" */
+  z-index: 5;
+  position: absolute; left: 46.8%; top: 29.4%; width: 7.1%; height: 13.6%;
+  padding: 0; border: 0; background: none; cursor: pointer; pointer-events: auto;
+  clip-path: polygon(22% 0, 80% 0, 86% 62%, 100% 100%, 0 100%, 16% 62%);
+}
+
+/* the tag that names a leaf under the pointer or the keyboard focus */
+.leaftag {
+  position: fixed; left: 0; top: 0; z-index: 60;
+  max-width: min(19rem, calc(100vw - 1.5rem));
+  padding: .5rem .75rem .55rem;
+  background: var(--grain), var(--paper);
+  border-radius: 3px;
+  filter: var(--lay-up);
+  pointer-events: none;
+  opacity: 0; visibility: hidden;
+  transition: opacity .15s ease, visibility 0s .15s;
+}
+.leaftag.is-on { opacity: 1; visibility: visible; transition-delay: 0s; }
+.leaftag__kind { display: flex; align-items: center; gap: .45em; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+.leaftag__title { display: block; font-family: var(--display); font-weight: 400; font-size: 1.02rem; line-height: 1.2; margin-top: .1rem; }
+
+/* -------------------------------------------------------------- strata */
+/* Each stratum now holds a section. The paper, torn edge, stones and critters stay where they were
+   (absolutely placed, in % of the stratum), so they spread out as the stratum grows with its content. */
+.deep { pointer-events: auto; }
+.deep .cut, .deep .critter { pointer-events: none; }
+.stratum { --on: var(--cream); --on-soft: rgb(242 234 212 / .78); --rule: rgb(242 234 212 / .28); }
+.stratum--sand, .stratum--gravel { --on: var(--ink); --on-soft: #3d4a40; --rule: rgb(30 42 33 / .22); }
+/* the two added strata reuse the outlines of the clay and the gravel, turned over left to right */
+.stratum--flip > .cut { transform: scaleX(-1); }
+.stratum--flip > .stones { filter: drop-shadow(calc(-1.2 * var(--u)) calc(2 * var(--u)) calc(1.2 * var(--u)) rgb(15 8 0 / .5)); }
+
+.layer {
+  position: relative; z-index: 1;
+  padding: clamp(3.75rem, 8vw, 6.5rem) var(--gutter) clamp(4.5rem, 9vw, 7.5rem);
+  color: var(--on);
+}
+.layer__in { max-width: var(--measure); margin: 0 auto; }
+.layer__head { max-width: 46rem; margin-bottom: clamp(1.75rem, 4vw, 3rem); }
+.horizon { color: var(--on-soft); margin-bottom: .9rem; }
+/* the tree mark stands well clear of the words, and taller than them, so it reads as an emblem and not as a leading "t" */
+/* The mark is the colour of the words beside it. --shift (set by the script) slides it, and the words with it,
+   until it stands directly over the capital on the leaf below. */
+.horizon .mark { flex: none; width: 2.4rem; height: 2.4rem; margin-left: var(--shift, 0px); margin-right: .5rem; }
+.layer h2 { font-size: clamp(1.9rem, 4.3vw, 3.05rem); }
+.lede { margin-top: 1rem; font-size: clamp(1.05rem, 1.5vw, 1.2rem); line-height: 1.55; color: var(--on-soft); max-width: 40rem; }
+.more { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; align-items: center; }
+
+/* cards: sheets of cream paper laid on the soil */
+.cards { display: grid; gap: clamp(.9rem, 2vw, 1.5rem); grid-template-columns: repeat(auto-fill, minmax(min(100%, 17.5rem), 1fr)); list-style: none; margin: 0; padding: 0; }
+.card {
+  position: relative;
+  display: flex; flex-direction: column; gap: .55rem;
+  height: 100%;
+  padding: 1.35rem 1.4rem 1.25rem;
+  color: var(--ink); text-decoration: none; text-align: left;
+  background: var(--grain), var(--paper);
+  border: 0; border-radius: 3px;
+  font: inherit;
+  filter: var(--lay);
+  cursor: pointer;
+  transition: transform .25s cubic-bezier(.3, 1.4, .5, 1), filter .25s ease;
+}
+.cards > :nth-child(3n + 1) .card { rotate: -.35deg; }
+.cards > :nth-child(3n + 2) .card { rotate: .3deg; }
+.card:hover, .card:focus-visible { transform: translateY(-4px) rotate(-.6deg); filter: var(--lay-up); }
+.card h3 { font-size: 1.32rem; line-height: 1.15; }
+.card p { color: var(--ink-soft); font-size: .97rem; }
+.card__kicker { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+.card__go { margin-top: auto; padding-top: .6rem; display: inline-flex; align-items: center; gap: 1em; font-size: .85rem; font-weight: 700; color: var(--ink); }
+.card__go .leafmark { width: 1.36em; margin-block: -.5em; rotate: 24deg; transition: transform .3s cubic-bezier(.3, 1.4, .5, 1); }
+.card:hover .card__go .leafmark { transform: rotate(74deg) scale(1.08); }
+
+.card--wide { flex-direction: row; align-items: center; gap: 1rem 2rem; flex-wrap: wrap; }
+.card--wide > :first-child { flex: 1 1 22rem; display: grid; gap: .45rem; }
+.card--wide .card__go { margin: 0; padding: 0; }
+@media (min-width: 40rem) { .cards > .wide { grid-column: 1 / -1; } .cards > .span2 { grid-column: span 2; } }
+.cards > .wide .card, .cards > .span2 .card { rotate: .15deg; }
+
+/* a stone or a critter that would sit behind a line of type is lifted out (see clearType in the script) */
+.deep .is-cleared { visibility: hidden; }
+
+/* ---- subsoil: about */
+#about .layer__head { margin-bottom: clamp(1.25rem, 2.5vw, 2rem); }
+.about { max-width: 43rem; }
+.about__say { font-family: var(--display); font-weight: 400; font-size: clamp(1.45rem, 2.9vw, 2.2rem); line-height: 1.22; letter-spacing: -.012em; text-wrap: balance; }
+.about__say em { font-style: italic; color: var(--gold); }
+.about__text { display: grid; gap: 1rem; color: var(--on-soft); }
+/* The roots stratum is open soil: the words keep to the left, and the animals have the rest, with a deep
+   band of soil under the words for them too. It carries the same paper and stones as the foot of the artwork above. */
+.stratum--subsoil .layer { padding-bottom: 20rem; }
+
+/* ---- sand: gatherings */
+.gatherings { display: grid; gap: clamp(1rem, 2.5vw, 2rem); grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); }
+.gathering { padding: clamp(1.4rem, 3vw, 2.1rem); gap: .8rem; }
+.gathering:nth-child(1) { rotate: -.4deg; }
+.gathering:nth-child(2) { rotate: .35deg; }
+.gathering h3 { font-size: clamp(1.6rem, 2.8vw, 2.05rem); }
+.season { align-self: flex-start; display: inline-flex; align-items: center; gap: .5em; padding: .3em .7em; font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: var(--bg, var(--leaf-bright)); border-radius: 2px; }
+.gathering .when { font-weight: 650; color: var(--ink); font-size: .95rem; }
+
+/* ---- gravel: news */
+.news { display: grid; gap: clamp(1.25rem, 3vw, 2.5rem); grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; }
+@media (max-width: 860px) { .news { grid-template-columns: 1fr; } }
+.issue { height: auto; padding: clamp(1.25rem, 2.6vw, 1.9rem); rotate: -.5deg; cursor: default; }
+.issue:hover { transform: none; filter: var(--lay); }
+.issue__cover { margin: 0 0 .4rem; background: var(--paper-2); aspect-ratio: 8.5 / 11; max-height: 22rem; align-self: center; filter: drop-shadow(1px 2px 2px rgb(20 10 0 / .3)); }
+.issue__cover img { width: 100%; height: 100%; object-fit: cover; }
+.issue__back { display: flex; flex-wrap: wrap; gap: .35rem .9rem; margin: .35rem 0 0; padding: .8rem 0 0; list-style: none; border-top: 1px solid rgb(30 42 33 / .15); font-size: .88rem; }
+.issue__back a { text-underline-offset: .2em; }
+.posts { list-style: none; margin: 0; padding: 0; display: grid; gap: .8rem; }
+.post { flex-direction: row; align-items: baseline; gap: 1.1rem; padding: 1.05rem 1.25rem; }
+.posts > :nth-child(odd) .post { rotate: .2deg; }
+.posts > :nth-child(even) .post { rotate: -.25deg; }
+.post time, .post .date { flex: none; width: 6.4rem; font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+.post h3 { font-size: 1.14rem; line-height: 1.22; }
+.post p { margin-top: .25rem; font-size: .92rem; }
+@media (max-width: 520px) { .post { flex-direction: column; gap: .3rem; } .post .date { width: auto; } }
+
+/* ---- shale: the network */
+.finder { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; align-items: center; margin-bottom: 1.5rem; }
+.finder input {
+  flex: 1 1 16rem; max-width: 26rem;
+  padding: .75rem 1rem;
+  font: inherit; color: var(--ink);
+  background: var(--grain), var(--paper);
+  border: 0; border-radius: 3px;
+  filter: var(--lay);
+}
+.finder input::placeholder { color: #6b776e; }
+.finder output { font-size: .9rem; color: var(--on-soft); }
+/* The member network. Threads of mycelium (pieces of paper, like the artwork's) run out from the Heartwood
+   mark to a spore for every group. Alphabetical order runs clockwise from the top. */
+.net { position: relative; overflow-x: auto; overflow-y: hidden; margin-inline: calc(var(--gutter) * -.5); padding: 1rem calc(var(--gutter) * .5); }
+.net__stage { position: relative; width: 100%; min-width: 46rem; }
+.net__hyphae { position: absolute; inset: 0; filter: drop-shadow(1.2px 2.2px 1.4px rgb(15 8 0 / .5)); }
+.net__hyphae > i { position: absolute; background: var(--grain), var(--mycelium); }
+.net__hyphae > i.is-lit { background: var(--grain), var(--gold); }
+.net__hub { position: absolute; left: 50%; top: 50%; width: 13.5%; aspect-ratio: 1; translate: -50% -50%; filter: drop-shadow(2px 4px 4px rgb(15 8 0 / .5)); color: var(--logo); }
+.net__hub::before { content: ""; position: absolute; inset: 0; clip-path: circle(50%); background: var(--grain), var(--paper); }
+.net__hub svg { position: absolute; inset: 14%; width: 72%; height: 72%; }
+.spore {
+  position: absolute; width: 1.9%; min-width: 15px; aspect-ratio: 1; translate: -50% -50%;
+  padding: 0; border: 0; background: none; cursor: pointer;
+  filter: drop-shadow(1px 1.8px 1.2px rgb(15 8 0 / .55));
+  transition: scale .2s cubic-bezier(.3, 1.4, .5, 1), opacity .2s ease;
+}
+.spore::before {
+  content: ""; position: absolute; inset: 0;
+  clip-path: polygon(100% 50%, 90.5% 80.9%, 65.5% 100%, 34.5% 100%, 9.5% 80.9%, 0% 50%, 9.5% 19.1%, 34.5% 0%, 65.5% 0%, 90.5% 19.1%);
+  background: var(--grain), var(--c);
+}
+.spore--a { --c: #f2ead4; } .spore--b { --c: #e2d3ad; } .spore--c { --c: #cdb98c; }
+.spore:hover, .spore:focus-visible, .spore.is-hit { scale: 1.65; z-index: 2; --c: var(--gold); }
+.spore:focus-visible { outline: 2px solid #fff; outline-offset: 2px; border-radius: 50%; }
+.net.is-searching .spore:not(.is-hit) { opacity: .28; }
+.net__list { margin-top: 1.5rem; }
+.net__list summary { display: inline-block; cursor: pointer; font-weight: 650; text-decoration: underline; text-underline-offset: .25em; list-style: none; }
+.net__list summary::-webkit-details-marker { display: none; }
+.net__list[open] summary { margin-bottom: 1rem; }
+.groups { list-style: none; margin: 0; padding: 0; columns: 4 15rem; column-gap: 2rem; }
+.groups li { break-inside: avoid; padding: .42rem 0; border-bottom: 1px solid var(--rule); font-size: .95rem; line-height: 1.35; }
+.groups li[hidden] { display: none; }
+.groups button {
+  display: inline; padding: 0; border: 0; background: none; font: inherit; color: inherit; text-align: left; cursor: pointer;
+  text-decoration: underline; text-decoration-color: transparent; text-underline-offset: .22em; transition: text-decoration-color .15s ease;
+}
+.groups button:hover, .groups button:focus-visible { text-decoration-color: currentColor; color: #fff; }
+.council { margin-top: clamp(2.5rem, 6vw, 4rem); display: grid; gap: 2rem clamp(1.5rem, 4vw, 3.5rem); grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); }
+.council h3 { font-size: 1.3rem; margin-bottom: .7rem; }
+.council ul { list-style: none; margin: 0; padding: 0; }
+.council li { display: flex; justify-content: space-between; gap: 1rem; padding: .4rem 0; border-bottom: 1px solid var(--rule); font-size: .95rem; }
+.council li span { color: var(--on-soft); text-align: right; }
+
+/* ---- bedrock: support and the foot of the page */
+.support .card { padding: 1.5rem 1.5rem 1.35rem; }
+.support .card--gold { background: var(--grain), var(--gold); }
+.support .card--gold p { color: #4a4320; }
+.tiers { margin: .15rem 0 0; padding: 0; list-style: none; font-size: .9rem; color: var(--ink); }
+.tiers li { display: flex; justify-content: space-between; gap: 1rem; padding: .28rem 0; border-bottom: 1px dotted rgb(30 42 33 / .3); }
+.tiers li b { font-variant-numeric: tabular-nums; }
+.foot {
+  margin-top: clamp(4rem, 9vw, 7rem); padding-top: 2rem;
+  border-top: 2px solid var(--rule);
+  display: grid; gap: 2rem clamp(1.5rem, 4vw, 4rem);
+  grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr));
+  font-size: .93rem; color: var(--on-soft);
+}
+.foot .brand { color: var(--on); font-size: 1.7rem; }
+.foot .brand__logo { height: 4.8rem; }
+.foot .brand .leafmark { width: 1.4rem; margin-bottom: -.5rem; --a: var(--leaf-bright); }
+.foot__say { margin-top: .5rem; font-family: var(--display); font-size: 1.1rem; color: var(--on); max-width: 18ch; line-height: 1.3; }
+.foot address { font-style: normal; margin-top: 1rem; line-height: 1.6; }
+.foot h3 { font-family: var(--font); font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--on); margin-bottom: .7rem; }
+.foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .4rem; }
+.foot a { text-decoration: none; }
+.foot a:hover { text-decoration: underline; text-underline-offset: .2em; color: var(--on); }
+@media (max-width: 800px) { .foot { grid-template-columns: repeat(2, minmax(0, 1fr)); } .foot > :first-child { grid-column: 1 / -1; } }
+
+/* ------------------------------------------------------------- the panel */
+.dialog {
+  width: min(100%, 37rem);
+  padding: calc(var(--crown) / 2 + 1.1rem) clamp(1.25rem, 5vw, 2.6rem) 1.9rem;
+  background: var(--grain), var(--paper);
+  border-radius: 4px;
+  text-align: left;
+  overscroll-behavior: contain;
+}
+.dialog:focus { outline: none; }
+.dialog p { margin: 0; max-width: none; color: inherit; }
+.dialog .dialog__kind { display: flex; justify-content: center; align-items: center; gap: .5em; margin-bottom: .55rem; font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+.dialog h2 { text-align: center; font-size: clamp(1.5rem, 4.3vw, 2rem); font-weight: 400; margin: 0 0 .5rem; }
+.dialog .dialog__meta { text-align: center; font-weight: 650; font-size: .93rem; color: var(--ink); margin: 0 auto 1rem; max-width: 34ch; }
+.dialog__body { margin-top: 1.1rem; display: grid; gap: .9rem; }
+.dialog .dialog__body p { margin: 0; max-width: none; color: #3a483e; }
+.dialog figure { margin: .2rem auto .4rem; max-width: 15rem; rotate: -1.2deg; filter: var(--lay); background: var(--paper-2); }
+.dialog ul.dots { margin: 0; padding: 0; list-style: none; display: grid; gap: .4rem; font-size: .96rem; }
+.dialog ul.dots li { display: flex; gap: .7em; align-items: baseline; }
+.dialog ul.dots .leafmark { width: .55em; translate: 0 .08em; }
+.dialog__links { display: flex; flex-wrap: wrap; gap: .7rem .9rem; align-items: center; margin-top: 1.5rem; }
+.dialog .dialog__more { margin-top: 1.1rem; font-size: .88rem; color: var(--ink-soft); }
+.dialog__close {
+  position: absolute; right: .7rem; top: .7rem;
+  width: 2.5rem; height: 2.5rem; padding: 0;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: transparent; color: var(--ink);
+  font-size: 1.5rem; line-height: 1;
+}
+.dialog__close:hover { background: rgb(30 42 33 / .1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .chip, .card, .leaftag { transition: none; }
+  .leaf.is-found { animation: none; }
+}
+@media print {
+  .top, .scrim, .lift, .sheet-wrap, .leaftag, .key { display: none; }
+}
+
+/* ------------------------------------------------------- the leaf initial */
+/* The first letter of every big heading sits on one of the artwork's leaves. The leaf is hung from the
+   letter's right-hand edge, so its tip clears the next letter by the same hair behind a narrow F as
+   behind an H; behind a wide letter it is centred instead. */
+.cap { position: relative; z-index: 0; display: inline-block; margin-right: .03em; color: inherit; filter: drop-shadow(.02em .045em .03em rgb(18 34 14 / .4)); }
+.cap::before {
+  --a: var(--cap-tone, #9bb45c);
+  content: ""; position: absolute; z-index: -1;
+  right: max(.4em, 50%); top: 50%;          /* never left of the middle of the letter, so a wide W sits square on its leaf */
+  height: 1.75em; aspect-ratio: var(--leaf-ar);
+  clip-path: var(--leaf-shape);
+  translate: 50% -52%; rotate: 28deg;
+}
+.layer h2, .hero h1 { padding-top: .18em; padding-left: .14em; }
+/* on the dark strata the leaf is the green of the leaves on the cards; the capital on it is the colour of its heading everywhere */
+.stratum--subsoil .cap, .stratum--clay .cap, .stratum--shale .cap, .stratum--bedrock .cap { --cap-tone: #56894f; --shade: rgb(8 26 10 / .23); --vein: rgb(8 26 10 / .40); }
+
+/* ------------------------------------------------- every leaf: a fold line */
+/* A single centre vein, and the right-hand half a shade deeper, as if the leaf were creased down the
+   middle and tipped to the light. Both are a wash laid over the leaf's own colour, so the amount is set
+   per tone: the dark leaves need more of it to show, the pale ones less, and the gold takes an amber wash. */
+.t1 { --shade: rgb(6 22 8 / .30); --vein: rgb(6 22 8 / .46); }
+.t2 { --shade: rgb(8 26 10 / .23); --vein: rgb(8 26 10 / .40); }
+.t3 { --shade: rgb(10 30 12 / .19); --vein: rgb(10 30 12 / .36); }
+.t4 { --shade: rgb(24 44 10 / .17); --vein: rgb(24 44 10 / .34); }
+.t5 { --shade: rgb(30 56 12 / .15); --vein: rgb(30 56 12 / .32); }
+.t6 { --shade: rgb(120 78 0 / .20); --vein: rgb(120 78 0 / .42); }
+.leaf__top, .leafmark, .cap::before {
+  --vw: max(.4px, 1.5%);
+  background:
+    linear-gradient(90deg, transparent calc(50% - var(--vw)), var(--vein, rgb(10 30 12 / .36)) 0 calc(50% + var(--vw)), transparent 0),
+    linear-gradient(90deg, transparent 50%, var(--shade, rgb(10 30 12 / .19)) 50%),
+    var(--grain), var(--a, var(--leaf-mid));
+}
+/* The leaves of the tree, and the leaf under each big capital, are drawn in full: the midrib, three pairs of side
+   veins rising from it, a little light on the left half and the right half deepening toward its edge. */
+.leaf__top, .cap::before {
+  --side: color-mix(in srgb, var(--vein, rgb(10 30 12 / .36)) 78%, transparent);
+  background:
+    linear-gradient(90deg, transparent calc(50% - var(--vw)), var(--vein, rgb(10 30 12 / .36)) 0 calc(50% + var(--vw)), transparent 0),
+    repeating-linear-gradient(24deg, transparent 0 29%, var(--side) 29% 32.5%) 26% 52% / 27% 50% no-repeat,
+    repeating-linear-gradient(-24deg, transparent 0 29%, var(--side) 29% 32.5%) 74% 52% / 27% 50% no-repeat,
+    linear-gradient(90deg, rgb(255 255 255 / .13), transparent 44%, transparent 50%, var(--shade, rgb(10 30 12 / .19)) 50%, color-mix(in srgb, var(--shade, rgb(10 30 12 / .19)) 100%, rgb(0 0 0 / .34)) 100%),
+    var(--grain), var(--a, var(--leaf-mid));
+}
+
+/* ---------------------------------------------------------------- boletes */
+/* Seven wine-red boletes round the foot of the tree. They are on the front sheet, over the flowers
+   and the root flare, and sit a little lower than the flower stems, which brings them nearer.
+   Each is four plies: stem, the yellow pores under the cap, the cap, and a lighter patch on its crown. */
+.fore, .mid { position: absolute; inset: 0; pointer-events: none; }
+.fore { z-index: 4; }
+.shroom { position: absolute; transform-origin: 50% 100%; translate: -50% -100%; rotate: var(--tilt, 0deg); }
+.shroom > b { position: absolute; inset: 0; filter: drop-shadow(calc(.8 * var(--u)) calc(1.3 * var(--u)) calc(.9 * var(--u)) rgb(20 8 0 / .5)); }
+.shroom > b > i { position: absolute; inset: 0; background: var(--grain), var(--c); }
+
+
+/* ------------------------------------------------------------ the forest */
+/* Trees along the hills, in three depths: pale and small beyond the skyline, a row behind each ridge, and
+   the nearest on the hillsides. Each is three pieces of paper: trunk, crown, and a lighter sheet on the crown. */
+.forest, .birds, .bees, .bugs { position: absolute; inset: 0; pointer-events: none; }
+.btree { position: absolute; translate: -50% -100%; }
+.btree b, .bird b, .bug b { position: absolute; inset: 0; }
+.btree b > i, .bird b > i, .bug b > i { position: absolute; inset: 0; background: var(--grain), var(--c); }
+.forest--far .btree  { filter: drop-shadow(0 calc(.5 * var(--u)) calc(.5 * var(--u)) rgb(40 70 80 / .2)); }
+.forest--mid .btree  { filter: drop-shadow(calc(.5 * var(--u)) calc(1 * var(--u)) calc(.7 * var(--u)) rgb(20 40 15 / .3)); }
+.forest--near .btree { filter: drop-shadow(calc(.8 * var(--u)) calc(1.4 * var(--u)) calc(.9 * var(--u)) rgb(20 40 15 / .38)); }
+.forest--near .btree b + b + b, .forest--mid .btree b + b + b { filter: drop-shadow(calc(.5 * var(--u)) calc(.9 * var(--u)) calc(.5 * var(--u)) rgb(20 40 15 / .25)); }
+
+/* ------------------------------------------------------------------ birds */
+/* Everything that flies or walks is built the same way: an outer box the size of the whole sheet, which is what
+   moves, and the creature inside it. Moving a box by a percentage moves it by that share of its own size, so every
+   path is in % of the sheet and stays true when the window changes size.
+   Birds: --from and --to are where each starts and ends; most of that run is out of the picture, which spaces
+   them out. The near wing and the far wing beat a moment apart. */
+.bird { position: absolute; inset: 0; animation: fly var(--dur) linear var(--delay) infinite; }
+.bird__bob {
+  position: absolute; left: 0;
+  animation: bird-bob 1.9s ease-in-out infinite alternate;
+  filter: drop-shadow(calc(1 * var(--u)) calc(2 * var(--u)) calc(1.2 * var(--u)) rgb(50 80 120 / .3));
+}
+.bird__face, .bee__face { position: absolute; inset: 0; }
+.bird__face--left, .bug__face--left, .bee__face--left { scale: -1 1; }
+.bird__wing { transform-origin: 50% 53%; animation: flap var(--flap) ease-in-out infinite alternate; }
+.bird__wing--far { animation-delay: calc(var(--flap) * -.25); }
+.bird__wing--both { transform-origin: 50% 62%; }
+.bird--goldfinch .bird__bob { animation: bird-bound 1.05s ease-in-out infinite alternate; }      /* finches fly in bounds */
+.bird--speck .bird__bob { filter: none; opacity: .82; }
+@keyframes fly { from { translate: var(--from) 0; } to { translate: var(--to) 0; } }
+@keyframes flap { to { scale: 1 -.72; } }
+@keyframes bird-bob { to { translate: 0 -22%; } }
+@keyframes bird-bound { to { translate: 0 -70%; } }
+/* nothing that flies is ever drawn below the flower heads */
+.birds, .bees { clip-path: inset(0 0 57.4% 0); }
+
+/* ------------------------------------------------------------------- bees */
+/* A striped body and two wings set on the middle of its back. Each bee crosses the whole meadow one way and comes
+   down to a few flowers as it goes; its route is its own set of keyframes (generated, at the end of this sheet).
+   It turns round out of the picture. */
+.bee { position: absolute; inset: 0; animation: var(--path) var(--dur) linear var(--delay) infinite; }
+.bee__bob {
+  position: absolute; left: 0; top: 0;
+  width: calc(11 * var(--u)); height: calc(6.6 * var(--u)); margin: calc(-3.3 * var(--u)) 0 0 calc(-5.5 * var(--u));
+  animation: bee-bob .7s ease-in-out infinite alternate;
+  filter: drop-shadow(calc(.5 * var(--u)) calc(1 * var(--u)) calc(.5 * var(--u)) rgb(20 30 10 / .4));
+}
+.bee__body {
+  position: absolute; inset: 0;
+  clip-path: polygon(0% 50%, 6% 26%, 20% 8%, 42% 0%, 66% 2%, 86% 14%, 97% 34%, 100% 52%, 96% 72%, 84% 90%, 64% 100%, 40% 100%, 18% 90%, 5% 72%);
+  background: linear-gradient(90deg, #f1bb2e 0 17%, #2b2016 17% 30%, #f1bb2e 30% 47%, #2b2016 47% 60%, #f1bb2e 60% 75%, #2b2016 75%);
+}
+.bee__wing {
+  position: absolute; left: 14%; bottom: 66%; width: 48%; height: 100%;
+  background: rgb(252 250 240 / .92);
+  clip-path: ellipse(50% 50%);
+  transform-origin: 50% 100%; rotate: -20deg;
+  animation: bee-wing .11s linear infinite alternate;
+}
+.bee__wing--b { left: 38%; rotate: 20deg; background: rgb(236 240 232 / .9); animation-delay: -.05s; }
+@keyframes bee-bob { to { translate: 0 -24%; } }
+@keyframes bee-wing { to { scale: 1 .45; } }
+
+/* ----------------------------------------------------------- soil animals */
+/* Ants, ground beetles, pill bugs, centipedes and earthworms, seen from the side, each a few plies of paper in its
+   own muted colour. Every one walks a lane of its own from one side to the other, so they pass but never meet.
+   They live below the lowest root and in the roots stratum under the artwork; deeper than that there is only
+   the odd worm in the clay. In the artwork they are under the mycelium, which crosses in front of them. */
+.bug { position: absolute; inset: 0; animation: walk-east var(--dur) linear var(--delay) infinite; }
+.bug--west { animation-name: walk-west; }
+.bug__face { position: absolute; left: 0; filter: drop-shadow(calc(.6 * var(--u)) calc(1.1 * var(--u)) calc(.7 * var(--u)) rgb(20 10 0 / .5)); }
+.bugs--stratum { overflow: hidden; }
+@keyframes walk-east { from { translate: -8% 0; } to { translate: 103% 0; } }
+@keyframes walk-west { from { translate: 103% 0; } to { translate: -8% 0; } }
+/* beside the words in the roots stratum the animals keep to the open soil on the right: they come in from
+   the edge and go to ground before the text, or come up there and walk off */
+.bug--beside.bug--west { animation-name: beside-west; }
+.bug--beside.bug--east { animation-name: beside-east; }
+@keyframes beside-west { from { translate: 103% 0; } 88% { opacity: 1; } to { translate: 60% 0; opacity: 0; } }
+@keyframes beside-east { from { translate: 60% 0; opacity: 0; } 12% { opacity: 1; } to { translate: 103% 0; } }
+@media (max-width: 800px) { .bug--beside { display: none; } }
+.bug__legs { animation: scurry .16s linear infinite alternate; }
+.bug--beetle .bug__legs { animation-duration: .24s; }
+.bug--pillbug .bug__legs { animation-duration: .3s; }
+.bug--centipede .bug__face { animation: weave 1s ease-in-out infinite alternate; }
+.bug--worm .bug__face { animation: inch 2.4s ease-in-out infinite alternate; }
+@keyframes scurry { from { transform: skewX(-9deg); } to { transform: skewX(9deg); } }
+@keyframes weave { from { transform: skewY(-2.4deg); } to { transform: skewY(2.4deg); } }
+@keyframes inch { from { transform: scaleX(.9) skewY(-1.5deg); } to { transform: scaleX(1.06) skewY(1.5deg); } }
+
+/* ---------------------------------------------------------- stones set in */
+/* Some stones are set into the soil instead of lying on it: a darker shade of soil round each (the bed), no cast
+   shadow, and the stone's upper-left edge in shadow, which is its own darker paper showing past a copy of
+   itself slid down and to the right. */
+.stones--bed { filter: blur(calc(1.3 * var(--u))); }
+.stones--bed > i { background: rgb(22 11 2 / .42); scale: 1.4; }
+.stones--in { filter: none; }
+.stones--in > i { background: color-mix(in srgb, var(--c) 42%, #170d04); }
+.stones--in > i::after { content: ""; position: absolute; inset: 0; background: var(--grain), var(--c); translate: calc(1.3 * var(--u)) calc(1.7 * var(--u)); }
+
+/* Pause ornamental loops only; leaf entrance, search highlights and dialog flights remain independent. */
+:is(.is-motion-paused, .is-motion-hidden) :is(.critter, .ply--legs, .bird, .bird__bob, .bird__wing, .bee, .bee__bob, .bee__wing, .bug, .bug__legs, .bug__face) {
+  animation-play-state: paused;
+}
+
+/* For visitors who ask for less motion, everything alive holds still, wherever its loop had got to.
+   Match the specificity of species-specific movement rules so worms and finches also hold still. */
+@media (prefers-reduced-motion: reduce) {
+  :root :is(.critter, .ply--legs, .bird, .bird__bob, .bird__wing, .bee, .bee__bob, .bee__wing, .bug, .bug__legs, .bug__face) {
+    animation-play-state: paused;
+  }
+}
+
+/* --------------------------------------------------------- the big tree */
+/* The tree is drawn at its first size and then made larger here, crown, trunk and roots together, from
+   the point where the trunk meets the ground. Change the two numbers to resize it. */
+.bigtree { transform-origin: 50.6% 44.3%; transform: scale(1.12, 1.04); }
+/* on a narrow or upright window the crown already fills the width, so there it only grows taller */
+@media (max-aspect-ratio: 5/4), (max-width: 1099px) { .bigtree { transform: scale(1, 1.04); } }
+/* Behind the leaves, two sheets of the same dark green paper, both cut clean. The far one is the leaves again, a
+   third larger, so its edge is made of leaf tips; the near one sits close around the leaves and throws its
+   shadow onto the far one, which is where the depth comes from. */
+.crown--far  { --c: #2f5a37; filter: drop-shadow(calc(1.4 * var(--u)) calc(2.6 * var(--u)) calc(2 * var(--u)) rgb(18 34 14 / .4)); }
+.crown--near { --c: #2f5a37; filter: drop-shadow(calc(1.6 * var(--u)) calc(3 * var(--u)) calc(2.4 * var(--u)) rgb(4 16 6 / .6)); }
+.wood--seam { --c: #4f3822; filter: drop-shadow(calc(1 * var(--u)) calc(1.4 * var(--u)) calc(1.1 * var(--u)) rgb(24 11 0 / .6)); }
+.wood-back { --c: #4f3822; filter: drop-shadow(calc(1.4 * var(--u)) calc(2.4 * var(--u)) calc(2 * var(--u)) rgb(20 8 0 / .5)); }
+/* the main sheet of mycelium sits in a wrapper that trims one corner of it */
+.cut > i.trim { background: none; }
+.trim > i { position: absolute; background: var(--grain), var(--c); }
+
+/* generated: one flight path per bee. Out along its lane, down to each flower it visits, and off the far side. */
+@keyframes bee-0 {
+  0% { translate: -2.65% 33.62%; animation-timing-function: linear; }
+  20.43% { translate: 24.78% 33.34%; animation-timing-function: ease-in-out; }
+  22.32% { translate: 26.30% 37.93%; animation-timing-function: ease-in-out; }
+  24.73% { translate: 26.63% 37.69%; animation-timing-function: ease-in-out; }
+  26.33% { translate: 26.83% 37.98%; animation-timing-function: ease-in-out; }
+  28.39% { translate: 28.22% 33.47%; animation-timing-function: linear; }
+  39.68% { translate: 43.38% 33.90%; animation-timing-function: ease-in-out; }
+  41.57% { translate: 44.90% 41.73%; animation-timing-function: ease-in-out; }
+  43.60% { translate: 45.23% 41.49%; animation-timing-function: ease-in-out; }
+  45.70% { translate: 45.43% 41.78%; animation-timing-function: ease-in-out; }
+  47.76% { translate: 46.82% 33.61%; animation-timing-function: linear; }
+  56.74% { translate: 58.88% 33.70%; animation-timing-function: ease-in-out; }
+  58.63% { translate: 60.40% 38.63%; animation-timing-function: ease-in-out; }
+  60.33% { translate: 60.73% 38.39%; animation-timing-function: ease-in-out; }
+  62.25% { translate: 60.93% 38.68%; animation-timing-function: ease-in-out; }
+  64.31% { translate: 62.32% 33.83%; animation-timing-function: linear; }
+  89.38% { translate: 95.98% 33.63%; animation-timing-function: ease-in-out; }
+  91.27% { translate: 97.50% 40.73%; animation-timing-function: ease-in-out; }
+  93.58% { translate: 97.83% 40.49%; animation-timing-function: ease-in-out; }
+  95.53% { translate: 98.03% 40.78%; animation-timing-function: ease-in-out; }
+  97.59% { translate: 99.42% 33.37%; animation-timing-function: linear; }
+  100.00% { translate: 102.65% 33.62%; animation-timing-function: linear; }
+}
+@keyframes bee-1 {
+  0% { translate: 102.65% 34.48%; animation-timing-function: linear; }
+  6.79% { translate: 92.92% 34.70%; animation-timing-function: ease-in-out; }
+  8.96% { translate: 91.40% 39.03%; animation-timing-function: ease-in-out; }
+  11.57% { translate: 91.07% 38.79%; animation-timing-function: ease-in-out; }
+  14.06% { translate: 90.87% 39.08%; animation-timing-function: ease-in-out; }
+  16.43% { translate: 89.48% 34.42%; animation-timing-function: linear; }
+  27.14% { translate: 74.12% 34.65%; animation-timing-function: ease-in-out; }
+  29.30% { translate: 72.60% 39.13%; animation-timing-function: ease-in-out; }
+  31.61% { translate: 72.27% 38.89%; animation-timing-function: ease-in-out; }
+  34.11% { translate: 72.07% 39.18%; animation-timing-function: ease-in-out; }
+  36.47% { translate: 70.68% 34.70%; animation-timing-function: linear; }
+  53.11% { translate: 46.82% 34.25%; animation-timing-function: ease-in-out; }
+  55.28% { translate: 45.30% 41.73%; animation-timing-function: ease-in-out; }
+  57.21% { translate: 44.97% 41.49%; animation-timing-function: ease-in-out; }
+  59.01% { translate: 44.77% 41.78%; animation-timing-function: ease-in-out; }
+  61.37% { translate: 43.38% 34.75%; animation-timing-function: linear; }
+  71.94% { translate: 28.22% 34.44%; animation-timing-function: ease-in-out; }
+  74.11% { translate: 26.70% 37.93%; animation-timing-function: ease-in-out; }
+  76.63% { translate: 26.37% 37.69%; animation-timing-function: ease-in-out; }
+  78.50% { translate: 26.17% 37.98%; animation-timing-function: ease-in-out; }
+  80.87% { translate: 24.78% 34.48%; animation-timing-function: linear; }
+  100.00% { translate: -2.65% 34.48%; animation-timing-function: linear; }
+}
+@keyframes bee-2 {
+  0% { translate: -2.65% 35.34%; animation-timing-function: linear; }
+  3.17% { translate: 1.68% 35.62%; animation-timing-function: ease-in-out; }
+  5.54% { translate: 3.20% 38.93%; animation-timing-function: ease-in-out; }
+  8.35% { translate: 3.53% 38.69%; animation-timing-function: ease-in-out; }
+  10.25% { translate: 3.73% 38.98%; animation-timing-function: ease-in-out; }
+  12.83% { translate: 5.12% 35.55%; animation-timing-function: linear; }
+  38.10% { translate: 39.58% 35.61%; animation-timing-function: ease-in-out; }
+  40.47% { translate: 41.10% 40.53%; animation-timing-function: ease-in-out; }
+  43.57% { translate: 41.43% 40.29%; animation-timing-function: ease-in-out; }
+  45.91% { translate: 41.63% 40.58%; animation-timing-function: ease-in-out; }
+  48.49% { translate: 43.02% 35.46%; animation-timing-function: linear; }
+  60.12% { translate: 58.88% 35.17%; animation-timing-function: ease-in-out; }
+  62.49% { translate: 60.40% 38.63%; animation-timing-function: ease-in-out; }
+  65.50% { translate: 60.73% 38.39%; animation-timing-function: ease-in-out; }
+  67.84% { translate: 60.93% 38.68%; animation-timing-function: ease-in-out; }
+  70.42% { translate: 62.32% 35.22%; animation-timing-function: linear; }
+  100.00% { translate: 102.65% 35.34%; animation-timing-function: linear; }
+}
+@keyframes bee-3 {
+  0% { translate: 102.65% 36.20%; animation-timing-function: linear; }
+  2.46% { translate: 99.42% 36.16%; animation-timing-function: ease-in-out; }
+  4.37% { translate: 97.90% 40.73%; animation-timing-function: ease-in-out; }
+  6.36% { translate: 97.57% 40.49%; animation-timing-function: ease-in-out; }
+  7.84% { translate: 97.37% 40.78%; animation-timing-function: ease-in-out; }
+  9.92% { translate: 95.98% 36.26%; animation-timing-function: linear; }
+  26.59% { translate: 74.12% 36.35%; animation-timing-function: ease-in-out; }
+  28.49% { translate: 72.60% 39.13%; animation-timing-function: ease-in-out; }
+  30.44% { translate: 72.27% 38.89%; animation-timing-function: ease-in-out; }
+  32.34% { translate: 72.07% 39.18%; animation-timing-function: ease-in-out; }
+  34.41% { translate: 70.68% 36.23%; animation-timing-function: linear; }
+  54.05% { translate: 44.92% 36.44%; animation-timing-function: ease-in-out; }
+  55.96% { translate: 43.40% 39.33%; animation-timing-function: ease-in-out; }
+  57.81% { translate: 43.07% 39.09%; animation-timing-function: ease-in-out; }
+  59.40% { translate: 42.87% 39.38%; animation-timing-function: ease-in-out; }
+  61.47% { translate: 41.48% 35.93%; animation-timing-function: linear; }
+  83.78% { translate: 12.22% 35.92%; animation-timing-function: ease-in-out; }
+  85.69% { translate: 10.70% 40.03%; animation-timing-function: ease-in-out; }
+  87.36% { translate: 10.37% 39.79%; animation-timing-function: ease-in-out; }
+  89.21% { translate: 10.17% 40.08%; animation-timing-function: ease-in-out; }
+  91.28% { translate: 8.78% 36.46%; animation-timing-function: linear; }
+  100.00% { translate: -2.65% 36.20%; animation-timing-function: linear; }
+}
+@keyframes bee-4 {
+  0% { translate: -2.65% 37.06%; animation-timing-function: linear; }
+  3.10% { translate: 1.68% 36.85%; animation-timing-function: ease-in-out; }
+  5.10% { translate: 3.20% 38.93%; animation-timing-function: ease-in-out; }
+  7.68% { translate: 3.53% 38.69%; animation-timing-function: ease-in-out; }
+  9.47% { translate: 3.73% 38.98%; animation-timing-function: ease-in-out; }
+  11.66% { translate: 5.12% 37.27%; animation-timing-function: linear; }
+  36.31% { translate: 39.58% 36.99%; animation-timing-function: ease-in-out; }
+  38.32% { translate: 41.10% 40.53%; animation-timing-function: ease-in-out; }
+  40.90% { translate: 41.43% 40.29%; animation-timing-function: ease-in-out; }
+  42.97% { translate: 41.63% 40.58%; animation-timing-function: ease-in-out; }
+  45.16% { translate: 43.02% 36.83%; animation-timing-function: linear; }
+  55.07% { translate: 56.88% 37.33%; animation-timing-function: ease-in-out; }
+  57.07% { translate: 58.40% 39.93%; animation-timing-function: ease-in-out; }
+  59.59% { translate: 58.73% 39.69%; animation-timing-function: ease-in-out; }
+  61.29% { translate: 58.93% 39.98%; animation-timing-function: ease-in-out; }
+  63.48% { translate: 60.32% 37.14%; animation-timing-function: linear; }
+  72.53% { translate: 72.98% 37.18%; animation-timing-function: ease-in-out; }
+  74.53% { translate: 74.50% 39.73%; animation-timing-function: ease-in-out; }
+  77.19% { translate: 74.83% 39.49%; animation-timing-function: ease-in-out; }
+  79.04% { translate: 75.03% 39.78%; animation-timing-function: ease-in-out; }
+  81.23% { translate: 76.42% 36.92%; animation-timing-function: linear; }
+  100.00% { translate: 102.65% 37.06%; animation-timing-function: linear; }
+}
+@keyframes bee-5 {
+  0% { translate: 102.65% 34.10%; animation-timing-function: linear; }
+  7.00% { translate: 92.92% 34.15%; animation-timing-function: ease-in-out; }
+  9.02% { translate: 91.40% 39.03%; animation-timing-function: ease-in-out; }
+  10.82% { translate: 91.07% 38.79%; animation-timing-function: ease-in-out; }
+  12.87% { translate: 90.87% 39.08%; animation-timing-function: ease-in-out; }
+  15.07% { translate: 89.48% 34.00%; animation-timing-function: linear; }
+  26.11% { translate: 74.12% 34.01%; animation-timing-function: ease-in-out; }
+  28.14% { translate: 72.60% 39.13%; animation-timing-function: ease-in-out; }
+  30.80% { translate: 72.27% 38.89%; animation-timing-function: ease-in-out; }
+  32.83% { translate: 72.07% 39.18%; animation-timing-function: ease-in-out; }
+  35.03% { translate: 70.68% 33.97%; animation-timing-function: linear; }
+  53.55% { translate: 44.92% 34.09%; animation-timing-function: ease-in-out; }
+  55.57% { translate: 43.40% 39.33%; animation-timing-function: ease-in-out; }
+  57.88% { translate: 43.07% 39.09%; animation-timing-function: ease-in-out; }
+  60.22% { translate: 42.87% 39.38%; animation-timing-function: ease-in-out; }
+  62.43% { translate: 41.48% 33.82%; animation-timing-function: linear; }
+  88.57% { translate: 5.12% 34.02%; animation-timing-function: ease-in-out; }
+  90.59% { translate: 3.60% 38.93%; animation-timing-function: ease-in-out; }
+  92.94% { translate: 3.27% 38.69%; animation-timing-function: ease-in-out; }
+  94.68% { translate: 3.07% 38.98%; animation-timing-function: ease-in-out; }
+  96.89% { translate: 1.68% 34.16%; animation-timing-function: linear; }
+  100.00% { translate: -2.65% 34.10%; animation-timing-function: linear; }
+}
+@keyframes bee-6 {
+  0% { translate: -2.65% 34.96%; animation-timing-function: linear; }
+  20.13% { translate: 24.78% 34.73%; animation-timing-function: ease-in-out; }
+  22.46% { translate: 26.30% 37.93%; animation-timing-function: ease-in-out; }
+  25.39% { translate: 26.63% 37.69%; animation-timing-function: ease-in-out; }
+  28.11% { translate: 26.83% 37.98%; animation-timing-function: ease-in-out; }
+  30.65% { translate: 28.22% 35.06%; animation-timing-function: linear; }
+  53.14% { translate: 58.88% 34.75%; animation-timing-function: ease-in-out; }
+  55.47% { translate: 60.40% 38.63%; animation-timing-function: ease-in-out; }
+  58.01% { translate: 60.73% 38.39%; animation-timing-function: ease-in-out; }
+  60.39% { translate: 60.93% 38.68%; animation-timing-function: ease-in-out; }
+  62.93% { translate: 62.32% 34.82%; animation-timing-function: linear; }
+  87.63% { translate: 95.98% 34.86%; animation-timing-function: ease-in-out; }
+  89.95% { translate: 97.50% 40.73%; animation-timing-function: ease-in-out; }
+  92.71% { translate: 97.83% 40.49%; animation-timing-function: ease-in-out; }
+  95.09% { translate: 98.03% 40.78%; animation-timing-function: ease-in-out; }
+  97.63% { translate: 99.42% 34.73%; animation-timing-function: linear; }
+  100.00% { translate: 102.65% 34.96%; animation-timing-function: linear; }
+}
+@keyframes bee-7 {
+  0% { translate: 102.65% 35.82%; animation-timing-function: linear; }
+  6.74% { translate: 92.92% 35.66%; animation-timing-function: ease-in-out; }
+  8.91% { translate: 91.40% 39.03%; animation-timing-function: ease-in-out; }
+  11.36% { translate: 91.07% 38.79%; animation-timing-function: ease-in-out; }
+  13.20% { translate: 90.87% 39.08%; animation-timing-function: ease-in-out; }
+  15.56% { translate: 89.48% 35.98%; animation-timing-function: linear; }
+  26.20% { translate: 74.12% 35.55%; animation-timing-function: ease-in-out; }
+  28.37% { translate: 72.60% 39.13%; animation-timing-function: ease-in-out; }
+  31.28% { translate: 72.27% 38.89%; animation-timing-function: ease-in-out; }
+  33.16% { translate: 72.07% 39.18%; animation-timing-function: ease-in-out; }
+  35.53% { translate: 70.68% 36.01%; animation-timing-function: linear; }
+  52.06% { translate: 46.82% 35.86%; animation-timing-function: ease-in-out; }
+  54.22% { translate: 45.30% 41.73%; animation-timing-function: ease-in-out; }
+  57.02% { translate: 44.97% 41.49%; animation-timing-function: ease-in-out; }
+  58.93% { translate: 44.77% 41.78%; animation-timing-function: ease-in-out; }
+  61.30% { translate: 43.38% 36.00%; animation-timing-function: linear; }
+  82.88% { translate: 12.22% 35.58%; animation-timing-function: ease-in-out; }
+  85.05% { translate: 10.70% 40.03%; animation-timing-function: ease-in-out; }
+  87.56% { translate: 10.37% 39.79%; animation-timing-function: ease-in-out; }
+  89.72% { translate: 10.17% 40.08%; animation-timing-function: ease-in-out; }
+  92.08% { translate: 8.78% 35.77%; animation-timing-function: linear; }
+  100.00% { translate: -2.65% 35.82%; animation-timing-function: linear; }
+}
+@keyframes bee-8 {
+  0% { translate: -2.65% 36.68%; animation-timing-function: linear; }
+  19.43% { translate: 24.78% 36.41%; animation-timing-function: ease-in-out; }
+  21.54% { translate: 26.30% 37.93%; animation-timing-function: ease-in-out; }
+  23.74% { translate: 26.63% 37.69%; animation-timing-function: ease-in-out; }
+  25.46% { translate: 26.83% 37.98%; animation-timing-function: ease-in-out; }
+  27.76% { translate: 28.22% 36.66%; animation-timing-function: linear; }
+  37.15% { translate: 41.48% 36.87%; animation-timing-function: ease-in-out; }
+  39.26% { translate: 43.00% 39.33%; animation-timing-function: ease-in-out; }
+  41.70% { translate: 43.33% 39.09%; animation-timing-function: ease-in-out; }
+  43.72% { translate: 43.53% 39.38%; animation-timing-function: ease-in-out; }
+  46.02% { translate: 44.92% 36.71%; animation-timing-function: linear; }
+  54.49% { translate: 56.88% 36.95%; animation-timing-function: ease-in-out; }
+  56.59% { translate: 58.40% 39.93%; animation-timing-function: ease-in-out; }
+  59.15% { translate: 58.73% 39.69%; animation-timing-function: ease-in-out; }
+  60.71% { translate: 58.93% 39.98%; animation-timing-function: ease-in-out; }
+  63.01% { translate: 60.32% 36.65%; animation-timing-function: linear; }
+  79.69% { translate: 83.88% 36.82%; animation-timing-function: ease-in-out; }
+  81.80% { translate: 85.40% 37.33%; animation-timing-function: ease-in-out; }
+  84.39% { translate: 85.73% 37.09%; animation-timing-function: ease-in-out; }
+  86.84% { translate: 85.93% 37.38%; animation-timing-function: ease-in-out; }
+  89.14% { translate: 87.32% 36.70%; animation-timing-function: linear; }
+  100.00% { translate: 102.65% 36.68%; animation-timing-function: linear; }
+}
+
+/* the leaf: the artwork's lens, with a short stem */
+:root { --leaf-shape: polygon(47.4% 91.6%,37.4% 88.4%,28.4% 83.7%,20.8% 79.0%,14.4% 74.4%,9.3% 69.8%,5.3% 65.1%,2.4% 60.5%,0.6% 55.8%,0% 51.2%,0.4% 46.5%,1.9% 41.9%,4.3% 37.2%,7.6% 32.6%,11.7% 27.9%,16.5% 23.2%,22.1% 18.6%,28.2% 14.0%,34.8% 9.3%,41.9% 4.7%,50% 0.0%,58.1% 4.7%,65.2% 9.3%,71.8% 14.0%,77.9% 18.6%,83.5% 23.2%,88.3% 27.9%,92.4% 32.6%,95.7% 37.2%,98.1% 41.9%,99.6% 46.5%,100% 51.2%,99.4% 55.8%,97.6% 60.5%,94.7% 65.1%,90.7% 69.8%,85.6% 74.4%,79.2% 79.0%,71.6% 83.7%,62.6% 88.4%,52.6% 91.6%,51.9% 100.0%,48.1% 100.0%); }

@@ -1,0 +1,79 @@
+{
+  "pass": true,
+  "exact_file_inventory": [
+    ".htaccess",
+    "assets/fonts/instrument-sans-latin-ext.c4fcfea41f2c.woff2",
+    "assets/fonts/instrument-sans-latin.2ee17598a98d.woff2",
+    "assets/fonts/instrumentsans-OFL.txt",
+    "assets/fonts/young-serif-latin-ext.9e6eb8e5e38f.woff2",
+    "assets/fonts/young-serif-latin.6ba68b9927ad.woff2",
+    "assets/fonts/youngserif-OFL.txt",
+    "css/heartwood-site.b665ff3c09c0.css",
+    "css/heartwood-site.b665ff3c09c0.css.br",
+    "css/heartwood-site.b665ff3c09c0.css.gz",
+    "index.html",
+    "index.html.br",
+    "index.html.gz",
+    "js/heartwood-site.246de01217fe.js",
+    "js/heartwood-site.246de01217fe.js.br",
+    "js/heartwood-site.246de01217fe.js.gz"
+  ],
+  "files_matching_hash_and_source": 16,
+  "local_references": [
+    {
+      "from": "index.html",
+      "url": "assets/fonts/instrument-sans-latin.2ee17598a98d.woff2",
+      "target": "assets/fonts/instrument-sans-latin.2ee17598a98d.woff2"
+    },
+    {
+      "from": "index.html",
+      "url": "assets/fonts/young-serif-latin.6ba68b9927ad.woff2",
+      "target": "assets/fonts/young-serif-latin.6ba68b9927ad.woff2"
+    },
+    {
+      "from": "index.html",
+      "url": "css/heartwood-site.b665ff3c09c0.css",
+      "target": "css/heartwood-site.b665ff3c09c0.css"
+    },
+    {
+      "from": "index.html",
+      "url": "js/heartwood-site.246de01217fe.js",
+      "target": "js/heartwood-site.246de01217fe.js"
+    },
+    {
+      "from": "css/heartwood-site.b665ff3c09c0.css",
+      "url": "../assets/fonts/instrument-sans-latin-ext.c4fcfea41f2c.woff2",
+      "target": "assets/fonts/instrument-sans-latin-ext.c4fcfea41f2c.woff2"
+    },
+    {
+      "from": "css/heartwood-site.b665ff3c09c0.css",
+      "url": "../assets/fonts/instrument-sans-latin.2ee17598a98d.woff2",
+      "target": "assets/fonts/instrument-sans-latin.2ee17598a98d.woff2"
+    },
+    {
+      "from": "css/heartwood-site.b665ff3c09c0.css",
+      "url": "../assets/fonts/young-serif-latin-ext.9e6eb8e5e38f.woff2",
+      "target": "assets/fonts/young-serif-latin-ext.9e6eb8e5e38f.woff2"
+    },
+    {
+      "from": "css/heartwood-site.b665ff3c09c0.css",
+      "url": "../assets/fonts/young-serif-latin.6ba68b9927ad.woff2",
+      "target": "assets/fonts/young-serif-latin.6ba68b9927ad.woff2"
+    }
+  ],
+  "external_references_unchanged_not_verified": [
+    "https://heartwood.org/about/council/index.html",
+    "https://heartwood.org/about/index.html",
+    "https://heartwood.org/blog/index.html",
+    "https://heartwood.org/heartbeat/",
+    "https://heartwood.org/safer-spaces/index.html",
+    "https://heartwood.org/support/donate/index.html",
+    "https://heartwood.org/support/individual/index.html",
+    "https://rss.com/podcasts/heartwood/",
+    "https://www.facebook.com/HeartwoodNetwork",
+    "https://www.youtube.com/@HeartwoodPodcast",
+    "mailto:info@heartwood.org"
+  ],
+  "compression_roundtrips": 6,
+  "entry_filename_dependencies": "none"
+}

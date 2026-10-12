@@ -1,0 +1,67 @@
+{
+  "core_before": {
+    "raw": 1015227,
+    "brotli": 168514
+  },
+  "core_after": {
+    "raw": 892098,
+    "brotli": 163474,
+    "gzip": 223070
+  },
+  "per_asset": {
+    "heartwood-site.html": {
+      "raw": 805886,
+      "gzip": 197100,
+      "brotli": 141201
+    },
+    "css/heartwood-site.b665ff3c09c0.css": {
+      "raw": 44815,
+      "gzip": 11117,
+      "brotli": 9723
+    },
+    "js/heartwood-site.246de01217fe.js": {
+      "raw": 41397,
+      "gzip": 14853,
+      "brotli": 12550
+    }
+  },
+  "delivery_tests": {
+    "passed": 9,
+    "failed": 0
+  },
+  "counts": {
+    "bees": [
+      9,
+      4
+    ],
+    "moving_bugs": [
+      26,
+      13
+    ],
+    "fossils": [
+      2,
+      1
+    ],
+    "physical_rocks": [
+      509,
+      254
+    ],
+    "rock_rendering_pieces": [
+      729,
+      359
+    ],
+    "source_elements": [
+      3919,
+      3248
+    ],
+    "tablet_eligible_rocks": [
+      318,
+      158
+    ],
+    "phone_eligible_rocks": [
+      241,
+      118
+    ]
+  },
+  "limits": "Responsive eligibility counts exclude text-collision clearance. Performance field results not measured. Hosting remains local."
+}

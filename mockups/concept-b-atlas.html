@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Heartwood | Concept B: Atlas</title>
+<meta name="description" content="Find the Heartwood member group defending the forest near you.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout concept: a topographic map sheet. The region is the navigation; purple marks what changed, as on a revised quad. */
+:root{
+  --sheet:#f6f7f1;       /* map paper */
+  --sheet-2:#eceee4;
+  --woodland:#cfe2b4;    /* woodland tint */
+  --woodland-2:#b4d093;
+  --forest:#2f5a2b;      /* deep green for type on tint */
+  --contour:#a5632a;     /* contour brown */
+  --water:#1f6fa8;       /* hydrography blue: links */
+  --revision:#8a2e8f;    /* photorevision purple: what is new */
+  --ink:#1b1d1a;
+  --soft:#565b52;
+  --rule:#c6cabb;
+  --display:"Barlow Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --body:"Barlow","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gutter:clamp(16px,4vw,44px);
+  --max:1260px;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--sheet);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--water);text-underline-offset:3px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--revision);outline-offset:2px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.collar{font:500 .72rem/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.eyebrow{font:600 .95rem/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--contour)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance}
+h2{font-weight:700;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1;text-transform:uppercase;letter-spacing:.005em}
+
+/* sheet collar + header */
+.top{border-bottom:1px solid var(--ink)}
+.top .wrap{display:flex;justify-content:space-between;gap:8px 20px;flex-wrap:wrap;padding-block:7px}
+header.main{border-bottom:3px double var(--ink);background:var(--sheet);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+header.main .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px 24px;flex-wrap:wrap;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font:700 1.7rem/1 var(--display);letter-spacing:.08em;text-transform:uppercase}
+.brand svg{width:30px;height:30px;flex:none}
+nav ul{display:flex;flex-wrap:wrap;gap:4px 20px;list-style:none;align-items:center}
+nav a{font:600 1.08rem/1 var(--display);letter-spacing:.07em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding-block:6px}
+nav a:hover{color:var(--water)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 1.08rem/1 var(--display);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:12px 18px;border:2px solid var(--ink);background:var(--ink);color:var(--sheet);cursor:pointer}
+.btn:hover{background:var(--forest);border-color:var(--forest)}
+.btn.line{background:transparent;color:var(--ink)}
+.btn.line:hover{background:var(--woodland);border-color:var(--ink)}
+nav .btn{padding:9px 14px;color:var(--sheet)}
+
+/* hero: map */
+.hero{position:relative;border-bottom:1px solid var(--ink);background:var(--sheet)}
+#contours{position:absolute;inset:0;width:100%;height:100%;opacity:.5;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(24px,4vw,56px);padding-block:clamp(32px,5vw,64px);align-items:start}
+.hero h1{font-weight:700;font-size:clamp(2.6rem,6.6vw,5.4rem);line-height:.93;text-transform:uppercase;margin:14px 0 18px}
+.hero h1 span{color:var(--forest)}
+.hero p.lede{font-size:1.15rem;max-width:44ch}
+.hero .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:32px;border-top:1px solid var(--ink)}
+.facts div{padding:12px 12px 0 0}
+.facts b{display:block;font:700 2.2rem/1 var(--display);font-variant-numeric:tabular-nums}
+.facts span{font:500 .72rem/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+
+.mapbox{background:var(--sheet);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--woodland-2)}
+.map-hd,.map-ft{display:flex;justify-content:space-between;gap:8px 16px;flex-wrap:wrap;padding:8px 12px}
+.map-hd{border-bottom:1px solid var(--ink)}
+.map-ft{border-top:1px solid var(--ink)}
+.tiles{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;padding:14px}
+.tile{aspect-ratio:1;border:1.5px dashed var(--rule);background:transparent;color:var(--soft);font:600 clamp(.72rem,1.7vw,1rem)/1 var(--display);letter-spacing:.06em;display:grid;place-items:center;min-width:0}
+button.tile{border:1.5px solid var(--forest);background:var(--woodland);color:var(--forest);cursor:pointer;transition:background .12s,transform .12s}
+button.tile:hover{background:var(--woodland-2);transform:translateY(-2px)}
+button.tile[aria-pressed="true"]{background:var(--forest);color:var(--sheet)}
+.readout{border-top:1px solid var(--ink);padding:14px;display:grid;gap:8px;min-height:176px;align-content:start}
+.readout h3{font-weight:700;font-size:1.7rem;line-height:1;text-transform:uppercase}
+.readout ul{list-style:none;display:grid;gap:4px}
+.readout li{display:flex;gap:10px;align-items:baseline}
+.readout li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--contour);flex:none;transform:translateY(-1px)}
+.readout .none{color:var(--soft)}
+.key{display:flex;gap:6px 16px;flex-wrap:wrap;align-items:center}
+.key i{display:inline-block;width:12px;height:12px;border:1.5px solid var(--forest);background:var(--woodland);margin-right:6px;vertical-align:-1px}
+.key i.out{border:1.5px dashed var(--rule);background:transparent}
+
+section{padding-block:clamp(48px,6.5vw,88px)}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 40px;align-items:end;margin-bottom:30px}
+.head p{color:var(--soft);max-width:52ch}
+.head .eyebrow{margin-bottom:10px;display:block}
+
+/* legend = campaigns */
+.legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--ink);border-left:1px solid var(--rule)}
+.legend a{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding:20px 18px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);transition:background .12s}
+.legend a:hover{background:var(--sheet-2)}
+.legend svg{width:44px;height:44px}
+.legend h3{font-weight:700;font-size:1.4rem;line-height:1.05;text-transform:uppercase;margin-bottom:6px}
+.legend p{font-size:.96rem;line-height:1.45;color:var(--soft)}
+
+/* forest watch band */
+.watch{background:var(--woodland);border-block:1px solid var(--ink)}
+.watch .cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.watch h2{color:var(--forest)}
+.watch blockquote{font:600 clamp(1.5rem,3vw,2.2rem)/1.1 var(--display);text-transform:uppercase;border-left:5px solid var(--forest);padding-left:16px;margin:20px 0}
+.tracks{list-style:none;border-top:2px solid var(--forest)}
+.tracks li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:11px 0;border-bottom:1px solid var(--forest);font:600 1.25rem/1.1 var(--display);letter-spacing:.03em;text-transform:uppercase;color:var(--forest)}
+.tracks span{font:500 .72rem/1.6 var(--mono);letter-spacing:.08em;color:var(--forest)}
+
+/* waypoints */
+.way{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.wp{border:2px solid var(--ink);display:grid;grid-template-columns:auto minmax(0,1fr)}
+.wp .pin{background:var(--ink);color:var(--sheet);padding:18px 14px;display:grid;align-content:start;justify-items:center;gap:4px;min-width:92px}
+.wp .pin b{font:700 2.6rem/1 var(--display)}
+.wp .pin span{font:500 .68rem/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-align:center}
+.wp .txt{padding:18px 20px;display:grid;gap:10px;align-content:start}
+.wp h3{font-weight:700;font-size:1.9rem;line-height:1;text-transform:uppercase}
+.wp p{font-size:.98rem;color:var(--soft)}
+.wp .coord{font:500 .74rem/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--contour)}
+
+/* revisions */
+.rev{background:var(--sheet-2);border-block:1px solid var(--ink)}
+.rev .eyebrow,.rev .tag{color:var(--revision)}
+.rev-list{border-top:2px solid var(--revision)}
+.rev-list article{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:10px 28px;padding:20px 0;border-bottom:1px solid var(--rule);align-items:start}
+.tag{font:500 .74rem/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.rev-list h3{font-weight:700;font-size:1.55rem;line-height:1.08;margin-bottom:6px}
+.rev-list p{font-size:.98rem;color:var(--soft);max-width:62ch}
+.rev-list .go{font:600 1.02rem/1.3 var(--display);letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}
+
+/* join */
+.levels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:2px solid var(--ink)}
+.levels a{padding:18px 14px;border-right:1px solid var(--ink);text-decoration:none;color:var(--ink);display:grid;gap:8px;align-content:space-between;min-height:132px;transition:background .12s}
+.levels a:last-child{border-right:0}
+.levels a:hover{background:var(--woodland)}
+.levels b{font:700 2.1rem/1 var(--display);font-variant-numeric:tabular-nums}
+.levels span{font:600 1.05rem/1.1 var(--display);letter-spacing:.05em;text-transform:uppercase}
+.join-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;align-items:center}
+.join-row p{color:var(--soft);margin-right:auto;max-width:58ch}
+
+footer{border-top:3px double var(--ink);padding-block:36px 24px}
+.ft{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:28px}
+footer h4{font:600 1rem/1 var(--display);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;color:var(--contour)}
+footer ul{list-style:none;display:grid;gap:6px;font-size:.98rem}
+footer a{color:var(--ink)}
+.scale{margin-top:14px;display:grid;gap:4px;max-width:260px}
+.scale i{display:block;height:8px;background:repeating-linear-gradient(90deg,var(--ink) 0 20%,transparent 20% 40%);border:1px solid var(--ink)}
+.end{margin-top:28px;padding-top:12px;border-top:1px solid var(--ink);display:flex;justify-content:space-between;gap:6px 20px;flex-wrap:wrap}
+
+@media (max-width:920px){
+  .hero .wrap,.head,.watch .cols,.way{grid-template-columns:minmax(0,1fr)}
+  .legend{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .levels{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .levels a{border-bottom:1px solid var(--ink)}
+  .levels a:nth-child(2n){border-right:0}
+  .levels a:last-child{grid-column:1/-1;border-bottom:0}
+  .rev-list article{grid-template-columns:minmax(0,1fr)}
+  .ft{grid-template-columns:repeat(2,minmax(0,1fr))}
+  header.main{position:static}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .legend{grid-template-columns:minmax(0,1fr)}
+  .tiles{gap:3px;padding:10px}
+  .facts b{font-size:1.7rem}
+  .ft{grid-template-columns:minmax(0,1fr)}
+  .mapbox{box-shadow:5px 5px 0 var(--woodland-2)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap collar">
+  <span>Heartwood Region &middot; Eastern United States</span>
+  <span>Edition of Fall 2026 &middot; Revisions shown in purple</span>
+</div></div>
+
+<header class="main"><div class="wrap">
+  <a class="brand" href="#top">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.5" fill="none" stroke="#1b1d1a" stroke-width="1.6"/><circle cx="16" cy="16" r="10" fill="none" stroke="#a5632a" stroke-width="1.3"/><circle cx="16" cy="16" r="5.8" fill="none" stroke="#a5632a" stroke-width="1.3"/><circle cx="16" cy="16" r="2.3" fill="#2f5a2b"/></svg>
+    Heartwood
+  </a>
+  <nav aria-label="Primary"><ul>
+    <li><a href="#map">Find a group</a></li>
+    <li><a href="#work">Our work</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a class="btn" href="#join">Join</a></li>
+  </ul></nav>
+</div></header>
+
+<main id="top">
+<div class="hero">
+  <canvas id="contours" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">People helping people protect the places they love</span>
+      <h1>Find the forest <span>you are fighting for.</span></h1>
+      <p class="lede">Heartwood links grassroots groups defending public forests from the Ozarks to the Appalachians. Pick your state to see who is already organizing near you.</p>
+      <div class="acts">
+        <a class="btn" href="#map">Pick a state</a>
+        <a class="btn line" href="#work">What we watch for</a>
+      </div>
+      <div class="facts">
+        <div><b>18</b><span>States in the region</span></div>
+        <div><b>106</b><span>Member organizations</span></div>
+        <div><b>1991</b><span>Year founded</span></div>
+      </div>
+    </div>
+
+    <div class="mapbox" id="map">
+      <div class="map-hd collar"><span>Index to member groups</span><span>Not to scale</span></div>
+      <div class="tiles" id="tiles" role="group" aria-label="States in the Heartwood region"></div>
+      <div class="readout" id="readout" aria-live="polite"></div>
+      <div class="map-ft collar">
+        <span class="key"><span><i></i>Heartwood region</span><span><i class="out"></i>Outside or unconfirmed</span></span>
+        <span>13 of 18 states shown</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="work"><div class="wrap">
+  <div class="head">
+    <div><span class="eyebrow">Map legend</span><h2>What you will find us working on</h2></div>
+    <p>Much of the eastern hardwood forest survives only as fragments of public land. Each symbol below is a threat our member groups track, and a campaign you can join.</p>
+  </div>
+  <div class="legend">
+    <a href="https://heartwood.org/campaigns/forestwatch/index.html">
+      <svg viewBox="0 0 44 44" aria-hidden="true"><rect x="1" y="1" width="42" height="42" fill="#cfe2b4" stroke="#1b1d1a"/><circle cx="16" cy="22" r="7" fill="none" stroke="#2f5a2b" stroke-width="2.5"/><circle cx="28" cy="22" r="7" fill="none" stroke="#2f5a2b" stroke-width="2.5"/></svg>
+      <div><h3>Forest Watch</h3><p>Keeping watch on National Forest land and acting when management does harm.</p></div></a>
+    <a href="https://heartwood.org/campaigns/fccc/index.html">
+      <svg viewBox="0 0 44 44" aria-hidden="true"><rect x="1" y="1" width="42" height="42" fill="#f6f7f1" stroke="#1b1d1a"/><path d="M4 32 Q14 14 22 24 T40 12" fill="none" stroke="#a5632a" stroke-width="2"/><path d="M4 38 Q14 22 22 31 T40 20" fill="none" stroke="#a5632a" stroke-width="2"/></svg>
+      <div><h3>Forest, Climate and Carbon</h3><p>Standing forests clean air and water and moderate the climate.</p></div></a>
+    <a href="https://heartwood.org/campaigns/oilgas/index.html">
+      <svg viewBox="0 0 44 44" aria-hidden="true"><rect x="1" y="1" width="42" height="42" fill="#f6f7f1" stroke="#1b1d1a"/><circle cx="22" cy="22" r="8" fill="none" stroke="#1b1d1a" stroke-width="2"/><path d="M22 8v28M8 22h28" stroke="#1b1d1a" stroke-width="2"/></svg>
+      <div><h3>Oil and Gas Drilling</h3><p>Tracking the industry's expansion onto public land.</p></div></a>
+    <a href="https://heartwood.org/campaigns/biomass/index.html">
+      <svg viewBox="0 0 44 44" aria-hidden="true"><rect x="1" y="1" width="42" height="42" fill="#f6f7f1" stroke="#1b1d1a"/><rect x="13" y="20" width="18" height="14" fill="#1b1d1a"/><rect x="24" y="10" width="5" height="12" fill="#1b1d1a"/></svg>
+      <div><h3>Biomass Incineration</h3><p>Opposing plants that burn forests for power.</p></div></a>
+    <a href="https://heartwood.org/campaigns/mountaintop/index.html">
+      <svg viewBox="0 0 44 44" aria-hidden="true"><rect x="1" y="1" width="42" height="42" fill="#f6f7f1" stroke="#1b1d1a"/><path d="M6 34 L16 16 H28 L38 34 Z" fill="none" stroke="#a5632a" stroke-width="2.2"/><path d="M12 12h20" stroke="#a5632a" stroke-width="2.2" stroke-dasharray="3 3"/></svg>
+      <div><h3>Mountaintop Removal</h3><p>Standing with communities working to end mountaintop removal coal mining.</p></div></a>
+    <a href="https://heartwood.org/campaigns/sustainable/index.html">
+      <svg viewBox="0 0 44 44" aria-hidden="true"><rect x="1" y="1" width="42" height="42" fill="#f6f7f1" stroke="#1b1d1a"/><rect x="10" y="20" width="9" height="9" fill="#1b1d1a"/><rect x="25" y="14" width="9" height="9" fill="#1b1d1a"/><rect x="22" y="28" width="7" height="7" fill="#1b1d1a"/></svg>
+      <div><h3>Sustainable Communities</h3><p>Building places that depend less on extraction and exploitation.</p></div></a>
+  </div>
+</div></section>
+
+<section class="watch"><div class="wrap cols">
+  <div>
+    <span class="eyebrow" style="color:var(--forest)">Forest Watch</span>
+    <h2>Somebody has to read the timber sale notices</h2>
+    <blockquote>No commercial logging on public lands.</blockquote>
+    <p>Heartwood was among the first organizations to say it publicly. Forest Watch is how we back it up: members watch what the Forest Service proposes, tell their neighbors, and take the agency to court when it breaks its own rules.</p>
+    <div class="acts" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px">
+      <a class="btn" href="https://heartwood.org/campaigns/forestwatch/index.html">How Forest Watch works</a>
+      <a class="btn line" href="https://heartwood.org/support/volunteer/index.html">Volunteer</a>
+    </div>
+  </div>
+  <div>
+    <span class="collar">What members track</span>
+    <ul class="tracks">
+      <li>Timber sales <span>Public land</span></li>
+      <li>Prescribed burns <span>Public land</span></li>
+      <li>Herbicide applications <span>Public land</span></li>
+      <li>Restoration projects <span>Public land</span></li>
+      <li>Oil and gas leases <span>Regional</span></li>
+      <li>Biomass plants <span>Regional</span></li>
+      <li>Mountaintop removal permits <span>Appalachia</span></li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="events"><div class="wrap">
+  <div class="head">
+    <div><span class="eyebrow">Waypoints</span><h2>Two fixed points on the calendar</h2></div>
+    <p>We gather twice a year to share skills, stories and songs. Both events are open to all, and work trade is always available to cover registration.</p>
+  </div>
+  <div class="way">
+    <article class="wp">
+      <div class="pin"><b>May</b><span>Memorial Day weekend</span></div>
+      <div class="txt">
+        <span class="coord">Moves each year &middot; hosted by a member group</span>
+        <h3>Forest Council</h3>
+        <p>Held every spring since 1991. The host group sets the agenda around what matters in its home bioregion, and the network shows up to help.</p>
+        <a href="https://heartwood.org/events/forest-council/">Next: May 29 to 31, 2027. Location to be announced</a>
+      </div>
+    </article>
+    <article class="wp">
+      <div class="pin"><b>Oct</b><span>Fall weekend</span></div>
+      <div class="txt">
+        <span class="coord">Lazy Black Bear &middot; Hoosier National Forest, Indiana</span>
+        <h3>Heartwood Reunion</h3>
+        <p>Held every fall since 1995 on the farm where Heartwood began as a conversation around a dinner table. Workshops, music, camping and vegan meals.</p>
+        <a href="https://heartwood.org/events/reunion/index.html">Reunion details and registration</a>
+      </div>
+    </article>
+  </div>
+</div></section>
+
+<section class="rev" id="news"><div class="wrap">
+  <div class="head">
+    <div><span class="eyebrow">Revisions</span><h2>What changed since the last edition</h2></div>
+    <p>On a revised map, purple marks what is new. Same here.</p>
+  </div>
+  <div class="rev-list">
+    <article>
+      <span class="tag">Fall 2026 &middot; Newsletter</span>
+      <div><h3>The fall Heartbeat is available</h3><p>Our twice-yearly newsletter, sent to every member group in the region. Members receive it in print. Submissions go to info@heartwood.org.</p></div>
+      <a class="go" href="https://heartwood.org/heartbeat/Fall-2026.pdf">Read the PDF</a>
+    </article>
+    <article>
+      <span class="tag">Podcast</span>
+      <div><h3>Heartwood Forest Protection Podcast</h3><p>Conversations with people who have dedicated their lives to protecting forests, and what you can do to make a difference.</p></div>
+      <a class="go" href="https://rss.com/podcasts/heartwood/">Listen</a>
+    </article>
+    <article>
+      <span class="tag">Sept 2024 &middot; Analysis</span>
+      <div><h3>The new rule implementing the National Environmental Policy Act</h3><p>A thorough analysis by Rocky Smith of what the rule means for public land decisions.</p></div>
+      <a class="go" href="https://heartwood.org/2024/9/NEPA/">Read it</a>
+    </article>
+  </div>
+</div></section>
+
+<section id="join"><div class="wrap">
+  <div class="head">
+    <div><span class="eyebrow">Membership</span><h2>Put yourself on the map</h2></div>
+    <p>Your membership supports every group in the network, from mini-grants of up to $500 to the action alerts we share across the region.</p>
+  </div>
+  <div class="levels">
+    <a href="https://heartwood.org/support/individual/index.html"><span>Individual</span><b>$25</b></a>
+    <a href="https://heartwood.org/support/individual/index.html"><span>Family</span><b>$50</b></a>
+    <a href="https://heartwood.org/support/group/index.html"><span>Frontline Organizations</span><b>$100</b></a>
+    <a href="https://heartwood.org/support/individual/index.html"><span>Ecosystem Patron</span><b>$500</b></a>
+    <a href="https://heartwood.org/support/individual/index.html"><span>Tree Hugger Extraordinaire</span><b>$1,000</b></a>
+  </div>
+  <div class="join-row">
+    <p>All levels are yearly. One-time and monthly gifts are welcome too.</p>
+    <a class="btn" href="https://heartwood.org/support/individual/index.html">Become a member</a>
+    <a class="btn line" href="https://heartwood.org/support/donate/index.html">Donate</a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="ft">
+    <div>
+      <a class="brand" href="#top">Heartwood</a>
+      <p style="margin-top:10px;max-width:34ch;color:var(--soft)">A regional network protecting forests and supporting community activism in the eastern United States.</p>
+      <div class="scale"><i></i><span class="collar">Ozarks to Appalachians</span></div>
+    </div>
+    <div><h4>About</h4><ul>
+      <li><a href="https://heartwood.org/about/index.html">Our story</a></li>
+      <li><a href="https://heartwood.org/about/council/index.html">Our Council</a></li>
+      <li><a href="https://heartwood.org/about/memorg/index.html">All member organizations</a></li>
+    </ul></div>
+    <div><h4>Take part</h4><ul>
+      <li><a href="https://heartwood.org/support/volunteer/index.html">Volunteer</a></li>
+      <li><a href="https://heartwood.org/minigrants/index.html">Mini-grants</a></li>
+      <li><a href="https://heartwood.org/safer-spaces/index.html">Safer Spaces</a></li>
+    </ul></div>
+    <div><h4>Contact</h4><ul>
+      <li>PO Box 352, Paoli, IN 47454</li>
+      <li>info@heartwood.org</li>
+      <li><a href="https://www.facebook.com/HeartwoodNetwork">Facebook</a></li>
+    </ul></div>
+  </div>
+  <div class="end collar"><span>&copy; Heartwood. All rights reserved.</span><span>Guided by the Jemez Principles</span></div>
+</div></footer>
+
+<script>
+(function(){
+  // Tile-grid index of the eastern US. [abbr, name, column, row]. Groups listed are drawn from Heartwood's member list.
+  var S=[
+    ["ME","Maine",7,1],["VT","Vermont",6,2],["NH","New Hampshire",7,2],
+    ["WI","Wisconsin",2,3],["MI","Michigan",3,3],["NY","New York",5,3],["MA","Massachusetts",6,3],
+    ["IA","Iowa",1,4],["IL","Illinois",2,4],["IN","Indiana",3,4],["OH","Ohio",4,4],["PA","Pennsylvania",5,4],["NJ","New Jersey",6,4],["CT","Connecticut",7,4],
+    ["MO","Missouri",1,5],["KY","Kentucky",2,5],["WV","West Virginia",3,5],["VA","Virginia",4,5],["MD","Maryland",5,5],["DE","Delaware",6,5],
+    ["AR","Arkansas",1,6],["TN","Tennessee",2,6],["NC","North Carolina",3,6],["SC","South Carolina",4,6],
+    ["LA","Louisiana",1,7],["MS","Mississippi",2,7],["AL","Alabama",3,7],["GA","Georgia",4,7]
+  ];
+  var G={
+    IN:["Indiana Forest Alliance","Hoosier Environmental Council","Hoosier Hikers Council","Valley Watch"],
+    IL:["Friends of Bellsmith Springs","Peace Coalition of Southern Illinois","Prairie Rivers Network","Shawnee Green Party"],
+    KY:["Kentucky Heartwood","Kentuckians for the Commonwealth","Kentucky Resources Council"],
+    TN:["Tennessee Heartwood","Tennessee Sierra Club","United Mountain Defense"],
+    OH:["Ohio Environmental Council","Buckeye Environmental Network","Southwest Ohio Green PAC"],
+    WV:["West Virginia Highlands Conservancy","West Virginia Environmental Council","Coal River Mountain Watch"],
+    VA:["Wild Virginia","Virginia Forest Watch","The Clinch Coalition"],
+    PA:["Allegheny Defense Project","Tree Pittsburgh","Sierra Club Allegheny Group","Sierra Club Moshannon Group"],
+    NC:["Western North Carolina Alliance","Dogwood Alliance"],
+    AR:["Protect Arkansas Wildlife","Newton County Wildlife Association"],
+    NY:["Adirondack Mountain Club"],
+    MI:[],MS:[]
+  };
+  var tiles=document.getElementById("tiles"),out=document.getElementById("readout"),btns={};
+  function esc(t){var d=document.createElement("div");d.textContent=t;return d.innerHTML}
+  function show(ab){
+    var st=S.filter(function(s){return s[0]===ab})[0],list=G[ab];
+    Object.keys(btns).forEach(function(k){btns[k].setAttribute("aria-pressed",k===ab?"true":"false")});
+    var h='<span class="collar">Member groups in</span><h3>'+esc(st[1])+'</h3>';
+    if(list.length){h+='<ul>'+list.map(function(g){return '<li>'+esc(g)+'</li>'}).join('')+'</ul>'}
+    else{h+='<p class="none">No member group listed here yet. If you are defending a forest in '+esc(st[1])+', a Frontline Organization membership is $100 a year.</p>'}
+    h+='<a href="https://heartwood.org/about/memorg/index.html">See all 106 member organizations</a>';
+    out.innerHTML=h;
+  }
+  S.forEach(function(s){
+    var el=document.createElement(G[s[0]]?"button":"div");
+    el.className="tile";el.textContent=s[0];el.style.gridColumn=s[2];el.style.gridRow=s[3];
+    if(G[s[0]]){el.type="button";el.setAttribute("aria-label",s[1]);el.setAttribute("aria-pressed","false");el.addEventListener("click",function(){show(s[0])});btns[s[0]]=el}
+    else{el.setAttribute("aria-hidden","true")}
+    tiles.appendChild(el);
+  });
+  show("IN");
+
+  // Contour lines behind the hero: level sets of a few summed sine hills, drawn once.
+  var c=document.getElementById("contours");
+  function draw(){
+    var r=c.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);
+    if(!r.width)return;
+    c.width=r.width*d;c.height=r.height*d;
+    var x=c.getContext("2d");x.scale(d,d);x.strokeStyle="#a5632a";x.lineWidth=.8;
+    var W=r.width,H=r.height,step=8;
+    function f(px,py){var u=px/260,v=py/260;return Math.sin(u*1.3+v*.6)+Math.cos(v*1.7-u*.4)+.6*Math.sin((u+v)*2.1)+.4*Math.cos(u*3.1-v*1.2)}
+    for(var L=-2.4;L<=2.4;L+=.3){
+      x.globalAlpha=(Math.round(L/.3)%4===0)?.55:.28;
+      x.beginPath();
+      for(var py=0;py<H;py+=step){for(var px=0;px<W;px+=step){
+        var a=f(px,py)-L,b=f(px+step,py)-L,e=f(px,py+step)-L,g=f(px+step,py+step)-L,p=[];
+        if(a*b<0)p.push([px+step*a/(a-b),py]);
+        if(e*g<0)p.push([px+step*e/(e-g),py+step]);
+        if(a*e<0)p.push([px,py+step*a/(a-e)]);
+        if(b*g<0)p.push([px+step,py+step*b/(b-g)]);
+        if(p.length>=2){x.moveTo(p[0][0],p[0][1]);x.lineTo(p[1][0],p[1][1])}
+      }}
+      x.stroke();
+    }
+  }
+  draw();
+  var t;window.addEventListener("resize",function(){clearTimeout(t);t=setTimeout(draw,150)});
+})();
+</script>
+</body>
+</html>

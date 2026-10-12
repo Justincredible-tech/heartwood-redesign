@@ -1,0 +1,229 @@
+{
+  "samplesPerDevice": 3,
+  "rows": [
+    {
+      "device": "desktop",
+      "metric": "DOMContentLoaded median ms",
+      "before": 424.10000002384186,
+      "after": 221.10000002384186,
+      "changePercent": -47.8660693205819
+    },
+    {
+      "device": "desktop",
+      "metric": "load event median ms",
+      "before": 426,
+      "after": 224.70000004768372,
+      "changePercent": -47.2535211155672
+    },
+    {
+      "device": "desktop",
+      "metric": "cold TaskDuration median ms",
+      "before": 364.243,
+      "after": 229.555,
+      "changePercent": -36.97751226516364
+    },
+    {
+      "device": "desktop",
+      "metric": "cold ScriptDuration median ms",
+      "before": 30.998,
+      "after": 16.352999999999998,
+      "changePercent": -47.24498354732564
+    },
+    {
+      "device": "desktop",
+      "metric": "cold LayoutDuration median ms",
+      "before": 32.686,
+      "after": 26.101,
+      "changePercent": -20.146239980419754
+    },
+    {
+      "device": "desktop",
+      "metric": "cold RecalcStyleDuration median ms",
+      "before": 90.534,
+      "after": 76.8,
+      "changePercent": -15.16999138445226
+    },
+    {
+      "device": "desktop",
+      "metric": "top taskMsPerSecond",
+      "before": 13.24606374908662,
+      "after": 538.7512714391805,
+      "changePercent": 3967.2556137768106
+    },
+    {
+      "device": "desktop",
+      "metric": "top styleMsPerSecond",
+      "before": 0.902697651787374,
+      "after": 1.9242728475618722,
+      "changePercent": 113.16914292972209
+    },
+    {
+      "device": "desktop",
+      "metric": "top scriptMsPerSecond",
+      "before": 0.2973747754790072,
+      "after": 0.5441456255002078,
+      "changePercent": 82.98311436257683
+    },
+    {
+      "device": "desktop",
+      "metric": "top animations",
+      "before": 126,
+      "after": 122,
+      "changePercent": -3.1746031746031744
+    },
+    {
+      "device": "desktop",
+      "metric": "about taskMsPerSecond",
+      "before": 27.816587581836302,
+      "after": 284.43148722973433,
+      "changePercent": 922.5247305872365
+    },
+    {
+      "device": "desktop",
+      "metric": "about styleMsPerSecond",
+      "before": 1.5319222388116096,
+      "after": 38.39100296693841,
+      "changePercent": 2406.0673443007313
+    },
+    {
+      "device": "desktop",
+      "metric": "about scriptMsPerSecond",
+      "before": 0.33559553270607595,
+      "after": 3.0709088099396156,
+      "changePercent": 815.062481665751
+    },
+    {
+      "device": "desktop",
+      "metric": "about animations",
+      "before": 127,
+      "after": 126,
+      "changePercent": -0.7874015748031497
+    },
+    {
+      "device": "desktop",
+      "metric": "network taskMsPerSecond",
+      "before": 16.674330091413637,
+      "after": 245.28906065575927,
+      "changePercent": 1371.0579634144922
+    },
+    {
+      "device": "desktop",
+      "metric": "network styleMsPerSecond",
+      "before": 0.683243753596625,
+      "after": 10.182429831254908,
+      "changePercent": 1390.3070503980684
+    },
+    {
+      "device": "desktop",
+      "metric": "network scriptMsPerSecond",
+      "before": 0.22045468032108656,
+      "after": 3.0881383433316127,
+      "changePercent": 1300.8041647534171
+    },
+    {
+      "device": "desktop",
+      "metric": "network animations",
+      "before": 126,
+      "after": 0,
+      "changePercent": -100.0
+    },
+    {
+      "device": "mobile",
+      "metric": "DOMContentLoaded median ms",
+      "before": 332.89999997615814,
+      "after": 230.20000004768372,
+      "changePercent": -30.850105117401522
+    },
+    {
+      "device": "mobile",
+      "metric": "load event median ms",
+      "before": 376.1999999284744,
+      "after": 238.70000004768372,
+      "changePercent": -36.54970757760051
+    },
+    {
+      "device": "mobile",
+      "metric": "cold TaskDuration median ms",
+      "before": 297.399,
+      "after": 242.261,
+      "changePercent": -18.54007579043642
+    },
+    {
+      "device": "mobile",
+      "metric": "cold ScriptDuration median ms",
+      "before": 32.218999999999994,
+      "after": 20.367,
+      "changePercent": -36.78574754027125
+    },
+    {
+      "device": "mobile",
+      "metric": "cold LayoutDuration median ms",
+      "before": 38.284,
+      "after": 26.612000000000002,
+      "changePercent": -30.487932295475915
+    },
+    {
+      "device": "mobile",
+      "metric": "cold RecalcStyleDuration median ms",
+      "before": 84.427,
+      "after": 75.762,
+      "changePercent": -10.26330439314438
+    },
+    {
+      "device": "mobile",
+      "metric": "about taskMsPerSecond",
+      "before": 0.37096910300772995,
+      "after": 56.405336944452955,
+      "changePercent": 15104.861129170002
+    },
+    {
+      "device": "mobile",
+      "metric": "about styleMsPerSecond",
+      "before": 0,
+      "after": 8.68334989025135,
+      "changePercent": null
+    },
+    {
+      "device": "mobile",
+      "metric": "about scriptMsPerSecond",
+      "before": 0.15057175902633982,
+      "after": 0.5598100753232926,
+      "changePercent": 271.7895566494405
+    },
+    {
+      "device": "mobile",
+      "metric": "about animations",
+      "before": 119,
+      "after": 115,
+      "changePercent": -3.361344537815126
+    },
+    {
+      "device": "mobile",
+      "metric": "network taskMsPerSecond",
+      "before": 15.82182386207649,
+      "after": 150.39095807884192,
+      "changePercent": 850.5285824810358
+    },
+    {
+      "device": "mobile",
+      "metric": "network styleMsPerSecond",
+      "before": 0.6541125292533367,
+      "after": 21.619668802479957,
+      "changePercent": 3205.191054383044
+    },
+    {
+      "device": "mobile",
+      "metric": "network scriptMsPerSecond",
+      "before": 0.22600235028996593,
+      "after": 3.002097096957884,
+      "changePercent": 1228.3477331568138
+    },
+    {
+      "device": "mobile",
+      "metric": "network animations",
+      "before": 326,
+      "after": 0,
+      "changePercent": -100.0
+    }
+  ]
+}

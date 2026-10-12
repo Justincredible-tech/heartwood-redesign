@@ -1,0 +1,60 @@
+{
+  "before": {
+    "desktop": {
+      "aboutHeaderMargin": "48px",
+      "gap": 48,
+      "heading": {
+        "bottom": -4621.390625,
+        "top": -4682.859375
+      },
+      "introTop": -4573.390625,
+      "rootFont": "16px",
+      "width": 1440,
+      "workHeaderMargin": "48px"
+    },
+    "mobile": {
+      "aboutHeaderMargin": "28px",
+      "gap": 28,
+      "heading": {
+        "bottom": 357.453125,
+        "top": 319.15625
+      },
+      "introTop": 385.453125,
+      "rootFont": "16px",
+      "width": 390,
+      "workHeaderMargin": "28px"
+    }
+  },
+  "after": {
+    "mobile": {
+      "aboutHeaderMargin": "20px",
+      "gap": 20,
+      "heading": {
+        "bottom": 219.453125,
+        "top": 181.15625
+      },
+      "introTop": 239.453125,
+      "rootFont": "16px",
+      "width": 390,
+      "workHeaderMargin": "28px"
+    },
+    "desktop": {
+      "aboutHeaderMargin": "32px",
+      "gap": 32,
+      "heading": {
+        "bottom": 148.609375,
+        "top": 87.140625
+      },
+      "introTop": 180.609375,
+      "rootFont": "16px",
+      "width": 1440,
+      "workHeaderMargin": "48px"
+    }
+  },
+  "status": "PASS",
+  "notes": [
+    "Initial postbuild reload used an old loaded stylesheet. CDP matched-rule inspection confirmed it; enabling Network diagnostics plus temporary cache disable and reload loaded the updated CSS. Cache behavior was restored afterward.",
+    "Measured gap is introduction element top minus heading element bottom; scroll position affects recorded coordinates but not that gap.",
+    "No full regression suite or launch-path test needed for this section-specific margin change."
+  ]
+}

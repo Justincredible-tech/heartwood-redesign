@@ -1,0 +1,9 @@
+{
+  "minified_css_only_targeted_changes": true,
+  "baselineBytes": 51965,
+  "finalBytes": 44815,
+  "font_tree_and_text_rules_unchanged": true,
+  "clearType_targets_only_stone_children": true,
+  "source_to_paint_regression_found": false,
+  "browser_visual_acceptance": "PENDING - quality comparing settled repaint and baseline environment"
+}

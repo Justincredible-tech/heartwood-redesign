@@ -1,0 +1,874 @@
+{
+  "before": {
+    "desktop": {
+      "width": 1440,
+      "height": 900,
+      "url": "http://127.0.0.1:8001/heartwood-site.html",
+      "bees": 9,
+      "bugs": 26,
+      "critters": 2,
+      "stones": 729,
+      "soilClasses": [
+        "mark",
+        "ico",
+        "mark",
+        "mark",
+        "mark",
+        "ico"
+      ],
+      "gap": 32,
+      "logos": [],
+      "animations": 306,
+      "scrollWidth": 1425
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "url": "http://127.0.0.1:8001/heartwood-site.html#top",
+      "bees": 9,
+      "bugs": 26,
+      "critters": 2,
+      "stones": 729,
+      "soilClasses": [
+        "mark",
+        "ico",
+        "mark",
+        "mark",
+        "mark",
+        "ico"
+      ],
+      "gap": 20,
+      "logos": [],
+      "animations": 0,
+      "scrollWidth": 375
+    }
+  },
+  "after": {
+    "desktop": {
+      "width": 1440,
+      "height": 900,
+      "url": "http://127.0.0.1:8001/heartwood-site.html",
+      "bees": 4,
+      "bugs": 13,
+      "critters": 1,
+      "stones": 359,
+      "soilClasses": [
+        "mark",
+        "ico",
+        "mark",
+        "mark",
+        "mark",
+        "ico"
+      ],
+      "gap": 32,
+      "logos": [],
+      "animations": 282,
+      "scrollWidth": 1425
+    },
+    "fingerprint": [
+      "http://127.0.0.1:8001/css/heartwood-site.b665ff3c09c0.css",
+      "http://127.0.0.1:8001/js/heartwood-site.246de01217fe.js"
+    ],
+    "desktopAbout": {
+      "gap": 32,
+      "headTop": 184.359375,
+      "headerBottom": 80
+    },
+    "desktopPause": {
+      "running": 0,
+      "stagePaused": true,
+      "visible": "visible"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "url": "http://127.0.0.1:8001/heartwood-site.html#top",
+      "bees": 4,
+      "bugs": 13,
+      "critters": 1,
+      "stones": 359,
+      "soilClasses": [
+        "mark",
+        "ico",
+        "mark",
+        "mark",
+        "mark",
+        "ico"
+      ],
+      "gap": 20,
+      "logos": [],
+      "animations": 0,
+      "scrollWidth": 375
+    },
+    "mobileAbout": {
+      "gap": 20,
+      "headTop": 140.375,
+      "headerBottom": 80
+    },
+    "mobilePause": {
+      "running": 0,
+      "stagePaused": true,
+      "visible": "visible"
+    },
+    "leafOpen": {
+      "hidden": false,
+      "title": "Heartbeat, Spring 2026",
+      "inert": true,
+      "focus": "×"
+    },
+    "leafClose": {
+      "hidden": true,
+      "inert": false,
+      "focus": "126",
+      "label": "News: Heartbeat, Spring 2026"
+    },
+    "mobileReduced": {
+      "width": 390,
+      "running": 0,
+      "reduced": true
+    },
+    "desktopReduced": {
+      "width": 1440,
+      "running": 0,
+      "reduced": true
+    },
+    "console": [],
+    "fonts": {
+      "status": "loaded",
+      "fontFaces": [
+        {
+          "family": "Instrument Sans",
+          "status": "unloaded"
+        },
+        {
+          "family": "Instrument Sans",
+          "status": "loaded"
+        },
+        {
+          "family": "Young Serif",
+          "status": "unloaded"
+        },
+        {
+          "family": "Young Serif",
+          "status": "loaded"
+        }
+      ],
+      "aboutText": "Heartwood is a regional network that protects forests and supports community activism in the eastern United States through education, advocacy, and citizen empowerment."
+    },
+    "normalTop": {
+      "running": 76,
+      "stagePaused": false,
+      "scrollY": 0,
+      "leafCount": 149,
+      "leavesOpaque": 149
+    },
+    "logoRefs": {
+      "width": 1440,
+      "scrollWidth": 1425,
+      "header": [
+        {
+          "class": "brand",
+          "x": 48,
+          "y": 8,
+          "width": 217.09375,
+          "height": 64,
+          "right": 265.09375
+        },
+        {
+          "class": {},
+          "x": 73.734375,
+          "y": 8,
+          "width": 191.359375,
+          "height": 64,
+          "right": 265.09375
+        },
+        {
+          "class": "btn top__menu",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0
+        }
+      ],
+      "refs": [
+        {
+          "href": "#hw-logo",
+          "context": "brand",
+          "width": 191.359375,
+          "height": 64,
+          "color": "rgb(32, 36, 31)",
+          "bbox": {
+            "x": 14.284771919250488,
+            "y": 12.111185073852539,
+            "width": 163.18585205078125,
+            "height": 39.88042449951172
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgba(242, 234, 212, 0.78)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgba(242, 234, 212, 0.78)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgb(61, 74, 64)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgb(61, 74, 64)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgba(242, 234, 212, 0.78)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "net__hub",
+          "width": 111.96875,
+          "height": 111.96875,
+          "color": "rgb(32, 36, 31)",
+          "bbox": {
+            "x": 5.929543495178223,
+            "y": 2.6287169456481934,
+            "width": 100.10809326171875,
+            "height": 106.73358154296875
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgba(242, 234, 212, 0.78)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-logo",
+          "context": "brand",
+          "width": 229.625,
+          "height": 76.796875,
+          "color": "rgb(242, 234, 212)",
+          "bbox": {
+            "x": 17.141260147094727,
+            "y": 14.532509803771973,
+            "width": 195.81768798828125,
+            "height": 47.85520935058594
+          }
+        }
+      ]
+    },
+    "limitNotes": [
+      "Early after top/About/Network captures show entrance, smoothscroll or incomplete paint; use settled named captures. Exact screenshot paint cause not established.",
+      "Before-mobile-top screenshot is midscroll Gatherings/News and not a top comparison; final mobile top captured at scrollY0.",
+      "No pixel identity, field performance, actual hidden-tab state, direct-file launch, Astelier, full accessibility audit or human production approval."
+    ]
+  },
+  "logoFollowup": {
+    "mobile": {
+      "width": 390,
+      "scrollWidth": 375,
+      "header": [
+        {
+          "class": "brand",
+          "x": 16,
+          "y": 8,
+          "width": 217.09375,
+          "height": 64,
+          "right": 233.09375
+        },
+        {
+          "class": {},
+          "x": 41.734375,
+          "y": 8,
+          "width": 191.359375,
+          "height": 64,
+          "right": 233.09375
+        },
+        {
+          "class": "btn top__menu",
+          "x": 283.359375,
+          "y": 20.25,
+          "width": 75.640625,
+          "height": 39.484375,
+          "right": 359
+        }
+      ],
+      "refs": [
+        {
+          "href": "#hw-logo",
+          "context": "brand",
+          "width": 191.359375,
+          "height": 64,
+          "color": "rgb(32, 36, 31)",
+          "bbox": {
+            "x": 14.284771919250488,
+            "y": 12.111185073852539,
+            "width": 163.18585205078125,
+            "height": 39.88042449951172
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgba(242, 234, 212, 0.78)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgba(242, 234, 212, 0.78)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgb(61, 74, 64)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgb(61, 74, 64)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgba(242, 234, 212, 0.78)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "net__hub",
+          "width": 71.53125,
+          "height": 71.53125,
+          "color": "rgb(32, 36, 31)",
+          "bbox": {
+            "x": 3.7880897521972656,
+            "y": 1.6793562173843384,
+            "width": 63.95406723022461,
+            "height": 68.18675994873047
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgba(242, 234, 212, 0.78)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-logo",
+          "context": "brand",
+          "width": 229.625,
+          "height": 76.796875,
+          "color": "rgb(242, 234, 212)",
+          "bbox": {
+            "x": 17.141260147094727,
+            "y": 14.532509803771973,
+            "width": 195.81768798828125,
+            "height": 47.85520935058594
+          }
+        }
+      ]
+    },
+    "narrow": {
+      "width": 320,
+      "scrollWidth": 305,
+      "header": [
+        {
+          "class": "brand",
+          "x": 16,
+          "y": 12,
+          "width": 193.171875,
+          "height": 56,
+          "right": 209.171875
+        },
+        {
+          "class": {},
+          "x": 41.734375,
+          "y": 12,
+          "width": 167.4375,
+          "height": 56,
+          "right": 209.171875
+        },
+        {
+          "class": "btn top__menu",
+          "x": 225.171875,
+          "y": 20.25,
+          "width": 75.640625,
+          "height": 39.484375,
+          "right": 300.8125
+        }
+      ],
+      "refs": [
+        {
+          "href": "#hw-logo",
+          "context": "brand",
+          "width": 167.4375,
+          "height": 56,
+          "color": "rgb(32, 36, 31)",
+          "bbox": {
+            "x": 12.499030113220215,
+            "y": 10.597490310668945,
+            "width": 142.7859649658203,
+            "height": 34.89496612548828
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgba(242, 234, 212, 0.78)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgba(242, 234, 212, 0.78)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgb(61, 74, 64)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgb(61, 74, 64)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgba(242, 234, 212, 0.78)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "net__hub",
+          "width": 71.53125,
+          "height": 71.53125,
+          "color": "rgb(32, 36, 31)",
+          "bbox": {
+            "x": 3.7880897521972656,
+            "y": 1.6793562173843384,
+            "width": 63.95406723022461,
+            "height": 68.18675994873047
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgba(242, 234, 212, 0.78)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-logo",
+          "context": "brand",
+          "width": 229.625,
+          "height": 76.796875,
+          "color": "rgb(242, 234, 212)",
+          "bbox": {
+            "x": 17.141260147094727,
+            "y": 14.532509803771973,
+            "width": 195.81768798828125,
+            "height": 47.85520935058594
+          }
+        }
+      ]
+    },
+    "footer800": {
+      "width": 800,
+      "scrollWidth": 785,
+      "footer": [
+        {
+          "class": "",
+          "left": 32,
+          "right": 753,
+          "top": 239.234375,
+          "width": 721
+        },
+        {
+          "class": "",
+          "left": 32,
+          "right": 376.5,
+          "top": 502.515625,
+          "width": 344.5
+        },
+        {
+          "class": "",
+          "left": 408.5,
+          "right": 753,
+          "top": 502.515625,
+          "width": 344.5
+        },
+        {
+          "class": "",
+          "left": 32,
+          "right": 376.5,
+          "top": 695.609375,
+          "width": 344.5
+        }
+      ],
+      "footerColumns": "344.5px 344.5px"
+    },
+    "footer801": {
+      "width": 801,
+      "scrollWidth": 786,
+      "footer": [
+        {
+          "class": "",
+          "left": 32.03125,
+          "right": 249.703125,
+          "top": 646.875,
+          "width": 217.671875
+        },
+        {
+          "class": "",
+          "left": 281.734375,
+          "right": 417.796875,
+          "top": 646.875,
+          "width": 136.0625
+        },
+        {
+          "class": "",
+          "left": 449.828125,
+          "right": 585.875,
+          "top": 646.875,
+          "width": 136.046875
+        },
+        {
+          "class": "",
+          "left": 617.90625,
+          "right": 753.96875,
+          "top": 646.875,
+          "width": 136.0625
+        }
+      ],
+      "footerColumns": "217.672px 136.062px 136.047px 136.062px"
+    },
+    "desktop": {
+      "width": 1440,
+      "scrollWidth": 1425,
+      "header": [
+        {
+          "class": "brand",
+          "x": 48,
+          "y": 8,
+          "width": 217.09375,
+          "height": 64,
+          "right": 265.09375
+        },
+        {
+          "class": {},
+          "x": 73.734375,
+          "y": 8,
+          "width": 191.359375,
+          "height": 64,
+          "right": 265.09375
+        },
+        {
+          "class": "btn top__menu",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0
+        }
+      ],
+      "refs": [
+        {
+          "href": "#hw-logo",
+          "context": "brand",
+          "width": 191.359375,
+          "height": 64,
+          "color": "rgb(32, 36, 31)",
+          "bbox": {
+            "x": 14.284771919250488,
+            "y": 12.111185073852539,
+            "width": 163.18585205078125,
+            "height": 39.88042449951172
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgba(242, 234, 212, 0.78)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgba(242, 234, 212, 0.78)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgb(61, 74, 64)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgb(61, 74, 64)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgba(242, 234, 212, 0.78)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "net__hub",
+          "width": 111.96875,
+          "height": 111.96875,
+          "color": "rgb(32, 36, 31)",
+          "bbox": {
+            "x": 5.929543495178223,
+            "y": 2.6287169456481934,
+            "width": 100.10809326171875,
+            "height": 106.73358154296875
+          }
+        },
+        {
+          "href": "#hw-mark",
+          "context": "horizon",
+          "width": 38.390625,
+          "height": 38.390625,
+          "color": "rgba(242, 234, 212, 0.78)",
+          "bbox": {
+            "x": 2.03305721282959,
+            "y": 0.9013058543205261,
+            "width": 34.323970794677734,
+            "height": 36.595645904541016
+          }
+        },
+        {
+          "href": "#hw-logo",
+          "context": "brand",
+          "width": 229.625,
+          "height": 76.796875,
+          "color": "rgb(242, 234, 212)",
+          "bbox": {
+            "x": 17.141260147094727,
+            "y": 14.532509803771973,
+            "width": 195.81768798828125,
+            "height": 47.85520935058594
+          }
+        }
+      ]
+    },
+    "footerMobile": {
+      "width": 390,
+      "scrollWidth": 375,
+      "footer": [
+        {
+          "class": "",
+          "left": 16,
+          "right": 359,
+          "top": 243.84375,
+          "width": 343
+        },
+        {
+          "class": "",
+          "left": 16,
+          "right": 175.5,
+          "top": 507.125,
+          "width": 159.5
+        },
+        {
+          "class": "",
+          "left": 199.5,
+          "right": 359,
+          "top": 507.125,
+          "width": 159.5
+        },
+        {
+          "class": "",
+          "left": 16,
+          "right": 175.5,
+          "top": 722.53125,
+          "width": 159.5
+        }
+      ],
+      "footerColumns": "159.5px 159.5px"
+    }
+  }
+}

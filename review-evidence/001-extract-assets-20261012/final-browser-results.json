@@ -1,0 +1,150 @@
+{
+  "desktop": {
+    "counts": {
+      "cards": 20,
+      "chips": 7,
+      "groups": 106,
+      "leaves": 149
+    },
+    "cardDialog": {
+      "focus": "dialog-close",
+      "hidden": false,
+      "links": [
+        {
+          "href": "https://heartwood.org/campaigns/forestwatch/index.html",
+          "rel": "noopener",
+          "target": "_blank"
+        }
+      ],
+      "title": "Forest Watch"
+    },
+    "focusTrapped": true,
+    "logs": [],
+    "cardClose": {
+      "activeItem": "forest-watch",
+      "hidden": true
+    },
+    "leafDialog": {
+      "focus": "dialog-close",
+      "hidden": false,
+      "inertAttributes": [
+        true,
+        true
+      ],
+      "title": "Heartbeat, Spring 2026"
+    },
+    "leafClose": {
+      "hidden": true,
+      "item": "heartbeat-spring-2026"
+    },
+    "filter": {
+      "lit": 7,
+      "pressed": "true"
+    },
+    "search": {
+      "hits": 6,
+      "tally": "6 of 106 member groups",
+      "visible": [
+        "Bluegrass Group Sierra Club",
+        "Sierra Club Allegheny Group",
+        "Sierra Club, Cherokee Group",
+        "Sierra Club, Moshannon Group",
+        "Tennessee Sierra Club",
+        "The Cumberland Chapter Sierra Club"
+      ]
+    },
+    "groupDialog": {
+      "hidden": false,
+      "title": "Bluegrass Group Sierra Club"
+    },
+    "groupClose": {
+      "activeItem": "group-bluegrass-group-sierra-club",
+      "hidden": true
+    },
+    "emptySearch": "0 of 106 member groups",
+    "resetSearch": "106 member groups"
+  },
+  "network": {
+    "cursor": 198,
+    "events": [],
+    "hasMore": false,
+    "truncated": true
+  },
+  "networkSummary": [],
+  "mobile": {
+    "navigation": "http://127.0.0.1:8000/heartwood-site.html#work",
+    "menuExpanded": "false",
+    "cardDialog": {
+      "focus": "dialog-close",
+      "hidden": false,
+      "inert": [
+        true,
+        true
+      ],
+      "title": "Forest Watch"
+    },
+    "cardClose": {
+      "activeItem": "forest-watch",
+      "hidden": true
+    },
+    "leafDialog": {
+      "focus": "dialog-close",
+      "hidden": false,
+      "title": "Heartbeat, Spring 2026"
+    },
+    "leafClose": {
+      "activeItem": "heartbeat-spring-2026",
+      "hidden": true
+    },
+    "search": {
+      "hits": 6,
+      "tally": "6 of 106 member groups",
+      "visible": [
+        "Bluegrass Group Sierra Club",
+        "Sierra Club Allegheny Group",
+        "Sierra Club, Cherokee Group",
+        "Sierra Club, Moshannon Group",
+        "Tennessee Sierra Club",
+        "The Cumberland Chapter Sierra Club"
+      ]
+    },
+    "groupDialog": {
+      "hidden": false,
+      "title": "Bluegrass Group Sierra Club"
+    },
+    "logs": [],
+    "groupClose": {
+      "activeItem": "group-bluegrass-group-sierra-club",
+      "hidden": true
+    },
+    "emptySearch": "0 of 106 member groups",
+    "resetSearch": "106 member groups"
+  },
+  "reducedMotion": {
+    "animation": "none",
+    "transition": "0.28s, 0.28s, 0.28s"
+  },
+  "finalAssets": {
+    "scripts": [
+      "js/heartwood-site.js"
+    ],
+    "styles": [
+      "https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400..700&display=swap",
+      "css/heartwood-site.css"
+    ]
+  },
+  "finalConsole": [],
+  "notes": [
+    "Cua read-only property e.inert returned false; actual inert attributes independently observed true on both data-page elements during leaf/mobile card dialogs. Attribute evidence is authoritative.",
+    "Network event read returned truncated=true and no retained events; final network event availability NOT RUN. Separate direct public URL requests and prechange browser resource events are recorded separately.",
+    "Direct-file final UI blocked by browser URL policy; no bypass attempted."
+  ],
+  "directFile": {
+    "status": "NOT RUN",
+    "reason": "Browser URL policy only allows http/https and rejects file:// navigation."
+  },
+  "astelier": {
+    "status": "NOT RUN",
+    "reason": "No Astelier Projects app or tab was available."
+  }
+}

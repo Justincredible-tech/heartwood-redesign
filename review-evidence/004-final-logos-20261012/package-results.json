@@ -1,0 +1,11 @@
+{
+  "raw": 1015227,
+  "gzip": 232773,
+  "brotli": 168514,
+  "before_raw": 1109255,
+  "before_offline_brotli": 190726,
+  "delivery_tests_passed": 9,
+  "reproducible_outputs": 15,
+  "logo_browser_acceptance": "NOT RUN - browser unavailable",
+  "apache_staging": "NOT RUN"
+}

@@ -1,0 +1,339 @@
+{
+  "source_html_byte_exact_baseline": true,
+  "body_element_count_before": 3909,
+  "body_element_count_after": 3909,
+  "body_element_attributes_exact_except_script_src": true,
+  "body_nonblank_text_and_element_order_equal": true,
+  "inline_style_count": 3343,
+  "inline_styles_exact_original": true,
+  "svg_path_d_exact_original": true,
+  "body_differences": [],
+  "compression": [
+    {
+      "path": "heartwood-site.html",
+      "raw": 969687,
+      "gzip": 220491,
+      "brotli": 158979,
+      "gzip_exact_roundtrip": true,
+      "brotli_exact_roundtrip": true
+    },
+    {
+      "path": "css/heartwood-site.787d5dc09fdb.css",
+      "raw": 51910,
+      "gzip": 11978,
+      "brotli": 10187,
+      "gzip_exact_roundtrip": true,
+      "brotli_exact_roundtrip": true
+    },
+    {
+      "path": "js/heartwood-site.246de01217fe.js",
+      "raw": 41397,
+      "gzip": 14853,
+      "brotli": 12550,
+      "gzip_exact_roundtrip": true,
+      "brotli_exact_roundtrip": true
+    }
+  ],
+  "fonts": [
+    {
+      "file": "instrument-sans-latin-ext.c4fcfea41f2c.woff2",
+      "bytes": 11144,
+      "matches_recorded_original_google_sha256": true,
+      "publish_matches_source": true,
+      "fingerprint_matches_bytes": true
+    },
+    {
+      "file": "instrument-sans-latin.2ee17598a98d.woff2",
+      "bytes": 30092,
+      "matches_recorded_original_google_sha256": true,
+      "publish_matches_source": true,
+      "fingerprint_matches_bytes": true
+    },
+    {
+      "file": "young-serif-latin-ext.9e6eb8e5e38f.woff2",
+      "bytes": 17268,
+      "matches_recorded_original_google_sha256": true,
+      "publish_matches_source": true,
+      "fingerprint_matches_bytes": true
+    },
+    {
+      "file": "young-serif-latin.6ba68b9927ad.woff2",
+      "bytes": 26992,
+      "matches_recorded_original_google_sha256": true,
+      "publish_matches_source": true,
+      "fingerprint_matches_bytes": true
+    }
+  ],
+  "syntax": [
+    {
+      "path": "source/js/heartwood-site.js",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "path": "publish/js/heartwood-site.246de01217fe.js",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "path": "tools/build-site.mjs",
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
+  "installed_build_packages": [
+    {
+      "name": "terser",
+      "installed_version": "5.51.2"
+    },
+    {
+      "name": "clean-css",
+      "installed_version": "5.3.3"
+    },
+    {
+      "name": "html-minifier-terser",
+      "installed_version": "7.2.0"
+    }
+  ],
+  "http_asset_checks": [
+    {
+      "path": "heartwood-site.html",
+      "requested": "identity",
+      "status": 200,
+      "encoding": "identity",
+      "decoded_bytes_exact": true,
+      "content_type": "text/html",
+      "vary": "Accept-Encoding",
+      "cache_correct": true
+    },
+    {
+      "path": "heartwood-site.html",
+      "requested": "gzip",
+      "status": 200,
+      "encoding": "gzip",
+      "decoded_bytes_exact": true,
+      "content_type": "text/html",
+      "vary": "Accept-Encoding",
+      "cache_correct": true
+    },
+    {
+      "path": "heartwood-site.html",
+      "requested": "br",
+      "status": 200,
+      "encoding": "br",
+      "decoded_bytes_exact": true,
+      "content_type": "text/html",
+      "vary": "Accept-Encoding",
+      "cache_correct": true
+    },
+    {
+      "path": "heartwood-site.html",
+      "conditional_status": 304,
+      "empty_response": true,
+      "same_etag": true
+    },
+    {
+      "path": "css/heartwood-site.787d5dc09fdb.css",
+      "requested": "identity",
+      "status": 200,
+      "encoding": "identity",
+      "decoded_bytes_exact": true,
+      "content_type": "text/css",
+      "vary": "Accept-Encoding",
+      "cache_correct": true
+    },
+    {
+      "path": "css/heartwood-site.787d5dc09fdb.css",
+      "requested": "gzip",
+      "status": 200,
+      "encoding": "gzip",
+      "decoded_bytes_exact": true,
+      "content_type": "text/css",
+      "vary": "Accept-Encoding",
+      "cache_correct": true
+    },
+    {
+      "path": "css/heartwood-site.787d5dc09fdb.css",
+      "requested": "br",
+      "status": 200,
+      "encoding": "br",
+      "decoded_bytes_exact": true,
+      "content_type": "text/css",
+      "vary": "Accept-Encoding",
+      "cache_correct": true
+    },
+    {
+      "path": "css/heartwood-site.787d5dc09fdb.css",
+      "conditional_status": 304,
+      "empty_response": true,
+      "same_etag": true
+    },
+    {
+      "path": "js/heartwood-site.246de01217fe.js",
+      "requested": "identity",
+      "status": 200,
+      "encoding": "identity",
+      "decoded_bytes_exact": true,
+      "content_type": "text/javascript",
+      "vary": "Accept-Encoding",
+      "cache_correct": true
+    },
+    {
+      "path": "js/heartwood-site.246de01217fe.js",
+      "requested": "gzip",
+      "status": 200,
+      "encoding": "gzip",
+      "decoded_bytes_exact": true,
+      "content_type": "text/javascript",
+      "vary": "Accept-Encoding",
+      "cache_correct": true
+    },
+    {
+      "path": "js/heartwood-site.246de01217fe.js",
+      "requested": "br",
+      "status": 200,
+      "encoding": "br",
+      "decoded_bytes_exact": true,
+      "content_type": "text/javascript",
+      "vary": "Accept-Encoding",
+      "cache_correct": true
+    },
+    {
+      "path": "js/heartwood-site.246de01217fe.js",
+      "conditional_status": 304,
+      "empty_response": true,
+      "same_etag": true
+    }
+  ],
+  "http_quality_negotiation": [
+    {
+      "accept": "gzip;q=1, br;q=0.2",
+      "status": 200,
+      "selected": "gzip",
+      "matches_expected": true
+    },
+    {
+      "accept": "br;q=0, gzip;q=1",
+      "status": 200,
+      "selected": "gzip",
+      "matches_expected": true
+    },
+    {
+      "accept": "br;q=0, gzip;q=0",
+      "status": 200,
+      "selected": "identity",
+      "matches_expected": true
+    },
+    {
+      "accept": "identity;q=0,br;q=0,gzip;q=0",
+      "status": 406,
+      "selected": null,
+      "matches_expected": true
+    },
+    {
+      "accept": "*;q=0",
+      "status": 406,
+      "selected": null,
+      "matches_expected": true
+    },
+    {
+      "accept": "*;q=0,br;q=1",
+      "status": 200,
+      "selected": "br",
+      "matches_expected": true
+    }
+  ],
+  "preview_public_allowlist_checks": [
+    {
+      "path": "AGENTS.md",
+      "status": 404,
+      "not_exposed": true
+    },
+    {
+      "path": "agents/tech-lead.md",
+      "status": 404,
+      "not_exposed": true
+    },
+    {
+      "path": ".conductor/tracks/003-performance/spec.md",
+      "status": 404,
+      "not_exposed": true
+    },
+    {
+      "path": "css/",
+      "status": 404,
+      "not_exposed": true
+    },
+    {
+      "path": "../source/heartwood-site.html",
+      "status": 404,
+      "not_exposed": true
+    },
+    {
+      "path": "%2e%2e/source/heartwood-site.html",
+      "status": 404,
+      "not_exposed": true
+    }
+  ],
+  "http_font_checks": [
+    {
+      "path": "assets/fonts/instrument-sans-latin-ext.c4fcfea41f2c.woff2",
+      "status": 200,
+      "content_type": "font/woff2",
+      "font_mime_correct": true,
+      "bytes_exact": true,
+      "immutable": true
+    },
+    {
+      "path": "assets/fonts/instrument-sans-latin.2ee17598a98d.woff2",
+      "status": 200,
+      "content_type": "font/woff2",
+      "font_mime_correct": true,
+      "bytes_exact": true,
+      "immutable": true
+    },
+    {
+      "path": "assets/fonts/young-serif-latin-ext.9e6eb8e5e38f.woff2",
+      "status": 200,
+      "content_type": "font/woff2",
+      "font_mime_correct": true,
+      "bytes_exact": true,
+      "immutable": true
+    },
+    {
+      "path": "assets/fonts/young-serif-latin.6ba68b9927ad.woff2",
+      "status": 200,
+      "content_type": "font/woff2",
+      "font_mime_correct": true,
+      "bytes_exact": true,
+      "immutable": true
+    }
+  ],
+  "static_content_model": {
+    "source_model_matches_baseline": true,
+    "minified_model_matches_baseline": true,
+    "model_json_bytes": 26147
+  },
+  "full_document_semantics_equal_except_intentional_asset_references": true,
+  "source_review": {
+    "geometry_batching": "PASS: cached selector membership, all collision rect reads before visibility writes, mark placement batched with one-time local zero-shift override and equivalent previous+delta calculation.",
+    "layout_scheduling": "PASS: one rAF merges dirty strata and font/resize invalidations; member filter updates one stratum and later strata translate together.",
+    "decorative_animation_pause": "PASS: offscreen/hidden-tab selectors target ornamental infinite animation families; visible motion paths/timings/shadows and leaf/dialog animations remain unchanged.",
+    "content_visibility": "Not applied. The inert absolute scene is the only low-risk candidate, but further containment lacks measured benefit/visual proof in this slice."
+  },
+  "build_review": {
+    "runtime_dependencies": "No runtime dependency added; build-only minifiers pinned and installed outside publish.",
+    "classic_script_semantics": "module:false and mangle.toplevel:false; window.leafLift public API preserved and global content model independently equal.",
+    "artwork_fidelity": "Every static body element attribute, inline style, SVG path and nonblank text token preserved; no polygon simplification or rasterization.",
+    "font_delivery": "Four WOFF2 files match recorded official Google source hashes and source copies; Latin/ext coverage and swap preserved; explicit font/woff2 MIME now verified.",
+    "cleanup_boundary": "Build removes only previously manifested hash-named CSS/JS outputs with resolved publish prefix check; no broad recursive deletion.",
+    "compression": "gzip9/Brotli11 asset sidecars independently round-trip verified and actual local negotiation verified."
+  },
+  "limits": [
+    "Browser performance, screenshots and interaction verification are owned by independent quality evidence, not source-review claims.",
+    "Apache .htaccess is a reviewed staging candidate only; actual Apache modules/rewrite/MIME/cache behavior NOT RUN.",
+    "Apache rewrite prefers br whenever acceptable and available, even when gzip has a higher positive q; Python preview honors relative q weights.",
+    "No deployment, merge, production access or human release approval performed."
+  ],
+  "recommendation": "PASS local optimization candidate; retain browser QA and Apache staging/release gates."
+}

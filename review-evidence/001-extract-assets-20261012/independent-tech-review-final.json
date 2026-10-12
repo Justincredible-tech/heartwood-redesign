@@ -1,0 +1,38 @@
+{
+  "baseline_bytes": 1109141,
+  "html_bytes": 979410,
+  "css_bytes": 72700,
+  "javascript_bytes": 57077,
+  "css_exact_payload": true,
+  "javascript_exact_combined_payloads_in_original_order": true,
+  "html_only_stylesheet_and_script_region_replacements": true,
+  "reconstructed_matches_baseline": true,
+  "baseline_sha256": "1e4beda9522e77881b272fe88d699989823c63698a89d9a9495d22c47202378c",
+  "reconstructed_sha256": "1e4beda9522e77881b272fe88d699989823c63698a89d9a9495d22c47202378c",
+  "stylesheet_reference_count": 1,
+  "script_reference_count": 1,
+  "obsolete_script_absent": true,
+  "syntax_exit_code": 0,
+  "syntax_output": "",
+  "script_reference_at_original_body_region": true,
+  "no_css_url_rebasing_required": true,
+  "review_driven_correction": {
+    "problem": "Separate script fetches exposed pickable button.leaf elements after animation handlers registered and before application content handlers registered.",
+    "source_evidence": [
+      "First script open guards state only and emits leaf:pick synchronously before animation waits.",
+      "Pre-initialized HTML contains enabled button.leaf with data-leaf.",
+      "Only second script seats dataset.item and registers leaf:pick dialog content listener."
+    ],
+    "correction": "One classic external script contains exact original bodies in original order; handlers register synchronously in one execution task."
+  },
+  "semantics_review": {
+    "strict_directive_absent": true,
+    "first_script_references_no_second_script_global_names": true,
+    "finding": "First body is a self-invoking function expression ending with semicolon; second global const declarations keep classic-script global lexical bindings. Earlier creation of their uninitialized bindings affects no references in first body. No module, async, defer, currentScript, or relative URL dependency introduced."
+  },
+  "preexisting_production_followups": [
+    "SITE notes identify stale campaign/grant/event dates and placeholder brochure/volunteer content; extraction preserves them. Client content review remains needed.",
+    "External Google Fonts and content image availability requires browser/network QA.",
+    "Browser interactions, cross-browser compatibility, and Astelier launch are outside this source reviewer evidence."
+  ]
+}

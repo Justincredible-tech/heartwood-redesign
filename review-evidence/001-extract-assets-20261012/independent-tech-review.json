@@ -1,0 +1,49 @@
+{
+  "baseline_bytes": 1109141,
+  "html_bytes": 979451,
+  "html_only_three_replacements": true,
+  "reconstructed_matches_baseline": true,
+  "baseline_sha256": "1e4beda9522e77881b272fe88d699989823c63698a89d9a9495d22c47202378c",
+  "reconstructed_sha256": "1e4beda9522e77881b272fe88d699989823c63698a89d9a9495d22c47202378c",
+  "payload_checks": [
+    {
+      "file": "css/heartwood-site.css",
+      "bytes": 72700,
+      "baseline_payload_exact": true,
+      "sha256": "afa5bc04eaf2b1365bc86b23fbaece931bc96b50b8d2998900a7d0fa162c402a",
+      "reference_count": 1
+    },
+    {
+      "file": "js/leaf-lift.js",
+      "bytes": 10763,
+      "baseline_payload_exact": true,
+      "sha256": "3253cc4fbfda87fcbc7c3efdb8bedc34cf7e341acb40b6be8de2e8f46099421d",
+      "reference_count": 1
+    },
+    {
+      "file": "js/heartwood-site.js",
+      "bytes": 46314,
+      "baseline_payload_exact": true,
+      "sha256": "9aad80532a72c95ed81acae7e0b9e22e496b43a4ff9e091b43dc41b5b213e626",
+      "reference_count": 1
+    }
+  ],
+  "syntax_checks": [
+    {
+      "file": "js/leaf-lift.js",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "file": "js/heartwood-site.js",
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
+  "no_inline_style_block": true,
+  "no_inline_script_block": true,
+  "script_reference_order": [
+    "js/leaf-lift.js",
+    "js/heartwood-site.js"
+  ]
+}

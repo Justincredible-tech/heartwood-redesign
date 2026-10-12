@@ -1,0 +1,1925 @@
+{
+  "animals": {
+    "bee": {
+      "before": 9,
+      "after": 4,
+      "retained_original_ordinals": [
+        1,
+        3,
+        6,
+        8
+      ],
+      "whole_subtrees_preserved": true
+    },
+    "bug": {
+      "before": 26,
+      "after": 13,
+      "retained_original_ordinals": [
+        1,
+        3,
+        4,
+        9,
+        11,
+        12,
+        14,
+        16,
+        17,
+        19,
+        20,
+        22,
+        25
+      ],
+      "whole_subtrees_preserved": true
+    },
+    "critter": {
+      "before": 2,
+      "after": 1,
+      "retained_original_ordinals": [
+        1
+      ],
+      "whole_subtrees_preserved": true
+    },
+    "bird": {
+      "before": 9,
+      "after": 9,
+      "retained_original_ordinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "whole_subtrees_preserved": true
+    }
+  },
+  "rocks": {
+    "totals": {
+      "physical_before": 509,
+      "physical_after": 254,
+      "tablet_before": 318,
+      "tablet_after": 158,
+      "phone_before": 241,
+      "phone_after": 118,
+      "pieces_before": 729,
+      "pieces_after": 359
+    },
+    "regions": {
+      "scene": {
+        "physical_before": 91,
+        "physical_after": 45,
+        "tablet_before": 91,
+        "tablet_after": 45,
+        "phone_before": 91,
+        "phone_after": 45,
+        "pieces_before": 130,
+        "pieces_after": 67,
+        "palette_colours_before": 6,
+        "palette_colours_after": 6,
+        "all_original_colours_retained": true
+      },
+      "stratum stratum--subsoil": {
+        "physical_before": 248,
+        "physical_after": 124,
+        "tablet_before": 126,
+        "tablet_after": 63,
+        "phone_before": 83,
+        "phone_after": 41,
+        "pieces_before": 350,
+        "pieces_after": 171,
+        "palette_colours_before": 6,
+        "palette_colours_after": 6,
+        "all_original_colours_retained": true
+      },
+      "stratum stratum--clay": {
+        "physical_before": 34,
+        "physical_after": 17,
+        "tablet_before": 20,
+        "tablet_after": 10,
+        "phone_before": 14,
+        "phone_after": 7,
+        "pieces_before": 50,
+        "pieces_after": 24,
+        "palette_colours_before": 6,
+        "palette_colours_after": 6,
+        "all_original_colours_retained": true
+      },
+      "stratum stratum--flip stratum--sand": {
+        "physical_before": 34,
+        "physical_after": 17,
+        "tablet_before": 20,
+        "tablet_after": 10,
+        "phone_before": 14,
+        "phone_after": 7,
+        "pieces_before": 50,
+        "pieces_after": 24,
+        "palette_colours_before": 6,
+        "palette_colours_after": 6,
+        "all_original_colours_retained": true
+      },
+      "stratum stratum--gravel": {
+        "physical_before": 34,
+        "physical_after": 17,
+        "tablet_before": 20,
+        "tablet_after": 10,
+        "phone_before": 13,
+        "phone_after": 6,
+        "pieces_before": 49,
+        "pieces_after": 24,
+        "palette_colours_before": 6,
+        "palette_colours_after": 6,
+        "all_original_colours_retained": true
+      },
+      "stratum stratum--flip stratum--shale": {
+        "physical_before": 34,
+        "physical_after": 17,
+        "tablet_before": 20,
+        "tablet_after": 10,
+        "phone_before": 13,
+        "phone_after": 6,
+        "pieces_before": 49,
+        "pieces_after": 24,
+        "palette_colours_before": 6,
+        "palette_colours_after": 6,
+        "all_original_colours_retained": true
+      },
+      "stratum stratum--bedrock": {
+        "physical_before": 34,
+        "physical_after": 17,
+        "tablet_before": 21,
+        "tablet_after": 10,
+        "phone_before": 13,
+        "phone_after": 6,
+        "pieces_before": 51,
+        "pieces_after": 25,
+        "palette_colours_before": 6,
+        "palette_colours_after": 6,
+        "all_original_colours_retained": true
+      }
+    },
+    "paired_bed_face_groups": 42,
+    "all_bed_face_original_indices_match": true,
+    "all_retained_responsive_flags_match_original_identity": true,
+    "survivor_geometry_and_order_exact": true,
+    "groups": [
+      {
+        "group": 0,
+        "region": "scene",
+        "kind": "bed",
+        "before": 8,
+        "after": 4,
+        "retained_original_ordinals": [
+          1,
+          2,
+          5,
+          6
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 1,
+        "region": "scene",
+        "kind": "face",
+        "before": 8,
+        "after": 4,
+        "retained_original_ordinals": [
+          1,
+          2,
+          5,
+          6
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 2,
+        "region": "scene",
+        "kind": "loose",
+        "before": 10,
+        "after": 5,
+        "retained_original_ordinals": [
+          3,
+          4,
+          5,
+          9,
+          10
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 3,
+        "region": "scene",
+        "kind": "bed",
+        "before": 8,
+        "after": 4,
+        "retained_original_ordinals": [
+          3,
+          4,
+          7,
+          8
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 4,
+        "region": "scene",
+        "kind": "face",
+        "before": 8,
+        "after": 4,
+        "retained_original_ordinals": [
+          3,
+          4,
+          7,
+          8
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 5,
+        "region": "scene",
+        "kind": "loose",
+        "before": 11,
+        "after": 5,
+        "retained_original_ordinals": [
+          1,
+          2,
+          6,
+          7,
+          8
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 6,
+        "region": "scene",
+        "kind": "bed",
+        "before": 6,
+        "after": 4,
+        "retained_original_ordinals": [
+          1,
+          2,
+          5,
+          6
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 7,
+        "region": "scene",
+        "kind": "face",
+        "before": 6,
+        "after": 4,
+        "retained_original_ordinals": [
+          1,
+          2,
+          5,
+          6
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 8,
+        "region": "scene",
+        "kind": "loose",
+        "before": 8,
+        "after": 3,
+        "retained_original_ordinals": [
+          3,
+          4,
+          5
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 9,
+        "region": "scene",
+        "kind": "bed",
+        "before": 7,
+        "after": 4,
+        "retained_original_ordinals": [
+          1,
+          2,
+          5,
+          6
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 10,
+        "region": "scene",
+        "kind": "face",
+        "before": 7,
+        "after": 4,
+        "retained_original_ordinals": [
+          1,
+          2,
+          5,
+          6
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 11,
+        "region": "scene",
+        "kind": "loose",
+        "before": 9,
+        "after": 4,
+        "retained_original_ordinals": [
+          3,
+          4,
+          5,
+          9
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 12,
+        "region": "scene",
+        "kind": "bed",
+        "before": 4,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 13,
+        "region": "scene",
+        "kind": "face",
+        "before": 4,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 14,
+        "region": "scene",
+        "kind": "loose",
+        "before": 6,
+        "after": 3,
+        "retained_original_ordinals": [
+          3,
+          4,
+          5
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 15,
+        "region": "scene",
+        "kind": "bed",
+        "before": 6,
+        "after": 4,
+        "retained_original_ordinals": [
+          1,
+          2,
+          5,
+          6
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 16,
+        "region": "scene",
+        "kind": "face",
+        "before": 6,
+        "after": 4,
+        "retained_original_ordinals": [
+          1,
+          2,
+          5,
+          6
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 17,
+        "region": "scene",
+        "kind": "loose",
+        "before": 8,
+        "after": 3,
+        "retained_original_ordinals": [
+          3,
+          4,
+          5
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 18,
+        "region": "stratum stratum--subsoil",
+        "kind": "bed",
+        "before": 20,
+        "after": 8,
+        "retained_original_ordinals": [
+          5,
+          6,
+          9,
+          11,
+          12,
+          14,
+          19,
+          20
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 19,
+        "region": "stratum stratum--subsoil",
+        "kind": "face",
+        "before": 20,
+        "after": 8,
+        "retained_original_ordinals": [
+          5,
+          6,
+          9,
+          11,
+          12,
+          14,
+          19,
+          20
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 20,
+        "region": "stratum stratum--subsoil",
+        "kind": "loose",
+        "before": 29,
+        "after": 16,
+        "retained_original_ordinals": [
+          2,
+          3,
+          5,
+          6,
+          7,
+          8,
+          10,
+          11,
+          15,
+          17,
+          18,
+          20,
+          23,
+          24,
+          27,
+          28
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 21,
+        "region": "stratum stratum--subsoil",
+        "kind": "bed",
+        "before": 21,
+        "after": 11,
+        "retained_original_ordinals": [
+          5,
+          6,
+          8,
+          10,
+          11,
+          12,
+          15,
+          16,
+          17,
+          18,
+          20
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 22,
+        "region": "stratum stratum--subsoil",
+        "kind": "face",
+        "before": 21,
+        "after": 11,
+        "retained_original_ordinals": [
+          5,
+          6,
+          8,
+          10,
+          11,
+          12,
+          15,
+          16,
+          17,
+          18,
+          20
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 23,
+        "region": "stratum stratum--subsoil",
+        "kind": "loose",
+        "before": 31,
+        "after": 15,
+        "retained_original_ordinals": [
+          1,
+          5,
+          6,
+          8,
+          9,
+          12,
+          13,
+          14,
+          15,
+          17,
+          21,
+          23,
+          24,
+          27,
+          29
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 24,
+        "region": "stratum stratum--subsoil",
+        "kind": "bed",
+        "before": 16,
+        "after": 9,
+        "retained_original_ordinals": [
+          2,
+          3,
+          5,
+          6,
+          7,
+          8,
+          9,
+          12,
+          14
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 25,
+        "region": "stratum stratum--subsoil",
+        "kind": "face",
+        "before": 16,
+        "after": 9,
+        "retained_original_ordinals": [
+          2,
+          3,
+          5,
+          6,
+          7,
+          8,
+          9,
+          12,
+          14
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 26,
+        "region": "stratum stratum--subsoil",
+        "kind": "loose",
+        "before": 22,
+        "after": 11,
+        "retained_original_ordinals": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          8,
+          13,
+          15,
+          17,
+          18,
+          20
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 27,
+        "region": "stratum stratum--subsoil",
+        "kind": "bed",
+        "before": 18,
+        "after": 9,
+        "retained_original_ordinals": [
+          1,
+          2,
+          7,
+          8,
+          11,
+          12,
+          15,
+          16,
+          17
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 28,
+        "region": "stratum stratum--subsoil",
+        "kind": "face",
+        "before": 18,
+        "after": 9,
+        "retained_original_ordinals": [
+          1,
+          2,
+          7,
+          8,
+          11,
+          12,
+          15,
+          16,
+          17
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 29,
+        "region": "stratum stratum--subsoil",
+        "kind": "loose",
+        "before": 26,
+        "after": 13,
+        "retained_original_ordinals": [
+          4,
+          6,
+          7,
+          9,
+          10,
+          14,
+          15,
+          16,
+          17,
+          18,
+          21,
+          22,
+          23
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 30,
+        "region": "stratum stratum--subsoil",
+        "kind": "bed",
+        "before": 11,
+        "after": 4,
+        "retained_original_ordinals": [
+          1,
+          6,
+          9,
+          10
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 31,
+        "region": "stratum stratum--subsoil",
+        "kind": "face",
+        "before": 11,
+        "after": 4,
+        "retained_original_ordinals": [
+          1,
+          6,
+          9,
+          10
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 32,
+        "region": "stratum stratum--subsoil",
+        "kind": "loose",
+        "before": 16,
+        "after": 10,
+        "retained_original_ordinals": [
+          1,
+          2,
+          4,
+          6,
+          7,
+          10,
+          11,
+          13,
+          14,
+          15
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 33,
+        "region": "stratum stratum--subsoil",
+        "kind": "bed",
+        "before": 16,
+        "after": 6,
+        "retained_original_ordinals": [
+          6,
+          7,
+          10,
+          12,
+          14,
+          16
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 34,
+        "region": "stratum stratum--subsoil",
+        "kind": "face",
+        "before": 16,
+        "after": 6,
+        "retained_original_ordinals": [
+          6,
+          7,
+          10,
+          12,
+          14,
+          16
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 35,
+        "region": "stratum stratum--subsoil",
+        "kind": "loose",
+        "before": 22,
+        "after": 12,
+        "retained_original_ordinals": [
+          1,
+          2,
+          3,
+          4,
+          7,
+          9,
+          13,
+          14,
+          15,
+          17,
+          18,
+          19
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 36,
+        "region": "stratum stratum--clay",
+        "kind": "bed",
+        "before": 3,
+        "after": 2,
+        "retained_original_ordinals": [
+          2,
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 37,
+        "region": "stratum stratum--clay",
+        "kind": "face",
+        "before": 3,
+        "after": 2,
+        "retained_original_ordinals": [
+          2,
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 38,
+        "region": "stratum stratum--clay",
+        "kind": "loose",
+        "before": 3,
+        "after": 1,
+        "retained_original_ordinals": [
+          1
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 39,
+        "region": "stratum stratum--clay",
+        "kind": "bed",
+        "before": 4,
+        "after": 1,
+        "retained_original_ordinals": [
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 40,
+        "region": "stratum stratum--clay",
+        "kind": "face",
+        "before": 4,
+        "after": 1,
+        "retained_original_ordinals": [
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 41,
+        "region": "stratum stratum--clay",
+        "kind": "loose",
+        "before": 5,
+        "after": 4,
+        "retained_original_ordinals": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 42,
+        "region": "stratum stratum--clay",
+        "kind": "bed",
+        "before": 2,
+        "after": 0,
+        "retained_original_ordinals": [],
+        "geometry_exact": true
+      },
+      {
+        "group": 43,
+        "region": "stratum stratum--clay",
+        "kind": "face",
+        "before": 2,
+        "after": 0,
+        "retained_original_ordinals": [],
+        "geometry_exact": true
+      },
+      {
+        "group": 44,
+        "region": "stratum stratum--clay",
+        "kind": "loose",
+        "before": 2,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 45,
+        "region": "stratum stratum--clay",
+        "kind": "bed",
+        "before": 4,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 46,
+        "region": "stratum stratum--clay",
+        "kind": "face",
+        "before": 4,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 47,
+        "region": "stratum stratum--clay",
+        "kind": "loose",
+        "before": 6,
+        "after": 2,
+        "retained_original_ordinals": [
+          2,
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 48,
+        "region": "stratum stratum--clay",
+        "kind": "bed",
+        "before": 2,
+        "after": 1,
+        "retained_original_ordinals": [
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 49,
+        "region": "stratum stratum--clay",
+        "kind": "face",
+        "before": 2,
+        "after": 1,
+        "retained_original_ordinals": [
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 50,
+        "region": "stratum stratum--clay",
+        "kind": "loose",
+        "before": 1,
+        "after": 1,
+        "retained_original_ordinals": [
+          1
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 51,
+        "region": "stratum stratum--clay",
+        "kind": "bed",
+        "before": 1,
+        "after": 1,
+        "retained_original_ordinals": [
+          1
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 52,
+        "region": "stratum stratum--clay",
+        "kind": "face",
+        "before": 1,
+        "after": 1,
+        "retained_original_ordinals": [
+          1
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 53,
+        "region": "stratum stratum--clay",
+        "kind": "loose",
+        "before": 1,
+        "after": 0,
+        "retained_original_ordinals": [],
+        "geometry_exact": true
+      },
+      {
+        "group": 54,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "bed",
+        "before": 3,
+        "after": 2,
+        "retained_original_ordinals": [
+          2,
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 55,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "face",
+        "before": 3,
+        "after": 2,
+        "retained_original_ordinals": [
+          2,
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 56,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "loose",
+        "before": 3,
+        "after": 1,
+        "retained_original_ordinals": [
+          1
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 57,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "bed",
+        "before": 4,
+        "after": 1,
+        "retained_original_ordinals": [
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 58,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "face",
+        "before": 4,
+        "after": 1,
+        "retained_original_ordinals": [
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 59,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "loose",
+        "before": 5,
+        "after": 4,
+        "retained_original_ordinals": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 60,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "bed",
+        "before": 2,
+        "after": 0,
+        "retained_original_ordinals": [],
+        "geometry_exact": true
+      },
+      {
+        "group": 61,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "face",
+        "before": 2,
+        "after": 0,
+        "retained_original_ordinals": [],
+        "geometry_exact": true
+      },
+      {
+        "group": 62,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "loose",
+        "before": 2,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 63,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "bed",
+        "before": 4,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 64,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "face",
+        "before": 4,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 65,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "loose",
+        "before": 6,
+        "after": 2,
+        "retained_original_ordinals": [
+          2,
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 66,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "bed",
+        "before": 2,
+        "after": 1,
+        "retained_original_ordinals": [
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 67,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "face",
+        "before": 2,
+        "after": 1,
+        "retained_original_ordinals": [
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 68,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "loose",
+        "before": 1,
+        "after": 1,
+        "retained_original_ordinals": [
+          1
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 69,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "bed",
+        "before": 1,
+        "after": 1,
+        "retained_original_ordinals": [
+          1
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 70,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "face",
+        "before": 1,
+        "after": 1,
+        "retained_original_ordinals": [
+          1
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 71,
+        "region": "stratum stratum--flip stratum--sand",
+        "kind": "loose",
+        "before": 1,
+        "after": 0,
+        "retained_original_ordinals": [],
+        "geometry_exact": true
+      },
+      {
+        "group": 72,
+        "region": "stratum stratum--gravel",
+        "kind": "bed",
+        "before": 4,
+        "after": 1,
+        "retained_original_ordinals": [
+          4
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 73,
+        "region": "stratum stratum--gravel",
+        "kind": "face",
+        "before": 4,
+        "after": 1,
+        "retained_original_ordinals": [
+          4
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 74,
+        "region": "stratum stratum--gravel",
+        "kind": "loose",
+        "before": 5,
+        "after": 3,
+        "retained_original_ordinals": [
+          1,
+          2,
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 75,
+        "region": "stratum stratum--gravel",
+        "kind": "bed",
+        "before": 2,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 76,
+        "region": "stratum stratum--gravel",
+        "kind": "face",
+        "before": 2,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 77,
+        "region": "stratum stratum--gravel",
+        "kind": "loose",
+        "before": 3,
+        "after": 1,
+        "retained_original_ordinals": [
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 78,
+        "region": "stratum stratum--gravel",
+        "kind": "bed",
+        "before": 1,
+        "after": 0,
+        "retained_original_ordinals": [],
+        "geometry_exact": true
+      },
+      {
+        "group": 79,
+        "region": "stratum stratum--gravel",
+        "kind": "face",
+        "before": 1,
+        "after": 0,
+        "retained_original_ordinals": [],
+        "geometry_exact": true
+      },
+      {
+        "group": 80,
+        "region": "stratum stratum--gravel",
+        "kind": "loose",
+        "before": 1,
+        "after": 1,
+        "retained_original_ordinals": [
+          1
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 81,
+        "region": "stratum stratum--gravel",
+        "kind": "bed",
+        "before": 2,
+        "after": 1,
+        "retained_original_ordinals": [
+          1
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 82,
+        "region": "stratum stratum--gravel",
+        "kind": "face",
+        "before": 2,
+        "after": 1,
+        "retained_original_ordinals": [
+          1
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 83,
+        "region": "stratum stratum--gravel",
+        "kind": "loose",
+        "before": 3,
+        "after": 2,
+        "retained_original_ordinals": [
+          2,
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 84,
+        "region": "stratum stratum--gravel",
+        "kind": "bed",
+        "before": 4,
+        "after": 3,
+        "retained_original_ordinals": [
+          1,
+          3,
+          4
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 85,
+        "region": "stratum stratum--gravel",
+        "kind": "face",
+        "before": 4,
+        "after": 3,
+        "retained_original_ordinals": [
+          1,
+          3,
+          4
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 86,
+        "region": "stratum stratum--gravel",
+        "kind": "loose",
+        "before": 4,
+        "after": 1,
+        "retained_original_ordinals": [
+          4
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 87,
+        "region": "stratum stratum--gravel",
+        "kind": "bed",
+        "before": 2,
+        "after": 0,
+        "retained_original_ordinals": [],
+        "geometry_exact": true
+      },
+      {
+        "group": 88,
+        "region": "stratum stratum--gravel",
+        "kind": "face",
+        "before": 2,
+        "after": 0,
+        "retained_original_ordinals": [],
+        "geometry_exact": true
+      },
+      {
+        "group": 89,
+        "region": "stratum stratum--gravel",
+        "kind": "loose",
+        "before": 3,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 90,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "bed",
+        "before": 4,
+        "after": 1,
+        "retained_original_ordinals": [
+          4
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 91,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "face",
+        "before": 4,
+        "after": 1,
+        "retained_original_ordinals": [
+          4
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 92,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "loose",
+        "before": 5,
+        "after": 3,
+        "retained_original_ordinals": [
+          1,
+          2,
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 93,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "bed",
+        "before": 2,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 94,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "face",
+        "before": 2,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 95,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "loose",
+        "before": 3,
+        "after": 1,
+        "retained_original_ordinals": [
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 96,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "bed",
+        "before": 1,
+        "after": 0,
+        "retained_original_ordinals": [],
+        "geometry_exact": true
+      },
+      {
+        "group": 97,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "face",
+        "before": 1,
+        "after": 0,
+        "retained_original_ordinals": [],
+        "geometry_exact": true
+      },
+      {
+        "group": 98,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "loose",
+        "before": 1,
+        "after": 1,
+        "retained_original_ordinals": [
+          1
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 99,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "bed",
+        "before": 2,
+        "after": 1,
+        "retained_original_ordinals": [
+          1
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 100,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "face",
+        "before": 2,
+        "after": 1,
+        "retained_original_ordinals": [
+          1
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 101,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "loose",
+        "before": 3,
+        "after": 2,
+        "retained_original_ordinals": [
+          2,
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 102,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "bed",
+        "before": 4,
+        "after": 3,
+        "retained_original_ordinals": [
+          1,
+          3,
+          4
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 103,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "face",
+        "before": 4,
+        "after": 3,
+        "retained_original_ordinals": [
+          1,
+          3,
+          4
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 104,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "loose",
+        "before": 4,
+        "after": 1,
+        "retained_original_ordinals": [
+          4
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 105,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "bed",
+        "before": 2,
+        "after": 0,
+        "retained_original_ordinals": [],
+        "geometry_exact": true
+      },
+      {
+        "group": 106,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "face",
+        "before": 2,
+        "after": 0,
+        "retained_original_ordinals": [],
+        "geometry_exact": true
+      },
+      {
+        "group": 107,
+        "region": "stratum stratum--flip stratum--shale",
+        "kind": "loose",
+        "before": 3,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 108,
+        "region": "stratum stratum--bedrock",
+        "kind": "bed",
+        "before": 3,
+        "after": 1,
+        "retained_original_ordinals": [
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 109,
+        "region": "stratum stratum--bedrock",
+        "kind": "face",
+        "before": 3,
+        "after": 1,
+        "retained_original_ordinals": [
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 110,
+        "region": "stratum stratum--bedrock",
+        "kind": "loose",
+        "before": 3,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 111,
+        "region": "stratum stratum--bedrock",
+        "kind": "bed",
+        "before": 3,
+        "after": 1,
+        "retained_original_ordinals": [
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 112,
+        "region": "stratum stratum--bedrock",
+        "kind": "face",
+        "before": 3,
+        "after": 1,
+        "retained_original_ordinals": [
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 113,
+        "region": "stratum stratum--bedrock",
+        "kind": "loose",
+        "before": 3,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 114,
+        "region": "stratum stratum--bedrock",
+        "kind": "bed",
+        "before": 4,
+        "after": 1,
+        "retained_original_ordinals": [
+          4
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 115,
+        "region": "stratum stratum--bedrock",
+        "kind": "face",
+        "before": 4,
+        "after": 1,
+        "retained_original_ordinals": [
+          4
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 116,
+        "region": "stratum stratum--bedrock",
+        "kind": "loose",
+        "before": 5,
+        "after": 3,
+        "retained_original_ordinals": [
+          1,
+          2,
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 117,
+        "region": "stratum stratum--bedrock",
+        "kind": "bed",
+        "before": 2,
+        "after": 1,
+        "retained_original_ordinals": [
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 118,
+        "region": "stratum stratum--bedrock",
+        "kind": "face",
+        "before": 2,
+        "after": 1,
+        "retained_original_ordinals": [
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 119,
+        "region": "stratum stratum--bedrock",
+        "kind": "loose",
+        "before": 2,
+        "after": 1,
+        "retained_original_ordinals": [
+          1
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 120,
+        "region": "stratum stratum--bedrock",
+        "kind": "bed",
+        "before": 3,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 121,
+        "region": "stratum stratum--bedrock",
+        "kind": "face",
+        "before": 3,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          3
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 122,
+        "region": "stratum stratum--bedrock",
+        "kind": "loose",
+        "before": 3,
+        "after": 1,
+        "retained_original_ordinals": [
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 123,
+        "region": "stratum stratum--bedrock",
+        "kind": "bed",
+        "before": 2,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 124,
+        "region": "stratum stratum--bedrock",
+        "kind": "face",
+        "before": 2,
+        "after": 2,
+        "retained_original_ordinals": [
+          1,
+          2
+        ],
+        "geometry_exact": true
+      },
+      {
+        "group": 125,
+        "region": "stratum stratum--bedrock",
+        "kind": "loose",
+        "before": 1,
+        "after": 0,
+        "retained_original_ordinals": [],
+        "geometry_exact": true
+      }
+    ]
+  },
+  "protected_document_structure_attributes_and_text_unchanged": true,
+  "javascript_byte_exact_before": true,
+  "css_only_responsive_selector_change_and_unused_keyframe_removal": true,
+  "retained_bee_keyframes_byte_exact": true,
+  "bee_keyframes_exactly_retained_paths": true,
+  "unused_bee_keyframes_removed": [
+    "bee-1",
+    "bee-3",
+    "bee-4",
+    "bee-6",
+    "bee-8"
+  ],
+  "element_counts": {
+    "before": 3919,
+    "after": 3248
+  },
+  "source_hashes": {
+    "html": "265d74822ac447aede75497c83d612689b3463f47a5394c6ab1f4a4aa028704b",
+    "css": "13f38581dc6571caec5165ff6c240a8c277f20bfca0321cfba73b1c077d680bd"
+  },
+  "published_html_source_semantics_equal_except_intentional_font_and_asset_references": true,
+  "delivery": {
+    "html": {
+      "path": "heartwood-site.html",
+      "raw_bytes": 805886,
+      "gzip_bytes": 197100,
+      "brotli_bytes": 141201,
+      "sha256": "aa4da04cbfb3dbcef51240cc0f6c722100d3ec05d4cbf2e449e55e4e15cf72ad",
+      "roundtrips": true,
+      "http": {
+        "identity": {
+          "status": 200,
+          "bytes": 805886,
+          "decoded_equal": true,
+          "content_type": "text/html",
+          "cache_control": "no-cache",
+          "vary": "Accept-Encoding",
+          "etag": "\"aa4da04cbfb3dbcef51240cc-identity\"",
+          "conditional_status": 304
+        },
+        "gzip": {
+          "status": 200,
+          "bytes": 197100,
+          "decoded_equal": true,
+          "content_type": "text/html",
+          "cache_control": "no-cache",
+          "vary": "Accept-Encoding",
+          "etag": "\"c961352f1731eab0e296690d-gzip\"",
+          "conditional_status": 304
+        },
+        "br": {
+          "status": 200,
+          "bytes": 141201,
+          "decoded_equal": true,
+          "content_type": "text/html",
+          "cache_control": "no-cache",
+          "vary": "Accept-Encoding",
+          "etag": "\"355c3b33d72ef009a105b536-br\"",
+          "conditional_status": 304
+        }
+      }
+    },
+    "css": {
+      "path": "css/heartwood-site.b665ff3c09c0.css",
+      "raw_bytes": 44815,
+      "gzip_bytes": 11117,
+      "brotli_bytes": 9723,
+      "sha256": "b665ff3c09c04400472c21d9462ebd8f135cf1a16fd2340de73347ee46ec0a27",
+      "roundtrips": true,
+      "http": {
+        "identity": {
+          "status": 200,
+          "bytes": 44815,
+          "decoded_equal": true,
+          "content_type": "text/css",
+          "cache_control": "public, max-age=31536000, immutable",
+          "vary": "Accept-Encoding",
+          "etag": "\"b665ff3c09c04400472c21d9-identity\"",
+          "conditional_status": 304
+        },
+        "gzip": {
+          "status": 200,
+          "bytes": 11117,
+          "decoded_equal": true,
+          "content_type": "text/css",
+          "cache_control": "public, max-age=31536000, immutable",
+          "vary": "Accept-Encoding",
+          "etag": "\"63fe10771e5066a8f66614dd-gzip\"",
+          "conditional_status": 304
+        },
+        "br": {
+          "status": 200,
+          "bytes": 9723,
+          "decoded_equal": true,
+          "content_type": "text/css",
+          "cache_control": "public, max-age=31536000, immutable",
+          "vary": "Accept-Encoding",
+          "etag": "\"068d580ffc40ab7043dea78c-br\"",
+          "conditional_status": 304
+        }
+      }
+    },
+    "js": {
+      "path": "js/heartwood-site.246de01217fe.js",
+      "raw_bytes": 41397,
+      "gzip_bytes": 14853,
+      "brotli_bytes": 12550,
+      "sha256": "246de01217fec93125de544f87e3b96cd39cdfda0db1cbca0cd70dd3cecfc823",
+      "roundtrips": true,
+      "http": {
+        "identity": {
+          "status": 200,
+          "bytes": 41397,
+          "decoded_equal": true,
+          "content_type": "text/javascript",
+          "cache_control": "public, max-age=31536000, immutable",
+          "vary": "Accept-Encoding",
+          "etag": "\"246de01217fec93125de544f-identity\"",
+          "conditional_status": 304
+        },
+        "gzip": {
+          "status": 200,
+          "bytes": 14853,
+          "decoded_equal": true,
+          "content_type": "text/javascript",
+          "cache_control": "public, max-age=31536000, immutable",
+          "vary": "Accept-Encoding",
+          "etag": "\"823e528c693a8b188d6882ce-gzip\"",
+          "conditional_status": 304
+        },
+        "br": {
+          "status": 200,
+          "bytes": 12550,
+          "decoded_equal": true,
+          "content_type": "text/javascript",
+          "cache_control": "public, max-age=31536000, immutable",
+          "vary": "Accept-Encoding",
+          "etag": "\"e2daa3de535023c882477eac-br\"",
+          "conditional_status": 304
+        }
+      }
+    }
+  },
+  "javascript_source_and_release_syntax": "PASS",
+  "source_frozen_hashes_verified_after_build": true,
+  "review_status": "PASS - technical source, build fidelity and local delivery; browser visual acceptance is separate",
+  "limits": [
+    "Browser screenshots and interaction acceptance are handled by quality reviewer and not verified by this review.",
+    "Responsive counts are eligible physical stones before existing runtime text collision clearing.",
+    "Live Apache configuration and production deployment are not tested or authorized by this review."
+  ]
+}

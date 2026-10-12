@@ -1,0 +1,175 @@
+"""Artifact fidelity and real HTTP negotiation checks; no browser automation."""
+import gzip
+import hashlib
+import json
+import os
+import re
+import unittest
+import urllib.error
+import urllib.request
+import xml.etree.ElementTree as ET
+from html.parser import HTMLParser
+from pathlib import Path
+import brotli
+from preview import accepted_encoding
+
+ROOT = Path(__file__).resolve().parent.parent
+PUBLISH = ROOT / 'publish'
+MANIFEST = json.loads((ROOT / 'tools/build-manifest.json').read_text(encoding='utf-8'))
+# Point this at the preview serving *this* checkout; another copy of the project may hold 8001.
+BASE = os.environ.get('HEARTWOOD_PREVIEW', 'http://127.0.0.1:8001/')
+
+class SiteShape(HTMLParser):
+    def __init__(self, text):
+        super().__init__(convert_charrefs=True)
+        self.elements, self.text = [], []
+        self.feed(text)
+
+    def handle_starttag(self, tag, attrs):
+        if tag == 'link':
+            return
+        attrs = dict(attrs)
+        if tag == 'script':
+            attrs.pop('src', None)
+        # A missing SVG default attribute is semantically unchanged.
+        if tag == 'script' and attrs.get('type') == 'text/javascript':
+            attrs.pop('type')
+        self.elements.append((tag, attrs))
+
+    def handle_startendtag(self, tag, attrs):
+        self.handle_starttag(tag, attrs)
+
+    def handle_data(self, text):
+        value = re.sub(r'\s+', ' ', text).strip()
+        if value:
+            self.text.append(value)
+
+def request(relative, encoding=None, headers=None, method='GET'):
+    values = dict(headers or {})
+    if encoding is not None:
+        values['Accept-Encoding'] = encoding
+    return urllib.request.urlopen(urllib.request.Request(BASE + relative, headers=values, method=method), timeout=10)
+
+class DeliveryTests(unittest.TestCase):
+    def test_supplied_logo_geometry_and_originals_preserved(self):
+        namespace = '{http://www.w3.org/2000/svg}'
+        sprite = ET.parse(ROOT / 'source/assets/logos/heartwood-logos.svg').getroot()
+        pairs = [('Heartwood-Young-Serif-oak-wordmark-transparent - Copy.svg', 'heartwood-wordmark-original.svg', 'hw-logo'),
+                 ('hardwood-T-11-oak-curved-forks-transparent.svg', 'heartwood-oak-original.svg', 'hw-mark')]
+        def geometry(root):
+            return [(child.tag, {key: value for key, value in child.attrib.items() if key != 'fill'})
+                    for branch in root for child in branch.iter()
+                    if child.tag not in (namespace + 'title', namespace + 'desc')]
+        for supplied, renamed, identifier in pairs:
+            original = (ROOT / 'finalLogos' / supplied).read_bytes()
+            self.assertEqual(original, (ROOT / 'source/assets/logos' / renamed).read_bytes())
+            source = ET.fromstring(original)
+            symbol = sprite.find(namespace + 'symbol' + "[@id='" + identifier + "']")
+            self.assertIsNotNone(symbol)
+            self.assertEqual(source.attrib['viewBox'], symbol.attrib['viewBox'])
+            self.assertEqual(geometry(source), geometry(symbol))
+            self.assertTrue(all(child.attrib['fill'] == 'currentColor' for child in symbol.iter() if 'fill' in child.attrib))
+        published = (PUBLISH / 'heartwood-site.html').read_text(encoding='utf-8')
+        ET.register_namespace('', 'http://www.w3.org/2000/svg')
+        embedded_symbols = [SiteShape(fragment) for fragment in re.findall(r'<symbol\b.*?</symbol>', published, re.DOTALL)]
+        for symbol in sprite:
+            expected = SiteShape(ET.tostring(symbol, encoding='unicode'))
+            actual = next(shape for shape in embedded_symbols if shape.elements[0][1].get('id') == symbol.attrib['id'])
+            for shape in (expected, actual):
+                for _, attrs in shape.elements:
+                    attrs.pop('xmlns', None)
+            self.assertEqual(expected.elements, actual.elements)
+
+    def test_html_preserves_artwork_elements_attributes_and_text(self):
+        before = SiteShape((ROOT / 'source/heartwood-site.html').read_text(encoding='utf-8'))
+        after = SiteShape((PUBLISH / 'heartwood-site.html').read_text(encoding='utf-8'))
+        self.assertEqual(before.elements, after.elements)
+        self.assertEqual(before.text, after.text)
+
+    def test_all_text_compression_round_trips(self):
+        for relative in MANIFEST['generated']:
+            target = PUBLISH / relative
+            if target.suffix not in ('.html', '.css', '.js', '.svg'):
+                continue
+            data = target.read_bytes()
+            self.assertEqual(gzip.decompress(Path(str(target) + '.gz').read_bytes()), data)
+            self.assertEqual(brotli.decompress(Path(str(target) + '.br').read_bytes()), data)
+
+    def test_encoding_quality_and_rejections(self):
+        both = {'br', 'gzip'}
+        self.assertEqual(accepted_encoding('gzip, br', both), 'br')
+        self.assertEqual(accepted_encoding('br;q=0, gzip', both), 'gzip')
+        self.assertEqual(accepted_encoding('br;q=.5, gzip;q=.9', both), 'gzip')
+        self.assertEqual(accepted_encoding('br;q=0, gzip;q=0', both), 'identity')
+        self.assertIsNone(accepted_encoding('br;q=0, gzip;q=0, identity;q=0', both))
+
+    def test_http_brotli_gzip_identity_are_exact(self):
+        for encoding, decode in [('br', brotli.decompress), ('gzip', gzip.decompress), ('identity', lambda data: data)]:
+            for relative in MANIFEST['assets'].values():
+                with request(relative, encoding) as response:
+                    data = response.read()
+                    self.assertEqual(response.status, 200)
+                    self.assertEqual(response.headers.get('Content-Encoding', 'identity'), encoding)
+                    self.assertEqual(response.headers['Vary'], 'Accept-Encoding')
+                    self.assertEqual(decode(data), (PUBLISH / relative).read_bytes())
+                    self.assertEqual(int(response.headers['Content-Length']), len(data))
+
+    def test_hash_assets_cache_and_html_revalidate(self):
+        for key, relative in MANIFEST['assets'].items():
+            with request(relative, 'br') as response:
+                cache = response.headers['Cache-Control']
+                self.assertIn('immutable' if key != 'html' else 'no-cache', cache)
+                etag = response.headers['ETag']
+            try:
+                response = request(relative, 'br', {'If-None-Match': etag})
+            except urllib.error.HTTPError as response:
+                self.assertEqual(response.code, 304)
+            else:
+                response.close()
+                self.fail('Expected HTTP304 for same representation')
+            with request(relative, 'identity', {'If-None-Match': etag}) as response:
+                self.assertEqual(response.status, 200)
+
+    def test_fonts_exact_and_available(self):
+        for record in json.loads((ROOT / 'tools/font-provenance.json').read_text())['fonts']:
+            relative = 'assets/fonts/' + record['file']
+            self.assertEqual((PUBLISH / relative).read_bytes(), (ROOT / 'source' / relative).read_bytes())
+            with request(relative) as response:
+                self.assertEqual(response.headers.get_content_type(), 'font/woff2')
+                self.assertEqual(len(response.read()), record['bytes'])
+
+    def test_grain_tiles_match_recipe_and_are_delivered(self):
+        css = (ROOT / 'source/css/heartwood-site.css').read_text(encoding='utf-8')
+        fine = ' '.join(re.search(r'--grain-fine:\s*(.*?);', css, re.S).group(1).split())
+        provenance = json.loads((ROOT / 'source/assets/grain/grain-provenance.json').read_text(encoding='utf-8'))
+        self.assertEqual(hashlib.sha256(fine.encode('utf-8')).hexdigest(), provenance['recipe_sha256'],
+                         '--grain-fine changed since the tiles were drawn: run tools/render-grain.py')
+        built_css = (PUBLISH / MANIFEST['assets']['css']).read_text(encoding='utf-8')
+        html = (PUBLISH / 'heartwood-site.html').read_text(encoding='utf-8')
+        for record in provenance['tiles'].values():
+            relative = 'assets/grain/' + record['file']
+            self.assertIn(relative, MANIFEST['generated'])
+            self.assertEqual((PUBLISH / relative).read_bytes(), (ROOT / 'source' / relative).read_bytes())
+            self.assertIn('../' + relative, built_css)
+            self.assertEqual(html.count('href=' + relative + ' '), 1, 'each tile is preloaded exactly once')
+            with request(relative) as response:
+                self.assertEqual(response.headers.get_content_type(), 'image/webp')
+                self.assertIn('immutable', response.headers['Cache-Control'])
+                self.assertEqual(len(response.read()), record['bytes'])
+
+    def test_no_directory_or_development_file_exposure(self):
+        for relative in ['agents/tech-lead.md', '.conductor/project.md', 'css/', '../tools/package.json', '%2e%2e/tools/package.json']:
+            with self.assertRaises(urllib.error.HTTPError) as error:
+                request(relative)
+            self.assertEqual(error.exception.code, 404)
+
+    def test_unacceptable_encoding_and_head(self):
+        with self.assertRaises(urllib.error.HTTPError) as error:
+            request('heartwood-site.html', 'br;q=0, gzip;q=0, identity;q=0')
+        self.assertEqual(error.exception.code, 406)
+        with request('heartwood-site.html', 'br', method='HEAD') as response:
+            self.assertEqual(response.read(), b'')
+            self.assertGreater(int(response.headers['Content-Length']), 0)
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)

@@ -1,0 +1,155 @@
+[
+ {
+  "nav": {
+   "dcl": 3164,
+   "load": 3187,
+   "fcp": 1444,
+   "lcp": 2352,
+   "bytes": 140999,
+   "tbt": 431,
+   "longtasks": 4
+  },
+  "load_ms": {
+   "main": 5325,
+   "gpu": 4364,
+   "compositor": 398
+  },
+  "load_main_events_ms": {
+   "Paint": 687,
+   "Layout": 532,
+   "UpdateLayoutTree": 502,
+   "Layerize": 282,
+   "EvaluateScript": 218,
+   "PrePaint": 146,
+   "ParseHTML": 89,
+   "FunctionCall": 49,
+   "HitTest": 23,
+   "UpdateLayer": 13
+  },
+  "idle_ms_per_s": {
+   "gpu": 256.6,
+   "compositor": 63.1,
+   "main": 38.3
+  },
+  "idle_main_events_ms_per_s": {
+   "Layerize": 9.0,
+   "UpdateLayoutTree": 1.8,
+   "PrePaint": 1.2,
+   "HitTest": 0.8,
+   "UpdateLayer": 0.2,
+   "IntersectionObserverController::computeIntersections": 0.1
+  },
+  "frames": {
+   "frames_per_s_by_state": {
+    "?": 143.8
+   }
+  },
+  "layers": {
+   "layers": 123,
+   "drawing": 88,
+   "drawing_area_mpx": 14.1
+  }
+ },
+ {
+  "nav": {
+   "dcl": 3084,
+   "load": 3101,
+   "fcp": 1372,
+   "lcp": 2392,
+   "bytes": 140999,
+   "tbt": 357,
+   "longtasks": 3
+  },
+  "load_ms": {
+   "main": 6150,
+   "gpu": 4173,
+   "compositor": 460
+  },
+  "load_main_events_ms": {
+   "UpdateLayoutTree": 642,
+   "Paint": 622,
+   "Layerize": 521,
+   "Layout": 507,
+   "EvaluateScript": 190,
+   "PrePaint": 175,
+   "ParseHTML": 97,
+   "HitTest": 41,
+   "FunctionCall": 34,
+   "UpdateLayer": 18
+  },
+  "idle_ms_per_s": {
+   "gpu": 274.0,
+   "compositor": 59.9,
+   "main": 36.5
+  },
+  "idle_main_events_ms_per_s": {
+   "Layerize": 9.5,
+   "UpdateLayoutTree": 2.1,
+   "PrePaint": 1.1,
+   "HitTest": 0.6,
+   "IntersectionObserverController::computeIntersections": 0.1,
+   "UpdateLayer": 0.1
+  },
+  "frames": {
+   "frames_per_s_by_state": {
+    "?": 143.6
+   }
+  },
+  "layers": {
+   "layers": 123,
+   "drawing": 88,
+   "drawing_area_mpx": 14.1
+  }
+ },
+ {
+  "nav": {
+   "dcl": 3095,
+   "load": 3118,
+   "fcp": 1384,
+   "lcp": 2212,
+   "bytes": 140999,
+   "tbt": 394,
+   "longtasks": 4
+  },
+  "load_ms": {
+   "main": 5937,
+   "gpu": 4363,
+   "compositor": 471
+  },
+  "load_main_events_ms": {
+   "Paint": 688,
+   "UpdateLayoutTree": 589,
+   "Layout": 523,
+   "Layerize": 453,
+   "EvaluateScript": 212,
+   "PrePaint": 169,
+   "ParseHTML": 89,
+   "HitTest": 38,
+   "FunctionCall": 30,
+   "UpdateLayer": 17
+  },
+  "idle_ms_per_s": {
+   "gpu": 274.8,
+   "compositor": 60.7,
+   "main": 38.5
+  },
+  "idle_main_events_ms_per_s": {
+   "Layerize": 9.7,
+   "UpdateLayoutTree": 1.8,
+   "PrePaint": 1.1,
+   "HitTest": 1.0,
+   "UpdateLayer": 0.1,
+   "IntersectionObserverController::computeIntersections": 0.1
+  },
+  "frames": {
+   "frames_per_s_by_state": {
+    "?": 143.8
+   }
+  },
+  "layers": {
+   "layers": 123,
+   "drawing": 88,
+   "drawing_area_mpx": 14.1
+  }
+ }
+]

@@ -1,0 +1,174 @@
+{
+  "desktop": {
+    "title": "Heartwood: people helping people protect the places they love",
+    "counts": {
+      "cards": 20,
+      "leaves": 149,
+      "groups": 106,
+      "chips": 7
+    },
+    "layout": {
+      "width": 1440,
+      "docWidth": 1440,
+      "font": "\"Instrument Sans\", \"Avenir Next\", \"Segoe UI\", system-ui, -apple-system, sans-serif",
+      "treeWidth": 1612.800048828125
+    },
+    "navigation": {
+      "hash": "#work",
+      "workTop": 69.203125
+    },
+    "cardDialog": {
+      "title": "Forest Watch",
+      "focus": "dialog-close",
+      "backgroundInert": true,
+      "tabTrapped": true
+    },
+    "outgoingLinks": [
+      {
+        "href": "https://heartwood.org/campaigns/forestwatch/index.html",
+        "target": "_blank",
+        "rel": "noopener"
+      }
+    ],
+    "cardClose": {
+      "hidden": true,
+      "focusRestored": true
+    },
+    "leafId": "heartbeat-spring-2026",
+    "leafDialog": "Heartbeat, Spring 2026",
+    "leafFocusRestored": true,
+    "canopyFilter": {
+      "pressed": "true",
+      "filtered": true,
+      "lit": 7
+    },
+    "search": {
+      "tally": "6 of 106 member groups",
+      "visible": [
+        "Bluegrass Group Sierra Club",
+        "Sierra Club Allegheny Group",
+        "Sierra Club, Cherokee Group",
+        "Sierra Club, Moshannon Group",
+        "Tennessee Sierra Club",
+        "The Cumberland Chapter Sierra Club"
+      ],
+      "hits": 6,
+      "open": true
+    },
+    "groupDialog": "Bluegrass Group Sierra Club",
+    "groupFocusRestored": true,
+    "zeroSearch": "0 of 106 member groups",
+    "resetSearch": "106 member groups",
+    "images": [],
+    "errors": [],
+    "failedRequests": [
+      {
+        "url": "https://heartwood.org/heartbeat/Fall-2026.jpg",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      }
+    ],
+    "responses": [
+      {
+        "url": "https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400..700&display=swap",
+        "status": 200
+      },
+      {
+        "url": "https://fonts.gstatic.com/s/instrumentsans/v4/pxiTypc9vsFDm051Uf6KVwgkfoSxQ0GsQv8ToedPibnr0SZe1Q.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://fonts.gstatic.com/s/youngserif/v2/3qTpojO2nS2VtkB3KtkQZ1t93kY.woff2",
+        "status": 200
+      }
+    ]
+  },
+  "mobile": {
+    "title": "Heartwood: people helping people protect the places they love",
+    "counts": {
+      "cards": 20,
+      "leaves": 149,
+      "groups": 106,
+      "chips": 7
+    },
+    "layout": {
+      "width": 390,
+      "docWidth": 390,
+      "font": "\"Instrument Sans\", \"Avenir Next\", \"Segoe UI\", system-ui, -apple-system, sans-serif",
+      "treeWidth": 975
+    },
+    "navigation": {
+      "hash": "",
+      "workTop": 2295.5
+    },
+    "cardDialog": {
+      "title": "Forest Watch",
+      "focus": "dialog-close",
+      "backgroundInert": true,
+      "tabTrapped": true
+    },
+    "outgoingLinks": [
+      {
+        "href": "https://heartwood.org/campaigns/forestwatch/index.html",
+        "target": "_blank",
+        "rel": "noopener"
+      }
+    ],
+    "cardClose": {
+      "hidden": true,
+      "focusRestored": true
+    },
+    "leafId": "heartbeat-spring-2026",
+    "leafDialog": "Heartbeat, Spring 2026",
+    "leafFocusRestored": true,
+    "canopyFilter": {
+      "pressed": "true",
+      "filtered": true,
+      "lit": 7
+    },
+    "search": {
+      "tally": "6 of 106 member groups",
+      "visible": [
+        "Bluegrass Group Sierra Club",
+        "Sierra Club Allegheny Group",
+        "Sierra Club, Cherokee Group",
+        "Sierra Club, Moshannon Group",
+        "Tennessee Sierra Club",
+        "The Cumberland Chapter Sierra Club"
+      ],
+      "hits": 6,
+      "open": true
+    },
+    "groupDialog": "Bluegrass Group Sierra Club",
+    "groupFocusRestored": true,
+    "zeroSearch": "0 of 106 member groups",
+    "resetSearch": "106 member groups",
+    "images": [],
+    "errors": [],
+    "failedRequests": [
+      {
+        "url": "https://heartwood.org/heartbeat/Fall-2026.jpg",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      }
+    ],
+    "responses": [
+      {
+        "url": "https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400..700&display=swap",
+        "status": 200
+      },
+      {
+        "url": "https://fonts.gstatic.com/s/instrumentsans/v4/pxiTypc9vsFDm051Uf6KVwgkfoSxQ0GsQv8ToedPibnr0SZe1Q.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://fonts.gstatic.com/s/youngserif/v2/3qTpojO2nS2VtkB3KtkQZ1t93kY.woff2",
+        "status": 200
+      }
+    ]
+  },
+  "reducedMotion": {
+    "matched": true,
+    "leafAnimation": "none",
+    "dialogOpenSeconds": 0.986,
+    "title": "Heartbeat, Spring 2026"
+  }
+}

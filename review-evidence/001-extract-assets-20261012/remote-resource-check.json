@@ -1,0 +1,15 @@
+[
+  {
+    "url": "https://heartwood.org/heartbeat/Fall-2026.jpg",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://heartwood.org/campaigns/forestwatch/index.html",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400..700&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  }
+]

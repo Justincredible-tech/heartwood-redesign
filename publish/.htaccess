@@ -1,0 +1,51 @@
+# Static Heartwood delivery only. Review in staging before production release.
+# Precompressed files are generated offline at Brotli11 / gzip9.
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType image/webp .webp
+  AddEncoding br .br
+  AddEncoding gzip .gz
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Never select an encoding the client explicitly rejects with q=0.
+  RewriteCond %{HTTP:Accept-Encoding} (^|,\s*)br(\s*;|\s*,|$) [NC]
+  RewriteCond %{HTTP:Accept-Encoding} !br\s*;\s*q=0(?:\.0*)?(?:\s*,|\s*$) [NC]
+  RewriteCond %{REQUEST_FILENAME}.br -s
+  RewriteRule ^(.+\.(?:html|css|js|svg))$ $1.br [L]
+
+  RewriteCond %{HTTP:Accept-Encoding} (^|,\s*)gzip(\s*;|\s*,|$) [NC]
+  RewriteCond %{HTTP:Accept-Encoding} !gzip\s*;\s*q=0(?:\.0*)?(?:\s*,|\s*$) [NC]
+  RewriteCond %{REQUEST_FILENAME}.gz -s
+  RewriteRule ^(.+\.(?:html|css|js|svg))$ $1.gz [L]
+</IfModule>
+</IfModule>
+
+<FilesMatch "\.html\.(?:br|gz)$">
+  ForceType text/html
+</FilesMatch>
+<FilesMatch "\.css\.(?:br|gz)$">
+  ForceType text/css
+</FilesMatch>
+<FilesMatch "\.js\.(?:br|gz)$">
+  ForceType text/javascript
+</FilesMatch>
+<FilesMatch "\.svg\.(?:br|gz)$">
+  ForceType image/svg+xml
+</FilesMatch>
+<IfModule mod_env.c>
+  <FilesMatch "\.(?:br|gz)$">
+    SetEnv no-gzip 1
+    SetEnv no-brotli 1
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(?:html|css|js|svg)(?:\.(?:br|gz))?$">
+    Header merge Vary Accept-Encoding
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.[0-9a-f]{12}\.(?:css|js|svg|woff2|webp)(?:\.(?:br|gz))?$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>

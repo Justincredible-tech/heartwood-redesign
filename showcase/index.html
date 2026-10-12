@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heartwood Redesign Concepts</title>
+<meta name="description" content="Design concepts for the new Heartwood website: one recommended direction and five alternatives.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Heartwood website redesign: design concepts">
+<meta property="og:description" content="One recommended direction and five alternatives, each a clickable mockup.">
+<link rel="preload" href="assets/fonts/young-serif-latin.6ba68b9927ad.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/instrument-sans-latin.2ee17598a98d.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400 700;font-display:swap;src:url(assets/fonts/instrument-sans-latin.2ee17598a98d.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400 700;font-display:swap;src:url(assets/fonts/instrument-sans-latin-ext.c4fcfea41f2c.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Young Serif';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/young-serif-latin.6ba68b9927ad.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Young Serif';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/young-serif-latin-ext.9e6eb8e5e38f.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+2C60-2C7F,U+A720-A7FF}
+
+:root{
+  --paper:#fbf8ee;
+  --paper-2:#f3eedd;
+  --card:#fffdf6;
+  --ink:#1e2a21;
+  --ink-soft:#55655a;
+  --line:#ddd5bd;
+  --line-strong:#c4b994;
+  --leaf:#3f6b3f;
+  --leaf-bright:#b9d482;
+  --gold:#ecd24a;
+  --gold-deep:#d9bd2f;
+  --focus:#1b3fa8;
+  --frame:#e9e3cf;
+  --serif:'Young Serif',Georgia,'Times New Roman',serif;
+  --sans:'Instrument Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --gutter:clamp(16px,4vw,48px);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gutter)}
+
+/* masthead */
+.top{border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.brand{display:flex;align-items:center;gap:10px;font:400 22px/1 var(--serif);text-decoration:none}
+.brand svg{width:22px;height:22px;flex:none}
+.top small{font-size:14px;color:var(--ink-soft);text-align:right}
+
+/* intro */
+.intro{padding:clamp(40px,7vw,80px) 0 clamp(28px,4vw,44px)}
+.kicker{margin:0 0 14px;font:600 13px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--leaf)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;text-wrap:balance}
+h1{font-size:clamp(36px,6vw,68px);line-height:1.04;letter-spacing:-.01em;max-width:16ch}
+.intro p.lede{margin:22px 0 0;max-width:60ch;font-size:clamp(17px,1.6vw,19px);color:var(--ink-soft)}
+
+/* featured */
+.featured{padding:0 0 clamp(56px,8vw,96px)}
+.feature{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(28px,4vw,56px);align-items:center;
+  background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,3.5vw,44px)}
+.badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;padding:6px 12px;border-radius:999px;
+  background:var(--gold);color:var(--ink);font:600 13px/1 var(--sans);letter-spacing:.04em}
+.badge svg{width:14px;height:14px}
+.feature h2{font-size:clamp(32px,4vw,48px);line-height:1.05}
+.feature .tagline{margin:8px 0 0;font:400 clamp(19px,1.8vw,22px)/1.35 var(--serif);color:var(--leaf)}
+.feature p{margin:16px 0 0;color:var(--ink-soft)}
+.try{margin:22px 0 0;padding:18px 20px;background:var(--paper);border:1px solid var(--line);border-radius:12px}
+.try h3{font:600 13px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:8px}
+.try ul{margin:0;padding:0;list-style:none}
+.try li{position:relative;padding-left:24px;margin-top:6px;font-size:16px;color:var(--ink-soft)}
+.try li::before{content:"";position:absolute;left:2px;top:.45em;width:12px;height:12px;border-radius:12px 0;background:var(--leaf-bright);border:1px solid var(--leaf)}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:10px;text-decoration:none;
+  font:600 17px/1 var(--sans);transition:background-color .15s,transform .15s,box-shadow .15s}
+.btn svg{width:16px;height:16px;flex:none}
+.btn--gold{background:var(--gold);color:var(--ink);box-shadow:0 2px 0 var(--gold-deep)}
+.btn--gold:hover{background:var(--gold-deep)}
+.btn--gold:active{transform:translateY(1px);box-shadow:none}
+.note{font-size:14px;color:var(--ink-soft)}
+
+/* device frames */
+.devices{position:relative;padding:0 clamp(28px,6%,64px) clamp(36px,6%,60px) 0}
+.browser{border-radius:12px;overflow:hidden;background:var(--frame);border:1px solid var(--line-strong);
+  box-shadow:0 1px 2px rgb(30 42 33 / .08),0 18px 40px -18px rgb(30 42 33 / .35)}
+.browser__bar{display:flex;align-items:center;gap:6px;height:28px;padding:0 12px;border-bottom:1px solid var(--line-strong)}
+.browser__bar i{width:9px;height:9px;border-radius:50%;background:var(--line-strong)}
+.browser img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:50% 0}
+.phone{position:absolute;right:0;bottom:0;width:clamp(96px,24%,176px);padding:6px;border-radius:24px;background:var(--ink);
+  box-shadow:0 18px 36px -14px rgb(30 42 33 / .5)}
+.phone img{width:100%;height:auto;aspect-ratio:390/760;object-fit:cover;object-position:50% 0;border-radius:18px}
+.feature a.shot-link{display:block;text-decoration:none;border-radius:12px}
+
+/* alternatives */
+.alts{padding:clamp(56px,8vw,88px) 0;background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.alts h2,.choose h2{font-size:clamp(30px,4vw,44px);line-height:1.08}
+.alts .sub{margin:14px 0 0;max-width:62ch;color:var(--ink-soft)}
+.hint{display:none}
+@media (hover:hover){.hint{display:inline}}
+.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(18px,2.4vw,28px);margin-top:clamp(28px,4vw,44px)}
+.card{grid-column:span 2;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.card:nth-child(n+4){grid-column:span 3}
+.card .shot{display:block;position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--frame);border-bottom:1px solid var(--line)}
+.card .shot img{width:100%;height:100%;object-fit:cover;object-position:50% 0;transition:object-position .7s ease-out}
+.card:hover .shot img,.card .shot:focus-visible img{object-position:50% 100%;transition:object-position var(--dur,7s) ease-in-out}
+.card .shot:focus-visible{outline-offset:-3px}
+.card__body{display:flex;flex-direction:column;flex:1;padding:20px 22px 22px}
+.card__num{font:600 13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.card h3{margin-top:8px;font-size:28px;line-height:1.1}
+.card .feel{margin:6px 0 0;font-size:15px;font-weight:600;color:var(--leaf)}
+.card p{margin:10px 0 0;font-size:16px;color:var(--ink-soft)}
+.card .open{margin-top:auto;padding-top:16px}
+.link{display:inline-flex;align-items:center;gap:8px;font-weight:600;text-decoration:underline;text-decoration-thickness:2px;
+  text-underline-offset:4px;text-decoration-color:var(--gold-deep)}
+.link:hover{text-decoration-color:var(--ink)}
+.link svg{width:15px;height:15px;flex:none}
+
+/* how to choose */
+.choose{padding:clamp(56px,8vw,88px) 0}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,28px);margin:clamp(24px,3.5vw,36px) 0 0;padding:0;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;padding:22px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:36px;height:36px;margin-bottom:14px;border-radius:50%;
+  background:var(--leaf);color:var(--paper);font:400 18px/1 var(--serif)}
+.steps h3{font-size:22px;line-height:1.2}
+.steps p{margin:8px 0 0;font-size:16px;color:var(--ink-soft)}
+
+footer{border-top:1px solid var(--line);padding:28px 0 40px;font-size:14px;color:var(--ink-soft)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
+
+@media (max-width:1000px){
+  .feature{grid-template-columns:1fr}
+  .feature .devices{order:-1}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .card,.card:nth-child(n+4){grid-column:span 1}
+  .card:last-child{grid-column:1 / -1}
+  .card:last-child .shot{aspect-ratio:21/9}
+}
+@media (max-width:700px){
+  .grid{grid-template-columns:1fr}
+  .card:last-child .shot{aspect-ratio:16/10}
+  .steps{grid-template-columns:1fr}
+  .top small span{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .card:hover .shot img,.card .shot:focus-visible img{object-position:50% 0}
+}
+@media print{
+  .btn,.hint{display:none}
+  .alts{background:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="brand">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 3C9 3 4 9 4 16c0 2 .5 3.5 1 5 1-5 5-10 10-12-4 3-7 7-8 12 9 0 13-7 13-18Z" fill="#3f6b3f"/></svg>
+      Heartwood
+    </span>
+    <small><span>Website redesign &middot; </span>Design concepts, October 2026</small>
+  </div>
+</header>
+
+<main>
+  <section class="intro">
+    <div class="wrap">
+      <p class="kicker">Website redesign</p>
+      <h1>A new home for Heartwood online</h1>
+      <p class="lede">Below is the design I recommend, followed by five alternative directions. Each one is a working mockup you can click through on a computer or a phone. These are about look and feel. Wording, photos and details are stand-ins for now and can all change.</p>
+    </div>
+  </section>
+
+  <section class="featured" aria-labelledby="featured-title">
+    <div class="wrap">
+      <div class="feature">
+        <div>
+          <span class="badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 3C9 3 4 9 4 16c0 2 .5 3.5 1 5 1-5 5-10 10-12-4 3-7 7-8 12 9 0 13-7 13-18Z" fill="currentColor"/></svg>Recommended</span>
+          <h2 id="featured-title">Living Tree</h2>
+          <p class="tagline">The whole network, drawn as one tree.</p>
+          <p>A hand-cut paper illustration of a single tree in a meadow, with its roots spreading out below ground. Every leaf opens a piece of Heartwood: a campaign, a gathering, a news story, a member group. It says what Heartwood is (many people and groups, one living thing) before anyone reads a word, and it gives visitors a reason to explore.</p>
+          <div class="try">
+            <h3>Things to try</h3>
+            <ul>
+              <li>Tap or click any leaf to open that part of the site.</li>
+              <li>Use &ldquo;Every leaf matters&rdquo; to light up leaves by topic.</li>
+              <li>Scroll down past the roots for the work, the gatherings and the network.</li>
+            </ul>
+          </div>
+          <div class="actions">
+            <a class="btn btn--gold" href="living-tree.html" target="_blank" rel="noopener">Open Living Tree<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr"> (opens in a new tab)</span></a>
+            <span class="note">Opens in a new tab. Works on phones too.</span>
+          </div>
+        </div>
+        <a class="devices shot-link" href="living-tree.html" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <div class="browser">
+            <div class="browser__bar"><i></i><i></i><i></i></div>
+            <img src="assets/previews/living-tree-desktop.webp" width="1440" height="900" alt="" fetchpriority="high">
+          </div>
+          <div class="phone"><img src="assets/previews/living-tree-phone.webp" width="600" height="1298" alt=""></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="alts" aria-labelledby="alts-title">
+    <div class="wrap">
+      <p class="kicker">Other directions</p>
+      <h2 id="alts-title">If the tree isn&rsquo;t quite right</h2>
+      <p class="sub">Five other directions, each with its own personality. <span class="hint">Hover over a preview to scroll through the page, or </span>open any of them to click around.</p>
+
+      <div class="grid">
+        <article class="card">
+          <a class="shot" href="mockups/01-evergreen.html" target="_blank" rel="noopener" style="--dur:7s"><img src="assets/previews/evergreen-page.webp" width="880" height="2330" alt="Preview of the Evergreen design" loading="lazy"></a>
+          <div class="card__body">
+            <span class="card__num">Alternative 1</span>
+            <h3>Evergreen</h3>
+            <p class="feel">Photographic, calm, immersive</p>
+            <p>Deep forest greens and full-width woodland photography under a big, warm headline. It feels like walking into the woods, and it reads as an established conservation voice.</p>
+            <div class="open"><a class="link" href="mockups/01-evergreen.html" target="_blank" rel="noopener">Open Evergreen<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr"> (opens in a new tab)</span></a></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <a class="shot" href="mockups/02-rally.html" target="_blank" rel="noopener" style="--dur:6.5s"><img src="assets/previews/rally-page.webp" width="880" height="2141" alt="Preview of the Rally design" loading="lazy"></a>
+          <div class="card__body">
+            <span class="card__num">Alternative 2</span>
+            <h3>Rally</h3>
+            <p class="feel">Bold, urgent, action-first</p>
+            <p>Tall headlines, a bright lime highlight and a &ldquo;Find your focus&rdquo; section that points each visitor to a campaign fast. Built for momentum and getting people involved.</p>
+            <div class="open"><a class="link" href="mockups/02-rally.html" target="_blank" rel="noopener">Open Rally<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr"> (opens in a new tab)</span></a></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <a class="shot" href="mockups/03-fieldnotes.html" target="_blank" rel="noopener" style="--dur:6s"><img src="assets/previews/fieldnotes-page.webp" width="880" height="2036" alt="Preview of the Fieldnotes design" loading="lazy"></a>
+          <div class="card__body">
+            <span class="card__num">Alternative 3</span>
+            <h3>Fieldnotes</h3>
+            <p class="feel">Editorial, quiet, literary</p>
+            <p>Laid out like a nature journal or a small magazine, with a centered masthead, generous serif type and rust-red accents. A natural fit for longer stories and the Heartbeat.</p>
+            <div class="open"><a class="link" href="mockups/03-fieldnotes.html" target="_blank" rel="noopener">Open Fieldnotes<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr"> (opens in a new tab)</span></a></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <a class="shot" href="mockups/concept-b-atlas.html" target="_blank" rel="noopener" style="--dur:8s"><img src="assets/previews/atlas-page.webp" width="880" height="2675" alt="Preview of the Atlas design" loading="lazy"></a>
+          <div class="card__body">
+            <span class="card__num">Alternative 4</span>
+            <h3>Atlas</h3>
+            <p class="feel">Map-first, practical, field-guide</p>
+            <p>Opens with a map of the region: pick a state to see the member groups already organizing there. Topographic linework and field-guide labels put the network itself front and center.</p>
+            <div class="open"><a class="link" href="mockups/concept-b-atlas.html" target="_blank" rel="noopener">Open Atlas<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr"> (opens in a new tab)</span></a></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <a class="shot" href="mockups/concept-c-rings.html" target="_blank" rel="noopener" style="--dur:10s"><img src="assets/previews/rings-page.webp" width="880" height="3362" alt="Preview of the Rings design" loading="lazy"></a>
+          <div class="card__body">
+            <span class="card__num">Alternative 5</span>
+            <h3>Rings</h3>
+            <p class="feel">Dark, warm, story-led</p>
+            <p>Heartwood&rsquo;s history told as the growth rings of a tree, from its beginnings in 1991 to the network today, in warm gold on deep brown. It leads with the story of how Heartwood came to be.</p>
+            <div class="open"><a class="link" href="mockups/concept-c-rings.html" target="_blank" rel="noopener">Open Rings<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr"> (opens in a new tab)</span></a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="choose" aria-labelledby="choose-title">
+    <div class="wrap">
+      <p class="kicker">Next step</p>
+      <h2 id="choose-title">How to choose</h2>
+      <ol class="steps">
+        <li>
+          <h3>Click through a few</h3>
+          <p>Open the ones that catch your eye and scroll all the way down. If you can, look at them on your phone as well, since that&rsquo;s where many visitors will meet the site.</p>
+        </li>
+        <li>
+          <h3>Pick a favorite</h3>
+          <p>Reply to my email with the name of the design you like best, whether that&rsquo;s Living Tree or one of the alternatives.</p>
+        </li>
+        <li>
+          <h3>Point out what to keep</h3>
+          <p>If a detail from another design caught your eye, like Atlas&rsquo;s state map or the timeline in Rings, mention it. Pieces can often be carried over.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Concept mockups prepared for Heartwood by Justin Sparks, justincredible.tech.</span>
+    <span>Preview only. This is not the live Heartwood website.</span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+{
+  "integration_mode": "inline shared symbols; authoring sprite outside publish only",
+  "logos": [
+    {
+      "supplied": "Heartwood-Young-Serif-oak-wordmark-transparent - Copy.svg",
+      "original_sha256": "a55777da162315d64630c1b13f42e0c887cde2bdb053a1c21b002f359a617260",
+      "copy_byte_exact": true,
+      "symbol_id": "hw-logo",
+      "source_definition_count": 1,
+      "published_definition_count": 1,
+      "viewbox_exact": true,
+      "preserve_aspect_ratio_exact": true,
+      "path_count": 9,
+      "expected_path_count": 9,
+      "source_artwork_exact_supplied_except_fill": true,
+      "published_artwork_exact_supplied_except_fill": true,
+      "source_symbol_exact_authoring_sprite": true,
+      "public_symbol_exact_source": true
+    },
+    {
+      "supplied": "hardwood-T-11-oak-curved-forks-transparent.svg",
+      "original_sha256": "8460e1459d2edf2f96b91a16ed80057be587b3fbb62a2b99c7e5be8b10b19660",
+      "copy_byte_exact": true,
+      "symbol_id": "hw-mark",
+      "source_definition_count": 1,
+      "published_definition_count": 1,
+      "viewbox_exact": true,
+      "preserve_aspect_ratio_exact": true,
+      "path_count": 1,
+      "expected_path_count": 1,
+      "source_artwork_exact_supplied_except_fill": true,
+      "published_artwork_exact_supplied_except_fill": true,
+      "source_symbol_exact_authoring_sprite": true,
+      "public_symbol_exact_source": true
+    }
+  ],
+  "source_nonlogo_html_byte_exact_track003_baseline": true,
+  "published_document_semantics_equal_source_except_font_css_js_refs": true,
+  "source_final_logo_internal_use_count": 9,
+  "published_final_logo_internal_use_count": 9,
+  "no_external_svg_use_dependency": true,
+  "no_logo_assets_in_public_manifest": true,
+  "compression": [
+    {
+      "path": "heartwood-site.html",
+      "raw": 921865,
+      "gzip": 205927,
+      "brotli": 145774,
+      "gzip_roundtrip_exact": true,
+      "brotli_roundtrip_exact": true
+    },
+    {
+      "path": "css/heartwood-site.3dba10bf8924.css",
+      "raw": 51965,
+      "gzip": 11993,
+      "brotli": 10190,
+      "gzip_roundtrip_exact": true,
+      "brotli_roundtrip_exact": true
+    },
+    {
+      "path": "js/heartwood-site.246de01217fe.js",
+      "raw": 41397,
+      "gzip": 14853,
+      "brotli": 12550,
+      "gzip_roundtrip_exact": true,
+      "brotli_roundtrip_exact": true
+    }
+  ],
+  "javascript_unchanged_track003_fingerprint": true,
+  "importer_isolated_fixture_repeated_run_byte_idempotent": true,
+  "importer_fixture_html_matches_canonical": true,
+  "responsive_guard_source_present": true,
+  "final_inline_http_delivery": [
+    {
+      "path": "heartwood-site.html",
+      "requested": "identity",
+      "status": 200,
+      "actual_encoding": "identity",
+      "decoded_bytes_exact": true,
+      "content_type": "text/html",
+      "vary_correct": true,
+      "cache_correct": true
+    },
+    {
+      "path": "heartwood-site.html",
+      "requested": "gzip",
+      "status": 200,
+      "actual_encoding": "gzip",
+      "decoded_bytes_exact": true,
+      "content_type": "text/html",
+      "vary_correct": true,
+      "cache_correct": true
+    },
+    {
+      "path": "heartwood-site.html",
+      "requested": "br",
+      "status": 200,
+      "actual_encoding": "br",
+      "decoded_bytes_exact": true,
+      "content_type": "text/html",
+      "vary_correct": true,
+      "cache_correct": true
+    },
+    {
+      "path": "heartwood-site.html",
+      "conditional_status": 304,
+      "empty_response": true,
+      "same_etag": true
+    },
+    {
+      "path": "css/heartwood-site.3dba10bf8924.css",
+      "requested": "identity",
+      "status": 200,
+      "actual_encoding": "identity",
+      "decoded_bytes_exact": true,
+      "content_type": "text/css",
+      "vary_correct": true,
+      "cache_correct": true
+    },
+    {
+      "path": "css/heartwood-site.3dba10bf8924.css",
+      "requested": "gzip",
+      "status": 200,
+      "actual_encoding": "gzip",
+      "decoded_bytes_exact": true,
+      "content_type": "text/css",
+      "vary_correct": true,
+      "cache_correct": true
+    },
+    {
+      "path": "css/heartwood-site.3dba10bf8924.css",
+      "requested": "br",
+      "status": 200,
+      "actual_encoding": "br",
+      "decoded_bytes_exact": true,
+      "content_type": "text/css",
+      "vary_correct": true,
+      "cache_correct": true
+    },
+    {
+      "path": "css/heartwood-site.3dba10bf8924.css",
+      "conditional_status": 304,
+      "empty_response": true,
+      "same_etag": true
+    },
+    {
+      "path": "js/heartwood-site.246de01217fe.js",
+      "requested": "identity",
+      "status": 200,
+      "actual_encoding": "identity",
+      "decoded_bytes_exact": true,
+      "content_type": "text/javascript",
+      "vary_correct": true,
+      "cache_correct": true
+    },
+    {
+      "path": "js/heartwood-site.246de01217fe.js",
+      "requested": "gzip",
+      "status": 200,
+      "actual_encoding": "gzip",
+      "decoded_bytes_exact": true,
+      "content_type": "text/javascript",
+      "vary_correct": true,
+      "cache_correct": true
+    },
+    {
+      "path": "js/heartwood-site.246de01217fe.js",
+      "requested": "br",
+      "status": 200,
+      "actual_encoding": "br",
+      "decoded_bytes_exact": true,
+      "content_type": "text/javascript",
+      "vary_correct": true,
+      "cache_correct": true
+    },
+    {
+      "path": "js/heartwood-site.246de01217fe.js",
+      "conditional_status": 304,
+      "empty_response": true,
+      "same_etag": true
+    }
+  ],
+  "unused_logo_assets_not_served": [
+    {
+      "path": "assets/logos/heartwood-logos.be1cf3dac888.svg",
+      "blocked": true,
+      "status": 404
+    },
+    {
+      "path": "assets/logos/heartwood-wordmark-original.svg",
+      "blocked": true,
+      "status": 404
+    },
+    {
+      "path": "assets/logos/heartwood-oak-original.svg",
+      "blocked": true,
+      "status": 404
+    }
+  ],
+  "syntax": [
+    {
+      "path": "source/js/heartwood-site.js",
+      "exit_code": 0
+    },
+    {
+      "path": "publish/js/heartwood-site.246de01217fe.js",
+      "exit_code": 0
+    },
+    {
+      "path": "tools/build-site.mjs",
+      "exit_code": 0
+    }
+  ],
+  "review_notes": [
+    "Final supplied geometry is shared inline once per symbol with nine internal fragment uses; no new file-origin external SVG request is needed.",
+    "Original copies and authoring sprite remain outside publish. Every inline symbol tree/attribute matches the source sprite and supplied originals after approved #20241f to currentColor paint conversion.",
+    "Nonlogo source HTML reconstructs003 baseline byte-for-byte after replacing only logo definitions region. JavaScript is unchanged from003.",
+    "At<=360px the header logo scales to3.5rem while retaining aspect ratio; width estimate193px brand+16px gap+approximately70px menu fits320px viewport inner288px. Default390px/desktop4rem logo and4.8rem footer unchanged. This is source sizing justification, not browser acceptance.",
+    "Browser connection unavailable: track004 responsive screenshots/contrast/navigation/direct-file rendering are NOT RUN. Inline logo request dependency is mechanically eliminated but no browser result is claimed.",
+    "Apache .htaccess remains a source-reviewed staging candidate; live Apache encoding/MIME/cache behavior NOT RUN."
+  ],
+  "recommendation": "PASS final inline source/build/local HTTP delivery candidate; track004 browser UI acceptance and human release/Launch gates remain pending."
+}

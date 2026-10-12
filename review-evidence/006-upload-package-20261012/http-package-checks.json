@@ -1,0 +1,90 @@
+{
+  "checks": [
+    {
+      "url_path": "/",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "url_path": "index.html",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "url_path": "index.html.gz",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "url_path": "index.html.br",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "url_path": "css/heartwood-site.b665ff3c09c0.css",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "url_path": "css/heartwood-site.b665ff3c09c0.css.gz",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "url_path": "css/heartwood-site.b665ff3c09c0.css.br",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "url_path": "js/heartwood-site.246de01217fe.js",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "url_path": "js/heartwood-site.246de01217fe.js.gz",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "url_path": "js/heartwood-site.246de01217fe.js.br",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "url_path": "assets/fonts/instrument-sans-latin-ext.c4fcfea41f2c.woff2",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "url_path": "assets/fonts/instrument-sans-latin.2ee17598a98d.woff2",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "url_path": "assets/fonts/instrumentsans-OFL.txt",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "url_path": "assets/fonts/young-serif-latin-ext.9e6eb8e5e38f.woff2",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "url_path": "assets/fonts/young-serif-latin.6ba68b9927ad.woff2",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "url_path": "assets/fonts/youngserif-OFL.txt",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "url_path": ".htaccess",
+      "status": 200,
+      "bytes_match": true
+    }
+  ],
+  "limits": "Ordinary HTTP identity smoke check only; Apache rules not executed."
+}
