@@ -1,7 +1,9 @@
 # Spec: Foundation and SVG-art spike
 
-**Status: DRAFT.** Awaiting Justin's approval. `plan.md` is written only after a yes, per `conductor.md`.
-Part of the Living Tree v2 rebuild: `../../../../docs/ROADMAP.md`. Work lands on branch `v2` via its own PR.
+Status: APPROVED 2026-10-12 (operator)
+
+Part of the Living Tree v2 rebuild: `docs/ROADMAP.md`. Work lands on branch `v2` via its own PR. Approval is
+recorded on the status line above (Astelier stamps it); `plan.md` follows only after that, per `conductor.md`.
 
 ## Goal
 Make the v2 rebuild measurable, then prove or disprove the SVG-art approach on a small slice before migrating

@@ -17,7 +17,7 @@
 - [x] 3.2 Independently verify HTTP desktop/mobile interactions and capture screenshots outside publish [quality]. PASS: visible mobile Menu navigation, desktop navigation, keyboard card/leaf/group dialogs, Escape/focus restoration, desktop focus containment, inert background, canopy filter, member search/empty/reset, unchanged counts, reduced-motion entrance suppression. Final console error/warning logs empty. See QUALITY-REPORT.md and final-browser-results.json in archived evidence.
 - [ ] 3.3 Verify final direct-file browser loading [quality]. NOT RUN: automatic browser security policy rejected file:// navigation, allows HTTP(S) only and prohibited workaround. Prechange direct-file baseline passed; final relative paths and payloads passed static review. No final direct-file UI claim.
 - [ ] 3.4 Verify cold start, repeat launch and primary flow through Astelier Projects [quality]. NOT RUN: no available Astelier app/tab surface. Mapping exists; operator launch gate remains pending.
-- [x] 3.5 Record review findings, verification limits and handoff [conductor]. Extraction implemented and HTTP verified; broader production readiness and the launch gate are not signed off. Evidence archived outside publish at ../review-evidence/001-extract-assets-20261012/.
+- [x] 3.5 Record review findings, verification limits and handoff [conductor]. Extraction implemented and HTTP verified; broader production readiness and the launch gate are not signed off. Evidence archived outside publish at review-evidence/001-extract-assets-20261012/.
 
 ## Handoff
 

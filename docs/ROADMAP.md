@@ -149,6 +149,6 @@ Merges and deploys only happen with Justin's approval.
 - **Phases:** the sun math is unit-tested against published NOAA times for Paoli, Indiana (solstices,
   equinoxes and a daylight-saving changeover). Every `?phase=` value renders. The toggle persists and falls
   back cleanly without storage. The contrast test runs over every UI pairing in every phase.
-- **Launch:** cold start and repeat launch via `publish/.conductor/launch.json` (opening the file directly)
+- **Launch:** cold start and repeat launch via `.conductor/launch.json` (opening `publish/heartwood-site.html` directly)
   once the rebuild changes the entry structure.
 - **Live** (track 014 only): HTTP delivery and browser checks after the upload is approved.

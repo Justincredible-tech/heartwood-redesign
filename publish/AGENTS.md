@@ -4,7 +4,7 @@
 
 - Readable source lives in `../source/` (HTML and artwork, CSS, JavaScript with the `SITE` content model, fonts, logos, grain tiles). `heartwood-site.html` in this folder is **build output** from `../tools/build-site.mjs`; never edit it by hand. See `../README.md` and `../tools/README.md`.
 - `_core.md` defines shared delivery standards; `conductor.md` describes task tracking and handoffs.
-- `agents/` contains Markdown role prompts, not application modules. Project state lives in `.conductor/` (`project.md`, `tracks.md`, one folder per track). The v2 rebuild plan is in `../docs/ROADMAP.md`.
+- `agents/` contains Markdown role prompts, not application modules. Project state lives in `../.conductor/` at the repository root (`project.md`, `tracks.md`, one folder per track). The v2 rebuild plan is in `../docs/ROADMAP.md`.
 - Fonts are self-hosted; some content images and outgoing links load from heartwood.org. Check their availability during review.
 
 ## Build, Test, and Development Commands
