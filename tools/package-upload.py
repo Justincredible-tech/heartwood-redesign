@@ -47,7 +47,7 @@ def add_compressed(packaged, data):
 
 for relative in manifest['generated']:
     if not re.fullmatch(r'heartwood-site\.html|(?:css|js)/heartwood-site\.[0-9a-f]{12}\.(?:css|js)|assets/fonts/[A-Za-z0-9.-]+\.(?:woff2|txt)'
-                        r'|assets/grain/grain-fine-\d+@[\d.]+x\.[0-9a-f]{12}\.webp', relative):
+                        r'|assets/grain/grain-fine-\d+@[\d.]+x\.[0-9a-f]{12}\.webp|assets/meta/[a-z0-9-]+\.[0-9a-f]{12}\.(?:svg|png|jpg)', relative):
         raise SystemExit('Unexpected generated file: ' + relative)
     source = (PUBLISH / relative).resolve()
     if not source.is_relative_to(PUBLISH) or not source.is_file():

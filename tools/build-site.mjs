@@ -87,6 +87,7 @@ await fs.mkdir(path.join(publish, 'css'), { recursive: true });
 await fs.mkdir(path.join(publish, 'js'), { recursive: true });
 await fs.mkdir(path.join(publish, 'assets/fonts'), { recursive: true });
 await fs.mkdir(path.join(publish, 'assets/grain'), { recursive: true });
+await fs.mkdir(path.join(publish, 'assets/meta'), { recursive: true });
 await fs.writeFile(path.join(publish, cssPath), cssResult.styles);
 await fs.writeFile(path.join(publish, jsPath), jsResult.code);
 await fs.writeFile(path.join(publish, 'heartwood-site.html'), html);
@@ -98,6 +99,13 @@ for (const name of grainFiles) {
   await fs.copyFile(path.join(grainDir, name), path.join(publish, 'assets/grain', name));
   generated.push('assets/grain/' + name);
 }
+// Favicons and link-preview images (see tools/render-meta-images.py).
+const metaDir = path.join(source, 'assets/meta');
+for (const name of await fs.readdir(metaDir)) {
+  if (!/^[a-z0-9-]+\.[0-9a-f]{12}\.(?:svg|png|jpg)$/.test(name)) throw new Error('Unexpected file in assets/meta: ' + name);
+  await fs.copyFile(path.join(metaDir, name), path.join(publish, 'assets/meta', name));
+  generated.push('assets/meta/' + name);
+}
 
 // Remove only this build's previously recorded, content-fingerprinted outputs.
 let previous = [];
@@ -105,7 +113,7 @@ try { previous = JSON.parse(await fs.readFile(path.join(toolsDir, 'build-manifes
 catch (error) { if (error.code !== 'ENOENT') throw error; }
 const current = new Set(generated);
 for (const relative of previous) {
-  if (current.has(relative) || !/^(?:(css|js)\/heartwood-site\.[0-9a-f]{12}\.(css|js)|assets\/logos\/heartwood-logos\.[0-9a-f]{12}\.svg|assets\/grain\/grain-fine-\d+@[\d.]+x\.[0-9a-f]{12}\.webp)$/.test(relative)) continue;
+  if (current.has(relative) || !/^(?:(css|js)\/heartwood-site\.[0-9a-f]{12}\.(css|js)|assets\/logos\/heartwood-logos\.[0-9a-f]{12}\.svg|assets\/grain\/grain-fine-\d+@[\d.]+x\.[0-9a-f]{12}\.webp|assets\/meta\/[a-z0-9-]+\.[0-9a-f]{12}\.(?:svg|png|jpg))$/.test(relative)) continue;
   const target = path.resolve(publish, relative);
   if (!target.startsWith(publish + path.sep)) throw new Error('Build cleanup escaped publish.');
   for (const suffix of ['', '.gz', '.br']) await fs.rm(target + suffix, { force: true });

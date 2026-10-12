@@ -64,6 +64,7 @@ to 8001.
 | Artwork (paper shapes) | `source/heartwood-site.html` | build |
 | Paper grain (flecks and fibres) | `--grain-fine` in the stylesheet | `python render-grain.py`, then build |
 | Logos | replace the files in `finalLogos/` | `python import-logos.py`, then build |
+| Favicon, link-preview (share) images | `tools/render-meta-images.py` (drawn from the tree mark and the built hero) | build, `python render-meta-images.py`, build again |
 | The client landing page | `showcase/index.html` | package |
 
 Never edit anything the build writes into `publish/` (`heartwood-site.html`, `css/`, `js/`, `assets/`) or an
@@ -92,6 +93,13 @@ default package is the client showcase:
 
 Once the client has chosen, `python package-upload.py --site-only --name site-v1` packages Living Tree alone as
 `index.html`.
+
+To publish to https://justincredible.tech/heartwood/, use `python deploy-ftp.py ../publish/<folder>`. It is a dry
+run until you add `--go`. It writes only inside `public_html/heartwood/`, backs up what is there first to
+`deploy-backups/`, and reads FTP credentials from the environment or a file outside the repository (see the
+script's header). Link previews use absolute URLs for that address. If the site moves, rerun
+`render-meta-images.py --base <new address>`. Facebook, Slack and iMessage cache previews, so a link already shared
+can show the old one until their cache refreshes.
 
 The `.htaccess` serves the precompressed `.br` / `.gz` files and long-caches fingerprinted assets. It needs
 Apache with `mod_rewrite`, `mod_headers` and `mod_mime`. It has only been tested against the local preview, not

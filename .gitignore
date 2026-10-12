@@ -18,6 +18,9 @@ tools/compression-report.json
 publish/upload-ready*/
 tools/upload-package-manifest.json
 
+# Server backups taken by tools/deploy-ftp.py before each upload
+deploy-backups/
+
 # Editor and OS clutter
 .vscode/
 .idea/
