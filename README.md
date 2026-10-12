@@ -95,7 +95,9 @@ Once the client has chosen, `python package-upload.py --site-only --name site-v1
 `index.html`.
 
 To publish to https://justincredible.tech/heartwood/, use `python deploy-ftp.py ../publish/<folder>`. It is a dry
-run until you add `--go`. It writes only inside `public_html/heartwood/`, backs up what is there first to
+run until you add `--go`. With `--go` nothing is sent until the site owner clicks Yes in a confirmation dialog on
+their Windows desktop (default No; it closes as No after five minutes), so deploys can never happen automatically.
+It writes only inside `public_html/heartwood/`, backs up what is there first to
 `deploy-backups/`, and reads FTP credentials from the environment or a file outside the repository (see the
 script's header). Link previews use absolute URLs for that address. If the site moves, rerun
 `render-meta-images.py --base <new address>`. Facebook, Slack and iMessage cache previews, so a link already shared
