@@ -64,12 +64,12 @@ class PreviewHandler(SimpleHTTPRequestHandler):
         etag = '"' + hashlib.sha256(data).hexdigest()[:24] + '-' + encoding + '"'
         cached = etag in [value.strip() for value in self.headers.get('If-None-Match', '').split(',')]
         self.send_response(304 if cached else 200)
-        public_types = {'.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.webp': 'image/webp', '.txt': 'text/plain'}
+        public_types = {'.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.txt': 'text/plain'}
         self.send_header('Content-Type', public_types.get(target.suffix, mimetypes.guess_type(str(target))[0] or 'application/octet-stream'))
         self.send_header('ETag', etag)
         self.send_header('Vary', 'Accept-Encoding')
         self.send_header('X-Heartwood-Preview', '1')
-        fingerprinted = bool(re.search(r'\.[0-9a-f]{12}\.(?:css|js|svg|woff2|webp)$', relative))
+        fingerprinted = bool(re.search(r'\.[0-9a-f]{12}\.(?:css|js|svg|woff2|webp|png|jpg)$', relative))
         self.send_header('Cache-Control', 'public, max-age=31536000, immutable' if fingerprinted else 'no-cache')
         if encoding != 'identity':
             self.send_header('Content-Encoding', encoding)

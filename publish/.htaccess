@@ -45,7 +45,7 @@
     Header merge Vary Accept-Encoding
     Header set Cache-Control "no-cache"
   </FilesMatch>
-  <FilesMatch "\.[0-9a-f]{12}\.(?:css|js|svg|woff2|webp)(?:\.(?:br|gz))?$">
+  <FilesMatch "\.[0-9a-f]{12}\.(?:css|js|svg|woff2|webp|png|jpg)(?:\.(?:br|gz))?$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
 </IfModule>

@@ -157,6 +157,28 @@ class DeliveryTests(unittest.TestCase):
                 self.assertIn('immutable', response.headers['Cache-Control'])
                 self.assertEqual(len(response.read()), record['bytes'])
 
+    def test_favicons_and_share_images(self):
+        html = (PUBLISH / 'heartwood-site.html').read_text(encoding='utf-8')
+        landing = (ROOT / 'showcase/index.html').read_text(encoding='utf-8')
+        icons = re.findall(r'<link rel=(?:icon|apple-touch-icon) href=(assets/meta/[^ >]+)', html)
+        self.assertEqual(len(icons), 3, 'svg, 32px png and apple-touch icon')
+        types = {'.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg'}
+        for relative in icons:
+            self.assertIn(relative, MANIFEST['generated'])
+            with request(relative) as response:
+                self.assertEqual(response.headers.get_content_type(), types[Path(relative).suffix])
+                self.assertIn('immutable', response.headers['Cache-Control'])
+        for page, text in (('living tree', html), ('landing page', landing)):
+            image = re.search(r'<meta property="?og:image"? content="?(https://[^" >]+)', text)
+            self.assertIsNotNone(image, f'{page} has an absolute og:image')
+            relative = 'assets/meta/' + image.group(1).rsplit('/', 1)[1]
+            self.assertIn(relative, MANIFEST['generated'])
+            data = (PUBLISH / relative).read_bytes()
+            self.assertEqual(data[:3], b'\xff\xd8\xff', 'share image is a JPEG')
+            self.assertIn('summary_large_image', text)
+        for href in re.findall(r'href="(assets/meta/[^"]+)"', landing):
+            self.assertIn(href, MANIFEST['generated'], 'landing page icons exist in the build')
+
     def test_no_directory_or_development_file_exposure(self):
         for relative in ['agents/tech-lead.md', '.conductor/project.md', 'css/', '../tools/package.json', '%2e%2e/tools/package.json']:
             with self.assertRaises(urllib.error.HTTPError) as error:
