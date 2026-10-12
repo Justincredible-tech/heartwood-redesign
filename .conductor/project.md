@@ -2,7 +2,7 @@
 
 Goal: take the existing Heartwood website mockup toward production readiness for Heartwood visitors and maintainers, in small verified slices.
 
-Current stack: generated static HTML, fingerprinted CSS and classic browser JavaScript, preserved HTML/SVG artwork, self-hosted exact Google font subsets and selected remote Heartwood images. Readable authoring files are in ../source; repeatable build/preview tooling is in ../tools, outside publish. Browser support and hosting targets remain to be confirmed for the release track.
+Current stack: generated static HTML, fingerprinted CSS and classic browser JavaScript, preserved HTML/SVG artwork, self-hosted exact Google font subsets and selected remote Heartwood images. Readable authoring files are in source; repeatable build/preview tooling is in tools, outside publish. Browser support and hosting targets remain to be confirmed for the release track.
 
 Track003 build tools (outside publish): Node22, pinned Terser5.51.2, clean-css5.3.3 and html-minifier-terser7.2.0 for safe minification; Python3.13 plus installed Brotli for lossless precompression/preview. npm installs use --ignore-scripts and a saved lockfile. These are build-only tools authorized by the user's request to do whatever is needed for compression; no npm code or tool files are served as application dependencies. Readable source and tool instructions live outside publish. Production hosting remains unchanged until human deployment.
 
