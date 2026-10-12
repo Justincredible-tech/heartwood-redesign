@@ -9,6 +9,10 @@ Credentials are never stored in this repository. They come from FTP_HOST / FTP_U
 environment, or from the file given by --credentials (KEY=value or "Key: value" lines; host may be omitted).
 The default file is ~/.config/justincredible/ftp-credentials.
 
+With --go, nothing is sent until you click Yes in a dialog on the Windows desktop (default No, closes as No after
+five minutes), so an agent cannot deploy on its own; give an agent's command a timeout of at least five minutes.
+In Claude Code the command also needs your approval first (~/.claude/hooks/ftp-gate.py).
+
 Safety, because the FTP account reaches the whole hosting account, not just this site:
 - every remote path must resolve under public_html/heartwood/ (the guard below), so nothing else is touched;
 - before the first write, every file already in that folder is downloaded to deploy-backups/<time>/;
@@ -25,6 +29,7 @@ import os
 import posixpath
 import re
 import ssl
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -110,6 +115,33 @@ def ensure_dirs(ftp, directory, made):
         made.add(path)
 
 
+DIALOG_TIMEOUT_MS = 300_000
+
+
+def desktop_confirm(question):
+    """Ask on the Windows desktop before anything is written; only an explicit Yes goes ahead.
+
+    This is the confirmation an agent cannot give for you: the dialog appears on your screen and needs a click.
+    No, closing it, the five-minute timeout, no desktop to show it on, or any error all mean nothing is sent.
+    There is deliberately no flag or environment variable that skips it.
+    """
+    if sys.platform != 'win32':
+        print('The deploy confirmation dialog needs Windows; nothing was sent.', file=sys.stderr)
+        return False
+    try:
+        import ctypes
+        yes_no, warning, default_no, system_modal, foreground, topmost = 0x4, 0x30, 0x100, 0x1000, 0x10000, 0x40000
+        box = ctypes.windll.user32.MessageBoxTimeoutW
+        box.argtypes = [ctypes.c_void_p, ctypes.c_wchar_p, ctypes.c_wchar_p, ctypes.c_uint, ctypes.c_ushort, ctypes.c_uint]
+        box.restype = ctypes.c_int
+        answer = box(None, question + '\n\nNothing has been sent yet. This closes as "No" after five minutes.',
+                     'FTP deploy: confirm', yes_no | warning | default_no | system_modal | foreground | topmost, 0, DIALOG_TIMEOUT_MS)
+        return answer == 6                         # IDYES
+    except Exception as error:
+        print(f'Could not show the confirmation dialog ({error}); nothing was sent.', file=sys.stderr)
+        return False
+
+
 def plan(folder):
     files = sorted(p for p in folder.rglob('*') if p.is_file())
     def order(p):
@@ -147,6 +179,12 @@ def main():
         if not args.go:
             print('Dry run: nothing sent. Add --go to back up and upload.')
             return
+        question = (f'Upload {len(local)} files ({sum(p.stat().st_size for p in local) / 1e6:.1f} MB) from\n{folder.name}\n'
+                    f'to https://justincredible.tech/heartwood/ ?\n\nReplaces {len(set(existing) & set(targets))} files on the live site; '
+                    f'adds {len(set(targets) - set(existing))}.')
+        print('Waiting for confirmation on the desktop...', flush=True)
+        if not desktop_confirm(question):
+            raise SystemExit('Not confirmed on the desktop: nothing was sent.')
         stamp = datetime.datetime.now().strftime('%Y%m%d-%H%M%S')
         backup = BACKUPS / f'heartwood-{stamp}'
         for remote in sorted(existing):
