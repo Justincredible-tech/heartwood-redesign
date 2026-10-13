@@ -155,6 +155,17 @@ body.is-lifted { overflow: hidden; }
 .cut { position: absolute; inset: 0; pointer-events: none; }
 .cut > i { position: absolute; background: var(--grain), var(--c); }
 
+/* Spike 008: a sheet drawn as SVG. Its pieces are <path class="piece">, painted from the sheet's --c; the paper
+   grain comes from one .grain-sheet laid over the static scenery instead of from every piece. */
+svg.cut { width: 100%; height: 100%; overflow: visible; fill-rule: evenodd; }
+svg.cut .piece { fill: var(--c); }
+.grain-sheet { position: absolute; inset: 0; background: var(--grain); pointer-events: none; }
+.grain-sheet--torn { bottom: calc(-18 * var(--u)); }          /* down over the torn edge, which the sheet's clip-path follows */
+/* what lies under a grain sheet carries no grain of its own */
+.stage { background: linear-gradient(90deg, var(--sky-left), var(--sky-right)); }
+.scene .clouds > i, .forest .btree b > i { background: var(--c); }
+.deep .stratum--gravel .soil > i { background: linear-gradient(90deg, var(--c) 12%, var(--c2) 88%) calc(50% + var(--shift)) 0 / var(--sheet-w) 100% no-repeat; }
+
 .clouds   { --c: var(--cloud);    filter: drop-shadow(calc(2 * var(--u)) calc(4 * var(--u)) calc(3 * var(--u)) rgb(50 80 120 / .34)); }
 .soil > i { background: var(--grain), linear-gradient(90deg, var(--c) 12%, var(--c2) 88%); }
 .soil     {                       filter: drop-shadow(0 calc(3 * var(--u)) calc(3 * var(--u)) rgb(20 10 0 / .42)); }
@@ -235,8 +246,8 @@ body.is-lifted { overflow: hidden; }
     var(--grain), linear-gradient(90deg, var(--c) 12%, var(--c2) 88%) calc(50% + var(--shift)) 0 / var(--sheet-w) 100% no-repeat;
 }
 /* a narrow window shows the same strata in less width, so it carries fewer stones */
-@media (max-width: 900px) { .deep .stones > i.stone--tablet-hidden { display: none; } }
-@media (max-width: 560px) { .deep .stones > i.stone--phone-hidden { display: none; } }
+@media (max-width: 900px) { .deep .stones > .stone--tablet-hidden { display: none; } }
+@media (max-width: 560px) { .deep .stones > .stone--phone-hidden { display: none; } }
 
 /* ----------------------------------------------------------------- leaves */
 .tree { z-index: 3; pointer-events: none; }
