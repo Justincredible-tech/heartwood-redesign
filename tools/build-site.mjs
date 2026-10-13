@@ -2,16 +2,26 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
-import { spawnSync } from 'node:child_process';
+import { spawn } from 'node:child_process';
 import CleanCSS from 'clean-css';
 import { minify as minifyJs } from 'terser';
 import { minify as minifyHtml } from 'html-minifier-terser';
+import {buildMobile} from './build-mobile.mjs';
+import {buildTaste} from './build-taste.mjs';
+import {faithfulLeafSource} from '../source/taste/leaf-rendering.mjs';
+import {removeRecordedFingerprint,writeOutput} from './build-output.mjs';
+import {experienceEntry} from '../source/taste/experience-entry.mjs';
 
 const toolsDir = path.dirname(fileURLToPath(import.meta.url));
 const root = path.dirname(toolsDir);
 const source = path.join(root, 'source');
 const publish = path.join(root, 'publish');
 const hash = data => crypto.createHash('sha256').update(data).digest('hex').slice(0, 12);
+let compressionChild=null;
+let buildStep='read authored sources';
+const stopChild=signal=>{if(compressionChild&&compressionChild.exitCode===null&&compressionChild.signalCode===null)compressionChild.kill(signal);};
+const buildDeadline=setTimeout(()=>{console.error('stuck at '+buildStep+'; whole-run deadline exceeded');stopChild('SIGKILL');process.exit(124);},300000);buildDeadline.unref();
+for(const [signal,code]of [['SIGINT',130],['SIGTERM',143],['SIGHUP',129]])process.once(signal,()=>{process.exitCode=code;stopChild('SIGTERM');setTimeout(()=>{stopChild('SIGKILL');process.exit(code);},1500).unref();});
 
 const [htmlSource, cssSource, fontCss, jsSource] = await Promise.all([
   fs.readFile(path.join(source, 'heartwood-site.html'), 'utf8'),
@@ -19,10 +29,20 @@ const [htmlSource, cssSource, fontCss, jsSource] = await Promise.all([
   fs.readFile(path.join(source, 'css/fonts.css'), 'utf8'),
   fs.readFile(path.join(source, 'js/heartwood-site.js'), 'utf8'),
 ]);
-const cssResult = new CleanCSS({ level: 1, rebase: false }).minify(fontCss + '\n' + cssSource);
+const leaf=faithfulLeafSource({html:htmlSource,css:cssSource});
+buildStep='compose phone';console.log('[build] '+buildStep);
+const mobile=await buildMobile();
+const localPhotos=Object.fromEntries(Object.entries(mobile.manifest.photos).map(([url,photo])=>{
+  const file=photo.widths['720']?.webp;
+  if(!file||!mobile.manifest.files.some(row=>row.path===file))throw Error('Reviewed 720px photo missing for '+url);
+  return [url,'mobile/'+file];
+}));
+if(Object.keys(localPhotos).length!==2)throw Error('Expected the two current author photos');
+buildStep='compile desktop';console.log('[build] '+buildStep);
+const cssResult = new CleanCSS({ level: 1, rebase: false }).minify(fontCss + '\n' + cssSource + '\n' + leaf.css);
 if (cssResult.errors.length) throw new Error(cssResult.errors.join('\n'));
 if (cssResult.warnings.length) console.warn(cssResult.warnings.join('\n'));
-const jsResult = await minifyJs(jsSource, {
+const jsResult = await minifyJs('const HW_LOCAL_PHOTOS='+JSON.stringify(localPhotos)+';\n'+leaf.js + '\n' + jsSource, {
   ecma: 2020,
   module: false,
   compress: { passes: 2, unsafe: false },
@@ -82,7 +102,7 @@ const viewport = htmlSource.match(/<meta name="viewport" content="([^"]+)">/);
 if (!viewport) throw new Error('Missing source viewport contract.');
 html = html.replace(/(<meta name=viewport content=")[^"]+(">)/, (_, start, end) => start + viewport[1] + end);
 
-const generated = ['heartwood-site.html', cssPath, jsPath];
+const generated = ['heartwood-site.html', 'desktop-day.html', 'experience-entry.html', cssPath, jsPath];
 await fs.mkdir(path.join(publish, 'css'), { recursive: true });
 await fs.mkdir(path.join(publish, 'js'), { recursive: true });
 await fs.mkdir(path.join(publish, 'assets/fonts'), { recursive: true });
@@ -91,6 +111,8 @@ await fs.mkdir(path.join(publish, 'assets/meta'), { recursive: true });
 await fs.writeFile(path.join(publish, cssPath), cssResult.styles);
 await fs.writeFile(path.join(publish, jsPath), jsResult.code);
 await fs.writeFile(path.join(publish, 'heartwood-site.html'), html);
+await writeOutput(publish,'desktop-day.html',html);
+await writeOutput(publish,'experience-entry.html',experienceEntry('main',{htmlSource}));
 for (const name of fontFiles) {
   await fs.copyFile(path.join(fontDir, name), path.join(publish, 'assets/fonts', name));
   generated.push('assets/fonts/' + name);
@@ -107,16 +129,18 @@ for (const name of await fs.readdir(metaDir)) {
   generated.push('assets/meta/' + name);
 }
 
+generated.push(...mobile.manifest.files.map(file=>'mobile/'+file.path),'mobile/manifest.json');
+buildStep='compile taste';console.log('[build] '+buildStep);
+const taste=await buildTaste({root,htmlSource,cssSource,fontCss,authoredJsPath:jsPath,preloads});
+generated.push(...taste.generated);
+
 // Remove only this build's previously recorded, content-fingerprinted outputs.
 let previous = [];
 try { previous = JSON.parse(await fs.readFile(path.join(toolsDir, 'build-manifest.json'), 'utf8')).generated; }
 catch (error) { if (error.code !== 'ENOENT') throw error; }
 const current = new Set(generated);
 for (const relative of previous) {
-  if (current.has(relative) || !/^(?:(css|js)\/heartwood-site\.[0-9a-f]{12}\.(css|js)|assets\/logos\/heartwood-logos\.[0-9a-f]{12}\.svg|assets\/grain\/grain-fine-\d+@[\d.]+x\.[0-9a-f]{12}\.webp|assets\/meta\/[a-z0-9-]+\.[0-9a-f]{12}\.(?:svg|png|jpg))$/.test(relative)) continue;
-  const target = path.resolve(publish, relative);
-  if (!target.startsWith(publish + path.sep)) throw new Error('Build cleanup escaped publish.');
-  for (const suffix of ['', '.gz', '.br']) await fs.rm(target + suffix, { force: true });
+  if (!current.has(relative)) await removeRecordedFingerprint(publish,relative);
 }
 const manifest = {
   generated,
@@ -124,6 +148,12 @@ const manifest = {
   bytes: { html: Buffer.byteLength(html), css: Buffer.byteLength(cssResult.styles), js: Buffer.byteLength(jsResult.code) },
 };
 await fs.writeFile(path.join(toolsDir, 'build-manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
-const compressed = spawnSync('python', [path.join(toolsDir, 'compress-site.py')], { stdio: 'inherit' });
-if (compressed.status !== 0) throw new Error('Compression failed.');
+buildStep='compress public text assets';console.log('[build] '+buildStep);
+await new Promise((done,fail)=>{
+  compressionChild=spawn('python',[path.join(toolsDir,'compress-site.py')],{stdio:'inherit'});
+  const timeout=setTimeout(()=>{stopChild('SIGKILL');fail(Error('stuck at compression; 120-second deadline exceeded'));},120000);
+  compressionChild.once('error',error=>{clearTimeout(timeout);fail(error);});
+  compressionChild.once('close',(code,signal)=>{clearTimeout(timeout);compressionChild=null;code===0&&!signal?done():fail(Error('Compression failed: '+(signal||code)));});
+});
+clearTimeout(buildDeadline);
 console.log(JSON.stringify(manifest, null, 2));

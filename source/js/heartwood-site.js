@@ -595,6 +595,14 @@ const SITE = {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  // The build shares the reviewed phone-sized photos with both desktop scenes.
+  // Keep the author's content URLs in SITE; only the displayed image source changes.
+  const imageSrc = src => {
+    const local = typeof HW_LOCAL_PHOTOS === 'object' && HW_LOCAL_PHOTOS[src];
+    if (!local) return src;
+    const base = new URL(document.documentElement.dataset.hwExperience === 'taste' ? '../' : './', location.href);
+    return new URL(local, base).href;
+  };
   const tree = $('.tree');
   const tag = $('#leaftag');
 
@@ -657,7 +665,7 @@ const SITE = {
       `<h2 id="dialog-title">${esc(item.title)}</h2>` +
       (meta ? `<p class="dialog__meta">${esc(meta)}</p>` : '') +
       `<div class="dialog__body">` +
-        (item.img ? `<figure><img src="${esc(item.img.src)}" alt="${esc(item.img.alt)}" loading="lazy" onerror="this.parentNode.remove()"></figure>` : '') +
+        (item.img ? `<figure><img src="${esc(imageSrc(item.img.src))}" alt="${esc(item.img.alt)}" loading="lazy" onerror="this.parentNode.remove()"></figure>` : '') +
         item.body.map(p => `<p>${esc(p)}</p>`).join('') +
         (item.list ? `<ul class="dots">${item.list.map(t => `<li>${mark(tone(leaf))}<span>${esc(t)}</span></li>`).join('')}</ul>` : '') +
         (item.tiers ? `<ul class="tiers">${item.tiers.map(([n, p]) => `<li><span>${esc(n)}</span><b>${esc(p)} / year</b></li>`).join('')}</ul>` : '') +
@@ -759,7 +767,7 @@ const SITE = {
   const [issue, ...rest] = news;
   const posts = rest.filter(n => !n.backIssue), back = rest.filter(n => n.backIssue);
   $('#news-issue').innerHTML =
-    `<figure class="issue__cover"><img src="${esc(issue.img.src)}" alt="${esc(issue.img.alt)}" loading="lazy" onerror="this.parentNode.remove()"></figure>` +
+    `<figure class="issue__cover"><img src="${esc(imageSrc(issue.img.src))}" alt="${esc(issue.img.alt)}" loading="lazy" onerror="this.parentNode.remove()"></figure>` +
     `<span class="card__kicker">Heartbeat · ${esc(issue.date)}</span><h3>${esc(issue.title)}</h3><p>${esc(issue.sum)}</p>` +
     `<div class="dialog__links" style="margin-top:.6rem">${issue.links.map(link).join('')}</div>` +
     `<ul class="issue__back" aria-label="Back issues">${back.map(b => `<li><a href="${href(b)}" data-open="${b.id}">${esc(b.date)}</a></li>`).join('')}</ul>`;
@@ -894,8 +902,14 @@ const SITE = {
     motionRegions.forEach(region => motionObserver.observe(region));
   }
 
+  /* Let initial fragments arrive before enabling smooth in-page navigation. */
+  const smoothScroll = () => document.documentElement.classList.add('is-smooth-scroll');
+  const smoothAfterLoad = () => requestAnimationFrame(() => requestAnimationFrame(smoothScroll));
+  if (document.readyState === 'complete') smoothAfterLoad(); else window.addEventListener('load', smoothAfterLoad, { once: true });
+  ['pointerdown', 'keydown'].forEach(type => window.addEventListener(type, smoothScroll, { capture: true, passive: true, once: true }));
+
   /* --------------------------------------------------------------- header */
-  const top = $('#top'), menu = $('.top__menu');
+  const top = $('.top'), menu = $('.top__menu');
   const stuck = () => {
     top.classList.toggle('is-stuck', window.scrollY > 8);
     if (window.scrollY < 200) $$('.nav [aria-current]').forEach(a => a.removeAttribute('aria-current'));   // back at the tree

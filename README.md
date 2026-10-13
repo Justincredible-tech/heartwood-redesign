@@ -21,6 +21,8 @@ It contains:
 | Path | What it is |
 |---|---|
 | `source/` | **Living Tree, readable source.** Edit here. `heartwood-site.html` is the markup and paper artwork; `css/heartwood-site.css` the styles; `js/heartwood-site.js` the interactions and the `SITE` content model; `assets/` self-hosted fonts, logo symbols and the paper-grain tiles. |
+| `source/mobile/` | The phone composition: a tall cut-paper tulip poplar, tap previews, category branches, detail sheets and compact roots. Includes reviewed day/night raster masters and encoded derivatives. |
+| `source/taste/` | The optional desktop scene: night artwork and the additional tree/network interactions, composed from the authored site. |
 | `tools/` | Build, local preview, delivery tests, packaging and asset tools. Details in [`tools/README.md`](tools/README.md). |
 | `showcase/` | The client landing page (`index.html`) and its preview images. |
 | `mockups/` | The five alternative designs, plus logo explorations in `mockups/logo/`. |
@@ -38,7 +40,7 @@ cd tools
 npm ci --ignore-scripts --no-fund         # build-only packages, pinned in package-lock.json
 pip install -r requirements.txt           # brotli (always); playwright + pillow (only to redraw the grain)
 npm run build                             # source/ -> publish/: minified, fingerprinted, precompressed
-python preview.py --port 8003             # then open http://127.0.0.1:8003/heartwood-site.html
+python preview.py --port 8003             # then open http://127.0.0.1:8003/
 ```
 
 In a second terminal, with the preview running:
@@ -54,6 +56,20 @@ Use the compressed preview, not `python -m http.server`: it serves only the buil
 Brotli/gzip like the real host, and refuses a port that is already taken. Pick any free port; the tests default
 to 8001.
 
+## Day, night and phone scenes
+
+The public site entry selects the scene before requesting its artwork. Desktop follows the system colour
+preference; `taste/` starts at night. Use `?theme=light` or `?theme=dark` for an explicit choice, or the desktop
+Day/Night link. Phones automatically receive the vertical phone composition and follow their system
+preference, including when they arrive through `taste/`. Add `?view=desktop` to use the desktop composition
+on a phone. Selection retains the query and fragment used for categories, search and leaf links.
+
+The build writes an assetless `experience-entry.html`, which packaging installs as the public site entry.
+`desktop-day.html` and `taste/scene.html` contain the desktop scenes; their browser addresses resolve back to
+the corresponding public entry while preserving state. `mobile/` selects fixed `mobile/day.html` and
+`mobile/night.html` pages, so an explicit choice uses the appropriate artwork even when it differs from the
+system preference. Both phone themes share the same layout, content and tap interactions.
+
 ## Where to change what
 
 | To change | Edit | Then |
@@ -62,6 +78,9 @@ to 8001.
 | Interactions | `source/js/heartwood-site.js` | build |
 | Layout, colour, type, motion | `source/css/heartwood-site.css` | build |
 | Artwork (paper shapes) | `source/heartwood-site.html` | build |
+| Optional desktop night scene and interactions | `source/taste/` | build |
+| Phone layout and interactions | `source/mobile/page.mjs`, `mobile.css`, `app.js` | build |
+| Phone paper artwork | `source/mobile/art.mjs`, `night.mjs`, `reference-paper.css` | regenerate affected reviewed masters and derivatives, then build |
 | Paper grain (flecks and fibres) | `--grain-fine` in the stylesheet | `python render-grain.py`, then build |
 | Logos | replace the files in `finalLogos/` | `python import-logos.py`, then build |
 | Favicon, link-preview (share) images | `tools/render-meta-images.py` (drawn from the tree mark and the built hero) | build, `python render-meta-images.py`, build again |
@@ -75,6 +94,11 @@ served as the old version.
 and keep its inline styles as they are; the tests check that the build preserves every artwork element and
 attribute.
 
+Ordinary phone builds verify and copy the committed art; they do not run a browser or image encoder.
+Changing its art recipe requires a separate render of the affected masters and matching AVIF/WebP
+derivatives, with updated recipe and byte hashes. The build rejects stale masters or altered inputs. See
+[`tools/README.md`](tools/README.md) for the source checks and asset regeneration boundary.
+
 ## Shipping to the web server
 
 ```bash
@@ -87,7 +111,8 @@ Upload the **contents** of `publish/<folder>/`, including the hidden `.htaccess`
 default package is the client showcase:
 
 - `index.html`: the landing page
-- `living-tree.html`: the built Living Tree site
+- `living-tree.html`: the scene-selecting Living Tree entry
+- `desktop-day.html`, `taste/`, `mobile/`: the desktop and phone scene documents
 - `mockups/`: the five alternatives
 - `assets/`: fonts, grain tiles and preview images
 
@@ -131,7 +156,7 @@ The details, including commit-message style and how to note AI-assisted work, ar
 
 ## Notes and gotchas
 
-- **Performance.** The page draws about 3,600 elements of cut-paper artwork, so first paint and GPU load matter on
+- **Performance.** The desktop scene draws about 3,600 elements of cut-paper artwork, so first paint and GPU load matter on
   cheap phones. The paper grain's fine layers are pre-drawn into small tiles, and animations pause when off
   screen or in a hidden tab. Measurements and methods are in `review-evidence/` (start with
   `007-grain-and-motion-20261012/`). Profile before and after any change that adds artwork, filters or motion.

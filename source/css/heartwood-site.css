@@ -423,6 +423,7 @@ button.leaf .leaf__face { pointer-events: auto; }
   --lay-up: drop-shadow(0 0 .5px rgb(30 15 0 / .35)) drop-shadow(3px 7px 7px rgb(20 10 0 / .32));
 }
 html { scroll-behavior: smooth; scroll-padding-top: var(--top-h); -webkit-text-size-adjust: 100%; }
+html:not(.is-smooth-scroll) { scroll-behavior: auto; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 a { color: inherit; }

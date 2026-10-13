@@ -46,13 +46,29 @@ def add_compressed(packaged, data):
 
 
 for relative in manifest['generated']:
-    if not re.fullmatch(r'heartwood-site\.html|(?:css|js)/heartwood-site\.[0-9a-f]{12}\.(?:css|js)|assets/fonts/[A-Za-z0-9.-]+\.(?:woff2|txt)'
-                        r'|assets/grain/grain-fine-\d+@[\d.]+x\.[0-9a-f]{12}\.webp|assets/meta/[a-z0-9-]+\.[0-9a-f]{12}\.(?:svg|png|jpg)', relative):
+    if not re.fullmatch(r'(?:heartwood-site|desktop-day|experience-entry)\.html|(?:css|js)/heartwood-site\.[0-9a-f]{12}\.(?:css|js)|assets/fonts/[A-Za-z0-9.-]+\.(?:woff2|txt)'
+                        r'|assets/grain/grain-fine-\d+@[\d.]+x\.[0-9a-f]{12}\.webp|assets/meta/[a-z0-9-]+\.[0-9a-f]{12}\.(?:svg|png|jpg)'
+                        r'|taste/(?:index|scene)\.html|(?:css|js)/heartwood-taste(?:-head)?\.[0-9a-f]{12}\.(?:css|js)'
+                        r'|mobile/(?:index|day|night)\.html|mobile/manifest\.json|mobile/assets/[A-Za-z0-9@._-]+\.[0-9a-f]{16}\.(?:avif|webp|woff2|svg|png|css|js|txt)', relative):
         raise SystemExit('Unexpected generated file: ' + relative)
     source = (PUBLISH / relative).resolve()
     if not source.is_relative_to(PUBLISH) or not source.is_file():
         raise SystemExit('Missing or escaped generated asset: ' + relative)
-    packaged = entry if relative == 'heartwood-site.html' else relative
+    packaged = entry if relative == 'experience-entry.html' else 'desktop-day.html' if relative == 'heartwood-site.html' else relative
+    if packaged in files and files[packaged].read_bytes() != source.read_bytes():
+        raise SystemExit('Conflicting packaged body: ' + packaged)
+    if not args.site_only and packaged == 'desktop-day.html':
+        original = source.read_bytes()
+        data = original.replace(b'<html ', b'<html data-hw-public-entry="living-tree.html" ', 1)
+        if data == original:
+            raise SystemExit('Missing packaged body root element')
+        if packaged in made:
+            if made[packaged] != data:
+                raise SystemExit('Conflicting packaged main scene')
+            continue
+        made[packaged] = data
+        add_compressed(packaged, data)
+        continue
     files[packaged] = source
     if source.suffix in ('.html', '.css', '.js'):
         original = source.read_bytes()
@@ -113,7 +129,7 @@ for relative, data in made.items():
     target = destination / relative
     target.write_bytes(data)
     assert target.read_bytes() == data, 'Write mismatch: ' + relative
-    records.append({'path': relative, 'source': 'compressed by package-upload.py',
+    records.append({'path': relative, 'source': 'created by package-upload.py',
                     'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()})
 assert {path.relative_to(destination).as_posix() for path in destination.rglob('*') if path.is_file()} == set(files) | set(made)
 report = {'folder': str(destination), 'layout': 'site-only' if args.site_only else 'showcase', 'entry': 'index.html',
