@@ -27,8 +27,8 @@ STONE_PIECE = re.compile(rf'<i(?: class="(stone--(?:tablet|phone)-hidden)")? sty
                          rf'clip-path:polygon\((evenodd,)?([^)]*)\)"></i>')
 
 
-def fmt(v):
-    return f'{v:.3f}'.rstrip('0').rstrip('.') or '0'
+def fmt(v, places=3):
+    return f'{v:.{places}f}'.rstrip('0').rstrip('.') or '0'
 
 
 def points(polygon):
@@ -42,7 +42,11 @@ def points(polygon):
 
 
 def path(pts):
-    return 'M' + 'L'.join(f'{fmt(x)} {fmt(y)}' for x, y in pts) + 'Z'
+    """One decimal place, relative moves: at most 0.05 viewBox units off (about 0.05 px across a 1440 px stage),
+    and it compresses smaller than v1's percentage polygons. Points are rounded first, so errors never add up."""
+    rounded = [(round(x, 1), round(y, 1)) for x, y in pts]
+    steps = [f'{fmt(x - px, 1)} {fmt(y - py, 1)}'.replace(' -', '-') for (px, py), (x, y) in zip(rounded, rounded[1:])]
+    return f'M{fmt(rounded[0][0], 1)} {fmt(rounded[0][1], 1)}l' + ' '.join(steps) + 'z'
 
 
 def whole(pattern, inner, what):
