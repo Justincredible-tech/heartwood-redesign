@@ -161,6 +161,10 @@ svg.cut { width: 100%; height: 100%; overflow: visible; fill-rule: evenodd; }
 svg.cut .piece, .cut > i.stone .piece { fill: var(--c); }
 .cut > i.stone { background: none; }               /* the stone's box only places it; its <svg> draws it */
 .cut > i.stone > svg { display: block; width: 100%; height: 100%; }
+.stones--bed > i.stone .piece { fill: rgb(22 11 2 / .42); }
+.stones--in > i.stone .piece { fill: color-mix(in srgb, var(--c) 42%, #170d04); }
+.stones--in > i.stone .piece--face { fill: var(--c); }
+.stones--in > i.stone::after { content: none; }          /* drawn by .piece--face instead */
 .grain-sheet { position: absolute; inset: 0; background: var(--grain); pointer-events: none; }
 .grain-sheet--torn { bottom: calc(-18 * var(--u)); }          /* down over the torn edge, which the sheet's clip-path follows */
 /* what lies under a grain sheet carries no grain of its own */

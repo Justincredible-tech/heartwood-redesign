@@ -71,23 +71,35 @@ hero_layer.count = 0
 
 
 def stones_layer(match):
+    """v1 stones are three stacked sheets: a blurred dark bed (scaled 1.4), a dark inner stone, and the stone's colour
+    shifted by (1.3, 1.7) artwork units and clipped to the stone (a pseudo-element). The last becomes a clipped,
+    translated second path; the shift is converted to the stone's 0..100 box from its size in artwork units."""
     classes, style, inner = match.group(1), match.group(2), match.group(3)
+    inner_layer = 'stones--in' in classes
     stones = []
     for p in whole(STONE_PIECE, inner, classes):
         hide = p.group(1)
+        width, height = float(p.group(6)), float(p.group(7))
         box = (f'left:calc({p.group(2)}% - {p.group(3)} * var(--u));top:calc({p.group(4)}% - {p.group(5)} * var(--u));'
-               f'width:calc({p.group(6)} * var(--u));height:calc({p.group(7)} * var(--u))')
+               f'width:calc({width:g} * var(--u));height:calc({height:g} * var(--u))')
         rule = '' if p.group(8) else ' fill-rule="nonzero"'
+        d = path(points(p.group(9)))
         cls = 'stone' + (f' {hide}' if hide else '')
+        art = f'<path class="piece" d="{d}"{rule}/>'
+        if inner_layer:
+            stones_layer.clips += 1
+            clip = f's{stones_layer.clips}'
+            art += (f'<clipPath id="{clip}"><path d="{d}"{rule}/></clipPath><g clip-path="url(#{clip})">'
+                    f'<path class="piece piece--face" d="{d}"{rule} transform="translate({fmt(1.3 / width * 100)} {fmt(1.7 / height * 100)})"/></g>')
         # Chrome ignores CSS x/y/width/height on a nested <svg>, so each stone keeps its v1 box as an HTML element
-        stones.append(f'<i class="{cls}" style="{box}"><svg viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">'
-                      f'<path class="piece" d="{path(points(p.group(9)))}"{rule}/></svg></i>')
+        stones.append(f'<i class="{cls}" style="{box}"><svg viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">{art}</svg></i>')
     stones_layer.count += len(stones)
     style_attr = f' style="{style}"' if style else ''
     return f'<div aria-hidden="true" class="{classes}"{style_attr}>{"".join(stones)}</div>'
 
 
 stones_layer.count = 0
+stones_layer.clips = 0
 
 
 def tear_clip(stratum):
