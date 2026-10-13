@@ -4,8 +4,8 @@
     python tools/quality/perf.py --base v1.0-iterative --head v1.0-iterative --runs 5   # noise floor
 
 Each ref is built and served by refs.py (base on 8004, head on 8005). Every run launches a fresh Chrome with the
-cache disabled, records a trace of the load and of an idle window while the scene animates, then takes a memory
-dump. Runs alternate base, head, head, base... so a slow spell on the machine falls on both sides.
+cache disabled, traces the load, waits for the page to settle, traces five seconds of the scene animating on its
+own (a separate trace, so the tail of a slow load never lands in it), then takes a memory dump. Runs alternate base, head, head, base... so a slow spell on the machine falls on both sides.
 
 Measures, per profile (median of the runs):
   first_paint_ms     first contentful paint
@@ -40,6 +40,7 @@ PROFILES = {
 METRICS = ('first_paint_ms', 'blocked_ms', 'main_paint_ms', 'gpu_ms_per_s', 'layers', 'renderer_mb', 'gpu_mb')
 CATEGORIES = ['devtools.timeline', 'disabled-by-default-devtools.timeline', 'blink', 'cc', 'gpu', 'viz', 'toplevel']
 IDLE_S = 5
+SETTLE_MS = 3000
 
 
 def thresholds(profile):
@@ -145,22 +146,28 @@ async def measure(playwright, url, profile):
         nav = await page.evaluate("""() => { const f = performance.getEntriesByName('first-contentful-paint')[0];
             const fcp = f ? f.startTime : 0;
             return {fcp, blocked: window.__lt.filter(([s]) => s > fcp).reduce((a, [, d]) => a + Math.max(0, d - 50), 0)}; }""")
+        load = json.loads(await browser.stop_tracing())['traceEvents']
+        # The idle window is its own trace, after the page has settled: on the throttled phone the tail of the load
+        # can otherwise land inside it on some runs and not others.
+        await page.wait_for_timeout(SETTLE_MS)
+        await browser.start_tracing(page=page, categories=CATEGORIES)
         await page.wait_for_timeout(IDLE_S * 1000)
-        trace = json.loads(await browser.stop_tracing())['traceEvents']
+        idle = json.loads(await browser.stop_tracing())['traceEvents']
         layers = await layer_count(cdp)
         await cdp.send('HeapProfiler.collectGarbage')       # so memory is not read mid-way through a GC cycle
         mem = await memory(browser)
     finally:
         await browser.close()
-    names = thread_names(trace)
-    main = [e for e in trace if e.get('ph') == 'X' and names.get((e['pid'], e['tid'])) == 'CrRendererMain']
-    start, end = min(e['ts'] for e in main), max(e['ts'] + e.get('dur', 0) for e in main)
-    idle_start = end - IDLE_S * 1e6
+    load_names, idle_names = thread_names(load), thread_names(idle)
+    span = lambda events, names: (min(e['ts'] for e in events if e.get('ph') == 'X' and names.get((e['pid'], e['tid'])) == 'CrRendererMain'),
+                                  max(e['ts'] + e.get('dur', 0) for e in events if e.get('ph') == 'X'))
+    load_start, load_end = span(load, load_names)
+    idle_start, idle_end = span(idle, idle_names)
     return {
         'first_paint_ms': round(nav['fcp']),
         'blocked_ms': round(nav['blocked']),
-        'main_paint_ms': round(window_time(trace, names, start, idle_start, 'main', {'Paint', 'PrePaint', 'Layerize'}) / 1000),
-        'gpu_ms_per_s': round(window_time(trace, names, idle_start, end, 'gpu') / 1000 / IDLE_S, 1),
+        'main_paint_ms': round(window_time(load, load_names, load_start, load_end, 'main', {'Paint', 'PrePaint', 'Layerize'}) / 1000),
+        'gpu_ms_per_s': round(window_time(idle, idle_names, idle_start, idle_end, 'gpu') / 1000 / ((idle_end - idle_start) / 1e6), 1),
         'layers': layers,
         **mem,
     }

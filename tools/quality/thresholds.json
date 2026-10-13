@@ -1,78 +1,124 @@
 {
- "about": "Noise floor of tools/quality, measured 2026-10-13 by comparing v1.0-iterative with itself on this machine (Chrome, Windows 11): perf.py --runs 5 (10 runs per profile), visual.py twice. perf: a head value may exceed base by max(relative x base, absolute); relative is the roadmap 5%, widened to 1.5x the median gap seen between identical builds where that is larger. visual: section_mean is the roadmap 0.5/255; structural_pct and regions are the measured floor (none), so any structural change fails and goes to Justin for review. Remeasure after changing the tools or the machine.",
+ "about": "Noise floor of tools/quality, measured 2026-10-13 by comparing v1.0-iterative with itself on this machine (Chrome, Windows 11): perf.py --runs 5 twice (10 runs per profile each; the second after the idle window became its own trace), visual.py twice; the wider limit of the two sessions is kept. perf: a head value may exceed base by max(relative x base, absolute); relative is the roadmap 5%, widened to 1.5x the median gap seen between identical builds where that is larger. visual: section_mean is the roadmap 0.5/255; structural_pct and regions are the measured floor (none), so any structural change fails and goes to Justin for review. Remeasure after changing the tools or the machine. Between sessions on this machine, gpu_ms_per_s and blocked_ms (and to a lesser degree main_paint_ms) drift by more than these limits even for identical builds (track 008 spike: low-end GPU +26% in one session, -10% in the next), so a verdict on them counts only when two separate sessions agree.",
  "perf": {
   "desktop": {
    "first_paint_ms": {
     "relative": 0.05,
     "absolute": 0,
-    "noise_gap_pct": 0.4
+    "noise_gap_pct": [
+     0.4,
+     0.4
+    ]
    },
    "blocked_ms": {
     "relative": 0.05,
     "absolute": 10,
-    "noise_gap_pct": 0
+    "noise_gap_pct": [
+     0,
+     0
+    ],
+    "cross_session": "unreliable: trust a change only when two separate sessions agree"
    },
    "main_paint_ms": {
     "relative": 0.05,
     "absolute": 0,
-    "noise_gap_pct": 0.9
+    "noise_gap_pct": [
+     0.9,
+     0.3
+    ]
    },
    "gpu_ms_per_s": {
     "relative": 0.05,
     "absolute": 0,
-    "noise_gap_pct": 0.3
+    "noise_gap_pct": [
+     0.3,
+     0.2
+    ],
+    "cross_session": "unreliable: trust a change only when two separate sessions agree"
    },
    "layers": {
     "relative": 0.05,
     "absolute": 1,
-    "noise_gap_pct": 0.0
+    "noise_gap_pct": [
+     0.0,
+     0.0
+    ]
    },
    "renderer_mb": {
     "relative": 0.05,
     "absolute": 0,
-    "noise_gap_pct": 0.7
+    "noise_gap_pct": [
+     0.7,
+     0.1
+    ]
    },
    "gpu_mb": {
     "relative": 0.05,
     "absolute": 1,
-    "noise_gap_pct": 0.0
+    "noise_gap_pct": [
+     0.0,
+     0.3
+    ]
    }
   },
   "lowend": {
    "first_paint_ms": {
     "relative": 0.05,
     "absolute": 0,
-    "noise_gap_pct": 0.3
+    "noise_gap_pct": [
+     0.3,
+     2.2
+    ]
    },
    "blocked_ms": {
-    "relative": 0.05,
+    "relative": 0.07,
     "absolute": 10,
-    "noise_gap_pct": 0.9
+    "noise_gap_pct": [
+     0.9,
+     4.8
+    ],
+    "cross_session": "unreliable: trust a change only when two separate sessions agree"
    },
    "main_paint_ms": {
     "relative": 0.15,
     "absolute": 0,
-    "noise_gap_pct": 9.7
+    "noise_gap_pct": [
+     9.7,
+     0.4
+    ]
    },
    "gpu_ms_per_s": {
-    "relative": 0.05,
+    "relative": 0.1,
     "absolute": 0,
-    "noise_gap_pct": 2.4
+    "noise_gap_pct": [
+     2.4,
+     6.4
+    ],
+    "cross_session": "unreliable: trust a change only when two separate sessions agree"
    },
    "layers": {
     "relative": 0.05,
     "absolute": 1,
-    "noise_gap_pct": 0.0
+    "noise_gap_pct": [
+     0.0,
+     0.0
+    ]
    },
    "renderer_mb": {
     "relative": 0.05,
     "absolute": 0,
-    "noise_gap_pct": 0.8
+    "noise_gap_pct": [
+     0.8,
+     0.5
+    ]
    },
    "gpu_mb": {
     "relative": 0.05,
     "absolute": 1,
-    "noise_gap_pct": 0.7
+    "noise_gap_pct": [
+     0.7,
+     1.4
+    ]
    }
   }
  },

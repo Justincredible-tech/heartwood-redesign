@@ -1,0 +1,107 @@
+{
+ "base": "track/008-foundation-spike",
+ "head": "ea6daeb",
+ "sizes": {
+  "desk": {
+   "size": "1440x900@1x",
+   "pixels": [
+    1440,
+    8237
+   ],
+   "sections": {
+    "scene": 0.054,
+    "about": 0.0,
+    "work": 0.0,
+    "gatherings": 0.0,
+    "news": 0.001,
+    "network": 0.006,
+    "support": 0.0,
+    "footer": 0.0
+   },
+   "structural_pct": 0.0254,
+   "regions": [],
+   "section_mean_worst": 0.054,
+   "verdict": "FAIL",
+   "reasons": [
+    "structural difference 0.0254% (limit 0.0%)"
+   ]
+  },
+  "tablet": {
+   "size": "768x1024@2x",
+   "pixels": [
+    1536,
+    17574
+   ],
+   "sections": {
+    "scene": 0.17,
+    "about": 0.0,
+    "work": 0.0,
+    "gatherings": 0.0,
+    "news": 0.0,
+    "network": 0.003,
+    "support": 0.0,
+    "footer": 0.0
+   },
+   "structural_pct": 0.0544,
+   "regions": [],
+   "section_mean_worst": 0.17,
+   "verdict": "FAIL",
+   "reasons": [
+    "structural difference 0.0544% (limit 0.0%)"
+   ]
+  },
+  "phone": {
+   "size": "390x844@2x",
+   "pixels": [
+    780,
+    29546
+   ],
+   "sections": {
+    "scene": 0.081,
+    "about": 0.0,
+    "work": 0.0,
+    "gatherings": 0.0,
+    "news": 0.003,
+    "network": 0.024,
+    "support": 0.002,
+    "footer": 0.008
+   },
+   "structural_pct": 0.0158,
+   "regions": [
+    {
+     "cells": 6,
+     "box_css_px": [
+      364,
+      9016,
+      376,
+      9028
+     ]
+    },
+    {
+     "cells": 3,
+     "box_css_px": [
+      372,
+      8988,
+      380,
+      8996
+     ]
+    },
+    {
+     "cells": 2,
+     "box_css_px": [
+      96,
+      9000,
+      100,
+      9008
+     ]
+    }
+   ],
+   "section_mean_worst": 0.081,
+   "verdict": "FAIL",
+   "reasons": [
+    "structural difference 0.0158% (limit 0.0%)",
+    "3 large-difference regions outside the creatures (limit 0)"
+   ]
+  }
+ }
+}

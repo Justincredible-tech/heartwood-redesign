@@ -1,0 +1,624 @@
+{
+ "base": "v1.0-iterative",
+ "head": "ea6daeb",
+ "sizes": {
+  "desk": {
+   "size": "1440x900@1x",
+   "pixels": [
+    1440,
+    8237
+   ],
+   "sections": {
+    "scene": 0.05,
+    "about": 0.0,
+    "work": 0.0,
+    "gatherings": 0.0,
+    "news": 0.113,
+    "network": 0.006,
+    "support": 0.0,
+    "footer": 0.0
+   },
+   "structural_pct": 0.3189,
+   "regions": [
+    {
+     "cells": 158,
+     "box_css_px": [
+      312,
+      4344,
+      416,
+      4544
+     ]
+    },
+    {
+     "cells": 73,
+     "box_css_px": [
+      240,
+      4384,
+      320,
+      4496
+     ]
+    },
+    {
+     "cells": 62,
+     "box_css_px": [
+      424,
+      4336,
+      504,
+      4408
+     ]
+    },
+    {
+     "cells": 60,
+     "box_css_px": [
+      240,
+      4296,
+      312,
+      4384
+     ]
+    },
+    {
+     "cells": 60,
+     "box_css_px": [
+      424,
+      4232,
+      504,
+      4344
+     ]
+    },
+    {
+     "cells": 32,
+     "box_css_px": [
+      240,
+      4240,
+      320,
+      4288
+     ]
+    },
+    {
+     "cells": 28,
+     "box_css_px": [
+      248,
+      4496,
+      304,
+      4544
+     ]
+    },
+    {
+     "cells": 8,
+     "box_css_px": [
+      408,
+      4432,
+      456,
+      4448
+     ]
+    },
+    {
+     "cells": 8,
+     "box_css_px": [
+      432,
+      4480,
+      464,
+      4504
+     ]
+    },
+    {
+     "cells": 5,
+     "box_css_px": [
+      440,
+      4240,
+      472,
+      4256
+     ]
+    },
+    {
+     "cells": 5,
+     "box_css_px": [
+      416,
+      4456,
+      440,
+      4472
+     ]
+    },
+    {
+     "cells": 3,
+     "box_css_px": [
+      424,
+      4288,
+      440,
+      4304
+     ]
+    },
+    {
+     "cells": 3,
+     "box_css_px": [
+      320,
+      4344,
+      336,
+      4360
+     ]
+    },
+    {
+     "cells": 3,
+     "box_css_px": [
+      464,
+      4416,
+      488,
+      4424
+     ]
+    },
+    {
+     "cells": 3,
+     "box_css_px": [
+      424,
+      4416,
+      448,
+      4424
+     ]
+    },
+    {
+     "cells": 3,
+     "box_css_px": [
+      304,
+      4416,
+      320,
+      4432
+     ]
+    },
+    {
+     "cells": 3,
+     "box_css_px": [
+      400,
+      4536,
+      424,
+      4544
+     ]
+    },
+    {
+     "cells": 2,
+     "box_css_px": [
+      296,
+      4240,
+      312,
+      4248
+     ]
+    },
+    {
+     "cells": 2,
+     "box_css_px": [
+      312,
+      4368,
+      328,
+      4376
+     ]
+    },
+    {
+     "cells": 2,
+     "box_css_px": [
+      480,
+      4296,
+      496,
+      4304
+     ]
+    }
+   ],
+   "section_mean_worst": 0.113,
+   "verdict": "FAIL",
+   "reasons": [
+    "structural difference 0.3189% (limit 0.0%)",
+    "21 large-difference regions outside the creatures (limit 0)"
+   ]
+  },
+  "tablet": {
+   "size": "768x1024@2x",
+   "pixels": [
+    1536,
+    17574
+   ],
+   "sections": {
+    "scene": 0.169,
+    "about": 0.0,
+    "work": 0.0,
+    "gatherings": 0.0,
+    "news": 0.165,
+    "network": 0.003,
+    "support": 0.0,
+    "footer": 0.0
+   },
+   "structural_pct": 0.2109,
+   "regions": [
+    {
+     "cells": 26,
+     "box_css_px": [
+      376,
+      4496,
+      424,
+      4512
+     ]
+    },
+    {
+     "cells": 20,
+     "box_css_px": [
+      252,
+      4560,
+      292,
+      4576
+     ]
+    },
+    {
+     "cells": 20,
+     "box_css_px": [
+      376,
+      4620,
+      400,
+      4644
+     ]
+    },
+    {
+     "cells": 19,
+     "box_css_px": [
+      252,
+      4620,
+      292,
+      4636
+     ]
+    },
+    {
+     "cells": 18,
+     "box_css_px": [
+      368,
+      4672,
+      392,
+      4696
+     ]
+    },
+    {
+     "cells": 18,
+     "box_css_px": [
+      384,
+      4556,
+      412,
+      4576
+     ]
+    },
+    {
+     "cells": 14,
+     "box_css_px": [
+      432,
+      4512,
+      452,
+      4528
+     ]
+    },
+    {
+     "cells": 14,
+     "box_css_px": [
+      352,
+      4500,
+      380,
+      4512
+     ]
+    },
+    {
+     "cells": 14,
+     "box_css_px": [
+      344,
+      4672,
+      364,
+      4696
+     ]
+    },
+    {
+     "cells": 14,
+     "box_css_px": [
+      252,
+      4672,
+      276,
+      4696
+     ]
+    },
+    {
+     "cells": 13,
+     "box_css_px": [
+      428,
+      4448,
+      456,
+      4460
+     ]
+    },
+    {
+     "cells": 11,
+     "box_css_px": [
+      488,
+      4448,
+      512,
+      4456
+     ]
+    },
+    {
+     "cells": 11,
+     "box_css_px": [
+      276,
+      4452,
+      292,
+      4464
+     ]
+    },
+    {
+     "cells": 11,
+     "box_css_px": [
+      432,
+      4464,
+      456,
+      4476
+     ]
+    },
+    {
+     "cells": 11,
+     "box_css_px": [
+      252,
+      4524,
+      280,
+      4532
+     ]
+    },
+    {
+     "cells": 11,
+     "box_css_px": [
+      252,
+      4448,
+      264,
+      4472
+     ]
+    },
+    {
+     "cells": 10,
+     "box_css_px": [
+      332,
+      4496,
+      348,
+      4512
+     ]
+    },
+    {
+     "cells": 9,
+     "box_css_px": [
+      492,
+      4388,
+      508,
+      4400
+     ]
+    },
+    {
+     "cells": 9,
+     "box_css_px": [
+      460,
+      4448,
+      476,
+      4460
+     ]
+    },
+    {
+     "cells": 9,
+     "box_css_px": [
+      488,
+      4464,
+      508,
+      4476
+     ]
+    }
+   ],
+   "section_mean_worst": 0.169,
+   "verdict": "FAIL",
+   "reasons": [
+    "structural difference 0.2109% (limit 0.0%)",
+    "98 large-difference regions outside the creatures (limit 0)"
+   ]
+  },
+  "phone": {
+   "size": "390x844@2x",
+   "pixels": [
+    780,
+    29546
+   ],
+   "sections": {
+    "scene": 0.08,
+    "about": 0.0,
+    "work": 0.0,
+    "gatherings": 0.0,
+    "news": 0.236,
+    "network": 0.024,
+    "support": 0.2,
+    "footer": 0.008
+   },
+   "structural_pct": 0.3688,
+   "regions": [
+    {
+     "cells": 26,
+     "box_css_px": [
+      172,
+      13592,
+      224,
+      13604
+     ]
+    },
+    {
+     "cells": 26,
+     "box_css_px": [
+      64,
+      13580,
+      96,
+      13600
+     ]
+    },
+    {
+     "cells": 25,
+     "box_css_px": [
+      156,
+      13700,
+      208,
+      13712
+     ]
+    },
+    {
+     "cells": 25,
+     "box_css_px": [
+      64,
+      5388,
+      96,
+      5412
+     ]
+    },
+    {
+     "cells": 22,
+     "box_css_px": [
+      288,
+      5388,
+      320,
+      5412
+     ]
+    },
+    {
+     "cells": 19,
+     "box_css_px": [
+      296,
+      13516,
+      324,
+      13540
+     ]
+    },
+    {
+     "cells": 18,
+     "box_css_px": [
+      300,
+      13580,
+      324,
+      13604
+     ]
+    },
+    {
+     "cells": 18,
+     "box_css_px": [
+      184,
+      5492,
+      208,
+      5516
+     ]
+    },
+    {
+     "cells": 14,
+     "box_css_px": [
+      164,
+      13492,
+      220,
+      13496
+     ]
+    },
+    {
+     "cells": 13,
+     "box_css_px": [
+      188,
+      13748,
+      208,
+      13768
+     ]
+    },
+    {
+     "cells": 12,
+     "box_css_px": [
+      156,
+      5504,
+      184,
+      5516
+     ]
+    },
+    {
+     "cells": 12,
+     "box_css_px": [
+      84,
+      5324,
+      96,
+      5348
+     ]
+    },
+    {
+     "cells": 12,
+     "box_css_px": [
+      188,
+      5400,
+      208,
+      5416
+     ]
+    },
+    {
+     "cells": 11,
+     "box_css_px": [
+      240,
+      5336,
+      264,
+      5352
+     ]
+    },
+    {
+     "cells": 11,
+     "box_css_px": [
+      252,
+      13636,
+      272,
+      13648
+     ]
+    },
+    {
+     "cells": 11,
+     "box_css_px": [
+      140,
+      13592,
+      168,
+      13608
+     ]
+    },
+    {
+     "cells": 11,
+     "box_css_px": [
+      184,
+      13684,
+      212,
+      13696
+     ]
+    },
+    {
+     "cells": 10,
+     "box_css_px": [
+      296,
+      5332,
+      320,
+      5344
+     ]
+    },
+    {
+     "cells": 10,
+     "box_css_px": [
+      240,
+      13528,
+      264,
+      13544
+     ]
+    },
+    {
+     "cells": 10,
+     "box_css_px": [
+      96,
+      13580,
+      108,
+      13604
+     ]
+    }
+   ],
+   "section_mean_worst": 0.236,
+   "verdict": "FAIL",
+   "reasons": [
+    "structural difference 0.3688% (limit 0.0%)",
+    "201 large-difference regions outside the creatures (limit 0)"
+   ]
+  }
+ }
+}
