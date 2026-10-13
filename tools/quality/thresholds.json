@@ -1,0 +1,102 @@
+{
+ "about": "Noise floor of tools/quality, measured 2026-10-13 by comparing v1.0-iterative with itself on this machine (Chrome, Windows 11): perf.py --runs 5 (10 runs per profile), visual.py twice. perf: a head value may exceed base by max(relative x base, absolute); relative is the roadmap 5%, widened to 1.5x the median gap seen between identical builds where that is larger. visual: section_mean is the roadmap 0.5/255; structural_pct and regions are the measured floor (none), so any structural change fails and goes to Justin for review. Remeasure after changing the tools or the machine.",
+ "perf": {
+  "desktop": {
+   "first_paint_ms": {
+    "relative": 0.05,
+    "absolute": 0,
+    "noise_gap_pct": 0.4
+   },
+   "blocked_ms": {
+    "relative": 0.05,
+    "absolute": 10,
+    "noise_gap_pct": 0
+   },
+   "main_paint_ms": {
+    "relative": 0.05,
+    "absolute": 0,
+    "noise_gap_pct": 0.9
+   },
+   "gpu_ms_per_s": {
+    "relative": 0.05,
+    "absolute": 0,
+    "noise_gap_pct": 0.3
+   },
+   "layers": {
+    "relative": 0.05,
+    "absolute": 1,
+    "noise_gap_pct": 0.0
+   },
+   "renderer_mb": {
+    "relative": 0.05,
+    "absolute": 0,
+    "noise_gap_pct": 0.7
+   },
+   "gpu_mb": {
+    "relative": 0.05,
+    "absolute": 1,
+    "noise_gap_pct": 0.0
+   }
+  },
+  "lowend": {
+   "first_paint_ms": {
+    "relative": 0.05,
+    "absolute": 0,
+    "noise_gap_pct": 0.3
+   },
+   "blocked_ms": {
+    "relative": 0.05,
+    "absolute": 10,
+    "noise_gap_pct": 0.9
+   },
+   "main_paint_ms": {
+    "relative": 0.15,
+    "absolute": 0,
+    "noise_gap_pct": 9.7
+   },
+   "gpu_ms_per_s": {
+    "relative": 0.05,
+    "absolute": 0,
+    "noise_gap_pct": 2.4
+   },
+   "layers": {
+    "relative": 0.05,
+    "absolute": 1,
+    "noise_gap_pct": 0.0
+   },
+   "renderer_mb": {
+    "relative": 0.05,
+    "absolute": 0,
+    "noise_gap_pct": 0.8
+   },
+   "gpu_mb": {
+    "relative": 0.05,
+    "absolute": 1,
+    "noise_gap_pct": 0.7
+   }
+  }
+ },
+ "visual": {
+  "desk": {
+   "section_mean": 0.5,
+   "structural_pct": 0.0,
+   "regions": 0,
+   "noise_section_mean": 0.005,
+   "noise_structural_pct": 0.0
+  },
+  "tablet": {
+   "section_mean": 0.5,
+   "structural_pct": 0.0,
+   "regions": 0,
+   "noise_section_mean": 0.0,
+   "noise_structural_pct": 0.0
+  },
+  "phone": {
+   "section_mean": 0.5,
+   "structural_pct": 0.0,
+   "regions": 0,
+   "noise_section_mean": 0.0,
+   "noise_structural_pct": 0.0
+  }
+ }
+}

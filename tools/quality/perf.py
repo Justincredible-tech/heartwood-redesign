@@ -16,7 +16,7 @@ Measures, per profile (median of the runs):
   renderer_mb        renderer heap (partition_alloc + blink_gc + malloc) after settling
   gpu_mb             GPU process memory after settling
 
-A head value worse than base by more than the metric's threshold in thresholds.json (relative, with an absolute
+A head value worse than base by more than that profile's threshold in thresholds.json (relative, with an absolute
 floor; default 5%) is a REGRESSION. Promoted from review-evidence/007-grain-and-motion-20261012/prof.py and mem.py.
 """
 import argparse
@@ -42,9 +42,9 @@ CATEGORIES = ['devtools.timeline', 'disabled-by-default-devtools.timeline', 'bli
 IDLE_S = 5
 
 
-def thresholds():
+def thresholds(profile):
     file = HERE / 'thresholds.json'
-    return json.loads(file.read_text(encoding='utf-8')).get('perf', {}) if file.is_file() else {}
+    return json.loads(file.read_text(encoding='utf-8')).get('perf', {}).get(profile, {}) if file.is_file() else {}
 
 
 def thread_names(events):
@@ -180,7 +180,7 @@ def compare(base_runs, head_runs, limits):
 
 
 async def run(args):
-    limits, results = thresholds(), {}
+    results = {}
     async with async_playwright() as playwright:
         with refs.serve(args.base, 8004) as base_url, refs.serve(args.head, 8005) as head_url:
             for profile in args.profiles:
@@ -192,7 +192,7 @@ async def run(args):
                     for side, url in order:
                         runs[side].append(await measure(playwright, url, profile))
                         print(f'[perf] {profile} run {i + 1} {side}: {runs[side][-1]}', flush=True)
-                results[profile] = {'runs': runs, 'comparison': compare(runs['base'], runs['head'], limits)}
+                results[profile] = {'runs': runs, 'comparison': compare(runs['base'], runs['head'], thresholds(profile))}
     return results
 
 
