@@ -308,6 +308,25 @@ button.leaf .leaf__face { pointer-events: auto; }
     drop-shadow(0 var(--ring) 0 var(--focus)) drop-shadow(0 calc(-1 * var(--ring)) 0 var(--focus));
 }
 
+/* Leaf layers: the script sets each canopy leaf in an unrotated box with the leaf's own --x/--y/--s, so a
+   hover repaints that one leaf instead of the whole crown. The leaf keeps every rule above; the box only
+   repeats its place and its z-index. Promoted on mouse devices while the tree is in view. */
+.tree .leaf-layer {
+  position: absolute;
+  left: calc(var(--x) * 1%);
+  top: calc(var(--y) * 1%);
+  width: calc(var(--s) * var(--leaf-ar) * 1%);
+  aspect-ratio: var(--leaf-ar);
+  pointer-events: none;
+}
+.tree .leaf-layer > button.leaf { left: 0; top: 0; width: 100%; }
+@media (hover: hover) {
+  .stage:not(.is-motion-paused) .tree .leaf-layer { will-change: transform; }
+  .tree .leaf-layer:has(> button.leaf:hover) { z-index: 5; }
+}
+.tree.is-filtered .leaf-layer:has(> .leaf.is-lit) { z-index: 4; }
+.tree .leaf-layer:has(> .leaf:focus-visible), .tree .leaf-layer:has(> .leaf.is-found) { z-index: 6; }
+
 @keyframes leaf-out {
   from { transform: translate(-50%, -100%) rotate(calc(var(--angle) - 28deg)) scale(0); }
 }
@@ -423,6 +442,7 @@ button.leaf .leaf__face { pointer-events: auto; }
   --lay-up: drop-shadow(0 0 .5px rgb(30 15 0 / .35)) drop-shadow(3px 7px 7px rgb(20 10 0 / .32));
 }
 html { scroll-behavior: smooth; scroll-padding-top: var(--top-h); -webkit-text-size-adjust: 100%; }
+html:not(.is-smooth-scroll) { scroll-behavior: auto; }   /* a #link from outside jumps; the script turns smooth on after load */
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 a { color: inherit; }

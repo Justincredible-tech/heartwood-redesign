@@ -157,6 +157,25 @@ class DeliveryTests(unittest.TestCase):
                 self.assertIn('immutable', response.headers['Cache-Control'])
                 self.assertEqual(len(response.read()), record['bytes'])
 
+    def test_photos_are_local_small_and_delivered(self):
+        provenance = json.loads((ROOT / 'source/assets/photos/photos-provenance.json').read_text(encoding='utf-8'))['photos']
+        script = (PUBLISH / MANIFEST['assets']['js']).read_text(encoding='utf-8')
+        source_js = (ROOT / 'source/js/heartwood-site.js').read_text(encoding='utf-8')
+        self.assertEqual(len(provenance), 2, 'the Heartbeat cover and the Forest Council poster')
+        for url, record in provenance.items():
+            self.assertIn("ORIGIN + '" + url.removeprefix('https://heartwood.org') + "'", source_js, 'the page still names the original')
+            self.assertIn(url, script, 'the built script maps the original address to its copies')
+            for photo in record['files']:
+                relative = 'assets/photos/' + photo['file']
+                self.assertIn(relative, MANIFEST['generated'])
+                self.assertIn(relative, script)
+                self.assertEqual((PUBLISH / relative).read_bytes(), (ROOT / 'source' / relative).read_bytes())
+                self.assertLess(photo['bytes'], 450_000)
+                with request(relative) as response:
+                    self.assertEqual(response.headers.get_content_type(), 'image/webp')
+                    self.assertIn('immutable', response.headers['Cache-Control'])
+                    self.assertEqual(len(response.read()), photo['bytes'])
+
     def test_favicons_and_share_images(self):
         html = (PUBLISH / 'heartwood-site.html').read_text(encoding='utf-8')
         landing = (ROOT / 'showcase/index.html').read_text(encoding='utf-8')

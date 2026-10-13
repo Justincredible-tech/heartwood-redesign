@@ -1,0 +1,592 @@
+{
+ "pixels": {
+  "d1-idle": {
+   "pixels_over_8": 7314,
+   "pct": 0.5644,
+   "max": 41,
+   "mean_abs": 0.254,
+   "over_32": 8
+  },
+  "d1-hover": {
+   "pixels_over_8": 6864,
+   "pct": 0.5296,
+   "max": 41,
+   "mean_abs": 0.236,
+   "over_32": 7
+  },
+  "d1-filter": {
+   "pixels_over_8": 3103,
+   "pct": 0.2394,
+   "max": 38,
+   "mean_abs": 0.198,
+   "over_32": 4
+  },
+  "d1-focus": {
+   "pixels_over_8": 7156,
+   "pct": 0.5522,
+   "max": 66,
+   "mean_abs": 0.241,
+   "over_32": 18
+  },
+  "d1-dialog": {
+   "pixels_over_8": 10,
+   "pct": 0.0008,
+   "max": 10,
+   "mean_abs": 0.037,
+   "over_32": 0
+  },
+  "d1-closed": {
+   "pixels_over_8": 7603,
+   "pct": 0.5867,
+   "max": 66,
+   "mean_abs": 0.259,
+   "over_32": 20
+  },
+  "d1-news": {
+   "pixels_over_8": 46032,
+   "pct": 3.5519,
+   "max": 202,
+   "mean_abs": 1.543,
+   "over_32": 21853
+  },
+  "d2-idle": {
+   "pixels_over_8": 16491,
+   "pct": 0.3181,
+   "max": 52,
+   "mean_abs": 0.277,
+   "over_32": 22
+  },
+  "d2-hover": {
+   "pixels_over_8": 15537,
+   "pct": 0.2997,
+   "max": 52,
+   "mean_abs": 0.265,
+   "over_32": 20
+  },
+  "d2-filter": {
+   "pixels_over_8": 7367,
+   "pct": 0.1421,
+   "max": 46,
+   "mean_abs": 0.14,
+   "over_32": 18
+  },
+  "d2-focus": {
+   "pixels_over_8": 16161,
+   "pct": 0.3117,
+   "max": 46,
+   "mean_abs": 0.172,
+   "over_32": 31
+  },
+  "d2-dialog": {
+   "pixels_over_8": 18,
+   "pct": 0.0003,
+   "max": 14,
+   "mean_abs": 0.046,
+   "over_32": 0
+  },
+  "d2-closed": {
+   "pixels_over_8": 17097,
+   "pct": 0.3298,
+   "max": 46,
+   "mean_abs": 0.185,
+   "over_32": 32
+  },
+  "d2-news": {
+   "pixels_over_8": 157725,
+   "pct": 3.0425,
+   "max": 252,
+   "mean_abs": 1.592,
+   "over_32": 93036
+  },
+  "phone-idle": {
+   "pixels_over_8": 0,
+   "pct": 0.0,
+   "max": 0,
+   "mean_abs": 0.0,
+   "over_32": 0
+  },
+  "webkit-idle": {
+   "pixels_over_8": 0,
+   "pct": 0.0,
+   "max": 0,
+   "mean_abs": 0.0,
+   "over_32": 0
+  },
+  "webkit-hover": {
+   "pixels_over_8": 0,
+   "pct": 0.0,
+   "max": 0,
+   "mean_abs": 0.0,
+   "over_32": 0
+  },
+  "d1-poster": {
+   "pixels_over_8": 12183,
+   "pct": 15.1915,
+   "max": 77,
+   "mean_abs": 4.048,
+   "over_32": 578
+  },
+  "d1-cover": {
+   "pixels_over_8": 46043,
+   "pct": 47.2964,
+   "max": 203,
+   "mean_abs": 20.54,
+   "over_32": 21865
+  },
+  "d2-poster": {
+   "pixels_over_8": 36069,
+   "pct": 11.244,
+   "max": 72,
+   "mean_abs": 3.085,
+   "over_32": 1684
+  },
+  "d2-cover": {
+   "pixels_over_8": 157706,
+   "pct": 40.4997,
+   "max": 252,
+   "mean_abs": 21.194,
+   "over_32": 93062
+  }
+ },
+ "control_same_build_twice": {
+  "base d1 vs d1r idle": {
+   "pixels_over_8": 0,
+   "pct": 0.0,
+   "max": 0,
+   "mean_abs": 0.0,
+   "over_32": 0
+  },
+  "new d1 vs d1r idle": {
+   "pixels_over_8": 0,
+   "pct": 0.0,
+   "max": 0,
+   "mean_abs": 0.0,
+   "over_32": 0
+  },
+  "base d1 vs d1r hover": {
+   "pixels_over_8": 0,
+   "pct": 0.0,
+   "max": 0,
+   "mean_abs": 0.0,
+   "over_32": 0
+  },
+  "new d1 vs d1r hover": {
+   "pixels_over_8": 0,
+   "pct": 0.0,
+   "max": 0,
+   "mean_abs": 0.0,
+   "over_32": 0
+  },
+  "base d1 vs d1r filter": {
+   "pixels_over_8": 0,
+   "pct": 0.0,
+   "max": 0,
+   "mean_abs": 0.0,
+   "over_32": 0
+  },
+  "new d1 vs d1r filter": {
+   "pixels_over_8": 0,
+   "pct": 0.0,
+   "max": 0,
+   "mean_abs": 0.0,
+   "over_32": 0
+  },
+  "base d1 vs d1r focus": {
+   "pixels_over_8": 0,
+   "pct": 0.0,
+   "max": 0,
+   "mean_abs": 0.0,
+   "over_32": 0
+  },
+  "new d1 vs d1r focus": {
+   "pixels_over_8": 0,
+   "pct": 0.0,
+   "max": 1,
+   "mean_abs": 0.0,
+   "over_32": 0
+  },
+  "base d1 vs d1r dialog": {
+   "pixels_over_8": 0,
+   "pct": 0.0,
+   "max": 0,
+   "mean_abs": 0.0,
+   "over_32": 0
+  },
+  "new d1 vs d1r dialog": {
+   "pixels_over_8": 0,
+   "pct": 0.0,
+   "max": 0,
+   "mean_abs": 0.0,
+   "over_32": 0
+  },
+  "base d1 vs d1r closed": {
+   "pixels_over_8": 0,
+   "pct": 0.0,
+   "max": 0,
+   "mean_abs": 0.0,
+   "over_32": 0
+  },
+  "new d1 vs d1r closed": {
+   "pixels_over_8": 0,
+   "pct": 0.0,
+   "max": 1,
+   "mean_abs": 0.0,
+   "over_32": 0
+  },
+  "base d1 vs d1r news": {
+   "pixels_over_8": 0,
+   "pct": 0.0,
+   "max": 0,
+   "mean_abs": 0.0,
+   "over_32": 0
+  },
+  "new d1 vs d1r news": {
+   "pixels_over_8": 0,
+   "pct": 0.0,
+   "max": 8,
+   "mean_abs": 0.021,
+   "over_32": 0
+  }
+ },
+ "hover": {
+  "dpr1": {
+   "tree": {
+    "base": {
+     "p50": 51.2,
+     "p95": 166.6,
+     "max": 499.5,
+     "over20": 367,
+     "over50": 253
+    },
+    "new": {
+     "p50": 6.9,
+     "p95": 7,
+     "max": 284.7,
+     "over20": 3,
+     "over50": 2
+    }
+   },
+   "network": {
+    "base": {
+     "p50": 7,
+     "p95": 41.6,
+     "max": 84.7,
+     "over20": 146,
+     "over50": 40
+    },
+    "new": {
+     "p50": 6.9,
+     "p95": 13.8,
+     "max": 34.8,
+     "over20": 40,
+     "over50": 0
+    }
+   },
+   "scroll_back": {
+    "base": {
+     "p50": 7,
+     "p95": 14,
+     "max": 257.3,
+     "over20": 14,
+     "over50": 3
+    },
+    "new": {
+     "p50": 7,
+     "p95": 13.9,
+     "max": 215.5,
+     "over20": 11,
+     "over50": 3
+    }
+   }
+  },
+  "dpr2": {
+   "tree": {
+    "base": {
+     "p50": 27.6,
+     "p95": 69.3,
+     "max": 264,
+     "over20": 360,
+     "over50": 110
+    },
+    "new": {
+     "p50": 6.9,
+     "p95": 13.9,
+     "max": 291.6,
+     "over20": 7,
+     "over50": 2
+    }
+   },
+   "network": {
+    "base": {
+     "p50": 7,
+     "p95": 20.6,
+     "max": 34.7,
+     "over20": 69,
+     "over50": 0
+    },
+    "new": {
+     "p50": 7,
+     "p95": 20.8,
+     "max": 34.8,
+     "over20": 73,
+     "over50": 0
+    }
+   },
+   "scroll_back": {
+    "base": {
+     "p50": 6.9,
+     "p95": 7.1,
+     "max": 208.3,
+     "over20": 7,
+     "over50": 2
+    },
+    "new": {
+     "p50": 7,
+     "p95": 13.9,
+     "max": 236.1,
+     "over20": 15,
+     "over50": 3
+    }
+   }
+  }
+ },
+ "layers": {
+  "dpr1": {
+   "base": {
+    "layers_top": 101,
+    "layer_mb_top": 139.9,
+    "layers_away": 19,
+    "layer_mb_away": 62.8
+   },
+   "new": {
+    "layers_top": 276,
+    "layer_mb_top": 149.8,
+    "layers_away": 0,
+    "layer_mb_away": 0.0
+   }
+  },
+  "dpr2": {
+   "base": {
+    "layers_top": 93,
+    "layer_mb_top": 117.2,
+    "layers_away": 0,
+    "layer_mb_away": 0.0
+   },
+   "new": {
+    "layers_top": 266,
+    "layer_mb_top": 128.5,
+    "layers_away": 0,
+    "layer_mb_away": 0.0
+   }
+  }
+ },
+ "load": {
+  "base": {
+   "fcp": 544,
+   "lcp": 544,
+   "longtask_ms": 123,
+   "longtasks": 1
+  },
+  "new": {
+   "fcp": 396,
+   "lcp": 396,
+   "longtask_ms": 129,
+   "longtasks": 1
+  }
+ },
+ "shots_dpr1": {
+  "base": {
+   "wrapped": 0,
+   "leaf_buttons": 149,
+   "dialog_open": true,
+   "focus_returned": true,
+   "poster": {
+    "src": "2026-forest-council.jpg",
+    "w": 246.673828125,
+    "h": 326.8927307128906,
+    "natural": 3075
+   },
+   "cover": {
+    "src": "Fall-2026.jpg",
+    "w": 275.06134033203125,
+    "h": 354.3602600097656,
+    "natural": 3075
+   }
+  },
+  "new": {
+   "wrapped": 149,
+   "leaf_buttons": 149,
+   "dialog_open": true,
+   "focus_returned": true,
+   "poster": {
+    "src": "2026-forest-council-360.b307a711df80.webp",
+    "w": 246.6907958984375,
+    "h": 326.95556640625,
+    "natural": 240
+   },
+   "cover": {
+    "src": "fall-2026-360.918bf5353dcc.webp",
+    "w": 275.06134033203125,
+    "h": 354.3602600097656,
+    "natural": 272
+   }
+  }
+ },
+ "shots_dpr2": {
+  "base": {
+   "wrapped": 0,
+   "leaf_buttons": 149,
+   "dialog_open": true,
+   "focus_returned": true,
+   "poster": {
+    "src": "2026-forest-council.jpg",
+    "w": 246.673828125,
+    "h": 326.8927307128906,
+    "natural": 3075
+   },
+   "cover": {
+    "src": "Fall-2026.jpg",
+    "w": 275.06134033203125,
+    "h": 354.3602600097656,
+    "natural": 3075
+   }
+  },
+  "new": {
+   "wrapped": 149,
+   "leaf_buttons": 149,
+   "dialog_open": true,
+   "focus_returned": true,
+   "poster": {
+    "src": "2026-forest-council-720.98f28e1744cd.webp",
+    "w": 246.6907958984375,
+    "h": 326.95556640625,
+    "natural": 240
+   },
+   "cover": {
+    "src": "fall-2026-720.6a2b06b4dcd8.webp",
+    "w": 275.06134033203125,
+    "h": 354.3602600097656,
+    "natural": 272
+   }
+  }
+ },
+ "nav": {
+  "base": {
+   "header_logo_scrollY": 3588,
+   "footer_logo_scrollY": 7257,
+   "header_stuck_at_4000": true,
+   "header_unstuck_at_0": true,
+   "menu_nav_smooth": {
+    "150ms": 0,
+    "final": 6816
+   },
+   "skip_link": -5857,
+   "#support": {
+    "final_scrollY": 6698,
+    "positions": 67,
+    "target_top": 198
+   },
+   "#network": {
+    "final_scrollY": 4825,
+    "positions": 96,
+    "target_top": 198
+   },
+   "#news": {
+    "final_scrollY": 3818,
+    "positions": 31,
+    "target_top": 80
+   },
+   "search": [
+    "Kentucky Coalition",
+    "Kentucky Coalition Appalachian Mountaintop Removal Alliance",
+    "Kentucky Heartwood",
+    "Kentucky Resources Council"
+   ]
+  },
+  "new": {
+   "header_logo_scrollY": 0,
+   "footer_logo_scrollY": 0,
+   "header_stuck_at_4000": true,
+   "header_unstuck_at_0": true,
+   "menu_nav_smooth": {
+    "150ms": 288,
+    "final": 6816
+   },
+   "skip_link": -5857,
+   "#support": {
+    "final_scrollY": 6698,
+    "positions": 2,
+    "target_top": 80
+   },
+   "#network": {
+    "final_scrollY": 4943,
+    "positions": 3,
+    "target_top": 80
+   },
+   "#news": {
+    "final_scrollY": 3818,
+    "positions": 2,
+    "target_top": 80
+   },
+   "search": [
+    "Kentucky Coalition",
+    "Kentucky Coalition Appalachian Mountaintop Removal Alliance",
+    "Kentucky Heartwood",
+    "Kentucky Resources Council"
+   ]
+  }
+ },
+ "phone_motion": {
+  "base": {
+   "phone_layers": 88,
+   "phone_layer_mb": 53.8,
+   "phone_will_change": "no wrapper",
+   "phone_tap_opens": true,
+   "reduced_opens": true,
+   "reduced_focus_back": true,
+   "reduced_home_scrollY": 3470
+  },
+  "new": {
+   "phone_layers": 88,
+   "phone_layer_mb": 53.8,
+   "phone_will_change": "auto",
+   "phone_tap_opens": true,
+   "reduced_opens": true,
+   "reduced_focus_back": true,
+   "reduced_home_scrollY": 0
+  }
+ },
+ "webkit": {
+  "base": {
+   "wrapped": 0,
+   "tag_shown": true,
+   "dialog": true,
+   "focus_back": false,
+   "home_scrollY": 3920
+  },
+  "new": {
+   "wrapped": 149,
+   "tag_shown": true,
+   "dialog": true,
+   "focus_back": false,
+   "home_scrollY": 0
+  }
+ },
+ "logs": {
+  "base": {
+   "errors": [],
+   "console": [],
+   "failed": [],
+   "external": [
+    "https://heartwood.org/events/forest-council/2026-forest-council.jpg",
+    "https://heartwood.org/heartbeat/Fall-2026.jpg"
+   ]
+  },
+  "new": {
+   "errors": [],
+   "console": [],
+   "failed": [],
+   "external": []
+  }
+ }
+}
