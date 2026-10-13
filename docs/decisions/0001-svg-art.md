@@ -1,6 +1,6 @@
 # 0001: SVG for the artwork
 
-Status: **Proposed**, waiting for Justin's answer (track 008, task 3.3).
+Status: **Deferred** (2026-10-13). Night mode is paused until after the Heartwood meeting on 2026-10-21.
 Date: 2026-10-13.
 Evidence: `review-evidence/008-foundation-spike-20261013/`. The spike itself is on the throwaway branch `spike/008-svg`
 (final commit `ea6daeb`), produced by `tools/spike/svgify.py` there.
@@ -112,4 +112,10 @@ estimate in track 016's report, and it is a separate question from this decision
 
 ## Answer
 
-*Waiting for Justin.*
+Justin, 2026-10-13: not adopted. Looking at the side-by-sides he did not find them usable for judging the scene
+(the third panel of each is an amplified difference map, black where nothing changed, which was not labelled), and
+he thinks the art assets would have to be redrawn from scratch rather than migrated from v1, which changes the shape
+of the rebuild. Night mode (tracks 011–013) and this decision are paused until after the meeting on 2026-10-21.
+
+If the work resumes: the quality tools in `tools/quality/` stay useful whatever the art pipeline becomes, and any
+future side-by-side should label its panels and lead with the plain before/after images.
