@@ -1,0 +1,62 @@
+{
+  "photos": {
+    "https://heartwood.org/events/forest-council/2026-forest-council.jpg": {
+      "source_sha256": "f3aa87637ff4f57878047673b4dcee1dfea261b227e2a49c6818ff9b70ab666a",
+      "source_bytes": 4920005,
+      "source_size": [
+        3075,
+        4125
+      ],
+      "quality": 86,
+      "files": [
+        {
+          "file": "2026-forest-council-360.b307a711df80.webp",
+          "width": 360,
+          "height": 483,
+          "bytes": 52436
+        },
+        {
+          "file": "2026-forest-council-720.98f28e1744cd.webp",
+          "width": 720,
+          "height": 966,
+          "bytes": 167976
+        },
+        {
+          "file": "2026-forest-council-1080.c2913f9c7efa.webp",
+          "width": 1080,
+          "height": 1449,
+          "bytes": 308026
+        }
+      ]
+    },
+    "https://heartwood.org/heartbeat/Fall-2026.jpg": {
+      "source_sha256": "3a59cc1b2c683d2c0614cf2cd9b81db053a163be94645d567b531bd71059136f",
+      "source_bytes": 2286421,
+      "source_size": [
+        3075,
+        4162
+      ],
+      "quality": 86,
+      "files": [
+        {
+          "file": "fall-2026-360.918bf5353dcc.webp",
+          "width": 360,
+          "height": 487,
+          "bytes": 60494
+        },
+        {
+          "file": "fall-2026-720.6a2b06b4dcd8.webp",
+          "width": 720,
+          "height": 975,
+          "bytes": 213398
+        },
+        {
+          "file": "fall-2026-1080.cc690ad9e314.webp",
+          "width": 1080,
+          "height": 1462,
+          "bytes": 392826
+        }
+      ]
+    }
+  }
+}

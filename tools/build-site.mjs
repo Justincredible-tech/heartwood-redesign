@@ -88,6 +88,7 @@ await fs.mkdir(path.join(publish, 'js'), { recursive: true });
 await fs.mkdir(path.join(publish, 'assets/fonts'), { recursive: true });
 await fs.mkdir(path.join(publish, 'assets/grain'), { recursive: true });
 await fs.mkdir(path.join(publish, 'assets/meta'), { recursive: true });
+await fs.mkdir(path.join(publish, 'assets/photos'), { recursive: true });
 await fs.writeFile(path.join(publish, cssPath), cssResult.styles);
 await fs.writeFile(path.join(publish, jsPath), jsResult.code);
 await fs.writeFile(path.join(publish, 'heartwood-site.html'), html);
@@ -106,6 +107,15 @@ for (const name of await fs.readdir(metaDir)) {
   await fs.copyFile(path.join(metaDir, name), path.join(publish, 'assets/meta', name));
   generated.push('assets/meta/' + name);
 }
+// Local copies of the heartwood.org photos (see tools/import-photos.py); the script names each one.
+const photoDir = path.join(source, 'assets/photos');
+for (const name of await fs.readdir(photoDir)) {
+  if (name === 'photos-provenance.json') continue;
+  if (!/^[a-z0-9-]+-\d+\.[0-9a-f]{12}\.webp$/.test(name)) throw new Error('Unexpected file in assets/photos: ' + name);
+  if (!jsSource.includes("'assets/photos/" + name + "'")) throw new Error('Photo not used by the script: ' + name);
+  await fs.copyFile(path.join(photoDir, name), path.join(publish, 'assets/photos', name));
+  generated.push('assets/photos/' + name);
+}
 
 // Remove only this build's previously recorded, content-fingerprinted outputs.
 let previous = [];
@@ -113,7 +123,7 @@ try { previous = JSON.parse(await fs.readFile(path.join(toolsDir, 'build-manifes
 catch (error) { if (error.code !== 'ENOENT') throw error; }
 const current = new Set(generated);
 for (const relative of previous) {
-  if (current.has(relative) || !/^(?:(css|js)\/heartwood-site\.[0-9a-f]{12}\.(css|js)|assets\/logos\/heartwood-logos\.[0-9a-f]{12}\.svg|assets\/grain\/grain-fine-\d+@[\d.]+x\.[0-9a-f]{12}\.webp|assets\/meta\/[a-z0-9-]+\.[0-9a-f]{12}\.(?:svg|png|jpg))$/.test(relative)) continue;
+  if (current.has(relative) || !/^(?:(css|js)\/heartwood-site\.[0-9a-f]{12}\.(css|js)|assets\/logos\/heartwood-logos\.[0-9a-f]{12}\.svg|assets\/grain\/grain-fine-\d+@[\d.]+x\.[0-9a-f]{12}\.webp|assets\/meta\/[a-z0-9-]+\.[0-9a-f]{12}\.(?:svg|png|jpg)|assets\/photos\/[a-z0-9-]+-\d+\.[0-9a-f]{12}\.webp)$/.test(relative)) continue;
   const target = path.resolve(publish, relative);
   if (!target.startsWith(publish + path.sep)) throw new Error('Build cleanup escaped publish.');
   for (const suffix of ['', '.gz', '.br']) await fs.rm(target + suffix, { force: true });

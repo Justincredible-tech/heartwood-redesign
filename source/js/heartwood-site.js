@@ -1,5 +1,25 @@
 
 /* ==========================================================================
+   Leaf layers: set each canopy leaf in an unrotated box (.leaf-layer) with
+      the leaf's own place, so the browser can give it a layer and a hover
+      repaints one leaf, not the whole crown. The leaf element is moved, never
+      changed. Browsers without :has() keep the tree as written, because the
+      box's z-index rules need it.
+   ========================================================================== */
+(() => {
+  if (!window.CSS || !CSS.supports('selector(:has(*))')) return;
+  const tree = document.querySelector('.tree');
+  if (!tree) return;
+  for (const leaf of tree.querySelectorAll(':scope > button.leaf[style]')) {
+    const layer = document.createElement('span');
+    layer.className = 'leaf-layer';
+    layer.setAttribute('style', leaf.getAttribute('style'));
+    leaf.before(layer);
+    layer.append(leaf);
+  }
+})();
+
+/* ==========================================================================
    Leaf lift: pick -> fly to the centre of the view and turn level -> one
       half-turn about its long (X) axis to show the underside -> open the
       dialog. Closing plays it back and re-seats the leaf.
@@ -244,9 +264,19 @@
    list   optional bullet list for the panel
    go     the words beside the leaf at the foot of the item's card
    links  buttons in the panel; the first one is the primary action
-   img    optional picture, hot-linked from the current site
+   img    optional picture, by its address on the current site; shown from
+          PHOTOS below when there is a local copy, hot-linked when not
    ========================================================================== */
 const ORIGIN = 'https://heartwood.org';
+
+/* Small local copies of the full-size heartwood.org photos, written by tools/import-photos.py.
+   Keyed by the original address; each entry lists [file, width in px]. */
+/* photos:start */
+const PHOTOS = {
+  'https://heartwood.org/events/forest-council/2026-forest-council.jpg': [['assets/photos/2026-forest-council-360.b307a711df80.webp', 360], ['assets/photos/2026-forest-council-720.98f28e1744cd.webp', 720], ['assets/photos/2026-forest-council-1080.c2913f9c7efa.webp', 1080]],
+  'https://heartwood.org/heartbeat/Fall-2026.jpg': [['assets/photos/fall-2026-360.918bf5353dcc.webp', 360], ['assets/photos/fall-2026-720.6a2b06b4dcd8.webp', 720], ['assets/photos/fall-2026-1080.cc690ad9e314.webp', 1080]],
+};
+/* photos:end */
 
 const KINDS = {
   work:   { label: 'Our work',     section: '#work' },
@@ -595,6 +625,13 @@ const SITE = {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  /* A photo at the width it is shown (`size`, a CSS length): the local copies when there are any, else the original. */
+  const photo = (img, size) => {
+    const copies = PHOTOS[img.src];
+    const src = copies ? `src="${esc(copies[Math.min(1, copies.length - 1)][0])}" srcset="${esc(copies.map(([file, w]) => `${file} ${w}w`).join(', '))}" sizes="${size}"`
+                       : `src="${esc(img.src)}"`;
+    return `<img ${src} alt="${esc(img.alt)}" loading="lazy" onerror="this.parentNode.remove()">`;
+  };
   const tree = $('.tree');
   const tag = $('#leaftag');
 
@@ -657,7 +694,7 @@ const SITE = {
       `<h2 id="dialog-title">${esc(item.title)}</h2>` +
       (meta ? `<p class="dialog__meta">${esc(meta)}</p>` : '') +
       `<div class="dialog__body">` +
-        (item.img ? `<figure><img src="${esc(item.img.src)}" alt="${esc(item.img.alt)}" loading="lazy" onerror="this.parentNode.remove()"></figure>` : '') +
+        (item.img ? `<figure>${photo(item.img, '15rem')}</figure>` : '') +
         item.body.map(p => `<p>${esc(p)}</p>`).join('') +
         (item.list ? `<ul class="dots">${item.list.map(t => `<li>${mark(tone(leaf))}<span>${esc(t)}</span></li>`).join('')}</ul>` : '') +
         (item.tiers ? `<ul class="tiers">${item.tiers.map(([n, p]) => `<li><span>${esc(n)}</span><b>${esc(p)} / year</b></li>`).join('')}</ul>` : '') +
@@ -759,7 +796,7 @@ const SITE = {
   const [issue, ...rest] = news;
   const posts = rest.filter(n => !n.backIssue), back = rest.filter(n => n.backIssue);
   $('#news-issue').innerHTML =
-    `<figure class="issue__cover"><img src="${esc(issue.img.src)}" alt="${esc(issue.img.alt)}" loading="lazy" onerror="this.parentNode.remove()"></figure>` +
+    `<figure class="issue__cover">${photo(issue.img, '17rem')}</figure>` +
     `<span class="card__kicker">Heartbeat · ${esc(issue.date)}</span><h3>${esc(issue.title)}</h3><p>${esc(issue.sum)}</p>` +
     `<div class="dialog__links" style="margin-top:.6rem">${issue.links.map(link).join('')}</div>` +
     `<ul class="issue__back" aria-label="Back issues">${back.map(b => `<li><a href="${href(b)}" data-open="${b.id}">${esc(b.date)}</a></li>`).join('')}</ul>`;
@@ -894,8 +931,15 @@ const SITE = {
     motionRegions.forEach(region => motionObserver.observe(region));
   }
 
+  /* Smooth in-page scrolling starts after load (or at the first click or key), so a #link opened
+     from outside jumps straight to its section instead of gliding down through the whole tree. */
+  const smooth = () => document.documentElement.classList.add('is-smooth-scroll');
+  const smoothSoon = () => requestAnimationFrame(() => requestAnimationFrame(smooth));
+  if (document.readyState === 'complete') smoothSoon(); else window.addEventListener('load', smoothSoon, { once: true });
+  ['pointerdown', 'keydown'].forEach(type => window.addEventListener(type, smooth, { capture: true, passive: true, once: true }));
+
   /* --------------------------------------------------------------- header */
-  const top = $('#top'), menu = $('.top__menu');
+  const top = $('.top'), menu = $('.top__menu');
   const stuck = () => {
     top.classList.toggle('is-stuck', window.scrollY > 8);
     if (window.scrollY < 200) $$('.nav [aria-current]').forEach(a => a.removeAttribute('aria-current'));   // back at the tree
