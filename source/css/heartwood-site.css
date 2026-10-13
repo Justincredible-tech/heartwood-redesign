@@ -158,7 +158,9 @@ body.is-lifted { overflow: hidden; }
 /* Spike 008: a sheet drawn as SVG. Its pieces are <path class="piece">, painted from the sheet's --c; the paper
    grain comes from one .grain-sheet laid over the static scenery instead of from every piece. */
 svg.cut { width: 100%; height: 100%; overflow: visible; fill-rule: evenodd; }
-svg.cut .piece { fill: var(--c); }
+svg.cut .piece, .cut > i.stone .piece { fill: var(--c); }
+.cut > i.stone { background: none; }               /* the stone's box only places it; its <svg> draws it */
+.cut > i.stone > svg { display: block; width: 100%; height: 100%; }
 .grain-sheet { position: absolute; inset: 0; background: var(--grain); pointer-events: none; }
 .grain-sheet--torn { bottom: calc(-18 * var(--u)); }          /* down over the torn edge, which the sheet's clip-path follows */
 /* what lies under a grain sheet carries no grain of its own */
@@ -246,8 +248,8 @@ svg.cut .piece { fill: var(--c); }
     var(--grain), linear-gradient(90deg, var(--c) 12%, var(--c2) 88%) calc(50% + var(--shift)) 0 / var(--sheet-w) 100% no-repeat;
 }
 /* a narrow window shows the same strata in less width, so it carries fewer stones */
-@media (max-width: 900px) { .deep .stones > .stone--tablet-hidden { display: none; } }
-@media (max-width: 560px) { .deep .stones > .stone--phone-hidden { display: none; } }
+@media (max-width: 900px) { .deep .stones > i.stone--tablet-hidden { display: none; } }
+@media (max-width: 560px) { .deep .stones > i.stone--phone-hidden { display: none; } }
 
 /* ----------------------------------------------------------------- leaves */
 .tree { z-index: 3; pointer-events: none; }

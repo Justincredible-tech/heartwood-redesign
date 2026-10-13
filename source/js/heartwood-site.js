@@ -854,7 +854,7 @@ const SITE = {
   const typeStrata = $$('.deep .stratum').map(st => ({
     stratum: st,
     type: $$('[data-type], .layer__head > *, .horizon, .more, .foot', st),
-    stones: $$('.stones > i, .stones > svg', st),
+    stones: $$('.stones > i', st),
   }));
   const typeStratumOf = new Map(typeStrata.map(entry => [entry.stratum, entry]));
   function clearType(strata) {

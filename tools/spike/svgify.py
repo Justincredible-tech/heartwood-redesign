@@ -6,9 +6,9 @@ Converts, from inline clip-path pieces to SVG paths with class names:
   - every hero `.cut hills` and `.cut band` layer (the meadow grass and the flowers) into one
     <svg viewBox="0 0 1508 1047"> per layer, each piece a <path class="piece">, using the roadmap transform
         x = (left + px * width / 100) * 1508 / 100,   y = (top + py * height / 100) * 1047 / 100
-  - the gravel stratum's stones into one <svg> per stones layer holding a small positioned <svg> per stone.
-    Strata stones are placed in % of their stratum minus artwork-scale offsets and keep their own size, so they
-    cannot share one stretched viewBox; each keeps its v1 box (as CSS x/y/width/height) with a 0..100 viewBox.
+  - the gravel stratum's stones into an SVG path each. Strata stones are placed in % of their stratum minus
+    artwork-scale offsets and keep their own size, so they cannot share one stretched viewBox; each keeps its v1
+    box (an <i class="stone">, since Chrome ignores CSS x/y/width/height on a nested <svg>) holding a 0..100 viewBox.
 and adds the single grain overlays (.grain-sheet), moving the birds above the hero one so their texture stays
 their own. Anything that does not match the expected v1 shape stops the script: it never guesses.
 The page must be the v1 source; running it twice fails on purpose.
@@ -75,15 +75,16 @@ def stones_layer(match):
     stones = []
     for p in whole(STONE_PIECE, inner, classes):
         hide = p.group(1)
-        box = (f'x:calc({p.group(2)}% - {p.group(3)} * var(--u));y:calc({p.group(4)}% - {p.group(5)} * var(--u));'
+        box = (f'left:calc({p.group(2)}% - {p.group(3)} * var(--u));top:calc({p.group(4)}% - {p.group(5)} * var(--u));'
                f'width:calc({p.group(6)} * var(--u));height:calc({p.group(7)} * var(--u))')
         rule = '' if p.group(8) else ' fill-rule="nonzero"'
-        cls = f' class="{hide}"' if hide else ''
-        stones.append(f'<svg{cls} viewBox="0 0 100 100" preserveAspectRatio="none" style="{box}">'
-                      f'<path class="piece" d="{path(points(p.group(9)))}"{rule}/></svg>')
+        cls = 'stone' + (f' {hide}' if hide else '')
+        # Chrome ignores CSS x/y/width/height on a nested <svg>, so each stone keeps its v1 box as an HTML element
+        stones.append(f'<i class="{cls}" style="{box}"><svg viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">'
+                      f'<path class="piece" d="{path(points(p.group(9)))}"{rule}/></svg></i>')
     stones_layer.count += len(stones)
     style_attr = f' style="{style}"' if style else ''
-    return f'<svg aria-hidden="true" focusable="false" class="{classes}"{style_attr}>{"".join(stones)}</svg>'
+    return f'<div aria-hidden="true" class="{classes}"{style_attr}>{"".join(stones)}</div>'
 
 
 stones_layer.count = 0
@@ -132,7 +133,7 @@ def main():
     HTML.write_text(html, encoding='utf-8', newline='\n')
     after = len(html.encode('utf-8'))
     print(f'hero: {layers} layers, {hero_layer.count} pieces -> paths')
-    print(f'gravel stratum: {stone_layers} stones layers, {stones_layer.count} stones -> positioned svg + path')
+    print(f'gravel stratum: {stone_layers} stones layers, {stones_layer.count} stones -> box + svg + path')
     print(f'source HTML {before:,} -> {after:,} bytes')
 
 
