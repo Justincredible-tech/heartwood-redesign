@@ -31,5 +31,41 @@
       "bytes": 155136
     }
   },
-  "renderer": "Chrome via Playwright, transparent background, lossless WebP verified by decode"
+  "renderer": "Chrome via Playwright, transparent background, lossless WebP verified by decode",
+  "night": {
+    "recipe_sha256": "83b6f3e1b85853fddab6e592729697bc5c7ef48d0f90d181248c44816c376dd9",
+    "tile_css_px": 256,
+    "tiles": {
+      "1": {
+        "file": "grain-fine-night-256@1x.1396a4a821cb.webp",
+        "bytes": 28098
+      },
+      "1.25": {
+        "file": "grain-fine-night-256@1.25x.74296ddb195d.webp",
+        "bytes": 54596
+      },
+      "1.5": {
+        "file": "grain-fine-night-256@1.5x.906344b345f4.webp",
+        "bytes": 68340
+      },
+      "1.75": {
+        "file": "grain-fine-night-256@1.75x.76c2968da645.webp",
+        "bytes": 89382
+      },
+      "2": {
+        "file": "grain-fine-night-256@2x.0c8574b122b5.webp",
+        "bytes": 84344
+      },
+      "2.5": {
+        "file": "grain-fine-night-256@2.5x.d0c28b649352.webp",
+        "bytes": 148040
+      },
+      "3": {
+        "file": "grain-fine-night-256@3x.0ebc9c67968e.webp",
+        "bytes": 164620
+      }
+    },
+    "renderer": "Chrome via Playwright, transparent background, lossless WebP verified by decode",
+    "transform": "whites x0.55, blacks x1.3 (source/taste/taste-dark.mjs grainOf)"
+  }
 }

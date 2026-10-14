@@ -1,25 +1,5 @@
 
 /* ==========================================================================
-   Leaf layers: set each canopy leaf in an unrotated box (.leaf-layer) with
-      the leaf's own place, so the browser can give it a layer and a hover
-      repaints one leaf, not the whole crown. The leaf element is moved, never
-      changed. Browsers without :has() keep the tree as written, because the
-      box's z-index rules need it.
-   ========================================================================== */
-(() => {
-  if (!window.CSS || !CSS.supports('selector(:has(*))')) return;
-  const tree = document.querySelector('.tree');
-  if (!tree) return;
-  for (const leaf of tree.querySelectorAll(':scope > button.leaf[style]')) {
-    const layer = document.createElement('span');
-    layer.className = 'leaf-layer';
-    layer.setAttribute('style', leaf.getAttribute('style'));
-    leaf.before(layer);
-    layer.append(leaf);
-  }
-})();
-
-/* ==========================================================================
    Leaf lift: pick -> fly to the centre of the view and turn level -> one
       half-turn about its long (X) axis to show the underside -> open the
       dialog. Closing plays it back and re-seats the leaf.
@@ -625,12 +605,15 @@ const SITE = {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  /* A photo at the width it is shown (`size`, a CSS length): the local copies when there are any, else the original. */
+  const livePhotos = HeartwoodPhotos.create();
+  // Responsive initial/offline copies; the original publisher URL stays authoritative.
   const photo = (img, size) => {
     const copies = PHOTOS[img.src];
-    const src = copies ? `src="${esc(copies[Math.min(1, copies.length - 1)][0])}" srcset="${esc(copies.map(([file, w]) => `${file} ${w}w`).join(', '))}" sizes="${size}"`
+    const base = new URL(document.documentElement.dataset.hwExperience === 'taste' ? '../' : './', location.href);
+    const local = file => new URL(file, base).href;
+    const src = copies ? `src="${esc(local(copies[Math.min(1, copies.length - 1)][0]))}" srcset="${esc(copies.map(([file, w]) => `${local(file)} ${w}w`).join(', '))}" sizes="${size}"`
                        : `src="${esc(img.src)}"`;
-    return `<img ${src} alt="${esc(img.alt)}" loading="lazy" onerror="this.parentNode.remove()">`;
+    return `<img ${src} data-live-photo="${esc(img.src)}" alt="${esc(img.alt)}" loading="lazy" decoding="async">`;
   };
   const tree = $('.tree');
   const tag = $('#leaftag');
@@ -701,6 +684,7 @@ const SITE = {
       `</div>` +
       `<div class="dialog__links">${(item.links || []).map(link).join('')}</div>` +
       `<p class="dialog__more"><a href="${k.section}" data-close>See everything under ${esc(k.label.toLowerCase())}</a></p>`;
+    livePhotos.watch($('#dialog-content'));
   }
   document.addEventListener('leaf:pick', e => {     // e.detail.item is set when a card asks for an item its leaf does not carry
     const item = e.detail.item || items.get(e.detail.leaf.dataset.item);
@@ -919,10 +903,12 @@ const SITE = {
   });
   if (document.fonts) document.fonts.ready.then(() => scheduleLayout(null, true));
 
-  /* Keep every visible creature moving, but stop decorative loops outside the view or in a hidden tab. */
+  /* Keep visible foreground creatures moving; pause the same loops offscreen, hidden or unfocused. */
   const motionRegions = $$('.stage, .deep .stratum');
-  const updateVisibility = () => document.documentElement.classList.toggle('is-motion-hidden', document.hidden);
+  const updateVisibility = () => document.documentElement.classList.toggle('is-motion-hidden', document.hidden || !document.hasFocus());
   document.addEventListener('visibilitychange', updateVisibility);
+  window.addEventListener('focus', updateVisibility);
+  window.addEventListener('blur', updateVisibility);
   updateVisibility();
   if ('IntersectionObserver' in window) {
     const motionObserver = new IntersectionObserver(entries => entries.forEach(entry => {
@@ -931,12 +917,11 @@ const SITE = {
     motionRegions.forEach(region => motionObserver.observe(region));
   }
 
-  /* Smooth in-page scrolling starts after load (or at the first click or key), so a #link opened
-     from outside jumps straight to its section instead of gliding down through the whole tree. */
-  const smooth = () => document.documentElement.classList.add('is-smooth-scroll');
-  const smoothSoon = () => requestAnimationFrame(() => requestAnimationFrame(smooth));
-  if (document.readyState === 'complete') smoothSoon(); else window.addEventListener('load', smoothSoon, { once: true });
-  ['pointerdown', 'keydown'].forEach(type => window.addEventListener(type, smooth, { capture: true, passive: true, once: true }));
+  /* Let initial fragments arrive before enabling smooth in-page navigation. */
+  const smoothScroll = () => document.documentElement.classList.add('is-smooth-scroll');
+  const smoothAfterLoad = () => requestAnimationFrame(() => requestAnimationFrame(smoothScroll));
+  if (document.readyState === 'complete') smoothAfterLoad(); else window.addEventListener('load', smoothAfterLoad, { once: true });
+  ['pointerdown', 'keydown'].forEach(type => window.addEventListener(type, smoothScroll, { capture: true, passive: true, once: true }));
 
   /* --------------------------------------------------------------- header */
   const top = $('.top'), menu = $('.top__menu');
@@ -955,6 +940,8 @@ const SITE = {
     }), { rootMargin: '-45% 0px -50% 0px' });
     links.forEach((a, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
   }
+
+  livePhotos.watch(document);
 
   /* a link straight to a leaf: page.html#leaf-forest-watch */
   const wanted = location.hash.match(/^#leaf-(.+)$/);

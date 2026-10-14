@@ -24,12 +24,15 @@ import hashlib
 import html
 import io
 import re
+import sys
 from pathlib import Path
 
 from PIL import Image
 from playwright.async_api import async_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent))   # same-directory helper; kept loadable under importlib loaders too
+from site_address import authored_base
 SOURCE = ROOT / 'source'
 OUT = SOURCE / 'assets/meta'
 LOGOS = (SOURCE / 'assets/logos/heartwood-logos.svg').read_text(encoding='utf-8')
@@ -149,9 +152,9 @@ def tags(prefix, names, share, base, page_url, title, description):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--base', default='https://justincredible.tech/heartwood/', help='public address of the package root')
+    parser.add_argument('--base', default=None, help='public address of the package root (default: the authored canonical base from source/heartwood-site.html)')
     args = parser.parse_args()
-    base = args.base.rstrip('/') + '/'
+    base = (args.base or authored_base()).rstrip('/') + '/'
     built = ROOT / 'publish/heartwood-site.html'
     if not built.is_file():
         raise SystemExit('Build first: npm run build')

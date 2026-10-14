@@ -1,0 +1,7 @@
+import {parentPort,workerData} from 'node:worker_threads';
+import assert from 'node:assert/strict';
+let next=0;const pending=new Map();
+parentPort.on('message',message=>{const row=pending.get(message?.id);if(!row)return;pending.delete(message.id);message.error?row.reject(Error(message.error)):row.resolve();});
+const writer=(out,path,bytes)=>new Promise((resolve,reject)=>{assert(pending.size<8,'Too many pending build writes');const id=++next;pending.set(id,{resolve,reject});parentPort.postMessage({type:'write',id,out,path,bytes});});
+const onStep=step=>parentPort.postMessage({type:'step',step});
+try{const module=await import(workerData.entry);assert(typeof module[workerData.method]==='function','Missing whole-build operation');const result=await module[workerData.method]({...workerData.options,writer,onStep});assert(result&&typeof result==='object'&&!Array.isArray(result)&&Object.keys(result).length>0,'Whole build returned no result');if(workerData.method==='buildSite')assert(Array.isArray(result.generated)&&result.generated.length>0&&result.generated.length<=4096&&result.generated.every(row=>typeof row==='string'&&row.length>0),'Whole build returned no generated outputs');assert(!pending.size,'Whole build returned before its writes');parentPort.postMessage({type:'result',result});}catch(error){parentPort.postMessage({type:'failure',message:error.message,stack:error.stack});}finally{parentPort.close();}

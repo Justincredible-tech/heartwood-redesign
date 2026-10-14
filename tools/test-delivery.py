@@ -12,10 +12,14 @@ from html.parser import HTMLParser
 from pathlib import Path
 import brotli
 from preview import accepted_encoding
+from build_features import manifest_features
 
 ROOT = Path(__file__).resolve().parent.parent
 PUBLISH = ROOT / 'publish'
 MANIFEST = json.loads((ROOT / 'tools/build-manifest.json').read_text(encoding='utf-8'))
+# Default delivery means the complete build. An excluded profile must be chosen
+# explicitly; missing/contradictory metadata never silently disables assertions.
+FEATURES = manifest_features(MANIFEST, expected=os.environ.get('HEARTWOOD_BUILD_EXCLUDE', []))
 # Point this at the preview serving *this* checkout; another copy of the project may hold 8001.
 BASE = os.environ.get('HEARTWOOD_PREVIEW', 'http://127.0.0.1:8001/')
 
@@ -81,10 +85,50 @@ class DeliveryTests(unittest.TestCase):
             self.assertEqual(expected.elements, actual.elements)
 
     def test_html_preserves_artwork_elements_attributes_and_text(self):
-        before = SiteShape((ROOT / 'source/heartwood-site.html').read_text(encoding='utf-8'))
-        after = SiteShape((PUBLISH / 'heartwood-site.html').read_text(encoding='utf-8'))
+        authored = (ROOT / 'source/heartwood-site.html').read_text(encoding='utf-8')
+        published = (PUBLISH / 'heartwood-site.html').read_text(encoding='utf-8')
+        controller = '<script src="js/live-photos.js"></script>'
+        self.assertEqual(authored.count(controller), 1, 'the shared controller is bundled exactly once')
+        authored = authored.replace(controller, '')
+        compiled = (PUBLISH / MANIFEST['assets']['js']).read_text(encoding='utf-8')
+        self.assertIn('HeartwoodPhotos.create', compiled, 'bundling must retain the live-photo controller and its caller')
+        self.assertNotIn('js/live-photos.js', published)
+        if not FEATURES['night']:
+            authored, count = re.subn(r'<a\b[^>]*\bdata-hw-mode[^>]*>[\s\S]*?</a>', '', authored)
+            self.assertEqual(count, 1, 'exactly the unavailable mode control is removed')
+        if not FEATURES['night'] or not FEATURES['phone']:
+            # This first dispatcher is deliberately rebuilt by feature policy.
+            # All later script/art/content text and all elements stay exact.
+            authored, count = re.subn(r'(<script>)[\s\S]*?(</script>)', r'\1\2', authored, count=1)
+            self.assertEqual(count, 1)
+            published, count = re.subn(r'(<script>)[\s\S]*?(</script>)', r'\1\2', published, count=1)
+            self.assertEqual(count, 1)
+        before = SiteShape(authored)
+        after = SiteShape(published)
         self.assertEqual(before.elements, after.elements)
         self.assertEqual(before.text, after.text)
+
+    def test_available_route_families_match_the_requested_profile(self):
+        generated = MANIFEST['generated']
+        self.assertTrue(generated)
+        self.assertEqual(len(generated), len(set(generated)))
+        for route in ('heartwood-site.html', 'desktop-day.html', 'experience-entry.html', 'taste/index.html', 'taste/scene.html'):
+            self.assertIn(route, generated)
+            self.assertTrue((PUBLISH / route).is_file())
+        if FEATURES['phone']:
+            for route in ('mobile/index.html', 'mobile/day.html', 'mobile/manifest.json'):
+                self.assertIn(route, generated)
+            self.assertEqual('mobile/night.html' in generated, FEATURES['night'])
+        else:
+            self.assertFalse(any(path.startswith('mobile/') for path in generated))
+            for route in ('mobile/index.html', 'mobile/day.html', 'mobile/night.html', 'mobile/manifest.json'):
+                self.assertFalse((PUBLISH / route).exists(), 'stale excluded phone route: ' + route)
+        if not FEATURES['night']:
+            for route in ('heartwood-site.html', 'taste/scene.html', 'experience-entry.html', 'taste/index.html'):
+                body = (PUBLISH / route).read_text(encoding='utf-8')
+                self.assertNotIn('data-hw-mode', body)
+                self.assertNotIn('mobile/night.html', body)
+                self.assertNotIn('>Night</a>', body)
 
     def test_all_text_compression_round_trips(self):
         for relative in MANIFEST['generated']:
@@ -139,6 +183,10 @@ class DeliveryTests(unittest.TestCase):
                 self.assertEqual(len(response.read()), record['bytes'])
 
     def test_grain_tiles_match_recipe_and_are_delivered(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('render_grain', ROOT / 'tools' / 'render-grain.py')
+        grain_mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(grain_mod)
         css = (ROOT / 'source/css/heartwood-site.css').read_text(encoding='utf-8')
         fine = ' '.join(re.search(r'--grain-fine:\s*(.*?);', css, re.S).group(1).split())
         provenance = json.loads((ROOT / 'source/assets/grain/grain-provenance.json').read_text(encoding='utf-8'))
@@ -156,6 +204,32 @@ class DeliveryTests(unittest.TestCase):
                 self.assertEqual(response.headers.get_content_type(), 'image/webp')
                 self.assertIn('immutable', response.headers['Cache-Control'])
                 self.assertEqual(len(response.read()), record['bytes'])
+        night = provenance.get('night')
+        self.assertIsNotNone(night, 'the night grain section must be pinned once the night tiles are adopted')
+        self.assertEqual(hashlib.sha256(grain_mod.night_recipe(css).encode('utf-8')).hexdigest(), night['recipe_sha256'],
+                         'the night recipe changed since the night tiles were drawn: run tools/render-grain.py --recipe night')
+        taste_css_files = sorted((PUBLISH / 'css').glob('heartwood-taste.*.css'))
+        self.assertEqual(len(taste_css_files), 1, 'exactly one taste stylesheet')
+        taste_css = taste_css_files[0].read_text(encoding='utf-8')
+        if FEATURES['night']:
+            self.assertIn('var(--grain-tile-night)', taste_css)
+        else:
+            self.assertNotIn('grain-tile-night', taste_css)
+        for record in night['tiles'].values():
+            relative = 'assets/grain/' + record['file']
+            self.assertNotIn(record['file'], html, 'the day page must not reference night tiles')
+            if FEATURES['night']:
+                self.assertIn(relative, MANIFEST['generated'])
+                self.assertEqual((PUBLISH / relative).read_bytes(), (ROOT / 'source' / relative).read_bytes())
+                self.assertIn('../' + relative, taste_css)
+                with request(relative) as response:
+                    self.assertEqual(response.headers.get_content_type(), 'image/webp')
+                    self.assertIn('immutable', response.headers['Cache-Control'])
+                    self.assertEqual(len(response.read()), record['bytes'])
+            else:
+                self.assertNotIn(relative, MANIFEST['generated'])
+                self.assertFalse((PUBLISH / relative).exists(), 'stale excluded Night grain: ' + relative)
+                self.assertNotIn(record['file'], taste_css)
 
     def test_photos_are_local_small_and_delivered(self):
         provenance = json.loads((ROOT / 'source/assets/photos/photos-provenance.json').read_text(encoding='utf-8'))['photos']
