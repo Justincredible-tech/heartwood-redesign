@@ -1,0 +1,314 @@
+{
+ "desktop": {
+  "runs": {
+   "base": [
+    {
+     "first_paint_ms": 1024,
+     "blocked_ms": 0,
+     "main_paint_ms": 428,
+     "gpu_ms_per_s": 721.8,
+     "layers": 276,
+     "renderer_mb": 116.6,
+     "gpu_mb": 66.6
+    },
+    {
+     "first_paint_ms": 1076,
+     "blocked_ms": 0,
+     "main_paint_ms": 392,
+     "gpu_ms_per_s": 707.0,
+     "layers": 276,
+     "renderer_mb": 114.7,
+     "gpu_mb": 66.6
+    },
+    {
+     "first_paint_ms": 1092,
+     "blocked_ms": 0,
+     "main_paint_ms": 399,
+     "gpu_ms_per_s": 769.6,
+     "layers": 276,
+     "renderer_mb": 117.6,
+     "gpu_mb": 66.6
+    },
+    {
+     "first_paint_ms": 956,
+     "blocked_ms": 0,
+     "main_paint_ms": 790,
+     "gpu_ms_per_s": 903.6,
+     "layers": 276,
+     "renderer_mb": 129.2,
+     "gpu_mb": 67.4
+    },
+    {
+     "first_paint_ms": 1108,
+     "blocked_ms": 0,
+     "main_paint_ms": 371,
+     "gpu_ms_per_s": 706.5,
+     "layers": 276,
+     "renderer_mb": 112.9,
+     "gpu_mb": 66.6
+    }
+   ],
+   "head": [
+    {
+     "first_paint_ms": 1556,
+     "blocked_ms": 0,
+     "main_paint_ms": 110,
+     "gpu_ms_per_s": 827.4,
+     "layers": 274,
+     "renderer_mb": 96.8,
+     "gpu_mb": 70.1
+    },
+    {
+     "first_paint_ms": 1008,
+     "blocked_ms": 0,
+     "main_paint_ms": 391,
+     "gpu_ms_per_s": 815.4,
+     "layers": 274,
+     "renderer_mb": 106.0,
+     "gpu_mb": 70.2
+    },
+    {
+     "first_paint_ms": 960,
+     "blocked_ms": 0,
+     "main_paint_ms": 415,
+     "gpu_ms_per_s": 786.4,
+     "layers": 274,
+     "renderer_mb": 105.6,
+     "gpu_mb": 70.2
+    },
+    {
+     "first_paint_ms": 1236,
+     "blocked_ms": 0,
+     "main_paint_ms": 774,
+     "gpu_ms_per_s": 1244.3,
+     "layers": 274,
+     "renderer_mb": 114.4,
+     "gpu_mb": 71.0
+    },
+    {
+     "first_paint_ms": 920,
+     "blocked_ms": 0,
+     "main_paint_ms": 323,
+     "gpu_ms_per_s": 1154.0,
+     "layers": 274,
+     "renderer_mb": 111.9,
+     "gpu_mb": 111.6
+    }
+   ]
+  },
+  "comparison": [
+   {
+    "metric": "first_paint_ms",
+    "base": 1076,
+    "head": 1008,
+    "change_pct": -6.3,
+    "allowed": 53.8,
+    "verdict": "better"
+   },
+   {
+    "metric": "blocked_ms",
+    "base": 0,
+    "head": 0,
+    "change_pct": 0.0,
+    "allowed": 10,
+    "verdict": "same"
+   },
+   {
+    "metric": "main_paint_ms",
+    "base": 399,
+    "head": 391,
+    "change_pct": -2.0,
+    "allowed": 20.0,
+    "verdict": "same"
+   },
+   {
+    "metric": "gpu_ms_per_s",
+    "base": 721.8,
+    "head": 827.4,
+    "change_pct": 14.6,
+    "allowed": 36.1,
+    "verdict": "REGRESSION"
+   },
+   {
+    "metric": "layers",
+    "base": 276,
+    "head": 274,
+    "change_pct": -0.7,
+    "allowed": 13.8,
+    "verdict": "same"
+   },
+   {
+    "metric": "renderer_mb",
+    "base": 116.6,
+    "head": 106.0,
+    "change_pct": -9.1,
+    "allowed": 5.8,
+    "verdict": "better"
+   },
+   {
+    "metric": "gpu_mb",
+    "base": 66.6,
+    "head": 70.2,
+    "change_pct": 5.4,
+    "allowed": 3.3,
+    "verdict": "REGRESSION"
+   }
+  ]
+ },
+ "lowend": {
+  "runs": {
+   "base": [
+    {
+     "first_paint_ms": 1532,
+     "blocked_ms": 1149,
+     "main_paint_ms": 2044,
+     "gpu_ms_per_s": 402.4,
+     "layers": 88,
+     "renderer_mb": 107.3,
+     "gpu_mb": 14.1
+    },
+    {
+     "first_paint_ms": 1420,
+     "blocked_ms": 985,
+     "main_paint_ms": 2081,
+     "gpu_ms_per_s": 346.7,
+     "layers": 88,
+     "renderer_mb": 111.1,
+     "gpu_mb": 14.2
+    },
+    {
+     "first_paint_ms": 1412,
+     "blocked_ms": 1153,
+     "main_paint_ms": 2405,
+     "gpu_ms_per_s": 375.2,
+     "layers": 88,
+     "renderer_mb": 108.3,
+     "gpu_mb": 14.1
+    },
+    {
+     "first_paint_ms": 2072,
+     "blocked_ms": 723,
+     "main_paint_ms": 1101,
+     "gpu_ms_per_s": 383.2,
+     "layers": 88,
+     "renderer_mb": 96.9,
+     "gpu_mb": 13.4
+    },
+    {
+     "first_paint_ms": 1540,
+     "blocked_ms": 1510,
+     "main_paint_ms": 2118,
+     "gpu_ms_per_s": 378.7,
+     "layers": 88,
+     "renderer_mb": 107.7,
+     "gpu_mb": 14.3
+    }
+   ],
+   "head": [
+    {
+     "first_paint_ms": 1232,
+     "blocked_ms": 1390,
+     "main_paint_ms": 2179,
+     "gpu_ms_per_s": 331.4,
+     "layers": 88,
+     "renderer_mb": 102.0,
+     "gpu_mb": 14.2
+    },
+    {
+     "first_paint_ms": 1500,
+     "blocked_ms": 1320,
+     "main_paint_ms": 2342,
+     "gpu_ms_per_s": 340.7,
+     "layers": 88,
+     "renderer_mb": 100.0,
+     "gpu_mb": 14.2
+    },
+    {
+     "first_paint_ms": 1308,
+     "blocked_ms": 945,
+     "main_paint_ms": 2139,
+     "gpu_ms_per_s": 385.8,
+     "layers": 88,
+     "renderer_mb": 101.4,
+     "gpu_mb": 14.0
+    },
+    {
+     "first_paint_ms": 1364,
+     "blocked_ms": 1276,
+     "main_paint_ms": 2678,
+     "gpu_ms_per_s": 351.4,
+     "layers": 88,
+     "renderer_mb": 104.5,
+     "gpu_mb": 14.4
+    },
+    {
+     "first_paint_ms": 1316,
+     "blocked_ms": 940,
+     "main_paint_ms": 2020,
+     "gpu_ms_per_s": 337.3,
+     "layers": 88,
+     "renderer_mb": 101.1,
+     "gpu_mb": 14.2
+    }
+   ]
+  },
+  "comparison": [
+   {
+    "metric": "first_paint_ms",
+    "base": 1532,
+    "head": 1316,
+    "change_pct": -14.1,
+    "allowed": 76.6,
+    "verdict": "better"
+   },
+   {
+    "metric": "blocked_ms",
+    "base": 1149,
+    "head": 1276,
+    "change_pct": 11.1,
+    "allowed": 57.5,
+    "verdict": "REGRESSION"
+   },
+   {
+    "metric": "main_paint_ms",
+    "base": 2081,
+    "head": 2179,
+    "change_pct": 4.7,
+    "allowed": 312.1,
+    "verdict": "same"
+   },
+   {
+    "metric": "gpu_ms_per_s",
+    "base": 378.7,
+    "head": 340.7,
+    "change_pct": -10.0,
+    "allowed": 18.9,
+    "verdict": "better"
+   },
+   {
+    "metric": "layers",
+    "base": 88,
+    "head": 88,
+    "change_pct": 0.0,
+    "allowed": 4.4,
+    "verdict": "same"
+   },
+   {
+    "metric": "renderer_mb",
+    "base": 107.7,
+    "head": 101.4,
+    "change_pct": -5.8,
+    "allowed": 5.4,
+    "verdict": "better"
+   },
+   {
+    "metric": "gpu_mb",
+    "base": 14.1,
+    "head": 14.2,
+    "change_pct": 0.7,
+    "allowed": 1,
+    "verdict": "same"
+   }
+  ]
+ }
+}
