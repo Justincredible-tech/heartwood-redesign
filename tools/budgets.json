@@ -1,0 +1,67 @@
+{
+  "_comment": "Ceilings for tests/resource-budgets.test.mjs, recorded from the shipped build. Review every diff; update with HW_UPDATE_BUDGETS=1 node --test tests/resource-budgets.test.mjs",
+  "tolerance": {
+    "bytes": 0.02
+  },
+  "bytes": {
+    "html": {
+      "raw": 371168,
+      "br": 42442,
+      "gzip": 58636
+    },
+    "css": {
+      "raw": 796379,
+      "br": 152641,
+      "gzip": 207283
+    },
+    "js": {
+      "raw": 71677,
+      "br": 19688,
+      "gzip": 23208
+    },
+    "jpg": {
+      "raw": 7206426
+    },
+    "webp": {
+      "raw": 5424320
+    },
+    "woff2": {
+      "raw": 85496
+    },
+    "ico": {
+      "raw": 2780
+    },
+    "total": {
+      "raw": 13958246
+    }
+  },
+  "counts": {
+    "assets": 19,
+    "htmlRequests": 9,
+    "cssUrlReferences": 4,
+    "domNodes": 6052,
+    "keyframes": 27,
+    "animationDeclarations": 24,
+    "willChangeDeclarations": 1,
+    "clipPathAndMaskDeclarations": 1500,
+    "filterDeclarations": 50,
+    "backdropFilterDeclarations": 0,
+    "blendModeDeclarations": 0,
+    "inlineScripts": 0,
+    "inlineStyleElements": 0,
+    "inlineStyleAttributes": 0
+  },
+  "nonCompositedKeyframes": {},
+  "browser": {
+    "_comment": "browser.abuse = absolute gates for tools/test-abuse.mjs (the tool takes the MIN of these and its built-in values: a file can tighten a gate, never loosen it). heapDeltaKB is a proposal (observed 8-102 KB after GC over 200-500 hover/filter cycles, ~10x margin). This section is preserved by HW_UPDATE_BUDGETS.",
+    "abuse": {
+      "frameP95Ms": 25,
+      "frameMaxMs": 50,
+      "inputToPaintP95Ms": 34,
+      "navFirstMoveP95Ms": 34,
+      "scrollStallMaxRatio": 0.1,
+      "resumeFrameMaxMs": 100,
+      "leaks": {"cycles": 50, "domNodesDelta": 0, "listenersDelta": 0, "layersDelta": 0, "heapDeltaKB": 1024}
+    }
+  }
+}

@@ -27,3 +27,17 @@ deploy-backups/
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# Rebuilt responsive experiences and temporary authoring output
+publish/mobile/
+publish/taste/
+
+# Private audit work and optional generated authoring output
+/.audit/
+/output/
+/tools/mobile-art/node_modules/
+/publish/desktop-day.html*
+/publish/experience-entry.html*
+
+# Optional locked browser-test dependencies
+/tools/browser/node_modules/

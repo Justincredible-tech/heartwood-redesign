@@ -46,7 +46,7 @@ async def main(only):
     if not built.is_file():
         raise SystemExit('Build first: npm run build')
     async with async_playwright() as p:
-        browser = await p.chromium.launch(channel='chrome')
+        browser = await p.chromium.launch(channel='chrome', headless=True)
         if only in (None, 'living-tree'):
             save(await capture(browser, built.as_uri(), 1440, 900, 1, False, False), 'living-tree-desktop.webp', 1440, 82)
             save(await capture(browser, built.as_uri(), 390, 844, 2, True, False), 'living-tree-phone.webp', 600, 80)

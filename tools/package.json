@@ -1,10 +1,22 @@
 {
   "name": "heartwood-static-build",
   "private": true,
-  "scripts": { "build": "node build-site.mjs" },
+  "scripts": {
+    "build": "node build-site.mjs",
+    "build:phone": "node build-mobile.mjs",
+    "build:supervised": "node build-supervised.mjs",
+    "build:phone:supervised": "node build-supervised.mjs --phone",
+    "test": "node test-public.mjs",
+    "test:native-art": "node test-public.mjs --native-art",
+    "test:native-art-toolchain": "node test-public.mjs --native-art-toolchain",
+    "test:delivery": "node delivery-dry-run.mjs",
+    "test:optional": "node run-optional-tests.mjs"
+  },
   "devDependencies": {
     "clean-css": "5.3.3",
+    "fast-check": "4.10.2",
     "html-minifier-terser": "7.2.0",
+    "pure-rand": "8.4.2",
     "terser": "5.51.2"
   }
 }

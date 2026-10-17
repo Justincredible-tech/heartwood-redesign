@@ -3,6 +3,51 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+// Select the phone composition before desktop styles and artwork are requested.
+// The optional taste route starts at night; an explicit light choice restores day.
+(() => {
+  const root = document.documentElement;
+  const taste = root.dataset.hwExperience === 'taste';
+  const here = new URL(location.href);
+  if (/\/(?:desktop-day|heartwood-site)\.html$|\/taste\/scene\.html$/.test(here.pathname)) {
+    const canonical = new URL(taste ? './' : root.dataset.hwPublicEntry || './', here); canonical.search = here.search; canonical.hash = here.hash;
+    history.replaceState(history.state, '', canonical.href);
+  }
+  const base = new URL(taste ? '../' : './', here);
+  const theme = here.searchParams.get('theme');
+  const osNight = matchMedia('(prefers-color-scheme: dark)').matches;
+  const night = theme === 'dark' || (theme !== 'light' && (taste || osNight));
+  const phone = navigator.userAgentData?.mobile === true || /Android.*Mobile|iPhone|iPod/i.test(navigator.userAgent) ||
+    (navigator.maxTouchPoints > 0 && matchMedia('(pointer: coarse)').matches && Math.min(screen.width, screen.height) <= 1100);
+  if (phone && here.searchParams.get('view') !== 'desktop') {
+    const target = new URL(night ? 'mobile/night.html' : 'mobile/day.html', base);
+    target.search = here.search; target.hash = here.hash;
+    location.replace(target.href); return;
+  }
+  if (night && !taste) {
+    const target = new URL('taste/', base);
+    target.search = here.search; target.hash = here.hash;
+    location.replace(target.href); return;
+  }
+  root.dataset.hwTheme = night ? 'night' : 'day';
+  document.addEventListener('DOMContentLoaded', () => {
+    const link = document.querySelector('[data-hw-mode]');
+    if (!link) return;
+    const updateLink = () => {
+      const current = new URL(location.href);
+      const target = new URL('taste/', base);
+      target.search = current.search; target.hash = current.hash;
+      target.searchParams.set('theme', night ? 'light' : 'dark');
+      link.href = target.href;
+    };
+    updateLink();
+    for (const event of ['click', 'auxclick', 'focus', 'contextmenu']) link.addEventListener(event, updateLink);
+    link.textContent = night ? 'Day' : 'Night';
+    link.setAttribute('aria-label', night ? 'Use the day scene' : 'Use the night scene');
+  }, {once: true});
+})();
+</script>
 <title>Heartwood: people helping people protect the places they love</title>
 <meta name="description" content="Heartwood is a regional network that protects forests and supports community activism in the eastern United States.">
 <!-- meta:start -->
@@ -69,6 +114,7 @@
     <a href="#news" data-kind="news">News</a>
     <a href="#network" data-kind="group">Network</a>
     <a href="#support" data-kind="act">Support</a>
+    <a href="taste/?theme=dark" data-hw-mode>Night</a>
     <a class="btn btn--gold" href="https://heartwood.org/support/donate/index.html" data-open="donate">Donate</a>
   </nav>
 </header>
@@ -606,6 +652,7 @@
 
 <div class="lift" id="lift" aria-hidden="true"></div>
 
+<script src="js/live-photos.js"></script>
 <script src="js/heartwood-site.js"></script>
 </body>
 </html>

@@ -1,0 +1,16 @@
+{
+  "name": "heartwood-mobile-art",
+  "private": true,
+  "type": "module",
+  "description": "Optional local dependencies for explicit mobile art regeneration",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "playwright-core": "1.64.0",
+    "sharp": "0.35.5"
+  },
+  "scripts": {
+    "test": "node --test ../../tests/public-art-runtime.test.mjs ../../tests/public-art-lifecycle.test.mjs ../../tests/public-art-toolchain.test.mjs ../../tests/public-art-epoch.test.mjs ../../tests/art-restore-no-replace.test.mjs ../../tests/public-art-project.test.mjs"
+  }
+}

@@ -1,6 +1,5 @@
-# Build, compression, preview, tests and packaging
 brotli==1.2.0
-
-# Only for tools/render-grain.py (redrawing the paper-grain tiles); also needs Google Chrome installed
+# Only for tools/render-grain.py (regenerating grain tiles); not needed to build the page. Needs Chrome installed.
 playwright==1.57.0
+# render-grain.py and new photo encoding in import-photos.py; exact retained photo reuse needs no Pillow import.
 pillow==12.0.0

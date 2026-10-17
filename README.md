@@ -21,6 +21,8 @@ It contains:
 | Path | What it is |
 |---|---|
 | `source/` | **Living Tree, readable source.** Edit here. `heartwood-site.html` is the markup and paper artwork; `css/heartwood-site.css` the styles; `js/heartwood-site.js` the interactions and the `SITE` content model; `assets/` self-hosted fonts, logo symbols and the paper-grain tiles. |
+| `source/mobile/` | The phone composition: a tall cut-paper tulip poplar, tap previews, category branches, detail sheets and compact roots. Includes reviewed day/night raster masters and encoded derivatives. |
+| `source/taste/` | The optional desktop scene: night artwork and the additional tree/network interactions, composed from the authored site. |
 | `tools/` | Build, local preview, delivery tests, packaging and asset tools. Details in [`tools/README.md`](tools/README.md). |
 | `showcase/` | The client landing page (`index.html`) and its preview images. |
 | `mockups/` | The five alternative designs, plus logo explorations in `mockups/logo/`. |
@@ -31,14 +33,14 @@ It contains:
 
 ## Quick start
 
-You need **Node 22** with npm and **Python 3.13**. Commands run from `tools/`.
+You need **Node 22** with npm and **Python 3.11+** (the checks are exercised with 3.13). Commands run from `tools/`.
 
 ```bash
 cd tools
 npm ci --ignore-scripts --no-fund         # build-only packages, pinned in package-lock.json
-pip install -r requirements.txt           # brotli (always); playwright + pillow (only to redraw the grain)
+pip install -r requirements.txt           # brotli (always); playwright + pillow (only to redraw the grain or import new photos)
 npm run build                             # source/ -> publish/: minified, fingerprinted, precompressed
-python preview.py --port 8003             # then open http://127.0.0.1:8003/heartwood-site.html
+python preview.py --port 8003             # then open http://127.0.0.1:8003/
 ```
 
 In a second terminal, with the preview running:
@@ -54,6 +56,21 @@ Use the compressed preview, not `python -m http.server`: it serves only the buil
 Brotli/gzip like the real host, and refuses a port that is already taken. Pick any free port; the tests default
 to 8001.
 
+## Day, night and phone scenes
+
+The public site entry selects the scene before requesting its artwork. Desktop follows the system colour
+preference; `taste/` starts at night. Use `?theme=light` or `?theme=dark` for an explicit choice, or the desktop
+Day/Night link. Phones automatically receive the vertical phone composition. The main entry follows their
+system preference; `taste/` starts at night on phones too, with `?theme=light` selecting day explicitly.
+Add `?view=desktop` to use the desktop composition
+on a phone. Selection retains the query and fragment used for categories, search and leaf links.
+
+The build writes an assetless `experience-entry.html`, which packaging installs as the public site entry.
+`desktop-day.html` and `taste/scene.html` contain the desktop scenes; their browser addresses resolve back to
+the corresponding public entry while preserving state. `mobile/` selects fixed `mobile/day.html` and
+`mobile/night.html` pages, so an explicit choice uses the appropriate artwork even when it differs from the
+system preference. Both phone themes share the same layout, content and tap interactions.
+
 ## Where to change what
 
 | To change | Edit | Then |
@@ -62,6 +79,9 @@ to 8001.
 | Interactions | `source/js/heartwood-site.js` | build |
 | Layout, colour, type, motion | `source/css/heartwood-site.css` | build |
 | Artwork (paper shapes) | `source/heartwood-site.html` | build |
+| Optional desktop night scene and interactions | `source/taste/` | build |
+| Phone layout and interactions | `source/mobile/page.mjs`, `mobile.css`, `app.js` | build |
+| Phone paper artwork | `source/mobile/art.mjs`, `night.mjs`, `reference-paper.css` | regenerate affected reviewed masters and derivatives, then build |
 | Paper grain (flecks and fibres) | `--grain-fine` in the stylesheet | `python render-grain.py`, then build |
 | Logos | replace the files in `finalLogos/` | `python import-logos.py`, then build |
 | Favicon, link-preview (share) images | `tools/render-meta-images.py` (drawn from the tree mark and the built hero) | build, `python render-meta-images.py`, build again |
@@ -75,6 +95,24 @@ served as the old version.
 and keep its inline styles as they are; the tests check that the build preserves every artwork element and
 attribute.
 
+Ordinary phone builds verify and copy the committed art; they do not run a browser or image encoder.
+Changing its art recipe requires a separate render of the affected masters and matching AVIF/WebP
+derivatives, with updated recipe and byte hashes. The build rejects stale masters or altered inputs. See
+[`tools/README.md`](tools/README.md) for the source checks and asset regeneration boundary.
+
+All features are enabled by the ordinary build. To omit selected features from the generated site, run
+`npm run build -- --exclude=night,phone,tree-effects,network-effects` from `tools/`, listing only the ones to
+remove. `night` produces Day-only scenes; `phone` omits the phone routes and dispatch; `tree-effects` and
+`network-effects` omit their additional interactions while retaining the original art, baseline leaf hover,
+and phone navigation. Unknown, empty, or duplicate exclusions fail before building. The optional
+`npm run build:supervised` accepts the same flag. A programmatic `buildSite({exclude:['night']})` follows the
+same policy. A direct phone build may exclude Night and effects, but cannot exclude its own phone output.
+
+Packaging uses the generated feature manifest, so excluded routes and assets are not uploaded. Delivery
+tests expect the complete build by default; for a deliberately reduced build, set `HEARTWOOD_BUILD_EXCLUDE`
+to the same comma-separated list before running `test-delivery.py`. The recorded policy must match this
+explicit expectation, and excluded resources must actually be absent.
+
 ## Shipping to the web server
 
 ```bash
@@ -87,12 +125,14 @@ Upload the **contents** of `publish/<folder>/`, including the hidden `.htaccess`
 default package is the client showcase:
 
 - `index.html`: the landing page
-- `living-tree.html`: the built Living Tree site
+- `living-tree.html`: the scene-selecting Living Tree entry
+- `desktop-day.html`, `taste/`, `mobile/`: the desktop and phone scene documents
 - `mockups/`: the five alternatives
 - `assets/`: fonts, grain tiles and preview images
 
 Once the client has chosen, `python package-upload.py --site-only --name site-v1` packages Living Tree alone as
-`index.html`.
+`index.html`; a site-only package retargets the packaged documents' canonical and og:url from the showcase entry
+name to the package root, since no `living-tree.html` ships in that layout.
 
 To publish to https://justincredible.tech/heartwood/, use `python deploy-ftp.py ../publish/<folder>`. It is a dry
 run until you add `--go`. With `--go` nothing is sent until the site owner clicks Yes in a confirmation dialog on
@@ -131,7 +171,7 @@ The details, including commit-message style and how to note AI-assisted work, ar
 
 ## Notes and gotchas
 
-- **Performance.** The page draws about 3,600 elements of cut-paper artwork, so first paint and GPU load matter on
+- **Performance.** The desktop scene draws about 3,600 elements of cut-paper artwork, so first paint and GPU load matter on
   cheap phones. The paper grain's fine layers are pre-drawn into small tiles, and animations pause when off
   screen or in a hidden tab. Measurements and methods are in `review-evidence/` (start with
   `007-grain-and-motion-20261012/`). Profile before and after any change that adds artwork, filters or motion.
@@ -140,8 +180,13 @@ The details, including commit-message style and how to note AI-assisted work, ar
   wrong files. Set `HEARTWOOD_PREVIEW` to your own preview.
 - **Opening files directly** (`file://`) works for a quick look, but Chrome blocks the font preloads there. Use
   the preview for anything you measure or test.
-- Some content (the Heartbeat cover image, outgoing links) loads from heartwood.org and is not checked by the
-  tests.
+- The Heartbeat cover and Forest Council poster retain their authoritative heartwood.org URLs on desktop
+  and phone. Local responsive copies provide the initial/offline image; visible photos revalidate through the
+  browser cache and replace it only after the original decodes. Checks are coalesced per URL, with six hours
+  between successful checks and ten minutes after a failure; no idle polling runs. The first source load can
+  transfer/decode the publisher's full JPEG because it does not currently permit cross-origin image resizing.
+  Ordinary tests use local photo fixtures and block external traffic; their results do not prove live asset
+  freshness or the availability of outgoing destinations. Live diagnostics require separate bounded access.
 
 ## Ownership and licence
 
