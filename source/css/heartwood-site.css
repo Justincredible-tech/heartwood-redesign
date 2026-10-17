@@ -308,25 +308,6 @@ button.leaf .leaf__face { pointer-events: auto; }
     drop-shadow(0 var(--ring) 0 var(--focus)) drop-shadow(0 calc(-1 * var(--ring)) 0 var(--focus));
 }
 
-/* Leaf layers: the script sets each canopy leaf in an unrotated box with the leaf's own --x/--y/--s, so a
-   hover repaints that one leaf instead of the whole crown. The leaf keeps every rule above; the box only
-   repeats its place and its z-index. Promoted on mouse devices while the tree is in view. */
-.tree .leaf-layer {
-  position: absolute;
-  left: calc(var(--x) * 1%);
-  top: calc(var(--y) * 1%);
-  width: calc(var(--s) * var(--leaf-ar) * 1%);
-  aspect-ratio: var(--leaf-ar);
-  pointer-events: none;
-}
-.tree .leaf-layer > button.leaf { left: 0; top: 0; width: 100%; }
-@media (hover: hover) {
-  .stage:not(.is-motion-paused) .tree .leaf-layer { will-change: transform; }
-  .tree .leaf-layer:has(> button.leaf:hover) { z-index: 5; }
-}
-.tree.is-filtered .leaf-layer:has(> .leaf.is-lit) { z-index: 4; }
-.tree .leaf-layer:has(> .leaf:focus-visible), .tree .leaf-layer:has(> .leaf.is-found) { z-index: 6; }
-
 @keyframes leaf-out {
   from { transform: translate(-50%, -100%) rotate(calc(var(--angle) - 28deg)) scale(0); }
 }
@@ -341,8 +322,9 @@ button.leaf .leaf__face { pointer-events: auto; }
   visibility: hidden;
   transition: opacity .45s ease, visibility 0s .45s;
   overscroll-behavior: contain;
+  pointer-events: none;
 }
-.is-lifted .scrim { opacity: 1; visibility: visible; transition-delay: 0s; }
+.is-lifted .scrim { opacity: 1; visibility: visible; transition-delay: 0s; pointer-events: auto; }
 
 .lift {                              /* the picked leaf travels in this layer */
   position: fixed;
@@ -608,7 +590,7 @@ p { margin: 0; text-wrap: pretty; }
 /* ------------------------------------------------------- leaves as links */
 /* filtering: the leaves of one kind stay, the rest of the crown goes pale and cannot be picked */
 .leaf { transition: transform .28s cubic-bezier(.3, 1.4, .5, 1), filter .28s ease, opacity .28s ease; }
-.tree.is-filtered .leaf:not(.is-lit) { opacity: .24; filter: saturate(.3); }
+.tree.is-filtered .leaf:not(.is-lit):not(:focus-visible) { opacity: .24; filter: saturate(.3); }   /* focused leaves keep their ring */
 .tree.is-filtered button.leaf:not(.is-lit) .leaf__face { pointer-events: none; }
 .tree.is-filtered .leaf.is-lit { --lift: 1.5; z-index: 4; }
 button.leaf.is-plain { cursor: default; }
@@ -724,7 +706,7 @@ button.leaf.is-plain .leaf__face { pointer-events: none; }
 @media (max-width: 860px) { .news { grid-template-columns: 1fr; } }
 .issue { height: auto; padding: clamp(1.25rem, 2.6vw, 1.9rem); rotate: -.5deg; cursor: default; }
 .issue:hover { transform: none; filter: var(--lay); }
-.issue__cover { margin: 0 0 .4rem; background: var(--paper-2); aspect-ratio: 8.5 / 11; max-height: 22rem; align-self: center; filter: drop-shadow(1px 2px 2px rgb(20 10 0 / .3)); }
+.issue__cover { margin: 0 0 .4rem; background: var(--paper-2); aspect-ratio: 8.5 / 11; max-height: 22rem; min-width: min(100%, 17rem); align-self: center; filter: drop-shadow(1px 2px 2px rgb(20 10 0 / .3)); }
 .issue__cover img { width: 100%; height: 100%; object-fit: cover; }
 .issue__back { display: flex; flex-wrap: wrap; gap: .35rem .9rem; margin: .35rem 0 0; padding: .8rem 0 0; list-style: none; border-top: 1px solid rgb(30 42 33 / .15); font-size: .88rem; }
 .issue__back a { text-underline-offset: .2em; }
@@ -849,7 +831,7 @@ button.leaf.is-plain .leaf__face { pointer-events: none; }
 .dialog__close:hover { background: rgb(30 42 33 / .1); }
 
 @media (prefers-reduced-motion: reduce) {
-  .btn, .chip, .card, .leaftag { transition: none; }
+  .btn, .chip, .card, .leaftag, .leaf { transition: none; }
   .leaf.is-found { animation: none; }
 }
 @media print {
@@ -1017,14 +999,16 @@ button.leaf.is-plain .leaf__face { pointer-events: none; }
 .stones--in > i::after { content: ""; position: absolute; inset: 0; background: var(--grain), var(--c); translate: calc(1.3 * var(--u)) calc(1.7 * var(--u)); }
 
 /* Pause ornamental loops only; leaf entrance, search highlights and dialog flights remain independent. */
-:is(.is-motion-paused, .is-motion-hidden) :is(.critter, .ply--legs, .bird, .bird__bob, .bird__wing, .bee, .bee__bob, .bee__wing, .bug, .bug__legs, .bug__face) {
-  animation-play-state: paused;
+:is(.is-motion-paused, .is-motion-hidden) :is(.critter, .ply--legs, .bird, .bird__bob, .bird__wing, .bee, .bee__bob, .bee__wing, .bee__face, .bug, .bug__legs, .bug__face),
+:is(.is-motion-paused, .is-motion-hidden) :is(.critter, .ply--legs, .bird, .bird__bob, .bird__wing, .bee, .bee__bob, .bee__wing, .bee__face, .bug, .bug__legs, .bug__face)::before,
+:is(.is-motion-paused, .is-motion-hidden) :is(.critter, .ply--legs, .bird, .bird__bob, .bird__wing, .bee, .bee__bob, .bee__wing, .bee__face, .bug, .bug__legs, .bug__face)::after {
+  animation-play-state: paused !important;
 }
 
 /* For visitors who ask for less motion, everything alive holds still, wherever its loop had got to.
    Match the specificity of species-specific movement rules so worms and finches also hold still. */
 @media (prefers-reduced-motion: reduce) {
-  :root :is(.critter, .ply--legs, .bird, .bird__bob, .bird__wing, .bee, .bee__bob, .bee__wing, .bug, .bug__legs, .bug__face) {
+  :root :is(.critter, .ply--legs, .bird, .bird__bob, .bird__wing, .bee, .bee__bob, .bee__wing, .bee__face, .bug, .bug__legs, .bug__face) {
     animation-play-state: paused;
   }
 }

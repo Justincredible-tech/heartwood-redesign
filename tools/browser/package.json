@@ -1,0 +1,12 @@
+{
+  "name": "heartwood-browser-deps",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Optional, separately locked browser/pixel dependencies (device journeys, pixel guards). Ordinary builds and required portable tests never need these; install with `npm ci` inside tools/browser. See docs/TESTING.md.",
+  "dependencies": {
+    "playwright-core": "1.64.0",
+    "sharp": "0.35.5",
+    "pngjs": "7.0.0",
+    "pixelmatch": "7.2.0"
+  }
+}
